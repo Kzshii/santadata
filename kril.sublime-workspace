@@ -4,32 +4,8 @@
 		"selected_items":
 		[
 			[
-				"P",
-				"PATH_TO_BUNDLE_CERT_1"
-			],
-			[
-				"pa",
-				"PATH_TO_KEY"
-			],
-			[
-				"res",
-				"result"
-			],
-			[
-				"ob",
-				"obj"
-			],
-			[
-				"col",
-				"collection"
-			],
-			[
-				"coo",
-				"collection"
-			],
-			[
-				"crea",
-				"createDb"
+				"id",
+				"id_route"
 			],
 			[
 				"C",
@@ -236,10 +212,6 @@
 				"function"
 			],
 			[
-				"id",
-				"iduser"
-			],
-			[
 				"sigla",
 				"siglaEstado"
 			],
@@ -297,19 +269,10 @@
 			}
 		},
 		{
-			"file": "rest/libs/persistence/mysql.js",
+			"file": "rest/routes/defines/specialties.js",
 			"settings":
 			{
-				"buffer_size": 628,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "rest/libs/persistence/mongodb.js",
-			"settings":
-			{
-				"buffer_size": 3972,
+				"buffer_size": 179,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -318,43 +281,11 @@
 			"file": "rest/routes/specialties/cardio.js",
 			"settings":
 			{
-				"buffer_size": 450,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "rest/constants/messages.js",
-			"settings":
-			{
-				"buffer_size": 131,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "rest/libs/regex_patterns.js",
-			"settings":
-			{
-				"buffer_size": 443,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "rest/libs/persistence/session.js",
-			"settings":
-			{
-				"buffer_size": 131,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "rest/controller/specialty.js",
-			"settings":
-			{
-				"buffer_size": 390,
+<<<<<<< Updated upstream
+				"buffer_size": 681,
+=======
+				"buffer_size": 4624,
+>>>>>>> Stashed changes
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -363,7 +294,53 @@
 			"file": "rest/controller/specialties/cardio.js",
 			"settings":
 			{
-				"buffer_size": 899,
+				"buffer_size": 1259,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "rest/model/anamneses/cardio.js",
+			"settings":
+			{
+				"buffer_size": 238,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "rest/model/anamnese.js",
+			"settings":
+			{
+				"buffer_size": 490,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "var Anamnese ="
+			}
+		},
+		{
+			"file": "rest/libs/helper/date.js",
+			"settings":
+			{
+				"buffer_size": 219,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "rest/libs/persistence/mongodb.js",
+			"settings":
+			{
+				"buffer_size": 4624,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "rest/controller/specialty.js",
+			"settings":
+			{
+				"buffer_size": 577,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -429,26 +406,28 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/joaop/Projetos/Emescam/octopus-med",
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest",
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/libs",
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/routes",
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/routes/defines",
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/routes/specialties"
+		"/media/veracrypt10/Gitlab/octopus-med",
+		"/media/veracrypt10/Gitlab/octopus-med/rest",
+		"/media/veracrypt10/Gitlab/octopus-med/rest/controller",
+		"/media/veracrypt10/Gitlab/octopus-med/rest/controller/specialties",
+		"/media/veracrypt10/Gitlab/octopus-med/rest/libs",
+		"/media/veracrypt10/Gitlab/octopus-med/rest/model",
+		"/media/veracrypt10/Gitlab/octopus-med/rest/model/anamneses"
 	],
 	"file_history":
 	[
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/constants/config.js",
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/routes/defines/specialties.js",
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/constants/sslcert/README.me",
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/constants/messages.js",
-		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/libs/mongodb.js",
+		"/media/veracrypt10/Gitlab/octopus-med/rest/model/cardio.js",
+		"/media/veracrypt10/Gitlab/octopus-med/rest/libs/regex_patterns.js",
+		"/media/veracrypt10/Gitlab/octopus-med/rest/controller/specialty.js",
+		"/media/veracrypt10/Gitlab/octopus-med/rest/constants/messages.js",
 		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/controller/especialties/cardio.js",
 		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/routes/especialties/cardio.js",
 		"/C/Users/joaop/Projetos/Emescam/octopus-med/README.md",
+		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/routes/defines/specialties.js",
 		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/libs/mysql.js",
 		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/routes/specialties.js",
 		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/base_server.js",
+		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/constants/config.js",
 		"/C/Users/joaop/Projetos/Emescam/octopus-med/rest/libs/regex_patterns.js",
 		"/C/Users/joaop/Projetos/Emescam/PeDiabetico/pediabeticobot/package.json",
 		"/C/Users/joaop/Projetos/Emescam/octopus-med/package.json",
@@ -564,16 +543,15 @@
 		"/Users/joao/projetos/Emescam/Medicina_Interativa/repo/internal/elements/response_consult.php",
 		"/Users/joao/projetos/Emescam/Medicina_Interativa/repo/internal/elements/new_pacient.php",
 		"/Users/joao/projetos/Emescam/Medicina_Interativa/repo/Readme.md",
-		"/Users/joao/projetos/Emescam/Medicina_Interativa/repo/internal/elements/navbar.php",
-		"/Users/joao/projetos/Emescam/Medicina_Interativa/repo/internal/main.php"
+		"/Users/joao/projetos/Emescam/Medicina_Interativa/repo/internal/elements/navbar.php"
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 26.0
 	},
 	"find_in_files":
 	{
-		"height": 134.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -583,7 +561,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< Updated upstream
+=======
+			"function",
 			"config",
+>>>>>>> Stashed changes
 			"\t",
 			"openc",
 			"\n",
@@ -718,7 +700,11 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+<<<<<<< Updated upstream
+			"selected": 4,
+=======
+			"selected": 2,
+>>>>>>> Stashed changes
 			"sheets":
 			[
 				{
@@ -734,8 +720,8 @@
 						"selection":
 						[
 							[
-								439,
-								439
+								0,
+								0
 							]
 						],
 						"settings":
@@ -743,48 +729,19 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 185.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "rest/libs/persistence/mysql.js",
+					"file": "rest/routes/defines/specialties.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 628,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								308,
-								308
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "rest/libs/persistence/mongodb.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3972,
+						"buffer_size": 179,
 						"regions":
 						{
 						},
@@ -803,30 +760,137 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< Updated upstream
 					"stack_index": 6,
+=======
+					"stack_index": 1,
+>>>>>>> Stashed changes
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "rest/routes/specialties/cardio.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 450,
+<<<<<<< Updated upstream
+						"buffer_size": 681,
+=======
+						"buffer_size": 4624,
+>>>>>>> Stashed changes
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								211,
-								211
+<<<<<<< Updated upstream
+								223,
+								223
+=======
+								315,
+								315
+>>>>>>> Stashed changes
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+<<<<<<< Updated upstream
+					"stack_index": 4,
+=======
+					"stack_index": 0,
+>>>>>>> Stashed changes
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "rest/controller/specialties/cardio.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								317,
+								268
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "rest/model/anamneses/cardio.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 238,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								238,
+								238
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+<<<<<<< Updated upstream
+					"stack_index": 0,
+=======
+					"stack_index": 5,
+>>>>>>> Stashed changes
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "rest/model/anamnese.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 490,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								103,
+								103
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var Anamnese =",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -836,134 +900,57 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "rest/constants/messages.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 131,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								19,
-								19
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "rest/libs/regex_patterns.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 443,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								95,
-								95
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
 					"buffer": 6,
-					"file": "rest/libs/persistence/session.js",
+					"file": "rest/libs/helper/date.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 131,
+						"buffer_size": 219,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								128,
-								128
+<<<<<<< Updated upstream
+								120,
+								120
+=======
+								131,
+								131
+>>>>>>> Stashed changes
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+<<<<<<< Updated upstream
+					"stack_index": 2,
+=======
+					"stack_index": 4,
+>>>>>>> Stashed changes
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "rest/controller/specialty.js",
+					"file": "rest/libs/persistence/mongodb.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 390,
+						"buffer_size": 4624,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								387,
-								387
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "rest/controller/specialties/cardio.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 899,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								714,
-								714
+								861,
+								884
 							]
 						],
 						"settings":
@@ -972,10 +959,47 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 57.0,
+						"translation.y": 486.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< Updated upstream
 					"stack_index": 5,
+=======
+					"stack_index": 7,
+>>>>>>> Stashed changes
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "rest/controller/specialty.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								277,
+								277
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+<<<<<<< Updated upstream
+					"stack_index": 7,
+=======
+					"stack_index": 8,
+>>>>>>> Stashed changes
 					"type": "text"
 				}
 			]
@@ -983,7 +1007,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 32.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -1020,7 +1044,7 @@
 	"project": "kril.sublime-project",
 	"replace":
 	{
-		"height": 59.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
