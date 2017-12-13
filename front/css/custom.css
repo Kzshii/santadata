@@ -1,6 +1,10 @@
+/* Folha de estilos do protótipo. */
+
 .X {
     border: 1px solid red;
 }
+
+/* página de login */
 
 #login {
     margin-top: 5%;
@@ -30,4 +34,50 @@
     margin: 10px auto;
     /* sombra */
     box-shadow: 0px 2px 7px 1px rgba(70, 186, 218, 0.333);
+}
+
+/* página home */
+
+.header {
+    margin: 10px auto;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    height: 48px;
+    padding: 0;
+}
+
+.menu {
+    height: 48px;
+}
+.info {
+    float: left;
+    padding: 5px;
+}
+
+
+.img-profile {
+    float: right;
+    height: 48px;
+    width: 48px;
+    background: black;
+}
+
+.main {
+    height: 500px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 7px 1px rgba(70, 186, 218, 0.333);
+    padding-top: 20px;
+}
+
+.tab-pane {
+    padding: 20px;
 }

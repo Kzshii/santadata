@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Santa Data</title>
+	
+	<!-- Normalize CSS -->
+	<link href="css/normalize.css" rel="stylesheet">
+	
+	<!-- Bootstrap -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- CSS Local -->
+	<link href="css/default.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body class="">
+	
+	<header class="navbar navbar-default">
+		<div class="container">
+
+			<!-- header -->
+			<div class="navbar-header">
+				<!-- collapse -->
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-menu" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<!-- logo -->
+				<div class="logo navbar-brand center-content">SANTA DATA</div>
+			</div> <!-- / header -->
+
+			<!-- navegação -->
+			<!-- <nav></nav> -->
+
+			<!-- menu do usuário -->
+			<div id="user-menu" class="navbar-right menu center-content">
+				<div class="info">
+					<span>NOME</span><br>
+					<span>ID</span>
+				</div>
+				<div class="img-profile center-content">IMG</div>
+			</div>
+		</div> <!-- / container -->
+	</header>
+
+	<section class="container main">
+		<ul class="nav nav-tabs" role="tablist"> <!-- lista de abas -->
+			<!-- Aba: Dados do paciente -->
+			<li role="presentation" class="active">
+				<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Dados do paciente</a>
+			</li>
+			<!-- Aba: Medicamentos -->
+			<li role="presentation">
+				<a href="#meds" aria-controls="meds" role="tab" data-toggle="tab">Medicamentos</a>
+			</li>
+			<!-- Aba: Exames (dropdown) -->
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Exames <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu"> <!-- lista de tipos de exames -->
+					<li>
+						<a href="#exam-fg" aria-controls="exam-fg" role="tab" data-toggle="tab">Exame Físico Geral</a>
+					</li>
+					<li>
+						<a href="#exam-fc" aria-controls="exam-fc" role="tab" data-toggle="tab">Exame Físico Cardiológico</a>
+					</li>
+					<li>
+						<a href="#exam-bq" aria-controls="exam-bq" role="tab" data-toggle="tab">Exame Bioquímico</a>
+					</li>
+				</ul> <!-- / lista de tipos de exames -->
+			</li>
+		</ul> <!-- / lista de abas -->
+
+
+		<!-- conteúdo das abas -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="profile">
+				Dados do Paciente
+			</div>
+			<div role="tabpanel" class="tab-pane" id="meds">
+				Medicamentos
+			</div>
+			<div role="tabpanel" class="tab-pane" id="exam-fg">
+				Exame Físico Geral
+			</div>
+			<div role="tabpanel" class="tab-pane" id="exam-fc">
+				Exame Físico Cardiológico
+			</div>
+			<div role="tabpanel" class="tab-pane" id="exam-bq">
+				Exame Bioquímico
+			</div>
+		</div>
+
+	</section> <!-- / main -->
+	
+	<footer>
+
+	</footer>
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+	<script src="js/jquery-3.2.1.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<!-- W3-Include -->
+	<!-- <script src="js/w3-include-HTML.js"></script> -->
+</body>
+</html>
