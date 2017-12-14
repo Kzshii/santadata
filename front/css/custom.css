@@ -81,3 +81,11 @@
 .tab-pane {
     padding: 20px;
 }
+
+.panel-heading {
+    padding: 0px;
+}
+
+.panel-title-toggle {
+    padding: 10px 15px;
+}
