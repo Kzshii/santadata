@@ -91,18 +91,138 @@
 
 		<!-- conteúdo das abas -->
 		<div class="tab-content">
+
+
 			<div role="tabpanel" class="tab-pane active" id="profile">
 				Dados do Paciente
 			</div>
+
+
 			<div role="tabpanel" class="tab-pane" id="meds">
 				Medicamentos
 			</div>
+
+
 			<div role="tabpanel" class="tab-pane" id="exam-fg">
-				Exame Físico Geral
+
+				<h1 class="text-uppercase text-primary">Exame Físico Geral</h1>
+
+				
+
+				<form>
+
+					<div class="form-group row ">
+
+						<div class="col-sm-12 col-md-4 ">
+
+							<label for="general-status">Estado Geral</label>
+							<textarea class="form-control" id="general-status" rows="6"></textarea>
+
+						</div>
+						
+						<div class="col-sm-12 col-md-8 ">
+
+							<div class="form-group row ">
+
+								<div class="col-md-4">
+									<label for="ausculta-resp">Ausculta Respiratória</label>
+									<br>
+									<select class="form-control" id="ausculta-resp">
+										<option>MV Fisiológico, sem ruidos adventícios</option>
+										<option>Creptações Basais</option>
+										<option>Creptações Difusas</option>
+								</select>
+								</div>
+
+								<div class="col-md-4">
+									<label for="edema">Edema</label>
+									<br>
+									<select class="form-control" id="edema">
+										<option>Sem Edema</option>
+										<option>+/++++</option>
+										<option>++/++++</option>
+										<option>+++/++++</option>
+										<option>++++/++++</option>
+									</select>
+								</div>
+	
+								<div class="col-md-4">
+									<label for="ascite">Ascite</label>
+									<br>
+									<select class="form-control" id="ascite">
+										<option>Presente</option>
+										<option>Ausente</option>
+									</select>
+								</div>
+							</div>
+
+							<div class= "form-group row ">
+
+								<div class="col-md-4">
+
+									<label for="turgencia-jp">Turgência Jugular Patológica</label>
+									<br>
+
+									<select class="form-control" id="turgencia-jp">
+										<option>Sim</option>
+										<option>Nao</option>
+									</select>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<label for="reflexo-hep">Reflexo Hepatojugular</label>
+									<br>
+									<select class="form-control" id="reflexo-hep">
+										<option>Sim</option>
+										<option>Nao</option>
+									</select>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<label for="peso">Peso</label>
+									<br>
+									<input type="number" class="form-control" id="peso" value="50.5">
+								</div>
+
+							</div>
+
+							<div class= "form-group row ">
+
+								<div class="col-md-4">
+
+									<label for="altura">Altura</label>
+									<br>
+									<input type="number" class="form-control" id="altura" value="1.70">
+
+								</div>
+
+								<div class="col-md-4">
+
+									<label for="imc">IMC</label>
+									<br>
+									<input type="number" class="form-control" id="imc" value="20">
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</form>
+
 			</div>
+
+
 			<div role="tabpanel" class="tab-pane" id="exam-fc">
 				Exame Físico Cardiológico
 			</div>
+
 			<div role="tabpanel" class="tab-pane" id="exam-bq">
 				Exame Bioquímico
 			</div>
