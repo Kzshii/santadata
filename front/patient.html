@@ -106,9 +106,6 @@
 			<div role="tabpanel" class="tab-pane" id="exam-fg">
 
 				<h1 class="text-uppercase text-primary">Exame Físico Geral</h1>
-
-				
-
 				<form>
 
 					<div class="form-group row ">
@@ -205,27 +202,133 @@
 									<label for="imc">IMC</label>
 									<br>
 									<input type="number" class="form-control" id="imc" value="20">
-
 								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+
+			<div role="tabpanel" class="tab-pane" id="exam-fc">
+				<h1 class="text-uppercase text-primary">Exame Físico Cardiovascular</h1>
+
+				<form>
+
+					<div class="form-group row">
+	
+						<div class="col-sm-12 col-md-4">
+							<label for="detalhes-asculta">Detalhes da Ausculta Cardiaca e Pulso Arterial.</label>
+							<textarea class="form-control" id="detalhes-asculta" rows="6"></textarea>
+						</div>
+
+						<div class="col-sm-12 col-md-8">
+							
+							<div class="form-group row">
+
+									<div class="col-md-4">
+										<label for="ritmo">Ritmo</label>
+										<select class="form-control" id="ritmo">
+												<option>Regular em dois tempos</option>
+												<option>Irregular</option>
+											</select>
+									</div>
+
+									<div class="col-md-4">
+										<label for="inspecao">Inspeção</label>
+										<select class="form-control" id="inspecao">
+												<option>Ictus Cordis Visível</option>
+												<option>Ictus de VD</option>
+												<option>Movimento em Báscula</option>
+											</select>
+									</div>
+
+									<div class="col-md-4">
+										<label for="palpacao">Palpação</label>
+										<select class="form-control" id="palpacao">
+												<option>Ictus Cordis Palpável</option>
+												<option>Desviado p/ Esquerda e p/ Baixo</option>
+												<option>Linha Hemiclavicular 5 EICE</option>
+											</select>
+									</div>	
+								</div>
+						
+						<div class="form-group row ">
+
+								<div class="col-md-4">
+
+									<label for="frequencia-cardiaca">Frequência Cardiaca</label>
+									<input type="text" id="frequencia-cardiaca" class="form-control">
+								</div>
+
+								<div class="col-md-4">
+									<label for="pressao-arterial">Pressão Arterial</label>
+									<input type="text" id="pressao-arterial" class="form-control">
+								</div>
+
+								<div class="col-md-4">
+										<label for="bulhas">Bulhas</label>
+										<select class="form-control" id="bulhas">
+												<option>B1 e B2 (Em dois tempos)</option>
+												<option>B3</option>
+												<option>B4</option>
+												<option>B3 e B4</option>
+											</select>
+									</div>
 
 							</div>
 
+						</div>
+					</div>		
+			</form>
+		</div>
+
+			<div role="tabpanel" class="tab-pane" id="exam-bq">
+
+				<h1 class="text-uppercase text-primary">Exame Bioquimico</h1>
+				
+				<form>
+					
+					<div class="form-group row">
+						<div class="col-sm-12 col-md-6">
+							<label for="qtd-sangue">Dosagem da Quantificação dos Exames</label>
+							<input type="number" id="qtd-sangue" class="form-control">
+						</div>
+
+						<div class="col-sm-12 col-md-6">
+							<label for="qtd-sangue">Creatina</label>
+							<input type="number" id="qtd-sangue" class="form-control" placeholder="Quantificação Detalhada da Creatina">
+						</div>
+					</div>
+
+					<div class="form-group row">
+
+						<div class="col-sm-12 col-md-6">
+							
+								   <label for="creatina-basal" class="col-sm-2 col-form-label">Creatina Basal</label>
+   								 <div class="col-sm-10">
+     								 <input type="number" class="form-control" id="creatina-basal">
+   								 </div>
+										
+   								
+
+
+						</div>
+
+
+						<div class="col-sm-12 col-md-6">
+							
 						</div>
 
 					</div>
 
 				</form>
 
-			</div>
 
 
-			<div role="tabpanel" class="tab-pane" id="exam-fc">
-				Exame Físico Cardiológico
+
 			</div>
 
-			<div role="tabpanel" class="tab-pane" id="exam-bq">
-				Exame Bioquímico
-			</div>
 		</div>
 
 	</section> <!-- / main -->
