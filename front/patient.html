@@ -26,7 +26,8 @@
 	<![endif]-->
 </head>
 
-<body>
+<body class="">
+	
 	<header class="navbar navbar-default">
 		<div class="container">
 
@@ -58,41 +59,49 @@
 		</div> <!-- / container -->
 	</header>
 
-    <section class="container main">
-        <!-- lista de abas -->
+	<section class="container main">
+		
+		<!-- lista de abas -->
 		<ul class="nav nav-tabs" role="tablist">
 			<!-- Aba: Dados do paciente -->
 			<li role="presentation" class="active">
 				<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Dados do paciente</a>
-            </li>
-            
+			</li>
 			<!-- Aba: Medicamentos -->
 			<li role="presentation">
 				<a href="#meds" aria-controls="meds" role="tab" data-toggle="tab">Medicamentos</a>
-            </li>
-            
-            <!-- Aba: Exames -->
-            <li role="presentation">
-                <a href="#exams" aria-controls="exams" role="tab" data-toggle="tab">Exames</a>
-            </li>
+			</li>
+			<!-- Aba: Exames (dropdown) -->
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Exames <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu"> <!-- lista de tipos de exames -->
+					<li>
+						<a href="#exam-fg" aria-controls="exam-fg" role="tab" data-toggle="tab">Exame Físico Geral</a>
+					</li>
+					<li>
+						<a href="#exam-fc" aria-controls="exam-fc" role="tab" data-toggle="tab">Exame Físico Cardiológico</a>
+					</li>
+					<li>
+						<a href="#exam-bq" aria-controls="exam-bq" role="tab" data-toggle="tab">Exame Bioquímico</a>
+					</li>
+				</ul> <!-- / lista de tipos de exames -->
+			</li>
+		</ul> <!-- / lista de abas -->
 
-            <!-- Aba: Intervenções -->
-            <li role="presentation">
-                <a href="#interventions" aria-controls="interventions" role="tab" data-toggle="tab">Intervenções</a>
-            </li>
 
-        </ul> <!-- / lista de abas -->
-        
+		<!-- conteúdo das abas -->
+		<div class="tab-content">
 
-        <!-- conteúdo das abas -->
-        <div class="tab-content">
-            <!-- Aba: Dados do Paciente -->
+			<!-- Aba: Dados do Paciente -->
 			<div role="tabpanel" class="tab-pane active" id="profile">
 				Dados do Paciente
-            </div>
-            <!-- Aba: Medicamentos -->
+			</div>
+
+			<!-- Aba: Medicamentos -->
 			<div role="tabpanel" class="tab-pane" id="meds">
-                
+				
 				<h2 class="text-uppercase text-primary">Medicamentos</h2>
 
 				<div class="form-group row ">
@@ -313,94 +322,238 @@
 					<input type="text" class="form-control" id="outros" placeholder="Descrição">
 				</div> <!-- / row -->
 
+			</div> <!-- / Aba: Medicamentos -->
 
-            </div> <!--/ Aba: Medicamentos -->
+			<!-- Aba: Exame físico geral -->
+			<div role="tabpanel" class="tab-pane" id="exam-fg">
 
-            <!-- Aba: Exames -->
-			<div role="tabpanel" class="tab-pane" id="exams">
-                
-                <div class="row">
+				<h2 class="text-uppercase text-primary">Exame Físico Geral</h2>
+				<form>
 
-                    <div class="col-sm-6">
-                        histórico
-                    </div> <!-- / col -->
+					<div class="form-group row ">
 
-                    <div class="col-sm-6">
-                        <!-- panel-group Input de novos exames -->
-                        <div class="panel-group" id="exams-accordion" role="tablist" aria-multiselectable="true">
-        
-                            <!-- Painel: Exame físico geral -->
-                            <div class="panel panel-default">
-                                <!-- cabeçalho do painel -->
-                                <div class="panel-heading" role="tab" id="heading-panel-exam-fg">
-                                   <h4 class="panel-title">
-                                       <div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-fg" aria-expanded="true" aria-controls="collapse-panel-exam-fg">
-                                            Exame físico geral
-                                       </div>
-                                    </h4>
-                                </div>
-                                <!-- corpo do painel -->
-                                <div id="collapse-panel-exam-fg" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fg">
-                                    <div class="panel-body">
-                                        a
-                                    </div>
-                                </div>
-                            </div> <!-- / Painel: Exame físico geral -->
-        
-                            <!-- Painel: Exame físico cardio -->
-                            <div class="panel panel-default">
-                                <!-- cabeçalho do painel -->
-                                <div class="panel-heading" role="tab" id="heading-panel-exam-fc">
-                                    <h4 class="panel-title">
-                                        <div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-fc" aria-expanded="true" aria-controls="collapse-panel-exam-fc">
-                                            Exame físico cardio
-                                        </div>
-                                    </h4>
-                                </div>
-                                <!-- corpo do painel -->
-                                <div id="collapse-panel-exam-fc" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fc">
-                                    <div class="panel-body">
-                                        b
-                                    </div>
-                                </div>
-                            </div> <!-- / Painel: Exame físico geral -->
-        
-                            <!-- Painel: Exame bioquímico -->
-                            <div class="panel panel-default">
-                                <!-- cabeçalho do painel -->
-                                <div class="panel-heading" role="tab" id="heading-panel-exam-bq">
-                                    <h4 class="panel-title">
-                                        <div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-bq" aria-expanded="true" aria-controls="collapse-panel-exam-bq">
-                                            Exame bioquímico
-                                        </div>
-                                    </h4>
-                                </div>
-                                <!-- corpo do painel -->
-                                <div id="collapse-panel-exam-bq" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-bq">
-                                    <div class="panel-body">
-                                        c
-                                    </div>
-                                </div>
-                            </div> <!-- / Painel: Exame bioquímico -->
-        
-        
-                        </div> <!-- / panel-group Input de novos exames-->
-                    </div> <!-- / col -->
+						<div class="col-sm-4 col-md-4 ">
 
-                </div> <!-- / row -->
-                
-                
+							<label for="general-status">Estado Geral</label>
+							<textarea class="form-control" id="general-status" rows="6"></textarea>
 
-            </div>
-            
-            <!-- Aba: Intervenções -->
-            <div role="tabpanel" class="tab-pane" id="interventions">
-                Intervenções
-            </div>
-        </div>
-    </section>
+						</div>
+						
+						<div class="col-sm-4 col-md-8 ">
 
-    <footer></footer>
+							<div class="form-group row ">
+
+								<div class="col-md-4">
+									<label for="ausculta-resp">Ausculta Respiratória</label>
+									<br>
+									<select class="form-control" id="ausculta-resp">
+										<option>MV Fisiológico, sem ruidos adventícios</option>
+										<option>Creptações Basais</option>
+										<option>Creptações Difusas</option>
+								</select>
+								</div>
+
+								<div class="col-md-4">
+									<label for="edema">Edema</label>
+									<br>
+									<select class="form-control" id="edema">
+										<option>Sem Edema</option>
+										<option>+/++++</option>
+										<option>++/++++</option>
+										<option>+++/++++</option>
+										<option>++++/++++</option>
+									</select>
+								</div>
+	
+								<div class="col-md-4">
+									<label for="ascite">Ascite</label>
+									<br>
+									<select class="form-control" id="ascite">
+										<option>Presente</option>
+										<option>Ausente</option>
+									</select>
+								</div>
+							</div> <!-- / row -->
+
+							<div class= "form-group row ">
+
+								<div class="col-md-4">
+
+									<label for="turgencia-jp">Turgência Jugular Patológica</label>
+									<br>
+
+									<select class="form-control" id="turgencia-jp">
+										<option>Sim</option>
+										<option>Nao</option>
+									</select>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<label for="reflexo-hep">Reflexo Hepatojugular</label>
+									<br>
+									<select class="form-control" id="reflexo-hep">
+										<option>Sim</option>
+										<option>Nao</option>
+									</select>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<label for="peso">Peso</label>
+									<br>
+									<input type="number" class="form-control" id="peso" value="50.5">
+								</div>
+
+							</div> <!-- / row -->
+
+							<div class= "form-group row ">
+
+								<div class="col-md-4">
+
+									<label for="altura">Altura</label>
+									<br>
+									<input type="number" class="form-control" id="altura" value="1.70">
+
+								</div>
+
+								<div class="col-md-4">
+
+									<label for="imc">IMC</label>
+									<br>
+									<input type="number" class="form-control" id="imc" value="20">
+								</div>
+							</div> <!-- / row -->
+						</div>
+					</div> <!-- / row -->
+				</form>
+			</div> <!-- / Aba: Exame físico geral -->
+
+			<!-- Aba: Exame físico cardiológico -->
+			<div role="tabpanel" class="tab-pane" id="exam-fc">
+				<h2 class="text-uppercase text-primary">Exame Físico Cardiológico</h2>
+
+				<form>
+
+					<div class="form-group row">
+	
+						<div class="col-sm-4 col-md-4">
+							<label for="detalhes-asculta">Detalhes da Ausculta Cardiaca e Pulso Arterial.</label>
+							<textarea class="form-control" id="detalhes-asculta" rows="6"></textarea>
+						</div>
+
+						<div class="col-sm-4 col-md-8">
+							
+							<div class="form-group row">
+
+								<div class="col-md-4">
+									<label for="ritmo">Ritmo</label>
+									<select class="form-control" id="ritmo">
+											<option>Regular em dois tempos</option>
+											<option>Irregular</option>
+										</select>
+								</div>
+
+								<div class="col-md-4">
+									<label for="inspecao">Inspeção</label>
+									<select class="form-control" id="inspecao">
+											<option>Ictus Cordis Visível</option>
+											<option>Ictus de VD</option>
+											<option>Movimento em Báscula</option>
+										</select>
+								</div>
+
+								<div class="col-md-4">
+									<label for="palpacao">Palpação</label>
+									<select class="form-control" id="palpacao">
+											<option>Ictus Cordis Palpável</option>
+											<option>Desviado p/ Esquerda e p/ Baixo</option>
+											<option>Linha Hemiclavicular 5 EICE</option>
+										</select>
+								</div>	
+							</div> <!-- / row -->
+						
+							<div class="form-group row ">
+
+								<div class="col-md-4">
+
+									<label for="frequencia-cardiaca">Frequência Cardiaca</label>
+									<input type="text" id="frequencia-cardiaca" class="form-control">
+								</div>
+
+								<div class="col-md-4">
+									<label for="pressao-arterial">Pressão Arterial</label>
+									<input type="text" id="pressao-arterial" class="form-control">
+								</div>
+
+								<div class="col-md-4">
+									<label for="bulhas">Bulhas</label>
+									<select class="form-control" id="bulhas">
+										<option>B1 e B2 (Em dois tempos)</option>
+										<option>B3</option>
+										<option>B4</option>
+										<option>B3 e B4</option>
+									</select>
+								</div>
+
+							</div> <!-- / row -->
+
+						</div>
+					</div> <!-- / row -->
+				</form>
+			</div> <!-- / Aba: Exame físico cardiológico -->
+
+			<!-- Aba: Exame bioquímico -->
+			<div role="tabpanel" class="tab-pane" id="exam-bq">
+
+				<h2 class="text-uppercase text-primary">Exame Bioquimico</h2>
+				
+				<form>
+					
+					<div class="form-group row">
+						<div class="col-sm-4 col-md-6">
+							<label for="qtd-sangue">Dosagem da Quantificação dos Exames</label>
+							<input type="number" id="qtd-sangue" class="form-control">
+						</div>
+
+						<div class="col-sm-4 col-md-6">
+							<label for="qtd-sangue">Creatina</label>
+							<input type="number" id="qtd-sangue" class="form-control" placeholder="Quantificação Detalhada da Creatina">
+						</div>
+					</div> <!-- / row -->
+
+					<div class="form-group row">
+
+						<div class="col-sm-4 col-md-6">
+							<label for="creatina-basal" >Creatina Basal</label>
+     					<input type="number" class="form-control" id="creatina-basal">
+						</div>
+						 
+					</div> <!-- / row -->
+
+
+					<div class="col-sm-4 col-md-6">
+						
+					</div>
+
+					
+
+				</form>
+			</div> <!-- / Aba: Exame bioquímico -->
+
+
+
+
+		</div> <!-- / conteúdo das abas -->
+
+	</section> <!-- / main -->
+	
+	<footer>
+
+	</footer>
+	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 	<script src="js/jquery-3.2.1.js"></script>
