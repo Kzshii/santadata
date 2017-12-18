@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Santa Data</title>
+	
+	<!-- Normalize CSS -->
+	<link href="css/normalize.css" rel="stylesheet">
+	
+	<!-- Bootstrap -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- CSS Local -->
+	<link href="css/default.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body class="">
+	
+	<header class="navbar navbar-default">
+		<div class="container">
+
+			<!-- header -->
+			<div class="navbar-header">
+				<!-- collapse -->
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-menu" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<!-- logo -->
+				<div class="logo navbar-brand center-content">SANTA DATA - PACIENTE</div>
+			</div> <!-- / header -->
+
+			<!-- navegação -->
+			<!-- <nav></nav> -->
+
+			<!-- menu do usuário -->
+			<div id="user-menu" class="navbar-right menu center-content">
+				<div class="info">
+					<span>NOME</span><br>
+					<span>ID</span>
+				</div>
+				<div class="img-profile center-content">IMG</div>
+			</div>
+		</div> <!-- / container -->
+	</header>
+
+	<section class="container main">
+		
+		<!-- lista de abas -->
+		<ul class="nav nav-tabs" role="tablist">
+			<!-- Aba: Dados do paciente -->
+			<li role="presentation" class="active">
+				<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Dados do paciente</a>
+			</li>
+			<!-- Aba: Medicamentos -->
+			<li role="presentation">
+				<a href="#meds" aria-controls="meds" role="tab" data-toggle="tab">Medicamentos</a>
+			</li>
+			<!-- Aba: Exames (dropdown) -->
+			<li role="presentation" class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					Exames <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu"> <!-- lista de tipos de exames -->
+					<li>
+						<a href="#exam-fg" aria-controls="exam-fg" role="tab" data-toggle="tab">Exame Físico Geral</a>
+					</li>
+					<li>
+						<a href="#exam-fc" aria-controls="exam-fc" role="tab" data-toggle="tab">Exame Físico Cardiológico</a>
+					</li>
+					<li>
+						<a href="#exam-bq" aria-controls="exam-bq" role="tab" data-toggle="tab">Exame Bioquímico</a>
+					</li>
+				</ul> <!-- / lista de tipos de exames -->
+			</li>
+		</ul> <!-- / lista de abas -->
+
+
+		<!-- conteúdo das abas -->
+		<div class="tab-content">
+
+			<!-- Aba: Dados do Paciente -->
+			<div role="tabpanel" class="tab-pane active" id="profile">
+				Dados do Paciente
+			</div>
+
+			<!-- Aba: Medicamentos -->
+			<div role="tabpanel" class="tab-pane" id="meds">
+				
+				<h2 class="text-uppercase text-primary">Medicamentos</h2>
+
+				<div class="form-group row ">
+
+					<div class="col-sm-4 col-md-4">
+							
+						<label for="inibAngiostensina">Inibidores de angiotensina II (IECA)</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inibAngiostensinaSim" value="sim"> Alvo
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inibAngiostensinaNao" value="nao"> Não alvo
+							</label>
+						</div>
+											
+					</div>
+
+					<div class="col-sm-4 col-md-4">
+							
+						<label for="bloqAngiostensina">Bloqueadores de angiotensina II (BRA)</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqAngiostensinaSim" value="sim"> Alvo
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqAngiostensinaNao" value="nao"> Não alvo
+							</label>
+						</div>
+											
+					</div>
+
+					<div class="col-sm-4 col-md-4">
+						
+						<label for="betaBloqueadores">Beta-bloqueadores (BB)</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="betaBloqueadoresSim" value="sim"> Alvo
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="betaBloqueadoresNao" value="nao"> Não alvo
+							</label>
+						</div>
+											
+					</div>
+
+				</div> <!-- / row -->
+
+				<div class="form-group row ">
+
+					<div class="col-sm-4 col-md-4">
+							
+						<label for="hidralazinaNitrato">Hidralazina e Nitrato</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="hidralazinaNitratoSim" value="sim"> Alvo
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="hidralazinaNitratoNao" value="nao"> Não alvo
+							</label>
+						</div>
+											
+					</div>
+
+					<div class="col-sm-4 col-md-4">
+							
+						<label for="antagonistaAldosterona">Antagonista de Aldosterona</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antagonistaAldosteronaSim" value="sim"> Uso
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antagonistaAldosteronaNao" value="nao"> Não uso
+							</label>
+
+						</div>
+											
+					</div>
+
+					<div class="col-sm-4 col-md-4 ">
+						
+						<label for="diureticos">Diuréticos</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticosSim" value="sim"> Uso
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticosNao" value="nao"> Não uso
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticosParei" value="parei"> Parei
+							</label>
+						</div>
+											
+					</div>
+
+				</div> <!-- / row -->
+
+				<div class="form-group row ">
+
+					<div class="col-sm-4 col-md-4 ">
+							
+						<label for="digoxina">Digoxina</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="digoxinaSim" value="sim"> Uso
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="digoxinaNao" value="nao"> Não uso
+							</label>
+						</div>
+											
+					</div>
+
+					<div class="col-sm-4 col-md-4 ">
+							
+						<label for="antiagregantesPlaquetarios">Antiagregantes plaquetários</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiagregantesPlaquetariosAAS" value="aas"> AAS
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiagregantesPlaquetariosCleidogrel" value="clopidogrel"> Clopidogrel
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiagregantesPlaquetariosNenhum" value="nenhum"> Nenhum
+							</label>
+
+
+						</div>
+											
+					</div>
+
+					<div class="col-sm-4 col-md-4 ">
+						
+						<label for="anticoagulantes">Anticoagulantes</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="anticoagulantesSim" value="sim"> Uso
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="anticoagulantesNao" value="nao"> Não uso
+							</label>
+						</div>
+											
+					</div>
+
+				</div> <!-- / row -->
+
+				<div class="form-group row ">
+
+					<div class="col-sm-4 col-md-4 ">
+							
+						<label for="antiarritimicos">Antiarrítmicos</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiarritimicosSim" value="sim"> Uso
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiarritimicosNao" value="nao"> Não uso
+							</label>
+						</div>
+											
+					</div>
+
+					<div class="col-sm-4 col-md-4 ">
+							
+						<label for="bloqCanalCalcio">Bloqueadores dos canal de cálcio</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqCanalCalcioSim" value="sim"> Uso
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqCanalCalcioNao" value="nao"> Não uso
+							</label>
+
+						</div>
+											
+					</div>
+
+					<div class="col-sm-4 col-md-4 ">
+						
+						<label for="diureticoTiazidico">Diurético Tiazídico</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticoTiazidicoSim" value="sim"> Uso
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticoTiazidicoNao" value="nao"> Não uso
+							</label>
+
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticoTiazidicoParei" value="parei"> Parei
+							</label>
+						</div>
+											
+					</div>
+
+				</div> <!-- / row -->
+
+				<div class="form-group row ">
+					<label for="outros">Outros</label>
+					<br>
+					<input type="text" class="form-control" id="outros" placeholder="Descrição">
+				</div> <!-- / row -->
+
+			</div> <!-- / Aba: Medicamentos -->
+
+			<!-- Aba: Exame físico geral -->
+			<div role="tabpanel" class="tab-pane" id="exam-fg">
+
+				<h2 class="text-uppercase text-primary">Exame Físico Geral</h2>
+				<form>
+
+					<div class="form-group row ">
+
+						<div class="col-sm-4 col-md-4 ">
+
+							<label for="general-status">Estado Geral</label>
+							<textarea class="form-control" id="general-status" rows="6"></textarea>
+
+						</div>
+						
+						<div class="col-sm-4 col-md-8 ">
+
+							<div class="form-group row ">
+
+								<div class="col-md-4">
+									<label for="ausculta-resp">Ausculta Respiratória</label>
+									<br>
+									<select class="form-control" id="ausculta-resp">
+										<option>MV Fisiológico, sem ruidos adventícios</option>
+										<option>Creptações Basais</option>
+										<option>Creptações Difusas</option>
+								</select>
+								</div>
+
+								<div class="col-md-4">
+									<label for="edema">Edema</label>
+									<br>
+									<select class="form-control" id="edema">
+										<option>Sem Edema</option>
+										<option>+/++++</option>
+										<option>++/++++</option>
+										<option>+++/++++</option>
+										<option>++++/++++</option>
+									</select>
+								</div>
+	
+								<div class="col-md-4">
+									<label for="ascite">Ascite</label>
+									<br>
+									<select class="form-control" id="ascite">
+										<option>Presente</option>
+										<option>Ausente</option>
+									</select>
+								</div>
+							</div> <!-- / row -->
+
+							<div class= "form-group row ">
+
+								<div class="col-md-4">
+
+									<label for="turgencia-jp">Turgência Jugular Patológica</label>
+									<br>
+
+									<select class="form-control" id="turgencia-jp">
+										<option>Sim</option>
+										<option>Nao</option>
+									</select>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<label for="reflexo-hep">Reflexo Hepatojugular</label>
+									<br>
+									<select class="form-control" id="reflexo-hep">
+										<option>Sim</option>
+										<option>Nao</option>
+									</select>
+
+								</div>
+
+								<div class="col-md-4">
+
+									<label for="peso">Peso</label>
+									<br>
+									<input type="number" class="form-control" id="peso" value="50.5">
+								</div>
+
+							</div> <!-- / row -->
+
+							<div class= "form-group row ">
+
+								<div class="col-md-4">
+
+									<label for="altura">Altura</label>
+									<br>
+									<input type="number" class="form-control" id="altura" value="1.70">
+
+								</div>
+
+								<div class="col-md-4">
+
+									<label for="imc">IMC</label>
+									<br>
+									<input type="number" class="form-control" id="imc" value="20">
+								</div>
+							</div> <!-- / row -->
+						</div>
+					</div> <!-- / row -->
+				</form>
+			</div> <!-- / Aba: Exame físico geral -->
+
+			<!-- Aba: Exame físico cardiológico -->
+			<div role="tabpanel" class="tab-pane" id="exam-fc">
+				<h2 class="text-uppercase text-primary">Exame Físico Cardiológico</h2>
+
+				<form>
+
+					<div class="form-group row">
+	
+						<div class="col-sm-4 col-md-4">
+							<label for="detalhes-asculta">Detalhes da Ausculta Cardiaca e Pulso Arterial.</label>
+							<textarea class="form-control" id="detalhes-asculta" rows="6"></textarea>
+						</div>
+
+						<div class="col-sm-4 col-md-8">
+							
+							<div class="form-group row">
+
+								<div class="col-md-4">
+									<label for="ritmo">Ritmo</label>
+									<select class="form-control" id="ritmo">
+											<option>Regular em dois tempos</option>
+											<option>Irregular</option>
+										</select>
+								</div>
+
+								<div class="col-md-4">
+									<label for="inspecao">Inspeção</label>
+									<select class="form-control" id="inspecao">
+											<option>Ictus Cordis Visível</option>
+											<option>Ictus de VD</option>
+											<option>Movimento em Báscula</option>
+										</select>
+								</div>
+
+								<div class="col-md-4">
+									<label for="palpacao">Palpação</label>
+									<select class="form-control" id="palpacao">
+											<option>Ictus Cordis Palpável</option>
+											<option>Desviado p/ Esquerda e p/ Baixo</option>
+											<option>Linha Hemiclavicular 5 EICE</option>
+										</select>
+								</div>	
+							</div> <!-- / row -->
+						
+							<div class="form-group row ">
+
+								<div class="col-md-4">
+
+									<label for="frequencia-cardiaca">Frequência Cardiaca</label>
+									<input type="text" id="frequencia-cardiaca" class="form-control">
+								</div>
+
+								<div class="col-md-4">
+									<label for="pressao-arterial">Pressão Arterial</label>
+									<input type="text" id="pressao-arterial" class="form-control">
+								</div>
+
+								<div class="col-md-4">
+									<label for="bulhas">Bulhas</label>
+									<select class="form-control" id="bulhas">
+										<option>B1 e B2 (Em dois tempos)</option>
+										<option>B3</option>
+										<option>B4</option>
+										<option>B3 e B4</option>
+									</select>
+								</div>
+
+							</div> <!-- / row -->
+
+						</div>
+					</div> <!-- / row -->
+				</form>
+			</div> <!-- / Aba: Exame físico cardiológico -->
+
+			<!-- Aba: Exame bioquímico -->
+			<div role="tabpanel" class="tab-pane" id="exam-bq">
+
+				<h2 class="text-uppercase text-primary">Exame Bioquimico</h2>
+				
+				<form>
+					
+					<div class="form-group row">
+						<div class="col-sm-4 col-md-6">
+							<label for="qtd-sangue">Dosagem da Quantificação dos Exames</label>
+							<input type="number" id="qtd-sangue" class="form-control">
+						</div>
+
+						<div class="col-sm-4 col-md-6">
+							<label for="qtd-sangue">Creatina</label>
+							<input type="number" id="qtd-sangue" class="form-control" placeholder="Quantificação Detalhada da Creatina">
+						</div>
+					</div> <!-- / row -->
+
+					<div class="form-group row">
+
+						<div class="col-sm-4 col-md-6">
+							<label for="creatina-basal" >Creatina Basal</label>
+     					<input type="number" class="form-control" id="creatina-basal">
+						</div>
+						 
+					</div> <!-- / row -->
+
+
+					<div class="col-sm-4 col-md-6">
+						
+					</div>
+
+					
+
+				</form>
+			</div> <!-- / Aba: Exame bioquímico -->
+
+
+
+
+		</div> <!-- / conteúdo das abas -->
+
+	</section> <!-- / main -->
+	
+	<footer>
+
+	</footer>
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+	<script src="js/jquery-3.2.1.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<!-- W3-Include -->
+	<!-- <script src="js/w3-include-HTML.js"></script> -->
+</body>
+</html>

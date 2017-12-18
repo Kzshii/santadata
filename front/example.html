@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script src="js/ajax.js"></script>
+
+<script type="text/javascript">
+	
+	function consumeRoute(url){
+		ajax.asyncTask(function(data){
+			console.log(data);
+			document.getElementById("result").innerHTML = data;
+		},url)
+	}
+</script>
+
+</head>
+
+<body>
+	<center>
+		<input type="button" name="Buscar" value="TESTE" onclick="consumeRoute('http://restfull.hol.es')">
+		<br>
+		<div id="result"></div>
+	</center>
+</body>
