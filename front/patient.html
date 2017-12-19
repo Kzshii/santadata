@@ -355,9 +355,9 @@
 																<label for="ausculta-resp">Ausculta Respiratória</label>
 																<br>
 																<select class="form-control" id="ausculta-resp">
-																	<option>MV Fisiológico, sem ruidos adventícios</option>
-																	<option>Creptações Basais</option>
-																	<option>Creptações Difusas</option>
+																	<option value="1">MV Fisiológico, sem ruidos adventícios</option>
+																	<option value="2">Creptações Basais</option>
+																	<option value="3">Creptações Difusas</option>
 																</select>
 															</div>
 
@@ -369,7 +369,7 @@
 																<br>
 																<select class="form-control" id="ascite">
 																	<option>Presente</option>
-																	<option>Ausente</option>
+																	<option selected>Ausente</option>
 																</select>
 															</div>
 															<!-- /Exame Ascite-->
@@ -379,8 +379,8 @@
 																<label for="turgencia-jp">Turgência Jugular Patológica</label>
 																<br>
 																<select class="form-control" id="turgencia-jp">
-																	<option>Sim</option>
-																	<option>Nao</option>
+																	<option value="1">Sim</option>
+																	<option selected value= "2">Nao</option>
 																</select>
 																</div>
 															<!-- /Exame Turgência Jugular Patológica -->
@@ -390,8 +390,8 @@
 																<label for="reflexo-hep">Reflexo Hepatojugular</label>
 																<br>
 																<select class="form-control" id="reflexo-hep">
-																	<option>Sim</option>
-																	<option>Nao</option>
+																	<option value="1">Sim</option>
+																	<option value="2" selected>Nao</option>
 																</select>
 															</div>
 															<!--/ Exame Reflexo Hepatojugular -->
@@ -408,11 +408,11 @@
 					                                <label for="edema">Edema</label> 
 					                                <br> 
 					                                <select class="form-control" id="edema"> 
-					                                  <option selected>Sem Edema</option> 
-					                                  <option>+/++++</option> 
-					                                  <option>++/++++</option> 
-					                                  <option>+++/++++</option> 
-					                                  <option>++++/++++</option> 
+					                                  <option value="0" selected>Sem Edema</option> 
+					                                  <option value="1">+/++++</option> 
+					                                  <option value="2">++/++++</option > 
+					                                  <option value="3">+++/++++</option > 
+					                                  <option value="4">++++/++++</option> 
 					                                </select> 
 					                              </div> 
 					                              <!-- // Exame Edema --> 
@@ -448,14 +448,12 @@
 
 										</div>
 										<!-- / formulario -->
-										<div class="save-button">
-											<button type="button" class="btn btn-info pull-right">Salvar Alterações</button>
-										</div>
+										<button type="button" class="btn btn-info pull-right">Salvar Alterações</button>
 									</div>
 									<!--/Painel Body-->
 
 								</div>
-								
+
 							</div> <!-- / Painel: Exame físico geral -->
 		
 							<!-- Painel: Exame físico cardio -->
@@ -550,9 +548,9 @@
 
 											</div>
 											<!-- / formulario -->
-											<div class="save-button">
-												<button type="button" class="btn btn-info pull-right">Salvar Alterações</button>
-											</div>
+								
+											<button type="button" class="btn btn-info pull-right">Salvar Alterações</button>
+											
 									</div>
 								</div>
 							</div> <!-- /Painel: Exame físico cardio -->
