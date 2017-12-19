@@ -4,41 +4,12 @@
 * (C) João Carlos Pandolfi Santana - 15/10/2017
 */
 
-var test = function(req,res){
-	res.send({test:"ok"});
-}
+var Base = require( './base_controller.js' );
 
-var Especialty = {
-	query_format: {
-		error: 0, 
-		message: "Sucess", 
-		results:{}
-	},
-	
-	add: {
-		anamnese: test
-	},
+var Especialty = Object.create(Base);
 
-	search: {
-		anamnese: test
-	},
-
-	update: {
-		anamnese: test
-	},
-
-	//TODO: Implementar
-	check_hash_id: function(user_id, hash){
-
-		return true;
-	},
-
-	error_message: function(code, message){
-		return {success: 0, error:{code:code,message:message}};
-	},
-
-	test: test 
-}
-
+Especialty.add.anamnese = Especialty.test;
+Especialty.search.anamnese = Especialty.test;
+Especialty.update.anamnese = Especialty.test;
 
 module.exports = Especialty;
