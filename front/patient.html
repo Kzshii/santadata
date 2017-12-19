@@ -322,11 +322,12 @@
                 <div class="row">
 
                     <div class="col-sm-6">
-                        histórico
+                        <h1>Histórico</h1>
                     </div> <!-- / col -->
 
                     <div class="col-sm-6">
                         <!-- panel-group Input de novos exames -->
+                        <h1>Novos Exames</h1>
                         <div class="panel-group" id="exams-accordion" role="tablist" aria-multiselectable="true">
         
                             <!-- Painel: Exame físico geral -->
@@ -341,9 +342,70 @@
                                 </div>
                                 <!-- corpo do painel -->
                                 <div id="collapse-panel-exam-fg" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fg">
+                                		<!-- Painel Body-->
                                     <div class="panel-body">
-                                        a
+                                    	<!-- formulario -->
+                                        <div class="form-group row">
+
+														<!--coluna1-->
+														<div class="col-md-6">
+
+															<!--Exame Ausculta Respiratória-->
+															<div class="">
+																<label for="ausculta-resp">Ausculta Respiratória</label>
+																<br>
+																<select class="form-control" id="ausculta-resp">
+																	<option>MV Fisiológico, sem ruidos adventícios</option>
+																	<option>Creptações Basais</option>
+																	<option>Creptações Difusas</option>
+																</select>
+															</div>
+
+															<!--/Exame Ausculta Respiratória-->
+
+															<!--Exame Ascite-->
+															<div class="">
+																<label for="ascite">Ascite</label>
+																<br>
+																<select class="form-control" id="ascite">
+																	<option>Presente</option>
+																	<option>Ausente</option>
+																</select>
+															</div>
+															<!-- /Exame Ascite-->
+
+															<!-- Exame Turgência Jugular Patológica -->
+															<div class="">
+																<label for="turgencia-jp">Turgência Jugular Patológica</label>
+																<br>
+																<select class="form-control" id="turgencia-jp">
+																	<option>Sim</option>
+																	<option>Nao</option>
+																</select>
+																</div>
+															<!-- /Exame Turgência Jugular Patológica -->
+
+															<!-- Exame Reflexo Hepatojugular -->
+															<div class="">
+																<label for="reflexo-hep">Reflexo Hepatojugular</label>
+																<br>
+																<select class="form-control" id="reflexo-hep">
+																	<option>Sim</option>
+																	<option>Nao</option>
+																</select>
+															</div>
+															<!--/ Exame Reflexo Hepatojugular -->
+
+														</div>
+														<!--/ coluna1-->
+
+                                        </div>
+                                        <!-- / formulario -->
+                                        <div class="save-button">
+                                        	<button type="button" class="btn btn-info">Salvar Alterações</button>
+                                        </div>
                                     </div>
+                                    <!--/Painel Body-->
                                 </div>
                             </div> <!-- / Painel: Exame físico geral -->
         
