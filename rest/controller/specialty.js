@@ -8,6 +8,8 @@ var Base = require( './base_controller.js' );
 
 var Especialty = Object.create(Base);
 
-
+Especialty.add.anamnese = Especialty.test;
+Especialty.search.anamnese = Especialty.test;
+Especialty.update.anamnese = Especialty.test;
 
 module.exports = Especialty;

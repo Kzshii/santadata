@@ -15,17 +15,11 @@ var Controller = {
 		results:{}
 	},
 	
-	add: {
-		anamnese: test
-	},
+	add: test,
 
-	search: {
-		anamnese: test
-	},
+	search: test
 
-	update: {
-		anamnese: test
-	},
+	update: test,
 
 	//TODO: Implementar
 	check_hash_id: function(user_id, hash){

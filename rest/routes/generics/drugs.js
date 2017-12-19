@@ -11,13 +11,13 @@ module.exports = function (app) {
 	id_route = id_route.replace("{id}",rx.id) + end_route
 
 	//New drug
-	app.route("/gen/new/drug/"+end_route).all(drugs.add.anamnese)//post(drugs.new_anamnese);
+	app.route("/gen/new/drug/"+end_route).all(drugs.add)//post();
 
 	//Search
-	app.route("/gen/search/drug/"+id_route).all(drugs.search.anamnese);
+	app.route("/gen/search/drug/"+id_route).all(drugs.search);
 
 	//Update
-	app.route("/gen/update/drug/"+id_route).all(drugs.update.anamnese);	
+	app.route("/gen/update/drug/"+id_route).all(drugs.update);	
 
 	return app;
 };
