@@ -58,41 +58,41 @@
 		</div> <!-- / container -->
 	</header>
 
-    <section class="container main">
-        <!-- lista de abas -->
+	<section class="container main">
+		<!-- lista de abas -->
 		<ul class="nav nav-tabs" role="tablist">
 			<!-- Aba: Dados do paciente -->
 			<li role="presentation" class="active">
 				<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Dados do paciente</a>
-            </li>
-            
+			</li>
+			
 			<!-- Aba: Medicamentos -->
 			<li role="presentation">
 				<a href="#meds" aria-controls="meds" role="tab" data-toggle="tab">Medicamentos</a>
-            </li>
-            
-            <!-- Aba: Exames -->
-            <li role="presentation">
-                <a href="#exams" aria-controls="exams" role="tab" data-toggle="tab">Exames</a>
-            </li>
+			</li>
+			
+			<!-- Aba: Exames -->
+			<li role="presentation">
+				<a href="#exams" aria-controls="exams" role="tab" data-toggle="tab">Exames</a>
+			</li>
 
-            <!-- Aba: Intervenções -->
-            <li role="presentation">
-                <a href="#interventions" aria-controls="interventions" role="tab" data-toggle="tab">Intervenções</a>
-            </li>
+			<!-- Aba: Intervenções -->
+			<li role="presentation">
+				<a href="#interventions" aria-controls="interventions" role="tab" data-toggle="tab">Intervenções</a>
+			</li>
 
-        </ul> <!-- / lista de abas -->
-        
+		</ul> <!-- / lista de abas -->
+		
 
-        <!-- conteúdo das abas -->
-        <div class="tab-content">
-            <!-- Aba: Dados do Paciente -->
+		<!-- conteúdo das abas -->
+		<div class="tab-content">
+			<!-- Aba: Dados do Paciente -->
 			<div role="tabpanel" class="tab-pane active" id="profile">
 				Dados do Paciente
-            </div>
-            <!-- Aba: Medicamentos -->
+			</div>
+			<!-- Aba: Medicamentos -->
 			<div role="tabpanel" class="tab-pane" id="meds">
-                
+				
 				<h2 class="text-uppercase text-primary">Medicamentos</h2>
 
 				<div class="form-group row ">
@@ -314,38 +314,38 @@
 				</div> <!-- / row -->
 
 
-            </div> <!--/ Aba: Medicamentos -->
+			</div> <!--/ Aba: Medicamentos -->
 
-            <!-- Aba: Exames -->
+			<!-- Aba: Exames -->
 			<div role="tabpanel" class="tab-pane" id="exams">
-                
-                <div class="row">
+				
+				<div class="row">
 
-                    <div class="col-sm-6">
-                        <h1>Histórico</h1>
-                    </div> <!-- / col -->
+					<div class="col-sm-6">
+						<h1>Histórico</h1>
+					</div> <!-- / col -->
 
-                    <div class="col-sm-6">
-                        <!-- panel-group Input de novos exames -->
-                        <h1>Novos Exames</h1>
-                        <div class="panel-group" id="exams-accordion" role="tablist" aria-multiselectable="true">
-        
-                            <!-- Painel: Exame físico geral -->
-                            <div class="panel panel-default">
-                                <!-- cabeçalho do painel -->
-                                <div class="panel-heading" role="tab" id="heading-panel-exam-fg">
-                                   <h4 class="panel-title">
-                                       <div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-fg" aria-expanded="true" aria-controls="collapse-panel-exam-fg">
-                                            Exame físico geral
-                                       </div>
-                                    </h4>
-                                </div>
-                                <!-- corpo do painel -->
-                                <div id="collapse-panel-exam-fg" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fg">
-                                		<!-- Painel Body-->
-                                    <div class="panel-body">
-                                    	<!-- formulario -->
-                                        <div class="form-group row">
+					<div class="col-sm-6">
+						<!-- panel-group Input de novos exames -->
+						<h1>Novos Exames</h1>
+						<div class="panel-group" id="exams-accordion" role="tablist" aria-multiselectable="true">
+		
+							<!-- Painel: Exame físico geral -->
+							<div class="panel panel-default">
+								<!-- cabeçalho do painel -->
+								<div class="panel-heading" role="tab" id="heading-panel-exam-fg">
+								   <h4 class="panel-title">
+									   <div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-fg" aria-expanded="true" aria-controls="collapse-panel-exam-fg">
+											Exame físico geral
+									   </div>
+									</h4>
+								</div>
+								<!-- corpo do painel -->
+								<div id="collapse-panel-exam-fg" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fg">
+										<!-- Painel Body-->
+									<div class="panel-body">
+										<!-- formulario -->
+										<div class="form-group row">
 
 														<!--coluna1-->
 														<div class="col-md-6">
@@ -399,70 +399,151 @@
 														</div>
 														<!--/ coluna1-->
 
-                                        </div>
-                                        <!-- / formulario -->
-                                        <div class="save-button">
-                                        	<button type="button" class="btn btn-info">Salvar Alterações</button>
-                                        </div>
-                                    </div>
-                                    <!--/Painel Body-->
-                                </div>
-                            </div> <!-- / Painel: Exame físico geral -->
-        
-                            <!-- Painel: Exame físico cardio -->
-                            <div class="panel panel-default">
-                                <!-- cabeçalho do painel -->
-                                <div class="panel-heading" role="tab" id="heading-panel-exam-fc">
-                                    <h4 class="panel-title">
-                                        <div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-fc" aria-expanded="true" aria-controls="collapse-panel-exam-fc">
-                                            Exame físico cardio
-                                        </div>
-                                    </h4>
-                                </div>
-                                <!-- corpo do painel -->
-                                <div id="collapse-panel-exam-fc" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fc">
-                                    <div class="panel-body">
-                                        b
-                                    </div>
-                                </div>
-                            </div> <!-- / Painel: Exame físico geral -->
-        
-                            <!-- Painel: Exame bioquímico -->
-                            <div class="panel panel-default">
-                                <!-- cabeçalho do painel -->
-                                <div class="panel-heading" role="tab" id="heading-panel-exam-bq">
-                                    <h4 class="panel-title">
-                                        <div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-bq" aria-expanded="true" aria-controls="collapse-panel-exam-bq">
-                                            Exame bioquímico
-                                        </div>
-                                    </h4>
-                                </div>
-                                <!-- corpo do painel -->
-                                <div id="collapse-panel-exam-bq" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-bq">
-                                    <div class="panel-body">
-                                        c
-                                    </div>
-                                </div>
-                            </div> <!-- / Painel: Exame bioquímico -->
-        
-        
-                        </div> <!-- / panel-group Input de novos exames-->
-                    </div> <!-- / col -->
+										</div>
+										<!-- / formulario -->
+										<div class="save-button">
+											<button type="button" class="btn btn-info pull-right">Salvar Alterações</button>
+										</div>
+									</div>
+									<!--/Painel Body-->
+								</div>
+							</div> <!-- / Painel: Exame físico geral -->
+		
+							<!-- Painel: Exame físico cardio -->
+							<div class="panel panel-default">
+								<!-- Cabeçalho do painel -->
+								<div class="panel-heading" role="tab" id="heading-panel-exam-fc">
+									<h4 class="panel-title">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-fc" aria-expanded="true" aria-controls="collapse-panel-exam-fc">
+											Exame físico cardio
+										</div>
+									</h4>
+								</div>
+								<!-- Corpo do painel -->
+								<div id="collapse-panel-exam-fc" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fc">
+									<div class="panel-body">
+										<!-- Formulario -->
+										<div class="form-group row">
 
-                </div> <!-- / row -->
-                
-                
+											<!-- Coluna 1 -->
+											<div class="col-md-6">
 
-            </div>
-            
-            <!-- Aba: Intervenções -->
-            <div role="tabpanel" class="tab-pane" id="interventions">
-                Intervenções
-            </div>
-        </div>
-    </section>
+												<!-- Exame Ritmo -->
+												<div class="">
+													<label for="ritmo">Ritmo</label>
+													<br>
+													<select class="form-control" id="ritmo">
+														<option>Regular em dois tempos</option>
+														<option>Irregular</option>
+													</select>
+												</div>
 
-    <footer></footer>
+												<!--/Exame Ritmo-->
+
+												<!--Exame Inspeção-->
+												<div class="">
+													<label for="inspecao">Inspeção</label>
+													<br>
+													<select class="form-control" id="inspecao">
+														<option>Ictus Cordis Visível</option>
+														<option>Ictus de VD</option>
+														<option>Movimento em Báscula</option>
+													</select>
+												</div>
+												<!-- /Exame Ascite-->
+
+												<!-- Exame Palpação -->
+												<div class="">
+													<label for="palpacao">Palpação</label>
+													<select class="form-control" id="palpacao">
+														<option>Ictus Cordis Palpável</option>
+														<option>Desviado p/ Esquerda e p/ Baixo</option>
+														<option>Linha Hemiclavicular 5 EICE</option>
+													</select>
+													</div>
+												<!-- /Exame Palpação -->
+
+												</div>
+												<!--/Coluna 1-->
+
+												<!-- Coluna 2 -->
+												<div class="col-md-6">
+
+													<!-- Frequencia Cardíaca -->
+													<div class="">
+														<label for="frequencia-cardiaca">Frequência Cardiaca</label>
+														<input type="text" id="frequencia-cardiaca" class="form-control">
+													</div>
+
+													<!--/Exame Ausculta Respiratória-->
+
+													<!-- Pressão Arterial -->
+													<div class="">
+														<label for="pressao-arterial">Pressão Arterial</label>
+														<input type="text" id="pressao-arterial" class="form-control">
+														</div>
+													<!-- /Pressão Arterial -->
+
+													<!-- Bulhas -->
+													<div class="">
+														<label for="bulhas">Bulhas</label>
+														<select class="form-control" id="bulhas">
+															<option>B1 e B2 (Em dois tempos)</option>
+															<option>B3</option>
+															<option>B4</option>
+															<option>B3 e B4</option>
+														</select>
+													</div>
+													<!--/Bulhas -->
+
+												</div>
+												<!--/Coluna 2 -->
+
+											</div>
+											<!-- / formulario -->
+											<div class="save-button">
+												<button type="button" class="btn btn-info pull-right">Salvar Alterações</button>
+											</div>
+									</div>
+								</div>
+							</div> <!-- /Painel: Exame físico cardio -->
+		
+							<!-- Painel: Exame bioquímico -->
+							<div class="panel panel-default">
+								<!-- cabeçalho do painel -->
+								<div class="panel-heading" role="tab" id="heading-panel-exam-bq">
+									<h4 class="panel-title">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-bq" aria-expanded="true" aria-controls="collapse-panel-exam-bq">
+											Exame bioquímico
+										</div>
+									</h4>
+								</div>
+								<!-- corpo do painel -->
+								<div id="collapse-panel-exam-bq" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-bq">
+									<div class="panel-body">
+										c
+									</div>
+								</div>
+							</div> <!-- / Painel: Exame bioquímico -->
+		
+		
+						</div> <!-- / panel-group Input de novos exames-->
+					</div> <!-- / col -->
+
+				</div> <!-- / row -->
+				
+				
+
+			</div>
+			
+			<!-- Aba: Intervenções -->
+			<div role="tabpanel" class="tab-pane" id="interventions">
+				Intervenções
+			</div>
+		</div>
+	</section>
+
+	<footer></footer>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 	<script src="js/jquery-3.2.1.js"></script>
