@@ -305,16 +305,16 @@
 											
 					</div>
 
-				</div> <!-- / row -->
+				</div> <!-- /Row -->
 
 				<div class="form-group row ">
 					<label for="outros">Outros</label>
 					<br>
 					<input type="text" class="form-control" id="outros" placeholder="Descrição">
-				</div> <!-- / row -->
+				</div> <!-- /Row -->
 
 
-			</div> <!--/ Aba: Medicamentos -->
+			</div> <!-- /Aba: Medicamentos -->
 
 			<!-- Aba: Exames -->
 			<div role="tabpanel" class="tab-pane" id="exams">
@@ -323,16 +323,16 @@
 
 					<div class="col-sm-6">
 						<h1>Histórico</h1>
-					</div> <!-- / col -->
+					</div> <!-- /Col -->
 
 					<div class="col-sm-6">
-						<!-- panel-group Input de novos exames -->
+						<!-- Panel-group Input de novos exames -->
 						<h1>Novos Exames</h1>
 						<div class="panel-group" id="exams-accordion" role="tablist" aria-multiselectable="true">
 		
 							<!-- Painel: Exame físico geral -->
 							<div class="panel panel-default">
-								<!-- cabeçalho do painel -->
+								<!-- Cabeçalho do painel -->
 								<div class="panel-heading" role="tab" id="heading-panel-exam-fg">
 								   <h4 class="panel-title">
 									   <div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-fg" aria-expanded="true" aria-controls="collapse-panel-exam-fg">
@@ -340,121 +340,120 @@
 									   </div>
 									</h4>
 								</div>
-								<!-- corpo do painel -->
+								<!-- Corpo do painel -->
 								<div id="collapse-panel-exam-fg" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fg">
 										<!-- Painel Body-->
 									<div class="panel-body">
-										<!-- formulario -->
+										<!-- Formulario -->
 										<div class="form-group row">
 
-														<!--coluna1-->
-														<div class="col-md-6">
+											<!-- Coluna1 -->
+											<div class="col-md-6">
 
-															<!--Exame Ausculta Respiratória-->
-															<div class="">
-																<label for="ausculta-resp">Ausculta Respiratória</label>
-																<br>
-																<select class="form-control" id="ausculta-resp">
-																	<option value="1">MV Fisiológico, sem ruidos adventícios</option>
-																	<option value="2">Creptações Basais</option>
-																	<option value="3">Creptações Difusas</option>
-																</select>
-															</div>
+												<!-- Exame Ausculta Respiratória -->
+												<div class="">
+													<label for="ausculta-resp">Ausculta Respiratória</label>
+													<br>
+													<select class="form-control" id="ausculta-resp">
+														<option value="1">MV Fisiológico, sem ruidos adventícios</option>
+														<option value="2">Creptações Basais</option>
+														<option value="3">Creptações Difusas</option>
+													</select>
+												</div>
 
-															<!--/Exame Ausculta Respiratória-->
+												<!-- /Exame Ausculta Respiratória -->
 
-															<!--Exame Ascite-->
-															<div class="">
-																<label for="ascite">Ascite</label>
-																<br>
-																<select class="form-control" id="ascite">
-																	<option>Presente</option>
-																	<option selected>Ausente</option>
-																</select>
-															</div>
-															<!-- /Exame Ascite-->
+												<!-- Exame Ascite -->
+												<div class="">
+													<label for="ascite">Ascite</label>
+													<br>
+													<select class="form-control" id="ascite">
+														<option>Presente</option>
+														<option selected>Ausente</option>
+													</select>
+												</div>
+												<!-- /Exame Ascite-->
 
-															<!-- Exame Turgência Jugular Patológica -->
-															<div class="">
-																<label for="turgencia-jp">Turgência Jugular Patológica</label>
-																<br>
-																<select class="form-control" id="turgencia-jp">
-																	<option value="1">Sim</option>
-																	<option selected value= "2">Nao</option>
-																</select>
-																</div>
-															<!-- /Exame Turgência Jugular Patológica -->
+												<!-- Exame Turgência Jugular Patológica -->
+												<div class="">
+													<label for="turgencia-jp">Turgência Jugular Patológica</label>
+													<br>
+													<select class="form-control" id="turgencia-jp">
+														<option value="1">Sim</option>
+														<option selected value= "2">Nao</option>
+													</select>
+													</div>
+												<!-- /Exame Turgência Jugular Patológica -->
 
-															<!-- Exame Reflexo Hepatojugular -->
-															<div class="">
-																<label for="reflexo-hep">Reflexo Hepatojugular</label>
-																<br>
-																<select class="form-control" id="reflexo-hep">
-																	<option value="1">Sim</option>
-																	<option value="2" selected>Nao</option>
-																</select>
-															</div>
-															<!--/ Exame Reflexo Hepatojugular -->
+												<!-- Exame Reflexo Hepatojugular -->
+												<div class="">
+													<label for="reflexo-hep">Reflexo Hepatojugular</label>
+													<br>
+													<select class="form-control" id="reflexo-hep">
+														<option value="1">Sim</option>
+														<option value="2" selected>Nao</option>
+													</select>
+												</div>
+												<!-- /Exame Reflexo Hepatojugular -->
 
-														</div>
-														<!--/ coluna1-->
+											</div>
+											<!-- /Coluna 1 -->
 
 
-														<!-- coluna2 --> 
-					                           <div class="col-md-6"> 
-					     
-					                              <!-- Exame Edema --> 
-					                              <div class=""> 
-					                                <label for="edema">Edema</label> 
-					                                <br> 
-					                                <select class="form-control" id="edema"> 
-					                                  <option value="0" selected>Sem Edema</option> 
-					                                  <option value="1">+/++++</option> 
-					                                  <option value="2">++/++++</option > 
-					                                  <option value="3">+++/++++</option > 
-					                                  <option value="4">++++/++++</option> 
-					                                </select> 
-					                              </div> 
-					                              <!-- // Exame Edema --> 
-					 
-					                              <!-- Peso --> 
-					                              <div class=""> 
-					                                <label for="peso">Peso</label> 
-					                                <br> 
-					                                <input type="number" class="form-control" id="peso" value=""> 
-					                              </div> 
-					                              <!-- /Peso --> 
-					                               
-					                              <!-- Altura --> 
-					                              <div class=""> 
-					                                <label for="altura">Altura</label> 
-					                                <br> 
-					                                <input type="number" class="form-control" id="altura" value=""> 
-					                              </div> 
-					                              <!--//Altura --> 
-					 
-					                              <!-- IMC --> 
-					                              <div class=""> 
-					                                <label for="imc">IMC</label> 
-					                                <br> 
-					                                <input type="number" class="form-control" id="imc" value=""> 
-					                              </div> 
-					                              <!-- /IMC --> 
+											<!-- Coluna 2 --> 
+											<div class="col-md-6"> 
 
-					                           </div> 
-					                           
-					                           <!-- /coluna2 --> 
- 
+												<!-- Exame Edema --> 
+												<div class=""> 
+													<label for="edema">Edema</label> 
+													<br> 
+													<select class="form-control" id="edema"> 
+														<option value="0" selected>Sem Edema</option> 
+														<option value="1">+/++++</option> 
+														<option value="2">++/++++</option > 
+														<option value="3">+++/++++</option > 
+														<option value="4">++++/++++</option> 
+													</select> 
+												</div> 
+												<!-- /Exame Edema --> 
+
+												<!-- Peso --> 
+												<div class=""> 
+													<label for="peso">Peso</label> 
+													<br> 
+													<input type="number" class="form-control" id="peso" value=""> 
+												</div> 
+												<!-- /Peso --> 
+													
+												<!-- Altura --> 
+												<div class=""> 
+													<label for="altura">Altura</label> 
+													<br> 
+													<input type="number" class="form-control" id="altura" value=""> 
+												</div> 
+												<!-- /Altura --> 
+
+												<!-- IMC --> 
+												<div class=""> 
+													<label for="imc">IMC</label> 
+													<br> 
+													<input type="number" class="form-control" id="imc" value=""> 
+												</div> 
+												<!-- /IMC --> 
+
+											</div> 
+											
+											<!-- /Coluna 2 --> 
 
 										</div>
-										<!-- / formulario -->
+										<!-- /Formulario -->
 										<button type="button" class="btn btn-info pull-right">Salvar Alterações</button>
 									</div>
-									<!--/Painel Body-->
+									<!-- /Painel Body -->
 
 								</div>
 
-							</div> <!-- / Painel: Exame físico geral -->
+							</div> <!-- /Painel: Exame físico geral -->
 		
 							<!-- Painel: Exame físico cardio -->
 							<div class="panel panel-default">
@@ -480,21 +479,21 @@
 													<label for="ritmo">Ritmo</label>
 													<br>
 													<select class="form-control" id="ritmo">
-														<option>Regular em dois tempos</option>
-														<option>Irregular</option>
+														<option value="0">Regular em dois tempos</option>
+														<option value="1">Irregular</option>
 													</select>
 												</div>
 
-												<!--/Exame Ritmo-->
+												<!-- /Exame Ritmo -->
 
-												<!--Exame Inspeção-->
+												<!-- Exame Inspeção -->
 												<div class="">
 													<label for="inspecao">Inspeção</label>
 													<br>
 													<select class="form-control" id="inspecao">
-														<option>Ictus Cordis Visível</option>
-														<option>Ictus de VD</option>
-														<option>Movimento em Báscula</option>
+														<option value="0">Ictus Cordis Visível</option>
+														<option value="1">Ictus de VD</option>
+														<option value="2">Movimento em Báscula</option>
 													</select>
 												</div>
 												<!-- /Exame Ascite-->
@@ -503,15 +502,15 @@
 												<div class="">
 													<label for="palpacao">Palpação</label>
 													<select class="form-control" id="palpacao">
-														<option>Ictus Cordis Palpável</option>
-														<option>Desviado p/ Esquerda e p/ Baixo</option>
-														<option>Linha Hemiclavicular 5 EICE</option>
+														<option value="0">Ictus Cordis Palpável</option>
+														<option value="1">Desviado p/ Esquerda e p/ Baixo</option>
+														<option value="2">Linha Hemiclavicular 5 EICE</option>
 													</select>
 													</div>
 												<!-- /Exame Palpação -->
 
 												</div>
-												<!--/Coluna 1-->
+												<!-- /Coluna 1-->
 
 												<!-- Coluna 2 -->
 												<div class="col-md-6">
@@ -519,15 +518,15 @@
 													<!-- Frequencia Cardíaca -->
 													<div class="">
 														<label for="frequencia-cardiaca">Frequência Cardiaca</label>
-														<input type="text" id="frequencia-cardiaca" class="form-control">
+														<input type="text" id="frequencia-cardiaca" class="form-control" value="">
 													</div>
 
-													<!--/Exame Ausculta Respiratória-->
+													<!-- /Exame Ausculta Respiratória-->
 
 													<!-- Pressão Arterial -->
 													<div class="">
 														<label for="pressao-arterial">Pressão Arterial</label>
-														<input type="text" id="pressao-arterial" class="form-control">
+														<input type="text" id="pressao-arterial" class="form-control" value="">
 														</div>
 													<!-- /Pressão Arterial -->
 
@@ -535,19 +534,19 @@
 													<div class="">
 														<label for="bulhas">Bulhas</label>
 														<select class="form-control" id="bulhas">
-															<option>B1 e B2 (Em dois tempos)</option>
-															<option>B3</option>
-															<option>B4</option>
-															<option>B3 e B4</option>
+															<option value="0">B1 e B2 (Em dois tempos)</option>
+															<option value="1">B3</option>
+															<option value="2">B4</option>
+															<option value="3">B3 e B4</option>
 														</select>
 													</div>
-													<!--/Bulhas -->
+													<!-- /Bulhas -->
 
 												</div>
-												<!--/Coluna 2 -->
+												<!-- /Coluna 2 -->
 
 											</div>
-											<!-- / formulario -->
+											<!-- /Formulario -->
 								
 											<button type="button" class="btn btn-info pull-right">Salvar Alterações</button>
 											
