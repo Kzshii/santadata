@@ -667,9 +667,113 @@
 			
 			<!-- Aba: Intervenções -->
 			<div role="tabpanel" class="tab-pane" id="interventions">
-				Intervenções
+
+				<div class="row">
+					<!--Histórico-->
+					<div class="col-sm-6 ">
+						<h1>Histórico</h1>
+					</div>
+					<!--/Histórico-->
+
+					<!--Novas Intervenções-->
+					<div class="col-sm-6 ">
+						<h1>Novas Intervenções</h1>
+
+						<!--Painel de Intervenções Angio -->
+						<div class="panel panel-default">
+							<!--Cabeçalho do Painel-->
+
+							<div class="panel-heading" role="tab" id="heading-panel-interv-ang">
+								<h4 class="panel-title">
+									<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-interv-ang" aria-expanded="true" aria-controls="collapse-panel-interv-ang">
+										Angio
+									</div>
+								</h4>
+							</div>
+							<!--/ Cabeçalho do Painel-->
+							<!-- Corpo do Painel-->
+							<div id="collapse-panel-interv-ang" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-interv-ang">
+
+								<div class="panel-body">
+									<!--Formulario-->
+
+									<div class="form-group row">
+
+										<div class="form-check col-sm-12">
+											<label class="form-check-label">
+												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="crm" value="1"> Cirurgia de Revascularização do Miocárdio (CRM) prévia
+										</div>
+
+										<div class="form-check col-sm-12">
+											<label class="form-check-label">
+												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="icp" value="1"> Intervenção Coronária Percutanea (ICP) prévia
+										</div>
+									</div>								
+									<!--/ Formulario-->
+									<button type="button" class="btn btn-info pull-right">Salvar</button>
+
+								</div>
+
+							</div>
+							<!--//Corpo do Painel-->
+						</div>
+						<!--/ Painel de Intervenções-->
+
+						<!--Painel de Intervenções Implantes -->
+						<div class="panel panel-default">
+							<!--Cabeçalho do Painel-->
+
+							<div class="panel-heading" role="tab" id="heading-panel-interv-imp">
+								<h4 class="panel-title">
+									<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-interv-imp" aria-expanded="true" aria-controls="collapse-panel-interv-imp">
+										Implantes
+									</div>
+								</h4>
+							</div>
+
+							<!--/ Cabeçalho do Painel-->
+							<!-- Corpo do Painel-->
+							<div id="collapse-panel-interv-imp" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-interv-imp">
+
+								<div class="panel-body">
+									<!--Formulario-->
+
+									<div class="form-group row">
+
+										<div class="form-check col-sm-12">
+											<label class="form-check-label">
+												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="mpd" value="1"> Marcapasso Definitivo (MPD)
+										</div>
+
+										<div class="form-check col-sm-12">
+											<label class="form-check-label">
+												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="cdi" value="1"> Cardiodesfibrilador Implantável (CDI)
+										</div>
+
+										<div class="form-check col-sm-12">
+											<label class="form-check-label">
+												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="tcr" value="1"> Cardiodesfibrilador Implantável (TCR)
+										</div>
+									</div>								
+									<!--/ Formulario-->
+									<button type="button" class="btn btn-info pull-right">Salvar</button>
+
+								</div>
+
+							</div>
+							<!--//Corpo do Painel-->
+						</div>
+						<!--/ Painel de Intervenções-->
+					</div>
+					<!--/ Novas Intervenções-->
+
+
+				</div>
+
 			</div>
+
 		</div>
+
 	</section>
 
 	<footer></footer>
