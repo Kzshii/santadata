@@ -90,231 +90,277 @@
 			<div role="tabpanel" class="tab-pane active" id="profile">
 				Dados do Paciente
 			</div>
+
 			<!-- Aba: Medicamentos -->
 			<div role="tabpanel" class="tab-pane" id="meds">
 				
+				<!--
 				<h2 class="text-uppercase text-primary">Medicamentos</h2>
+				-->
 
-				<div class="form-group row ">
+				<!-- Row -->
+				<div class="row">
+					<div class="col-sm-6">
+						<h1>Historico</h1>
+					</div>
 
-					<div class="col-sm-4 col-md-4">
+					<!-- Col -->
+					<div class="col-sm-6">
+						<h1>Novos Medicamentos</h1>
+
+						<!-- Painel: Opções de exame -->
+						<div class="panel panel-default">
+
+							<!-- Cabeçalho do painel -->
+							<div class="panel-heading" role="tab" id="heading-panel-exam-fg">
+									<h4 class="panel-title">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-fg" aria-expanded="true" aria-controls="collapse-panel-exam-fg">
+										Opções
+										</div>
+									</h4>
+							</div>
+							<!-- /Cabeçalho do painel -->
+
+							<!-- Collapsed Panel -->
+							<div id="collapse-panel-exam-fg" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fg">
 							
-						<label for="inibAngiostensina">Inibidores de angiotensina II (IECA)</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inibAngiostensinaSim" value="sim"> Alvo
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inibAngiostensinaNao" value="nao"> Não alvo
-							</label>
-						</div>
-											
-					</div>
-
-					<div class="col-sm-4 col-md-4">
+								<!-- Painel Body-->
+								<div class="panel-body">
 							
-						<label for="bloqAngiostensina">Bloqueadores de angiotensina II (BRA)</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqAngiostensinaSim" value="sim"> Alvo
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqAngiostensinaNao" value="nao"> Não alvo
-							</label>
-						</div>
+									<!-- Formulario -->
+									<div class="form-group row">
+										<div class="col-sm-4 col-md-4">
+											<label for="inibAngiostensina">Inibidores de angiotensina II (IECA)</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inibAngiostensinaSim" value="sim"> Alvo
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inibAngiostensinaNao" value="nao"> Não alvo
+												</label>
+											</div>
+																
+										</div>
+			
+										<div class="col-sm-4 col-md-4">
+												
+											<label for="bloqAngiostensina">Bloqueadores de angiotensina II (BRA)</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqAngiostensinaSim" value="sim"> Alvo
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqAngiostensinaNao" value="nao"> Não alvo
+												</label>
+											</div>
+																
+										</div>
+			
+										<div class="col-sm-4 col-md-4">
 											
-					</div>
+											<label for="betaBloqueadores">Beta-bloqueadores (BB)</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="betaBloqueadoresSim" value="sim"> Alvo
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="betaBloqueadoresNao" value="nao"> Não alvo
+												</label>
+											</div>
+																
+										</div>
 
-					<div class="col-sm-4 col-md-4">
-						
-						<label for="betaBloqueadores">Beta-bloqueadores (BB)</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="betaBloqueadoresSim" value="sim"> Alvo
-							</label>
+									</div> 
+									<!-- /Row -->
 
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="betaBloqueadoresNao" value="nao"> Não alvo
-							</label>
-						</div>
+									<div class="form-group row ">
+
+										<div class="col-sm-4 col-md-4">
+												
+											<label for="hidralazinaNitrato">Hidralazina e Nitrato</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="hidralazinaNitratoSim" value="sim"> Alvo
+												</label>
+
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="hidralazinaNitratoNao" value="nao"> Não alvo
+												</label>
+											</div>
+																
+										</div>
+
+										<div class="col-sm-4 col-md-4">
+												
+											<label for="antagonistaAldosterona">Antagonista de Aldosterona</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antagonistaAldosteronaSim" value="sim"> Uso
+												</label>
+
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antagonistaAldosteronaNao" value="nao"> Não uso
+												</label>
+
+											</div>
+																
+										</div>
+
+										<div class="col-sm-4 col-md-4 ">
 											
-					</div>
+											<label for="diureticos">Diuréticos</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticosSim" value="sim"> Uso
+												</label>
 
-				</div> <!-- / row -->
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticosNao" value="nao"> Não uso
+												</label>
 
-				<div class="form-group row ">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticosParei" value="parei"> Parei
+												</label>
+											</div>
+																
+										</div>
 
-					<div class="col-sm-4 col-md-4">
-							
-						<label for="hidralazinaNitrato">Hidralazina e Nitrato</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="hidralazinaNitratoSim" value="sim"> Alvo
-							</label>
+									</div> 
+									<!-- /Row -->
 
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="hidralazinaNitratoNao" value="nao"> Não alvo
-							</label>
-						</div>
+									<div class="form-group row ">
 											
-					</div>
-
-					<div class="col-sm-4 col-md-4">
-							
-						<label for="antagonistaAldosterona">Antagonista de Aldosterona</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antagonistaAldosteronaSim" value="sim"> Uso
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antagonistaAldosteronaNao" value="nao"> Não uso
-							</label>
-
-						</div>
+										<div class="col-sm-4 col-md-4 ">
+												
+											<label for="digoxina">Digoxina</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="digoxinaSim" value="sim"> Uso
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="digoxinaNao" value="nao"> Não uso
+												</label>
+											</div>
+																
+										</div>
+			
+										<div class="col-sm-4 col-md-4 ">
+												
+											<label for="antiagregantesPlaquetarios">Antiagregantes plaquetários</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiagregantesPlaquetariosAAS" value="aas"> AAS
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiagregantesPlaquetariosCleidogrel" value="clopidogrel"> Clopidogrel
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiagregantesPlaquetariosNenhum" value="nenhum"> Nenhum
+												</label>
+			
+			
+											</div>
+																
+										</div>
+			
+										<div class="col-sm-4 col-md-4 ">
 											
-					</div>
+											<label for="anticoagulantes">Anticoagulantes</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="anticoagulantesSim" value="sim"> Uso
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="anticoagulantesNao" value="nao"> Não uso
+												</label>
+											</div>
+																
+										</div>
+			
+									</div> 
+									<!-- /Row -->
 
-					<div class="col-sm-4 col-md-4 ">
-						
-						<label for="diureticos">Diuréticos</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticosSim" value="sim"> Uso
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticosNao" value="nao"> Não uso
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticosParei" value="parei"> Parei
-							</label>
-						</div>
+									<div class="form-group row ">
+								
+										<div class="col-sm-4 col-md-4 ">
+												
+											<label for="antiarritimicos">Antiarrítmicos</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiarritimicosSim" value="sim"> Uso
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiarritimicosNao" value="nao"> Não uso
+												</label>
+											</div>
+																
+										</div>
+			
+										<div class="col-sm-4 col-md-4 ">
+												
+											<label for="bloqCanalCalcio">Bloqueadores dos canal de cálcio</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqCanalCalcioSim" value="sim"> Uso
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqCanalCalcioNao" value="nao"> Não uso
+												</label>
+			
+											</div>
+																
+										</div>
+			
+										<div class="col-sm-4 col-md-4 ">
 											
-					</div>
+											<label for="diureticoTiazidico">Diurético Tiazídico</label>
+											<div class="form-check form-check-inline">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticoTiazidicoSim" value="sim"> Uso
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticoTiazidicoNao" value="nao"> Não uso
+												</label>
+			
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticoTiazidicoParei" value="parei"> Parei
+												</label>
+											</div>
+																
+										</div>
+									
+									</div>
+									<!-- /Row -->
 
-				</div> <!-- / row -->
+									<button type="button" class="btn btn-info pull-right">Salvar</button>
 
-				<div class="form-group row ">
+								</div>
+								<!-- /Painel Body -->
 
-					<div class="col-sm-4 col-md-4 ">
-							
-						<label for="digoxina">Digoxina</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="digoxinaSim" value="sim"> Uso
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="digoxinaNao" value="nao"> Não uso
-							</label>
-						</div>
-											
-					</div>
-
-					<div class="col-sm-4 col-md-4 ">
-							
-						<label for="antiagregantesPlaquetarios">Antiagregantes plaquetários</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiagregantesPlaquetariosAAS" value="aas"> AAS
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiagregantesPlaquetariosCleidogrel" value="clopidogrel"> Clopidogrel
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiagregantesPlaquetariosNenhum" value="nenhum"> Nenhum
-							</label>
-
-
-						</div>
-											
-					</div>
-
-					<div class="col-sm-4 col-md-4 ">
-						
-						<label for="anticoagulantes">Anticoagulantes</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="anticoagulantesSim" value="sim"> Uso
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="anticoagulantesNao" value="nao"> Não uso
-							</label>
-						</div>
-											
-					</div>
-
-				</div> <!-- / row -->
-
-				<div class="form-group row ">
-
-					<div class="col-sm-4 col-md-4 ">
-							
-						<label for="antiarritimicos">Antiarrítmicos</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiarritimicosSim" value="sim"> Uso
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="antiarritimicosNao" value="nao"> Não uso
-							</label>
-						</div>
-											
-					</div>
-
-					<div class="col-sm-4 col-md-4 ">
-							
-						<label for="bloqCanalCalcio">Bloqueadores dos canal de cálcio</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqCanalCalcioSim" value="sim"> Uso
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="bloqCanalCalcioNao" value="nao"> Não uso
-							</label>
+							</div>
+							<!-- /Collapsed panel -->
 
 						</div>
-											
+						<!-- /Painel: Opções de exame -->
+
 					</div>
+					<!-- /Col -->
 
-					<div class="col-sm-4 col-md-4 ">
-						
-						<label for="diureticoTiazidico">Diurético Tiazídico</label>
-						<div class="form-check form-check-inline">
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticoTiazidicoSim" value="sim"> Uso
-							</label>
+				</div>
+				<!-- /Row -->			
 
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticoTiazidicoNao" value="nao"> Não uso
-							</label>
-
-							<label class="form-check-label">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="diureticoTiazidicoParei" value="parei"> Parei
-							</label>
-						</div>
-											
-					</div>
-
-				</div> <!-- /Row -->
-
-				<div class="form-group row ">
-					<label for="outros">Outros</label>
-					<br>
-					<input type="text" class="form-control" id="outros" placeholder="Descrição">
-				</div> <!-- /Row -->
-
-
-			</div> <!-- /Aba: Medicamentos -->
+			</div> 
+			<!-- /Aba: Medicamentos -->
 
 			<!-- Aba: Exames -->
 			<div role="tabpanel" class="tab-pane" id="exams">
