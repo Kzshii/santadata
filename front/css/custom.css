@@ -65,9 +65,11 @@
 
 .img-profile {
     float: right;
+    border: 1px solid #272822;
+    border-radius: 5px;
     height: 48px;
     width: 48px;
-    background: black;
+    background: #EBEBEB;
 }
 
 .main {
