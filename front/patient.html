@@ -27,7 +27,7 @@
 </head>
 
 <body>
-	<header class="navbar navbar-default">
+	<header class="navbar navbar-default ">
 		<div class="container">
 
 			<!-- header -->
@@ -50,10 +50,10 @@
 			<!-- menu do usuário -->
 			<div id="user-menu" class="navbar-right menu center-content">
 				<div class="info">
-					<span>NOME</span><br>
-					<span>ID</span>
+					<span><b>Paciente: </b>Paulo Ricardo Silva</span><br>
+					<span><b>ID: </b>A151C</span>
 				</div>
-				<div class="img-profile center-content">IMG</div>
+				<div class="img-profile center-content"><span class="glyphicon glyphicon-user" style="font-size: 30px"></span></div>
 			</div>
 		</div> <!-- / container -->
 	</header>
@@ -323,11 +323,142 @@
 
 					<div class="col-sm-6">
 						<h1>Histórico</h1>
+						<!--Grupo de Paineis-->
+						
+						<!--Buscar Exame-->
+						<div class="input-group col-md-4">
+							<span class="input-group-btn">
+      				  		<button class="btn btn-default" type="button"><span style="font-size:15px" class="glyphicon glyphicon-search"></span></button>
+      					</span>
+      					<input type="text" class="form-control" placeholder="Buscar por... ">
+   					 </div>
+   					 <!--/Buscar Exame-->
+   					 <br/>
+
+						<div class="panel-group" id="exams-accordion" role="tablist" aria-multiselectable="true">
+
+							<div class="panel panel-default">
+
+								<div class="panel-heading" role="tab" id="heading-panel-histo-exam-example-1">
+									<h4 class="panel-title">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-histo-exam-example-1" aria-expanded="true" aria-controls="collapse-panel-histo-exam-example-1">
+											Exame Físico Geral - 21/12/2014
+										</div>
+									</h4>
+								</div>
+								<!--/ Cabeçalho do Painel-->
+								<!-- Corpo do Painel-->
+								<div id="collapse-panel-histo-exam-example-1" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-histo-exam-example-1">
+									
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Exame</th>
+												<th>Resultado</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Ausculta Respiratória</td>
+												<td>Creptações Basais</td>
+											</tr>
+											<tr>
+												<td>Ascite</td>
+												<td>Ausente</td>
+											</tr>
+											<tr>
+												<td>Turgência Jugular Patológica</td>
+												<td>Não</td>
+											</tr>
+											<tr>
+												<td>Reflexo Hepatojugular</td>
+												<td>Não</td>
+											</tr>
+											<tr>
+												<td>Edema</td>
+												<td>++/++++</td>
+											</tr>
+										</tbody>
+									</table>
+									
+								</div>
+								<!--/Corpo do Painel-->
+							</div>
+
+							<div class="panel panel-default">
+
+								<div class="panel-heading" role="tab" id="heading-panel-histo-exam-example-2">
+									<h4 class="panel-title">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-histo-exam-example-2" aria-expanded="true" aria-controls="collapse-panel-histo-exam-example-2">
+											Exame Físico Cárdio - 21/12/2014
+										</div>
+									</h4>
+								</div>
+								<!--/ Cabeçalho do Painel-->
+								<!-- Corpo do Painel-->
+								<div id="collapse-panel-histo-exam-example-2" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-histo-exam-example-2">
+									
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Exame</th>
+												<th>Resultado</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Rítmo</td>
+												<td>Regular em dois tempos</td>
+											</tr>
+											<tr>
+												<td>Inspenção</td>
+												<td>Ictus de VD</td>
+											</tr>
+											<tr>
+												<td>Papação</td>
+												<td>Ictus Cordis Palpável</td>
+											</tr>
+											<tr>
+												<td>Frequência Cardiáca</td>
+												<td>90</td>
+											</tr>
+											<tr>
+												<td>Pressão Arterial</td>
+												<td>11/7</td>
+											</tr>
+											<tr>
+												<td>Bulhas</td>
+												<td>B3</td>
+											</tr>
+										</tbody>
+									</table>
+									
+								</div>
+							<!--/Corpo do Painel-->
+							</div>
+
+						</div>
+						<!--Grupo de Paineis-->
+
+
 					</div> <!-- /Col -->
 
 					<div class="col-sm-6">
 						<!-- Panel-group Input de novos exames -->
 						<h1>Novos Exames</h1>
+						
+						<!--Data do Exame-->
+						<div class="input-group col-md-4">
+							<div class="form-group">
+                			<div class='input-group date' id='date'>
+                   		 	<input type='date' class="form-control" />
+                    			<span class="input-group-addon">
+                        	<span class="glyphicon glyphicon-calendar"></span>
+                    			</span>
+                			</div>
+            			</div>
+   					</div>
+   					<!--//Data do Exame-->
 						<div class="panel-group" id="exams-accordion" role="tablist" aria-multiselectable="true">
 		
 							<!-- Painel: Exame físico geral -->
@@ -672,6 +803,17 @@
 					<!--Histórico-->
 					<div class="col-sm-6 ">
 						<h1>Histórico</h1>
+						
+						<!--Buscar Intervenção-->
+						<div class="input-group col-md-4">
+							<span class="input-group-btn">
+      				  		<button class="btn btn-default" type="button"><span style="font-size:15px" class="glyphicon glyphicon-search"></span></button>
+      					</span>
+      					<input type="text" class="form-control" placeholder="Buscar por... ">
+   					 </div>
+   					 <!--/Buscar Intervenção-->
+   					 <br/>
+
 
 						<!--Painel do Histórico-->
 						<div class="panel panel-default">
@@ -702,104 +844,119 @@
 					<div class="col-sm-6 ">
 						<h1>Novas Intervenções</h1>
 						
+						<!--Data da Intervenção-->
+						<div class="input-group col-md-4">
+							<div class="form-group">
+                			<div class='input-group date' id='date'>
+                   		 	<input type='date' class="form-control" />
+                    			<span class="input-group-addon">
+                        	<span class="glyphicon glyphicon-calendar"></span>
+                    			</span>
+                			</div>
+            			</div>
+   					</div>
+   					<!--//Data da Intervenção-->
 						<!--Painel de Intervenções Angio -->
-						<div class="panel panel-default">
-							<!--Cabeçalho do Painel-->
 
-							<div class="panel-heading" role="tab" id="heading-panel-interv-ang">
-								<h4 class="panel-title">
-									<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-interv-ang" aria-expanded="true" aria-controls="collapse-panel-interv-ang">
-										Angio
+						<div class="panel-group" id="exams-accordion" role="tablist" aria-multiselectable="true">
+							<div class="panel panel-default">
+								<!--Cabeçalho do Painel-->
+
+								<div class="panel-heading" role="tab" id="heading-panel-interv-ang">
+									<h4 class="panel-title">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-interv-ang" aria-expanded="true" aria-controls="collapse-panel-interv-ang">
+											Angio
+										</div>
+									</h4>
+								</div>
+								<!--/ Cabeçalho do Painel-->
+								<!-- Corpo do Painel-->
+								<div id="collapse-panel-interv-ang" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-interv-ang">
+
+									<div class="panel-body">
+										<!--Formulario-->
+									
+
+										<form class="form-group row">
+
+											<div class="form-check col-sm-12">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="crm" value="1"> Cirurgia de Revascularização do Miocárdio (CRM) prévia
+											</div>
+
+											<div class="form-check col-sm-12">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="icp" value="1"> Intervenção Coronária Percutanea (ICP) prévia
+											</div>
+
+											<div class="form-check col-sm-12">
+												<label class="form-check-label"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="others-interv" value="1"> Outro
+												<input type="text" class="form-control">
+												
+											</div>
+										</form>								
+										<!--/ Formulario-->
+										<button type="button" class="btn btn-info pull-right">Salvar</button>
+
 									</div>
-								</h4>
+
+								</div>
+								<!--//Corpo do Painel-->
 							</div>
-							<!--/ Cabeçalho do Painel-->
-							<!-- Corpo do Painel-->
-							<div id="collapse-panel-interv-ang" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-interv-ang">
+							<!--/ Painel de Intervenções-->
 
-								<div class="panel-body">
-									<!--Formulario-->
-								
+							<!--Painel de Intervenções Implantes -->
+							<div class="panel panel-default">
+								<!--Cabeçalho do Painel-->
 
-									<form class="form-group row">
-
-										<div class="form-check col-sm-12">
-											<label class="form-check-label">
-												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="crm" value="1"> Cirurgia de Revascularização do Miocárdio (CRM) prévia
+								<div class="panel-heading" role="tab" id="heading-panel-interv-imp">
+									<h4 class="panel-title">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-interv-imp" aria-expanded="true" aria-controls="collapse-panel-interv-imp">
+											Implantes
 										</div>
+									</h4>
+								</div>
 
-										<div class="form-check col-sm-12">
-											<label class="form-check-label">
-												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="icp" value="1"> Intervenção Coronária Percutanea (ICP) prévia
-										</div>
+								<!--/ Cabeçalho do Painel-->
+								<!-- Corpo do Painel-->
+								<div id="collapse-panel-interv-imp" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-interv-imp">
 
-										<div class="form-check col-sm-12">
-											<label class="form-check-label"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="others-interv" value="1"> Outro
-											<input type="text" class="form-control">
+									<div class="panel-body">
+										<!--Formulario-->
+
+										<div class="form-group row">
+
+											<div class="form-check col-sm-12">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="mpd" value="1"> Marcapasso Definitivo (MPD)
+											</div>
+
+											<div class="form-check col-sm-12">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="cdi" value="1"> Cardiodesfibrilador Implantável (CDI)
+											</div>
+
+											<div class="form-check col-sm-12">
+												<label class="form-check-label">
+													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="tcr" value="1"> Cardiodesfibrilador Implantável (TCR)
+											</div>
 											
-										</div>
-									</form>								
-									<!--/ Formulario-->
-									<button type="button" class="btn btn-info pull-right">Salvar</button>
+											<div class="form-check col-sm-12">
+												<label class="form-check-label"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="others-imp" value="1"> Outro
+												<input type="text" class="form-control">
+											</div>
 
-								</div>
+										</div>								
+										<!--/ Formulario-->
+										<button type="button" class="btn btn-info pull-right">Salvar</button>
 
-							</div>
-							<!--//Corpo do Painel-->
-						</div>
-						<!--/ Painel de Intervenções-->
-
-						<!--Painel de Intervenções Implantes -->
-						<div class="panel panel-default">
-							<!--Cabeçalho do Painel-->
-
-							<div class="panel-heading" role="tab" id="heading-panel-interv-imp">
-								<h4 class="panel-title">
-									<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-interv-imp" aria-expanded="true" aria-controls="collapse-panel-interv-imp">
-										Implantes
 									</div>
-								</h4>
-							</div>
-
-							<!--/ Cabeçalho do Painel-->
-							<!-- Corpo do Painel-->
-							<div id="collapse-panel-interv-imp" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-interv-imp">
-
-								<div class="panel-body">
-									<!--Formulario-->
-
-									<div class="form-group row">
-
-										<div class="form-check col-sm-12">
-											<label class="form-check-label">
-												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="mpd" value="1"> Marcapasso Definitivo (MPD)
-										</div>
-
-										<div class="form-check col-sm-12">
-											<label class="form-check-label">
-												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="cdi" value="1"> Cardiodesfibrilador Implantável (CDI)
-										</div>
-
-										<div class="form-check col-sm-12">
-											<label class="form-check-label">
-												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="tcr" value="1"> Cardiodesfibrilador Implantável (TCR)
-										</div>
-										
-										<div class="form-check col-sm-12">
-											<label class="form-check-label"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="others-imp" value="1"> Outro
-											<input type="text" class="form-control">
-										</div>
-
-									</div>								
-									<!--/ Formulario-->
-									<button type="button" class="btn btn-info pull-right">Salvar</button>
 
 								</div>
-
+								<!--//Corpo do Painel-->
 							</div>
-							<!--//Corpo do Painel-->
+							<!--/ Painel de Intervenções-->
 						</div>
-						<!--/ Painel de Intervenções-->
 					</div>
 					<!--/ Novas Intervenções-->
 
