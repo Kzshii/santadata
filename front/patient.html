@@ -672,13 +672,36 @@
 					<!--Histórico-->
 					<div class="col-sm-6 ">
 						<h1>Histórico</h1>
+
+						<!--Painel do Histórico-->
+						<div class="panel panel-default">
+
+							<div class="panel-heading" role="tab" id="heading-panel-histo-21122014">
+								<h4 class="panel-title">
+									<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-histo-21122014" aria-expanded="true" aria-controls="collapse-panel-histo-21122014">
+										Angio - 21/12/2014
+									</div>
+								</h4>
+							</div>
+							<!--/ Cabeçalho do Painel-->
+							<!-- Corpo do Painel-->
+							<div id="collapse-panel-histo-21122014" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-histo-21122014">
+
+								<div class="panel-body">
+									<p> Cirurgia de Revascularização do Miocárdio (CRM) prévia</p>
+								</div>
+							</div>
+
+
+						</div>
+						<!--/Painel do Historico-->
 					</div>
 					<!--/Histórico-->
 
 					<!--Novas Intervenções-->
 					<div class="col-sm-6 ">
 						<h1>Novas Intervenções</h1>
-
+						
 						<!--Painel de Intervenções Angio -->
 						<div class="panel panel-default">
 							<!--Cabeçalho do Painel-->
@@ -696,8 +719,9 @@
 
 								<div class="panel-body">
 									<!--Formulario-->
+								
 
-									<div class="form-group row">
+									<form class="form-group row">
 
 										<div class="form-check col-sm-12">
 											<label class="form-check-label">
@@ -708,7 +732,13 @@
 											<label class="form-check-label">
 												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="icp" value="1"> Intervenção Coronária Percutanea (ICP) prévia
 										</div>
-									</div>								
+
+										<div class="form-check col-sm-12">
+											<label class="form-check-label"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="others-interv" value="1"> Outro
+											<input type="text" class="form-control">
+											
+										</div>
+									</form>								
 									<!--/ Formulario-->
 									<button type="button" class="btn btn-info pull-right">Salvar</button>
 
@@ -754,6 +784,12 @@
 											<label class="form-check-label">
 												<input class="form-check-input" type="radio" name="inlineRadioOptions" id="tcr" value="1"> Cardiodesfibrilador Implantável (TCR)
 										</div>
+										
+										<div class="form-check col-sm-12">
+											<label class="form-check-label"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="others-imp" value="1"> Outro
+											<input type="text" class="form-control">
+										</div>
+
 									</div>								
 									<!--/ Formulario-->
 									<button type="button" class="btn btn-info pull-right">Salvar</button>
