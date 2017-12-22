@@ -65,9 +65,11 @@
 
 .img-profile {
     float: right;
+    border: 1px solid #272822;
+    border-radius: 5px;
     height: 48px;
     width: 48px;
-    background: black;
+    background: #EBEBEB;
 }
 
 .main {
@@ -113,3 +115,12 @@ div.desc {
     padding: 15px;
     text-align: center;
 }
+/* Pagina para recuperar senha*/
+#recover {
+    margin-top: 5%;
+    max-width: 400px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px 50px;
+    border: 1px solid rgba(49, 177, 213, 0.333);
+    border-radius: 15px;
+    box-shadow:
