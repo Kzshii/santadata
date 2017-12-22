@@ -9,7 +9,7 @@ var Paciente = {
 
 	//Cabecalho
 	id:"",
-	date_register; "",
+	date_register: "",
 	date_last_update: "",
 	id_register: "", //Id do usuario que registrou o paciente
 
