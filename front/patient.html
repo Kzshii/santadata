@@ -100,21 +100,169 @@
 
 				<!-- Row -->
 				<div class="row">
+
+					<!-- Col -->
 					<div class="col-sm-6">
 						<h1>Historico</h1>
+
+						<!-- Buscar Medicamento -->
+						<div class="input-group col-md-4">
+							<span class="input-group-btn">
+      				  		<button class="btn btn-default" type="button"><span style="font-size:15px" class="glyphicon glyphicon-search"></span></button>
+      					</span>
+      					<input type="text" class="form-control" placeholder="Buscar por... ">
+   					 </div>
+   					 <!-- /Buscar medicamento -->
+   					 <br>
+
+						<!-- Grupo de painéis -->
+						<div class="panel-group" id="drugs-accordion" role="tablist" aria-multiselectable="true">
+
+							<!-- Painel: Exemplo de medicamento -->
+							<div class="panel panel-default">
+
+								<!-- Cabeçalho do Painel -->
+								<div class="panel-heading" role="tab" id="heading-panel-histo-drugs-example-1">
+									<h4 class="panel-title">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-histo-drugs-example-1" aria-expanded="true" aria-controls="collapse-panel-histo-exam-example-1">
+											Diurético - 18/12/2014
+										</div>
+									</h4>
+								</div>
+								<!--/ Cabeçalho do Painel -->
+
+								<!-- Corpo do Painel -->
+								<div id="collapse-panel-histo-drugs-example-1" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-histo-drugs-example-1">
+									
+									<table class="table">
+										<!--
+										<thead>
+											<tr>
+												<th>Exame</th>
+												<th>Resultado</th>
+											</tr>
+										</thead>
+										-->
+										<tbody>
+											<tr>
+												<td>Nome do remédio</td>
+												<td>Iridium Labs - Kiron 150g</td>
+											</tr>
+											<tr>
+												<td>Data de início</td>
+												<td>18/12/2017</td>
+											</tr>
+											<tr>
+												<td>Data final</td>
+												<td>30/12/2017</td>
+											</tr>
+											<tr>
+												<td>Alvo</td>
+												<td>10 mg</td>
+											</tr>
+											<tr>
+												<td>Dosagem</td>
+												<td>5 mg</td>
+											</tr>
+											<tr>
+												<td>Descrição</td>
+												<td>Kiron é um suplemento diurético que auxilia no combate e redução de retenção de líquido. Contém ingredientes como chá verde, guaraná, abacaxi e hibiscos em pó que reduzem inchaço e ajudam na definição muscular.Sua fórmula é 100% natural livre de corantes e aromatizantes artificias.</td>
+											</tr>
+										</tbody>
+									</table>
+									
+								</div>
+								<!--/Corpo do Painel-->
+
+							</div>
+							<!-- /Painel: Exemplo de medicamento -->
+
+							<!-- Painel: Exemplo de medicamento -->
+							<div class="panel panel-default">
+
+								<!-- Cabeçalho do Painel -->
+								<div class="panel-heading" role="tab" id="heading-panel-histo-drugs-example-2">
+									<h4 class="panel-title">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-histo-drugs-example-2" aria-expanded="true" aria-controls="collapse-panel-histo-exam-example-2">
+											Anticoagulante - 04/12/2014
+										</div>
+									</h4>
+								</div>
+								<!--/ Cabeçalho do Painel -->
+
+								<!-- Corpo do Painel -->
+								<div id="collapse-panel-histo-drugs-example-2" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-histo-drugs-example-2">
+									
+									<table class="table">
+										<!--
+										<thead>
+											<tr>
+												<th>Exame</th>
+												<th>Resultado</th>
+											</tr>
+										</thead>
+										-->
+										<tbody>
+											<tr>
+												<td>Nome do remédio</td>
+												<td>Clexane 60mg</td>
+											</tr>
+											<tr>
+												<td>Data de início</td>
+												<td>04/12/2017</td>
+											</tr>
+											<tr>
+												<td>Data final</td>
+												<td>18/12/2017</td>
+											</tr>
+											<tr>
+												<td>Alvo</td>
+												<td>10 mg</td>
+											</tr>
+											<tr>
+												<td>Dosagem</td>
+												<td>5 mg</td>
+											</tr>
+											<tr>
+												<td>Descrição</td>
+												<td>Clexane diminui o risco de desenvolvimento de uma trombose venosa profunda e sua consequência mais grave, a embolia pulmonar. Age previnindo e tratando estas duas patologias, evitando sua progressão ou recorrência, além de tratar angina instável e o infarto do miocárdio.</td>
+											</tr>
+										</tbody>
+									</table>
+									
+								</div>
+								<!--/Corpo do Painel-->
+
+							</div>
+							<!-- /Painel: Exemplo de medicamento -->
+
+						</div>
+						<!-- /Grupo de painéis -->
+
 					</div>
+					<!-- /Col -->
 
 					<!-- Col -->
 					<div class="col-sm-6">
 						<h1>Novos Medicamentos</h1>
 
-						<!-- Painel: Opções de exame -->
+						<!-- Buscar Medicamento -->
+						<div class="input-group col-md-4">
+							<span class="input-group-btn">
+      					<button class="btn btn-default" type="button"><span style="font-size:15px" class="glyphicon glyphicon-search"></span></button>
+      				</span>
+							<input type="text" class="form-control" placeholder="Buscar por... ">
+						</div>
+						<br>
+						<!-- /Buscar medicamento -->
+
+						<!-- Painel: Opções de medicamentos -->
 						<div class="panel panel-default">
 
 							<!-- Cabeçalho do painel -->
-							<div class="panel-heading" role="tab" id="heading-panel-exam-fg">
+							<div class="panel-heading" role="tab" id="heading-panel-drugs-fg">
 									<h4 class="panel-title">
-										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-exam-fg" aria-expanded="true" aria-controls="collapse-panel-exam-fg">
+										<div class="panel-title-toggle" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-panel-drugs-fg" aria-expanded="true" aria-controls="collapse-panel-drugs-fg">
 										Opções
 										</div>
 									</h4>
@@ -122,7 +270,7 @@
 							<!-- /Cabeçalho do painel -->
 
 							<!-- Collapsed Panel -->
-							<div id="collapse-panel-exam-fg" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fg">
+							<div id="collapse-panel-drugs-fg" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-drugs-fg">
 							
 								<!-- Painel Body-->
 								<div class="panel-body">
@@ -351,7 +499,7 @@
 							<!-- /Collapsed panel -->
 
 						</div>
-						<!-- /Painel: Opções de exame -->
+						<!-- /Painel: Opções de medicamentos -->
 
 					</div>
 					<!-- /Col -->
