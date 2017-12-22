@@ -89,10 +89,23 @@ Exame_fisico.data = {
 
 	bioquimico: {
 		
+		//Creatina
 		creatina:{
+			basal: 0.0,
+			ultima: 0.0,
+			delta: 0.0,
+			clearence_atual: 0.0
+		},
 
+		//Sangue
+		sange:{
+			hemoglobina: 0.0,
+			linfocitos: 0.0,
+			sodio: 0.0,
+			outros: "" // Plain Text
 		}
 	},
+
 
 	complementar:{
 
