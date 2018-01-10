@@ -63,7 +63,7 @@
 		<ul class="nav nav-tabs" role="tablist">
 			<!-- Aba: Dados do paciente -->
 			<li role="presentation" class="active">
-				<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Dados do paciente</a>
+				<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Visão Geral</a>
 			</li>
 			
 			<!-- Aba: Medicamentos -->
@@ -86,10 +86,183 @@
 
 		<!-- conteúdo das abas -->
 		<div class="tab-content">
-			<!-- Aba: Dados do Paciente -->
+			<!-- Aba: Visão geral -->
 			<div role="tabpanel" class="tab-pane active" id="profile">
-				Dados do Paciente
-			</div>
+				
+				
+				<div class="row">
+					<!-- Informações pessoais -->
+					<div class="col-md-4">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Paciente</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-4">
+										<b>Prontuário nº:</b> 					<br>
+										182736									<br>
+										<b>Nome:</b>							<br>
+										Nome do Paciente						<br>
+										<b>Data de nascimento:</b>				<br>
+										00/00/0000								<br>
+										<b>Sexo:</b>							<br>
+										Masculino								<br>
+										<b>Etnia:</b>							<br>
+										Parda									<br>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- col --> <!-- / Informações pessoais -->
+
+					<!-- Dados médicos -->
+
+					<!-- ICFER -->
+					<div class="col-md-4">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">ICFER</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									<b>Fração de Ejeção: 40%</b> <br>
+									NYHA II 					 <br>
+									Peso: 68kg
+								</p>
+							</div>
+						</div>
+
+					<!-- </div> --> <!-- / ICFER -->
+
+					<!-- Estado atual -->
+					<!-- <div class="col-md-4"> -->
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Estado atual</h3>
+							</div>
+							<div class="panel-body">
+								<form action="">
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+											Primeira consulta
+										</label>
+									</div>
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+											Em tratamento
+										</label>
+									</div>
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+											Desistente
+										</label>
+									</div>
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+											Reinternação
+										</label>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div> <!-- / Estado atual -->
+
+					<!-- Eventos adversos -->
+					<div class="col-md-4">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Eventos adversos</h3>
+							</div>
+							<div class="panel-body">
+								
+							</div>
+						</div>
+					</div> <!-- / Eventos adversos -->
+
+					<!-- Co-morbidades -->
+					<div class="col-md-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Co-morbidades</h3>
+							</div>
+							<div class="panel-body">
+								<form action="">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Insuficiência renal crônica
+										</label>
+										
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Anemia
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Diabetes mellitus
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> DPOC
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Tireoidopatias
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Distúrbios do sono
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Depressão
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Doenças reumatológicas
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Cardiotoxicidade dos quimioterápicos
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Fibrilação atrial (uso de Anticoagulante Oral? -associação)
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Doença Hipertensiva da Gravidez (DHEG)
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Colostomia
+										</label>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div> <!-- / Co-morbidades -->
+
+				</div> <!-- / Dados médicos -->
+
+			</div> <!-- / Aba: Visão geral -->
+
 			<!-- Aba: Medicamentos -->
 			<div role="tabpanel" class="tab-pane" id="meds">
 				
@@ -323,6 +496,7 @@
 
 					<div class="col-sm-6">
 						<h1>Histórico</h1>
+<<<<<<< HEAD
 						<!--Grupo de Paineis-->
 						
 						<!--Buscar Exame-->
@@ -442,11 +616,15 @@
 
 
 					</div> <!-- /Col -->
+=======
+					</div> <!-- / col -->
+>>>>>>> general-vision
 
 					<div class="col-sm-6">
-						<!-- Panel-group Input de novos exames -->
+						
 						<h1>Novos Exames</h1>
 						
+<<<<<<< HEAD
 						<!--Data do Exame-->
 						<div class="input-group col-md-4">
 							<div class="form-group">
@@ -459,6 +637,9 @@
             			</div>
    					</div>
    					<!--//Data do Exame-->
+=======
+						<!-- Panel-group Input de novos exames -->
+>>>>>>> general-vision
 						<div class="panel-group" id="exams-accordion" role="tablist" aria-multiselectable="true">
 		
 							<!-- Painel: Exame físico geral -->
@@ -471,9 +652,10 @@
 									   </div>
 									</h4>
 								</div>
+
 								<!-- Corpo do painel -->
 								<div id="collapse-panel-exam-fg" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fg">
-										<!-- Painel Body-->
+									<!-- Panel Body -->
 									<div class="panel-body">
 										<!-- Formulario -->
 										<div class="form-group row">
@@ -490,9 +672,7 @@
 														<option value="2">Creptações Basais</option>
 														<option value="3">Creptações Difusas</option>
 													</select>
-												</div>
-
-												<!-- /Exame Ausculta Respiratória -->
+												</div> <!-- / Exame Ausculta Respiratória -->
 
 												<!-- Exame Ascite -->
 												<div class="">
@@ -502,8 +682,7 @@
 														<option>Presente</option>
 														<option selected>Ausente</option>
 													</select>
-												</div>
-												<!-- /Exame Ascite-->
+												</div> <!-- / Exame Ascite-->
 
 												<!-- Exame Turgência Jugular Patológica -->
 												<div class="">
@@ -513,8 +692,7 @@
 														<option value="1">Sim</option>
 														<option selected value= "2">Nao</option>
 													</select>
-													</div>
-												<!-- /Exame Turgência Jugular Patológica -->
+												</div> <!-- / Exame Turgência Jugular Patológica -->
 
 												<!-- Exame Reflexo Hepatojugular -->
 												<div class="">
@@ -524,12 +702,9 @@
 														<option value="1">Sim</option>
 														<option value="2" selected>Nao</option>
 													</select>
-												</div>
-												<!-- /Exame Reflexo Hepatojugular -->
+												</div> <!-- / Exame Reflexo Hepatojugular -->
 
-											</div>
-											<!-- /Coluna 1 -->
-
+											</div> <!-- / Coluna 1 -->
 
 											<!-- Coluna 2 --> 
 											<div class="col-md-6"> 
@@ -545,47 +720,40 @@
 														<option value="3">+++/++++</option > 
 														<option value="4">++++/++++</option> 
 													</select> 
-												</div> 
-												<!-- /Exame Edema --> 
+												</div> <!-- / Exame Edema --> 
 
 												<!-- Peso --> 
 												<div class=""> 
 													<label for="peso">Peso</label> 
 													<br> 
 													<input type="number" class="form-control" id="peso" value=""> 
-												</div> 
-												<!-- /Peso --> 
+												</div> <!-- / Peso --> 
 													
 												<!-- Altura --> 
 												<div class=""> 
 													<label for="altura">Altura</label> 
 													<br> 
 													<input type="number" class="form-control" id="altura" value=""> 
-												</div> 
-												<!-- /Altura --> 
+												</div> <!-- / Altura --> 
 
 												<!-- IMC --> 
 												<div class=""> 
 													<label for="imc">IMC</label> 
 													<br> 
 													<input type="number" class="form-control" id="imc" value=""> 
-												</div> 
-												<!-- /IMC --> 
+												</div>  <!-- / IMC --> 
 
-											</div> 
-											
-											<!-- /Coluna 2 --> 
+											</div> <!-- / Coluna 2 --> 
 
-										</div>
-										<!-- /Formulario -->
+										</div> <!-- / Formulario -->
+										
 										<!-- Salvar -->
 										<button type="button" class="btn btn-info pull-right">Salvar</button>
-									</div>
-									<!-- /Painel Body -->
+									</div> <!-- / Panel Body -->
 
 								</div>
 
-							</div> <!-- /Painel: Exame físico geral -->
+							</div> <!-- / Painel: Exame físico geral -->
 		
 							<!-- Painel: Exame físico cardio -->
 							<div class="panel panel-default">
@@ -597,9 +765,11 @@
 										</div>
 									</h4>
 								</div>
+
 								<!-- Corpo do painel -->
 								<div id="collapse-panel-exam-fc" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-fc">
 									<div class="panel-body">
+										
 										<!-- Formulario -->
 										<div class="form-group row">
 
@@ -614,9 +784,7 @@
 														<option value="0">Regular em dois tempos</option>
 														<option value="1">Irregular</option>
 													</select>
-												</div>
-
-												<!-- /Exame Ritmo -->
+												</div> <!-- / Exame Ritmo -->
 
 												<!-- Exame Inspeção -->
 												<div class="">
@@ -627,8 +795,7 @@
 														<option value="1">Ictus de VD</option>
 														<option value="2">Movimento em Báscula</option>
 													</select>
-												</div>
-												<!-- /Exame Ascite-->
+												</div> <!-- / Exame Ascite-->
 
 												<!-- Exame Palpação -->
 												<div class="">
@@ -638,57 +805,51 @@
 														<option value="1">Desviado p/ Esquerda e p/ Baixo</option>
 														<option value="2">Linha Hemiclavicular 5 EICE</option>
 													</select>
-													</div>
-												<!-- /Exame Palpação -->
+												</div> <!-- / Exame Palpação -->
 
-												</div>
-												<!-- /Coluna 1-->
+											</div> <!-- / Coluna 1-->
 
-												<!-- Coluna 2 -->
-												<div class="col-md-6">
+											<!-- Coluna 2 -->
+											<div class="col-md-6">
 
-													<!-- Frequencia Cardíaca -->
-													<div class="">
-														<label for="frequencia-cardiaca">Frequência Cardiaca</label>
-														<input type="text" id="frequencia-cardiaca" class="form-control" value="">
-													</div>
+												<!-- Frequencia Cardíaca -->
+												<div class="">
+													<label for="frequencia-cardiaca">Frequência Cardiaca</label>
+													<input type="text" id="frequencia-cardiaca" class="form-control" value="">
+												</div> <!-- / Frequencia Cardíaca -->
 
-													<!-- /Exame Ausculta Respiratória-->
+												<!-- Pressão Arterial -->
+												<div class="">
+													<label for="pressao-arterial">Pressão Arterial</label>
+													<input type="text" id="pressao-arterial" class="form-control" value="">
+												</div> <!-- / Pressão Arterial -->
 
-													<!-- Pressão Arterial -->
-													<div class="">
-														<label for="pressao-arterial">Pressão Arterial</label>
-														<input type="text" id="pressao-arterial" class="form-control" value="">
-														</div>
-													<!-- /Pressão Arterial -->
+												<!-- Bulhas -->
+												<div class="">
+													<label for="bulhas">Bulhas</label>
+													<select class="form-control" id="bulhas">
+														<option value="0">B1 e B2 (Em dois tempos)</option>
+														<option value="1">B3</option>
+														<option value="2">B4</option>
+														<option value="3">B3 e B4</option>
+													</select>
+												</div> <!-- / Bulhas -->
 
-													<!-- Bulhas -->
-													<div class="">
-														<label for="bulhas">Bulhas</label>
-														<select class="form-control" id="bulhas">
-															<option value="0">B1 e B2 (Em dois tempos)</option>
-															<option value="1">B3</option>
-															<option value="2">B4</option>
-															<option value="3">B3 e B4</option>
-														</select>
-													</div>
-													<!-- /Bulhas -->
+											</div> <!-- / Coluna 2 -->
 
-												</div>
-												<!-- /Coluna 2 -->
-
-											</div>
-											<!-- /Formulario -->
-											
-											<!-- Salvar -->
-											<button type="button" class="btn btn-info pull-right">Salvar</button>
-											
+										</div> <!-- / Formulario -->
+										
+										<!-- Salvar -->
+										<button type="button" class="btn btn-info pull-right">
+											Salvar
+										</button>
 									</div>
-								</div>
+								</div> <!-- / Corpo do painel -->
 							</div> <!-- /Painel: Exame físico cardio -->
 		
 							<!-- Painel: Exame bioquímico -->
 							<div class="panel panel-default">
+								
 								<!-- cabeçalho do painel -->
 								<div class="panel-heading" role="tab" id="heading-panel-exam-bq">
 									<h4 class="panel-title">
@@ -697,11 +858,12 @@
 										</div>
 									</h4>
 								</div>
-								<!-- corpo do painel -->
+								
+								<!-- Corpo do painel -->
 								<div id="collapse-panel-exam-bq" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="collapse-panel-exam-bq">
 									<div class="panel-body">
 										
-										<!--formulario-->
+										<!-- Formulario -->
 										<div class="form-group row">
 											
 											<!-- Sangue -->
@@ -712,33 +874,27 @@
 												<div class="">
 													<label for="hemoglobina">Hemoglobina</label>
 													<input type="number" id="hemoglobina" class="form-control">
-												</div>
-												<!-- /Hemoglobina -->
+												</div> <!-- / Hemoglobina -->
 
 												<!-- Linfocitos -->
 												<div class="">
 													<label for="linfocitos">Linfócitos</label>
 													<input type="number" id="linfocitos" class="form-control">
-												</div>
-												<!-- /Linfocitos -->
+												</div> <!-- / Linfocitos -->
 
 												<!-- Sódio -->
 												<div class="">
 													<label for="sodio">Sódio</label>
 													<input type="number" id="sodio" class="form-control">
-												</div>
-												<!-- /Sódio -->
+												</div> <!-- / Sódio -->
 
 												<!-- Outros -->
 												<div class="">
 													<label for="outros">Outros</label>
 													<input type="number" id="outros" class="form-control">		
-												</div>
+												</div> <!-- / Outros -->
 
-												<!--/ Outros -->
-
-											</div>
-											<!-- /Sangue -->
+											</div> <!-- / Sangue -->
 
 											<!-- Creatina -->
 											<div class="col-md-6">
@@ -749,55 +905,48 @@
 												<div class="">
 													<label for="creatina-basal">Creatina Basal</label>
 													<input type="number" id="creatina-basal" class="form-control">
-												</div>
-												<!-- /Creatina Basal-->
+												</div> <!-- / Creatina Basal -->
 
 												<!-- Ultima Creatina -->
 												<div class="">
 													<label for="ultima-creatina">Ultrima Creatina</label>
 													<input type="number" id="ultima-creatina" class="form-control">
-												</div>
-												<!--/Ultima Creatina -->
+												</div> <!--/ Ultima Creatina -->
 
 												<!-- Delta Creatina -->
 												<div class="">
 													<label for="delta-creatina">Delta Creatina</label>
 													<input type="number" id="delta-creatina" class="form-control">
-												</div>
-												<!-- /Delta Creatina -->
+												</div> <!-- / Delta Creatina -->
 
 												<!--Clearence Atual-->
-
 												<div class="">
 													<label for="clearence-atual">Clearence Atual</label>
 													<input type="number" id="clearence-atual" class="form-control">
-												</div>
+												</div> <!-- / Clearence Atual -->
+											
+											</div> <!-- / Creatina -->
 
-												<!-- /Clearence Atual-->
-
-
-											</div>
-											<!-- /Creatina -->
-
-										</div>
-										<!--// formulario-->
+										</div> <!-- / formulario -->
+										
 										<!-- Salvar -->
-										<button type="button" class="btn btn-info pull-right">Salvar</button>
-
+										<button type="button" class="btn btn-info pull-right">
+											Salvar
+										</button>
 
 									</div>
-								</div>
+								</div> <!-- / Corpo do painel -->
 							</div> <!-- / Painel: Exame bioquímico -->
-		
-		
-						</div> <!-- / panel-group Input de novos exames-->
+
+						</div> <!-- / Panel-group Input de novos exames-->
 					</div> <!-- / col -->
 
 				</div> <!-- / row -->
-			</div>
+			</div> <!-- /Aba: Exames -->
 			
 			<!-- Aba: Intervenções -->
 			<div role="tabpanel" class="tab-pane" id="interventions">
+<<<<<<< HEAD
 
 				<div class="row">
 					<!--Histórico-->
@@ -965,6 +1114,10 @@
 
 			</div>
 
+=======
+				Intervenções
+			</div> <!-- / Aba: Intervenções -->
+>>>>>>> general-vision
 		</div>
 
 	</section>
