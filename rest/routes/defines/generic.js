@@ -6,6 +6,7 @@
 module.exports = function (app) {
 
 	app = require('../generics/drugs')(app);
+	app = require('../generics/pacient')(app);
 
 	return app;
 };
