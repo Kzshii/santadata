@@ -4,6 +4,8 @@
 * (C) João Carlos Pandolfi Santana - 15/10/2017
 */
 
+var Autenticator = require( './autenticator.js' );
+
 var test = function(req,res){
 	res.send({test:"ok"});
 }
@@ -17,14 +19,12 @@ var Controller = {
 	
 	add: test,
 
-	search: test
+	search: test,
 
 	update: test,
 
-	//TODO: Implementar
 	check_hash_id: function(user_id, hash){
-
-		return true;
+		return autenticator.check_hash_id(user_id,hash);
 	},
 
 	error_message: function(code, message){
