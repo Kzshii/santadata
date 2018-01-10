@@ -17,7 +17,7 @@ var Controller = {
 	
 	add: test,
 
-	search: test
+	search: test,
 
 	update: test,
 
