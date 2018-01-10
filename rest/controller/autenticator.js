@@ -50,4 +50,4 @@ var Autenticator = {
 }
 
 
-Module.exports = Autenticator;
+module.exports = Autenticator;
