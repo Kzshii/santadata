@@ -4,10 +4,15 @@
 * (C) João Carlos Pandolfi Santana - 10/01/2018
 */
 
-
-var Mysql = require('../libs/persistence/mysql.js');
-var md5 = require('../libs/helper/md5.js');
+//Config
 var config = require('../constants/config.js');
+
+//Databases
+var Mysql = require('../libs/persistence/mysql.js');
+var Mongodb = require('../libs/persistence/mongodb.js');
+
+//Helpers
+var md5 = require('../libs/helper/md5.js');
 global.Buffer = global.Buffer || require('buffer').Buffer;
 
 
@@ -118,15 +123,38 @@ var Autenticator = {
 				response.success = 0
 			
 
-			res.send(JSON.stringify(event_list_json(response)));
+			res.send(JSON.stringify(response));
 			
 		});
 	},
 
 
-
 	renew_route: function(req,res){
 
+	},
+
+	/*
+	* JUST FOR TEST
+	*/
+	test_route: function(req,res){
+		var user = req.query.user;
+		try{
+			console.log("Creating MONGO database")
+			Mongodb.createDb();
+
+			console.log("Creating user Collection")
+			Mongodb.createCollection("user");
+
+			console.log("Searching user on Collection")
+			Mongodb.search.one("user",{},function(result){
+				console.log(result)
+				res.send(JSON.stringify(result));
+			});
+		}
+		catch(e){
+			console.log("Error")
+			res.send("ERRO NO MONGO");
+		}
 	},
 
 	logout_route: function(req,res){
