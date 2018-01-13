@@ -21,7 +21,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 //=== Configuring server
 app.get('/', function (req, res) { res.send('OK'); });
 
+//=== Setting routes
+app = require('./routes/defines/system')(app);
 app = require('./routes/defines/specialties')(app);
+app = require('./routes/defines/generic')(app);
 
 
 //=== Initializing Servers
