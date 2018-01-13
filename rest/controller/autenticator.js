@@ -8,11 +8,26 @@
 var Mysql = require('../libs/persistence/mysql.js');
 var md5 = require('../libs/helper/md5.js');
 var config = require('../constants/config.js');
+global.Buffer = global.Buffer || require('buffer').Buffer;
 
 
 //Redundant function
 function error_message(code, message){
 	return {success: 0, error:{code:code,message:message}};
+}
+
+
+// BASE 64 FUNCIONS
+if (typeof btoa === 'undefined') {
+  global.btoa = function (str) {
+    return new Buffer(str, 'binary').toString('base64');
+  };
+}
+
+if (typeof atob === 'undefined') {
+  global.atob = function (b64Encoded) {
+    return new Buffer(b64Encoded, 'base64').toString('binary');
+  };
 }
 
 
