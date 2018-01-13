@@ -6,5 +6,6 @@ module.exports = {
 	credentials : {
 		key: fs.readFileSync('./constants/sslcert/server.key', 'utf8'), 
 		cert: fs.readFileSync('./constants/sslcert/server.crt', 'utf8')
-	}
+	},
+	secret_hash: "EuGostoDePicole"
 }

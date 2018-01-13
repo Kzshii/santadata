@@ -15,8 +15,9 @@ var Generic = {
 
 
 	sufix: {
-		end_route: end_route.replace("{id_user}",rx.base_64).replace("{hash}",rx.base_64);
-		id_route: id_route.replace("{id}",rx.id) + end_route
+		end_route: end_route.replace("{id_user}",rx.base_64).replace("{hash}",rx.base_64),
+		id_route: id_route.replace("{id}",rx.id) + end_route,
+		none:""
 	},
 
 	type: {
@@ -33,15 +34,15 @@ var Generic = {
 	add_route: function(prefix,callback,sufix,type){
 		switch(type){
 			case 1:
-				app.route(prefix+sufix).all(callback)
+				Generic.app.route(prefix+sufix).all(callback)
 			break;
 
 			case 2:
-				app.route(prefix+sufix).post(callback)
+				Generic.app.route(prefix+sufix).post(callback)
 			break
 
 			case 3:
-				app.route(prefix+sufix).get(callback)
+				Generic.app.route(prefix+sufix).get(callback)
 			break
 		}
 	},
