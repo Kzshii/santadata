@@ -90,8 +90,7 @@ var Autenticator = {
 		}
 
 		console.log("#=> Login process -- user:"+user)
-		console.log("TESTE DE HASH"+Autenticator.generate_hash_id(user))
-
+	
 		var sql = "CALL login(?,?)";
 		sql = Mysql.format(sql, [user,pass]);
 
@@ -113,6 +112,7 @@ var Autenticator = {
 				}
 
 				response.data = user;
+				console.log("#=> LOGIN SUCESS :"+user)
 				
 			}else
 				response.success = 0
