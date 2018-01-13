@@ -6,6 +6,8 @@
 
 
 var Mysql = require('../libs/persistence/mysql.js');
+var md5 = require('../libs/helper/md5.js');
+var config = require('../constants/config.js');
 
 
 //Redundant function
@@ -16,7 +18,6 @@ function error_message(code, message){
 
 var Autenticator = {
 
-	//TODO: implementar
 	/*
 	* Verifica se a hash informada faz sentido com o ID
 	* @param user_id {Id do usuario}
@@ -24,17 +25,16 @@ var Autenticator = {
 	* @return bool {Valida ou nao}
 	*/
 	check_hash_id: function(user_id, hash){
-		return true
+		return (btoa(md5(user_id+config.secret_hash)) == atob(hash))
 	},
 
-	//TODO: Implementar
 	/*
 	* Gera hash para o usuario
 	* @param user_id {Id do usuario}
 	* @return hash (String) {Hash gerada para o usuario}
 	*/
 	generate_hash_id: function(user_id){
-		return user_id+"1234";
+		return btoa(md5(user_id+config.secret_hash));
 	},
 
 	//TODO: Implementar
@@ -75,6 +75,7 @@ var Autenticator = {
 		}
 
 		console.log("#=> Login process -- user:"+user)
+		console.log("TESTE DE HASH"+Autenticator.generate_hash_id(user))
 
 		var sql = "CALL login(?,?)";
 		sql = Mysql.format(sql, [user,pass]);
