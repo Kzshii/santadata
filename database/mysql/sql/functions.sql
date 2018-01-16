@@ -4,7 +4,7 @@
 -- @receives name,email,login,pass,hash,type_user
 -- @returns id_user
 -- -----------------------------------------------------
-DROP FUNCTION IF EXISTS new_user
+DROP FUNCTION IF EXISTS new_user;
 
 DELIMITER //
 CREATE FUNCTION new_user(name_p VARCHAR(45), 
