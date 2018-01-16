@@ -29,7 +29,7 @@ User.new_user = function(req, res){
 			req.query.login,
 			req.query.pass,
 			"-void-hash-",
-			req.query.type_user]);
+			parseInt(req.query.type_user)]);
 
 	Mysql.query(sql, function (err, results) {
 		if(err) { res.send(500,"Database error"); return; }

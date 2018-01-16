@@ -29,6 +29,7 @@ RETURNS INT
     type_user
   );
 
+  SELECT LAST_INSERT_ID() INTO @id_user;
 
   RETURN @id_user;
   END //
