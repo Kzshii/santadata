@@ -8,7 +8,6 @@ var end_route = "{id_user}/{hash}/";
 var id_route = "{id}/";
 
 var rx = require( '../../libs/regex_patterns' );
-var pacient = require( '../../controller/generics/pacient' );
 
 var Generic = {
 	app: null,
