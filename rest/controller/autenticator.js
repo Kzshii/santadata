@@ -96,7 +96,7 @@ var Autenticator = {
 
 		console.log("#=> Login process -- user:"+user)
 	
-		var sql = "CALL login(?,?)";
+		var sql = "SELECT * FROM login WHERE login='?' AND pass='?' ";
 		sql = Mysql.format(sql, [user,pass]);
 
 		Mysql.query(sql, function (err, results) {
