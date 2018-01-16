@@ -14,6 +14,7 @@ class Login extends Component {
             SD
           </div>
 
+          <LoginForm />
 
         </div>
       </div>
