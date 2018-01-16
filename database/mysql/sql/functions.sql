@@ -12,7 +12,7 @@ CREATE FUNCTION new_user(name_p VARCHAR(45),
         login_p VARCHAR(45), 
 				pass_p VARCHAR(45), 
 				hash_p VARCHAR(45),
-        type_user INT) 
+        type_user VARCHAR(45)) 
 
 RETURNS INT
   BEGIN

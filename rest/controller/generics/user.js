@@ -23,7 +23,7 @@ var User = Object.create(Base);
 */
 User.new_user = function(req, res){
 
-	var sql = "SELECT * new_user(?,?,?,?,?,?);";
+	var sql = "SELECT new_user(?,?,?,?,?,?);";
 	sql = Mysql.format(sql, [req.query.name, 
 			req.query.email,
 			req.query.login,
