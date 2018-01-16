@@ -4,7 +4,7 @@
 */
 
 const mysql = require('mysql');
-const credentials = {connectionLimit: 10, host: 'localhost', user: 'user', password: 'pass', database: 'db'};
+const credentials = {connectionLimit: 10, host: 'localhost', user: 'root', password: '#Esqu1m0', database: 'stadatadb'};
 var pool = mysql.createPool(credentials);
 
 module.exports = {
