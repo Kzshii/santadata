@@ -1,5 +1,6 @@
 -- -----------------------------------------------------
 -- Registra usuario e retorna o ID
+-- @NOTE: Disable foreign key checks
 -- @receives name,email,login,pass,hash,type_user
 -- @returns id_user
 -- -----------------------------------------------------
@@ -14,6 +15,7 @@ CREATE FUNCTION new_user(name_p VARCHAR(45),
 RETURNS INT
   BEGIN
 
+  SET FOREIGN_KEY_CHECKS=0;
   INSERT INTO people (name) VALUES(
     name_p
   );
