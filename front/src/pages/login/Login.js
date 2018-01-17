@@ -1,20 +1,48 @@
 import React, { Component } from 'react';
 import './Login.css';
 import LoginForm from './../../components/loginForm/LoginForm'
+import axios from 'axios';
 
 class Login extends Component {
 
   constructor(props){
-    super(props)
+    super(props);
+    
+    this.requestLogin = this.requestLogin.bind(this);
 
-    this.state={
-      user: {username: null, 
-             password: null}
-    }
+    this.state = {
+      user: '',
+      pass: '',
+      hash: '',
+    };
   }
 
-  handleSubmit= (data)=>{
-    /* ConecTar com Servidor */
+  requestLogin(loginData) {
+
+    var data = {
+      'user': 'joaopandolfi',
+      'pass': '123'
+    }
+
+    data = JSON.stringify(data);
+    data = btoa(data);
+    console.log(data);
+    axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+
+    axios.post(
+      'auth/login/',
+      "data="+data
+    )
+    .then(
+      function(response) {
+        console.log(response.data);
+      }
+    )
+    .catch(
+      function(error) {
+        console.log(error);
+      }
+    );
   }
 
   render() {
@@ -27,7 +55,7 @@ class Login extends Component {
             SD
           </div>
 
-          <LoginForm onSubmit={this.handleSubmit}/>
+          <LoginForm requestLogin={ this.requestLogin } />
 
         </div>
       </div>
