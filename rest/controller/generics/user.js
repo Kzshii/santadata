@@ -23,6 +23,12 @@ var User = Object.create(Base);
 */
 User.new_user = function(req, res){
 
+	//Check authentication
+	if(!User.check_requisition()){
+		res.send(User.error_message(500,"Bad requisition"));
+		return
+	}
+
 	var sql = "SELECT new_user(?,?,?,?,?,?);";
 	sql = Mysql.format(sql, [req.query.name, 
 			req.query.email,
@@ -35,7 +41,7 @@ User.new_user = function(req, res){
 		if(err) { res.send(500,"Database error"); return; }
 		var response = {
 			success: 1,
-			data:{results}
+			data:{iduser:results[1]}
 		}
 
 		if(results.length == 0)
