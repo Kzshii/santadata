@@ -38,7 +38,7 @@ var Controller = {
 	},
 
 	check_hash_id: function(user_id, hash){
-		return autenticator.check_hash_id(user_id,hash);
+		return Autenticator.check_hash_id(user_id,hash);
 	},
 
 	check_requisition: function(req){
