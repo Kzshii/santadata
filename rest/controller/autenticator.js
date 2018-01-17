@@ -84,9 +84,12 @@ var Autenticator = {
 	* @param pass {Senha do usuario}
 	*/
 	login_route: function(req,res){
+
+		var var_req = req.body
+
 		//Getting param data
-		var user = req.query.user;
-		var pass = req.query.pass;
+		var user = var_req.user;
+		var pass = var_req.pass;
 
 		//Checkig correct data in route
 		if(user == undefined || pass == undefined){
@@ -117,7 +120,7 @@ var Autenticator = {
 				}
 
 				response.data = user;
-				console.log("#=> LOGIN SUCESS :"+user)
+				console.log("#=> LOGIN SUCESS :"+user.user_id)
 				
 			}else
 				response.success = 0
@@ -128,9 +131,9 @@ var Autenticator = {
 		});
 	},
 
-
+	// DISABLED
 	renew_route: function(req,res){
-
+		return {success: 1, data:{}}
 	},
 
 	/*

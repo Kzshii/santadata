@@ -23,6 +23,8 @@ var User = Object.create(Base);
 */
 User.new_user = function(req, res){
 
+	var var_req = req.body;
+
 	//Check authentication
 	if(!User.check_requisition(req)){
 		res.send(User.error_message(500,"Bad request"));
@@ -30,12 +32,12 @@ User.new_user = function(req, res){
 	}
 
 	var sql = "SELECT new_user(?,?,?,?,?,?);";
-	sql = Mysql.format(sql, [req.query.name, 
-			req.query.email,
-			req.query.login,
-			req.query.pass,
+	sql = Mysql.format(sql, [var_req.name, 
+			var_req.email,
+			var_req.login,
+			var_req.pass,
 			"-void-hash-",
-			parseInt(req.query.type_user)]);
+			parseInt(var_req.type_user)]);
 
 	Mysql.query(sql, function (err, results) {
 		if(err) { res.send(500,"Database error"); return; }
