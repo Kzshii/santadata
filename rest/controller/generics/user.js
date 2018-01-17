@@ -39,14 +39,18 @@ User.new_user = function(req, res){
 
 	Mysql.query(sql, function (err, results) {
 		if(err) { res.send(500,"Database error"); return; }
+		result = results[0]
+		keys = Object.keys(result)
+		result = keys.map(function(k){return result[k]})
 		var response = {
 			success: 1,
-			data:{iduser:results[1]}
+			data:{iduser:result[0]}
 		}
-
-		if(results.length == 0)
+		
+		if(result.length == 0)
 			response.success = 0
 
+		console.log("# Inserted user: "+response.data.iduser)
 		res.send(JSON.stringify(response));		
 	});
 
