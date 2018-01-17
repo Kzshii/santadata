@@ -24,7 +24,7 @@ var User = Object.create(Base);
 User.new_user = function(req, res){
 
 	//Check authentication
-	if(!User.check_requisition()){
+	if(!User.check_requisition(req)){
 		res.send(User.error_message(500,"Bad requisition"));
 		return
 	}

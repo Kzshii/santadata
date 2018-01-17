@@ -29,7 +29,7 @@ var Controller = {
 
 	update: test,
 
-	get_url_data: function(){
+	get_url_data: function(req){
 		var url_components = req.path.split('/');
 		var len = url_components.length
 		this.url_data.hash 	= url_components[len];
@@ -41,8 +41,8 @@ var Controller = {
 		return autenticator.check_hash_id(user_id,hash);
 	},
 
-	check_requisition: function(){
-		this.get_url_data()
+	check_requisition: function(req){
+		this.get_url_data(req)
 		return this.check_hash_id(this.url_data.user_id,this.url_data.hash)
 	},
 
