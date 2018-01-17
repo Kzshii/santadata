@@ -34,7 +34,7 @@ var Controller = {
 		var len = url_components.length
 		this.url_data.hash 	= url_components[len];
 		this.url_data.user_id = url_components[len-1];
-		this.url_data.q_id =  = url_components[len-2];
+		this.url_data.q_id = url_components[len-2];
 	},
 
 	check_hash_id: function(user_id, hash){
@@ -44,7 +44,7 @@ var Controller = {
 	check_requisition: function(){
 		this.get_url_data()
 		return this.check_hash_id(this.url_data.user_id,this.url_data.hash)
-	}
+	},
 
 	error_message: function(code, message){
 		return {success: 0, error:{code:code,message:message}};
