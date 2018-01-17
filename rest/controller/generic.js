@@ -7,5 +7,16 @@ var Base = require( './base_controller.js' );
 
 var Generic = Object.create(Base);
 
+Generic.decode_data = function(req){
+	try{
+		req = atob(req.data)
+		req = JSON.parse(req)
+	}
+	catch(e){
+		return {}
+	}
+
+	return req
+}
 
 module.exports = Generic;

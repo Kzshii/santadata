@@ -45,7 +45,7 @@ var Autenticator = {
 	* @return bool {Valida ou nao}
 	*/
 	check_hash_id: function(user_id, hash){
-		return (btoa(md5(user_id+config.secret_hash)) == atob(hash))
+		return (escape(btoa(md5(user_id+config.secret_hash))) == escape(hash))
 	},
 
 	/*
@@ -84,23 +84,32 @@ var Autenticator = {
 	* @param pass {Senha do usuario}
 	*/
 	login_route: function(req,res){
-		//Getting param data
-		var user = req.query.user;
-		var pass = req.query.pass;
 
-		//Checkig correct data in route
-		if(user == undefined || pass == undefined){
-			res.send(500,"Bad Formatation :(")
+		var var_req = req.body
+		var user = null
+		var pass = null
+
+		try{
+			var_req = atob(var_req.data)
+			var_req = JSON.parse(var_req)
+			//Getting param data
+			user = var_req.user;
+			pass = var_req.pass;
+
+		}
+		catch(e){
+			res.status(500).send("Bad Formatation :(")
 			return
 		}
 
+		
 		console.log("#=> Login process -- user:"+user)
 	
 		var sql = "SELECT * FROM login WHERE login=? AND pass=? ";
 		sql = Mysql.format(sql, [user,pass]);
 
 		Mysql.query(sql, function (err, results) {
-			if(err) { res.send(500,"Database error"); return; }
+			if(err) { res.status(500).send("Database error"); return; }
 			var response = {
 				success: 1,
 				data:{}
@@ -109,7 +118,7 @@ var Autenticator = {
 			if(results.length > 0){
 	
 				var user =  {
-					user_id: results[0].id,
+					user_id: results[0].iduser,
 					type_user: results[0].type_user,
 					hash: Autenticator.generate_hash_id(results[0].id),
 					name: results[0].name,
@@ -117,7 +126,7 @@ var Autenticator = {
 				}
 
 				response.data = user;
-				console.log("#=> LOGIN SUCESS :"+user)
+				console.log("#=> LOGIN SUCESS :"+user.user_id)
 				
 			}else
 				response.success = 0
@@ -128,9 +137,9 @@ var Autenticator = {
 		});
 	},
 
-
+	// DISABLED
 	renew_route: function(req,res){
-
+		return {success: 1, data:{}}
 	},
 
 	/*
