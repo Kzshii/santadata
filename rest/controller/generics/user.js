@@ -25,7 +25,7 @@ User.new_user = function(req, res){
 
 	//Check authentication
 	if(!User.check_requisition(req)){
-		res.send(User.error_message(500,"Bad requisition"));
+		res.send(User.error_message(500,"Bad request"));
 		return
 	}
 

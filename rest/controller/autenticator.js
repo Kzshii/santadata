@@ -45,7 +45,7 @@ var Autenticator = {
 	* @return bool {Valida ou nao}
 	*/
 	check_hash_id: function(user_id, hash){
-		return (btoa(md5(user_id+config.secret_hash)) == atob(hash))
+		return (escape(btoa(md5(user_id+config.secret_hash))) == escape(hash))
 	},
 
 	/*

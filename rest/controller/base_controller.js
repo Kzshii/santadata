@@ -31,10 +31,10 @@ var Controller = {
 
 	get_url_data: function(req){
 		var url_components = req.path.split('/');
-		var len = url_components.length
-		this.url_data.hash 	= url_components[len];
-		this.url_data.user_id = url_components[len-1];
-		this.url_data.q_id = url_components[len-2];
+		var len = url_components.length -1
+		this.url_data.hash 	= url_components[len-1];
+		this.url_data.user_id = url_components[len-2];
+		this.url_data.q_id = url_components[len-3];
 	},
 
 	check_hash_id: function(user_id, hash){
