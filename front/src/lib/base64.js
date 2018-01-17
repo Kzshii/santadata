@@ -1,9 +1,9 @@
-class Base64 {
-  encode(data) {
-    return(
-      btoa(JSON.stringify(data))
-    );
-  }
-}
+function Base64() {}
+
+Base64.encode = function(data) {
+  return(
+    btoa(JSON.stringify(data))
+  );
+};
 
 export default Base64;
