@@ -21,7 +21,7 @@ var Controller = {
 		user_id: null,
 		hash: null,
 		q_id: null
-	}
+	},
 
 	add: test,
 
