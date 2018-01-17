@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Login.css';
-import LoginForm from './../../components/loginForm/LoginForm'
+import LoginForm from './../../components/loginForm/LoginForm';
 import axios from 'axios';
+import Base64 from './../../lib/base64';
 
 class Login extends Component {
 
@@ -12,21 +13,20 @@ class Login extends Component {
 
     this.state = {
       user: '',
-      pass: '',
       hash: '',
     };
   }
 
   requestLogin(loginData) {
 
-    var data = {
-      'user': 'joaopandolfi',
-      'pass': '123'
-    }
+    var data = Base64.encode({
+      'user': loginData.user,
+      'pass': loginData.pass
+    });
 
-    data = JSON.stringify(data);
-    data = btoa(data);
-    console.log(data);
+    console.log("login data",loginData);
+    console.log("data",data);
+
     axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 
     axios.post(
@@ -35,7 +35,13 @@ class Login extends Component {
     )
     .then(
       function(response) {
-        console.log(response.data);
+        if(response.data.success === 1){
+          /* TODO: login success */
+        } else if(response.data.success === 0){
+          /* TODO: login failed */
+        } else {
+          /* TODO: falha na rota */
+        }
       }
     )
     .catch(

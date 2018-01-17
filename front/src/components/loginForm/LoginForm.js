@@ -37,8 +37,6 @@ class LoginForm extends Component {
   handleSubmit(event) {
     /* Send the login data to parent component */
     event.preventDefault();
-
-    console.log("LoginForm state: ", this.state);
     this.props.requestLogin(this.state);
   }
 
