@@ -29,18 +29,29 @@ class Login extends Component {
 
     axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 
-    axios.post(
+    /* Dados de teste */
+    this.props.onLogin(
+      {
+        user_id: 1,
+        type_user: 'medic',
+        hash: '12345',
+        name: 'jhon',
+        picture: 'none',
+      }
+    );
+
+    /* axios.post(
       'auth/login/',
       "data="+data
     )
     .then(
       function(response) {
         if(response.data.success === 1){
-          /* TODO: login success */
+          // TODO: login success
         } else if(response.data.success === 0){
-          /* TODO: login failed */
+          // TODO: login failed
         } else {
-          /* TODO: falha na rota */
+          // TODO: falha na rota
         }
       }
     )
@@ -48,7 +59,7 @@ class Login extends Component {
       function(error) {
         console.log(error);
       }
-    );
+    ); */
   }
 
   render() {

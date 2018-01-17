@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Login from "../login/Login";
+import Home from "../home/Home";
 
 class App extends Component{
 
@@ -25,22 +26,26 @@ class App extends Component{
     );
   }
 
-  storeUser(loginData) {
+  storeUser(userData) {
 
     this.setState(
       {
-        activeUser: loginData,
+        activeUser: userData,
       }
     );
     
-    this.switchPage();
+    this.switchPage('home');
   }
 
-  render(){
+  render() {
     switch(this.state.currentPage){
       case "login":
         return(
           <Login onLogin={ this.storeUser } />
+        );
+      case "home":
+        return(
+          <Home />
         );
       default:
         return(
