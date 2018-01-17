@@ -17,7 +17,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 DROP TABLE IF EXISTS `type_user` ;
 
 CREATE TABLE IF NOT EXISTS `type_user` (
-  `idtype_user` INT NOT NULL,
+  `idtype_user` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NULL,
   PRIMARY KEY (`idtype_user`))
 ENGINE = InnoDB;
@@ -29,7 +29,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `people` ;
 
 CREATE TABLE IF NOT EXISTS `people` (
-  `idpeople` INT NOT NULL,
+  `idpeople` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `cpf` VARCHAR(20) NULL,
   `picture` VARCHAR(60) NULL,
@@ -73,7 +73,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `pacient` ;
 
 CREATE TABLE IF NOT EXISTS `pacient` (
-  `idpacient` INT NOT NULL,
+  `idpacient` INT NOT NULL AUTO_INCREMENT,
   `idpeople` INT NULL,
   PRIMARY KEY (`idpacient`),
   INDEX `id_people_idx` (`idpeople` ASC),
@@ -91,7 +91,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `consult` ;
 
 CREATE TABLE IF NOT EXISTS `consult` (
-  `idconsult` INT NOT NULL,
+  `idconsult` INT NOT NULL AUTO_INCREMENT,
   `iduser` INT NULL,
   `idpacient` INT NULL,
   `timestamp` DATETIME NULL,
@@ -121,7 +121,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `anamnese` ;
 
 CREATE TABLE IF NOT EXISTS `anamnese` (
-  `idanamnese` INT NOT NULL,
+  `idanamnese` INT NOT NULL AUTO_INCREMENT,
   `idconsult` INT NULL,
   PRIMARY KEY (`idanamnese`),
   INDEX `idconsult_idx` (`idconsult` ASC),
@@ -139,7 +139,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `physical_exam` ;
 
 CREATE TABLE IF NOT EXISTS `physical_exam` (
-  `idphysical_exam` INT NOT NULL,
+  `idphysical_exam` INT NOT NULL AUTO_INCREMENT,
   `idconsult` INT NULL,
   PRIMARY KEY (`idphysical_exam`),
   INDEX `idconsult_idx` (`idconsult` ASC),
@@ -157,7 +157,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `medicines` ;
 
 CREATE TABLE IF NOT EXISTS `medicines` (
-  `idmedicines` INT NOT NULL,
+  `idmedicines` INT NOT NULL AUTO_INCREMENT,
   `idconsult` INT NULL,
   PRIMARY KEY (`idmedicines`),
   INDEX `idconsult_idx` (`idconsult` ASC),
@@ -175,7 +175,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `file` ;
 
 CREATE TABLE IF NOT EXISTS `file` (
-  `idfile` INT NOT NULL,
+  `idfile` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(10) NULL,
   PRIMARY KEY (`idfile`))
 ENGINE = InnoDB;
@@ -187,7 +187,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `file__consult` ;
 
 CREATE TABLE IF NOT EXISTS `file__consult` (
-  `idfile` INT NOT NULL,
+  `idfile` INT NOT NULL AUTO_INCREMENT,
   `idconsult` INT NULL,
   INDEX `idfile_idx` (`idfile` ASC),
   INDEX `idconsult_idx` (`idconsult` ASC),
@@ -210,7 +210,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `comp_exam` ;
 
 CREATE TABLE IF NOT EXISTS `comp_exam` (
-  `idcomp_exam` INT NOT NULL,
+  `idcomp_exam` INT NOT NULL AUTO_INCREMENT,
   `idconsult` INT NULL,
   PRIMARY KEY (`idcomp_exam`),
   INDEX `idconsult_idx` (`idconsult` ASC),
@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `login` (`id` INT, `type_user` INT, `login` INT, `pas
 DROP VIEW IF EXISTS `login` ;
 DROP TABLE IF EXISTS `login`;
 CREATE  OR REPLACE VIEW `login` AS
-SELECT u.id , u.type_user, u.login, u.pass, p.name, p.picture FROM user AS u
+SELECT u.iduser , u.type_user, u.login, u.pass, p.name, p.picture FROM user AS u
 INNER JOIN people as p ON u.idpeople = p.idpeople;
 
 SET SQL_MODE=@OLD_SQL_MODE;
