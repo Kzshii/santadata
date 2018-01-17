@@ -27,6 +27,10 @@ class LoginForm extends Component {
 
   handleSubmit(event) {
     /* TO DO: Requisição e tratamento da resposta do server */
+    event.preventDefault();
+
+    this.props.onSubmit(this.props.state)
+    /* 
     const baseUrl = 'http://restfull.hol.es/les/user/login/';
 
     axios.get(baseUrl + this.state.user + this.state.pass)
@@ -35,9 +39,9 @@ class LoginForm extends Component {
     })
     .catch(function(error){
       console.log(error);
-    });
+    }); */
 
-    event.preventDefault();
+    
   }
 
   render() {
@@ -45,8 +49,8 @@ class LoginForm extends Component {
     return(
       <div className="LoginForm">
         <form onSubmit={ this.handleSubmit } >
-          <input type="text" placeholder="email" value={ this.state.user } onChange={ this.handleChangeEmail }  /> <br/>
-          <input type="password" placeholder="senha" value={ this.state.pass } onChange={ this.handleChangePassword } /> <br/>
+          <input type="text" placeholder="email" value={ this.props.user.username } onChange={ this.handleChangeEmail }  /> <br/>
+          <input type="password" placeholder="senha" value={ this.props.user.password } onChange={ this.handleChangePassword } /> <br/>
           <input type="checkbox" id="rememberUserCheck" />
           <label htmlFor="rememberUserCheck">Lembre de mim</label> <br/>
           <input type="submit" value="Entrar" />
