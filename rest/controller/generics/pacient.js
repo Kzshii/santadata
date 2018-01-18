@@ -5,7 +5,7 @@
 */
 
 // Database manager
-var Dao_pacient = require('../../model/dao/dao_paciente.js');
+var Dao_pacient = require('../../model/dao/dao_pacient.js');
 
 //Creating Class
 var Generic = require( '../generic' );
