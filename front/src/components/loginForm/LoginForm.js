@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import './LoginForm.css';
+import fontawesome from '@fortawesome/fontawesome';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+
+
 
 class LoginForm extends Component {
 
@@ -11,8 +15,8 @@ class LoginForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     
     this.state = {
-      user: 'joaopandolfi', /* test only */
-      pass: '123',          /* test only */
+      // user: 'joaopandolfi', /* test only */
+      // pass: '123',          /* test only */
       remember: false,
     };
   }
@@ -42,14 +46,27 @@ class LoginForm extends Component {
 
   render() {
 
+
+
     return(
       <div className="LoginForm">
         <form onSubmit={ this.handleSubmit }  >
-          <input type="text" placeholder="email" value={ this.state.user } onChange={ this.handleChangeEmail }  /> <br/>
-          <input type="password" placeholder="senha" value={ this.state.pass } onChange={ this.handleChangePassword } /> <br/>
-          <input type="checkbox" id="rememberUserCheck" />
-          <label htmlFor="rememberUserCheck">Lembre de mim</label> <br/>
-          <input type="submit" value="Entrar" />
+
+
+        
+          <input className="textInput" type="text" placeholder="Usuario" value={ this.state.user } onChange={ this.handleChangeEmail }  /> <br/>
+
+          <input className="textInput"type="password" placeholder="Senha" value={ this.state.pass } onChange={ this.handleChangePassword } /> <br/>
+          
+          <input className="checkbox check" type="checkbox" id="rememberUserCheck" />
+          <label className="remember check" htmlFor="rememberUserCheck">Lembre de mim</label> <br/>
+          <FontAwesomeIcon icon="rocket"/>
+
+          <input id="LoginButton" type="submit" value="Entrar" />
+
+          <a id="Signup" className="text-align" href="#">
+              Novo Cadastro
+          </a>
         </form>
       </div>
     );
