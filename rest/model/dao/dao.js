@@ -44,7 +44,7 @@ var Dao = {
 				callback(param, result)
 				return; 
 			}
-				callback(param,Dao.format_response(data))
+				callback(param,Dao.format_response(results))
 			});
 		}
 		//Error
