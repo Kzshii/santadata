@@ -12,7 +12,7 @@ var Dao_user = Object.create(Dao);
 Dao_user.new_user = function(data, callback, param){
 
 		var query = "SELECT new_user(?,?,?,?,?,?);"
-		var ret = this.mysql_query(query, data, callback, param);
+		var ret = Dao_user.mysql_query(query, data, callback, param);
 
 		//Checking error
 		if(ret.success == 0){
