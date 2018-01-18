@@ -71,7 +71,7 @@ Exame_fisico.data = {
 		auscuta_resp: Exame_fisico.types.geral.auscutas_resp[0],
 		refl_heptojugular: 0, // 0 or 1
 		turg_jugular: 0, //0 or 1
-		ascite: 0, //0 or 1 --> TODO: checar se esta escrito corretamente
+		ascite: 0, //0 or 1
 		peso: 0.0,
 		altura: 0.0,
 		imc: 0.0 // peso/altura^2 
@@ -81,7 +81,7 @@ Exame_fisico.data = {
 		ritmo: Exame_fisico.types.cardiovascular.ritmo[0],
 		inspecao: Exame_fisico.types.void,	//Exame_fisico.types.cardiovascular.inspecao[0],
 		bulhas: Exame_fisico.types.void,	//Exame_fisico.types.cardiovascular.bulhas[0]
-		auscuta: "",
+		ausculta: "",
 		palpacao: Exame_fisico.types.void,	//Exame_fisico.types.cardiovascular.palpacao[0]
 		fc: 0,
 		pressao_arterial: 0
