@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './NewPatient.css';
+import Base64 from './../../lib/base64';
+import axios from 'axios';
 
 class NewPatient extends Component {
   constructor(props) {
@@ -21,7 +23,7 @@ class NewPatient extends Component {
         tel2: '',
         telE: '',
         cel: '',
-        location: '',
+        address: '',
       },
     }
   }
@@ -66,8 +68,8 @@ class NewPatient extends Component {
       case 'cel':
         formData.cel = value;
         break;
-      case 'location':
-        formData.location = value;
+      case 'address':
+        formData.address = value;
         break;
       default:
         console.log("não deu");
@@ -79,12 +81,46 @@ class NewPatient extends Component {
         formData: formData,
       }
     );
-    console.log("deu certo: ", this.state.formData);
-
   }
 
   handleSubmit(event) {
     event.preventDefault();
+
+    var formData = this.state.formData;
+
+    var data = Base64.encode(
+      {
+        id_register: '1',
+        nome: formData.patientName,
+        nr_prontuario: formData.medicalRecord,
+        nr_mv: formData.mv,
+        data_nasc: formData.birthDate,
+        idade: formData.age,
+        sexo: formData.gender,
+        etnia: formData.ethnicity, //[Branco, Negro, Pardo, Amarelo]
+        tel1: formData.tel1,
+        tel2: formData.tel2,
+        tel_emerg: formData.telE,
+        cel: formData.cel,
+        endereco: formData.address,
+      }
+    );
+
+    axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+    axios.post(
+      'gen/new/pacient/1/MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=/', /* this.props.user.id+this.props.user.hash, */
+      "data="+data
+    )
+    .then(
+      function(response) {
+        console.log("RETORNO", response.data);
+      }
+    )
+    .catch(
+      function(error) {
+        console.log("ERRO", error);
+      }
+    );
   }
 
   render() {
@@ -128,7 +164,7 @@ class NewPatient extends Component {
               type="date"
               name="birthDate"
               id="birthDate"
-              value={this.state.formData.birthDate }
+              value={ this.state.formData.birthDate }
               onChange={ this.handleChange }
             /> <br/>
 
@@ -137,7 +173,7 @@ class NewPatient extends Component {
               type="number"
               name="age"
               id="age"
-              value={this.state.formData.age }
+              value={ this.state.formData.age }
               onChange={ this.handleChange }
             /> <br/>
 
@@ -192,15 +228,17 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
             /> <br/>
 
-            <label htmlFor="location">Endereço</label>
+            <label htmlFor="address">Endereço</label>
             <input
               className="inputText "
               type="text"
-              name="location"
-              id="location"
-              value={ this.state.formData.location }
+              name="address"
+              id="address"
+              value={ this.state.formData.address }
               onChange={ this.handleChange }
-            />
+            /> <br/>
+
+            <input type="submit" value="Salvar"/>
 
           </form>
       </div>
