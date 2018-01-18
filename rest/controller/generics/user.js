@@ -32,7 +32,7 @@ User.new_user = function(req,res){
 
 	data = [var_req.name, var_req.email,var_req.login,var_req.pass,"-void-hash-",parseInt(var_req.type_user)]
 
-	Dao_user.new_user(data, function(result,res){
+	Dao_user.new_user(data, function(res,result){
 		if(result.success == 0){
 			res.status(result.error).send(User.error_message(result.message));
 		}

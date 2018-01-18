@@ -44,13 +44,13 @@ var Dao = {
 				callback(param, result)
 				return; 
 			}
-
 				callback(param,Dao.format_response(data))
 			});
 		}
 		//Error
 		catch(e){
 			result = Dao.format_error(500,"Database error")
+			console.log(result)
 			callback(param, result)
 		}
 	}
