@@ -40,7 +40,7 @@ var Dao = {
 
 			Mysql.query(sql, function (err, results) {
 			if(err) { 
-				result = Dao.format_error(500,"Database error")
+				result = Dao.format_error(500,"Bad request")
 				callback(param, result)
 				return; 
 			}

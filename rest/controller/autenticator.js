@@ -77,7 +77,7 @@ var Autenticator = {
 		return user;
 	},
 
-	/*
+	/* TODO: JOGAR PARA DENTRO DO DAO
 	* Efetua login do usuario pela rota
 	* @receive res.query {Variavel com os parametros}
 	* @param user {login do usuario}

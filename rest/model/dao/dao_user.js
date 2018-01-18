@@ -30,8 +30,7 @@ Dao_user.callback_new_user = function(param,ret){
 		ret.success = 0
 
 	//Returning data
-	console.log("# Inserted user: "+ret.data.iduser)
-	//res.send(JSON.stringify(response));		
+	console.log("# Inserted user: "+ret.data.iduser)		
 	callback(par,ret)	
 }
 
