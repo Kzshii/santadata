@@ -3,6 +3,7 @@ import './Login.css';
 import LoginForm from './../../components/loginForm/LoginForm';
 import axios from 'axios';
 import Base64 from './../../lib/base64';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 class Login extends Component {
 
@@ -58,7 +59,8 @@ class Login extends Component {
         <div className="loginBox">
 
           <div className="loginHead">
-            SD
+
+            
           </div>
 
           <LoginForm requestLogin={ this.requestLogin } />

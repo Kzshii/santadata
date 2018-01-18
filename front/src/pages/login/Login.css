@@ -1,24 +1,115 @@
 html, body, #root {
     height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+body{
+    background-color: #1ca4fc;
+    background-attachment: fixed;
+    overflow: hidden;
+   /* text-align: center;*/
+}
+
+form{
+    padding: 50px;
 }
 
 .loginPage {
-    background-color: rgb(47, 113, 255);
+    min-height: 100vh;
+    width: 100%;
     height: 100%;
 }
 
 .loginBox {
     background-color: #FFF;
-    height: 400px;
     width: 400px;
-    margin: auto;
+    margin: 5% auto auto 33%;
+    border-radius: 30px;
+    position: absolute;
 }
 
 .loginHead {
-    height: 50px;
-    width: 50px;
-    background-color: black;
-    margin: auto;
+    height: 100px;
+    width: 40%;
+    background-image: url("../img/logo.png");
+    margin: 50px auto 0 auto;
     color: white;
+    background-repeat: no-repeat;
 }
 
+.input{
+    font-family: Lato;
+    font-size: 18px;
+    line-height: 1.2;
+    color: #1ca4fc;
+    display: block;
+ /*   width: 100%;*/
+    height: 62px;
+    border-radius: 10px;
+    border: 2px solid #1ca4fc;
+    padding: 0 30px 0 65px;
+    outline: none;
+}
+
+.Entrar{
+    font-family: Lato;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+    width: 100%;
+    height: 62px;
+    border-radius: 6px;
+    background: #1ca4fc;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    margin-bottom: 30px;
+    padding: 0 30px 0 30px;
+    outline: none;
+}
+
+.remember{
+    font-size: 16px;
+    color: #999999;
+    line-height: 1.2;
+    display: block;
+    position: relative;
+    padding-left: 10px;
+    cursor: pointer;
+    padding-bottom: 10px;
+
+}
+
+#check{
+    display: inline-block;
+
+
+}
+
+a{
+    text-decoration: none;
+   
+}
+
+.Cadastro{
+    outline: none;
+    border-bottom: 1px solid #1eabf9;
+    font-size: 16px;
+    color: #1eabf9;
+    line-height: 1.4;
+ 
+}
+
+#text-align{
+    text-align: center!important;
+}
