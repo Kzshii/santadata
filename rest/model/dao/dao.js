@@ -55,3 +55,5 @@ var Dao = {
 		}
 	}
 }
+
+module.exports = Dao
