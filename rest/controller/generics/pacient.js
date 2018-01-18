@@ -22,7 +22,7 @@ Pacient.new_pacient = function(req, res){
 	//Getting and preparing data
 	data = [var_req.name, var_req.email,var_req.login,var_req.pass,"-void-hash-",parseInt(var_req.type_user)]
 
-	this.generic_dao_request(res,data, Dao_pacient.new_user)
+	User.generic_dao_request(res,data, Dao_pacient.new_user)
 }
 
 

@@ -29,7 +29,7 @@ User.new_user = function(req,res){
 
 	data = [var_req.name, var_req.email,var_req.login,var_req.pass,"-void-hash-",parseInt(var_req.type_user)]
 
-	this.generic_dao_request(res,data,Dao_user.new_user)
+	User.generic_dao_request(res,data,Dao_user.new_user)
 }
 
 module.exports = User;

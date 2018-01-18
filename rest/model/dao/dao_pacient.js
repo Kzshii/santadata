@@ -24,7 +24,7 @@ Dao_pacient.new_pacient = function(param, data, callback){
 	}
 
 	var query = "SELECT new_pacient(?,?,?,?,?,?);"
-	this.mysql_query(query, data, Dao_pacient.callback_new_pacient, par);
+	Dao_pacient.mysql_query(query, data, Dao_pacient.callback_new_pacient, par);
 }
 
 module.exports = Dao_pacient

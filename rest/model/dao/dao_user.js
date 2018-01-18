@@ -41,7 +41,7 @@ Dao_user.new_user = function(param, data, callback){
 	}
 
 	var query = "SELECT new_user(?,?,?,?,?,?);"
-	this.mysql_query(query, data, Dao_user.callback_new_user, par);
+	Dao_user.mysql_query(query, data, Dao_user.callback_new_user, par);
 }
 
 
