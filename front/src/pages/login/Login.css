@@ -38,7 +38,7 @@ form{
     background-repeat: no-repeat;
 }
 
-.input{
+.textInput{
     font-family: Lato;
     font-size: 18px;
     line-height: 1.2;
@@ -52,7 +52,7 @@ form{
     outline: none;
 }
 
-.Entrar{
+#LoginButton{
     font-family: Lato;
     font-size: 16px;
     line-height: 1.5;
@@ -90,26 +90,22 @@ form{
 
 }
 
-#check{
+.check{
     display: inline-block;
-
-
 }
 
 a{
     text-decoration: none;
-   
 }
 
-.Cadastro{
+#Signup{
     outline: none;
     border-bottom: 1px solid #1eabf9;
     font-size: 16px;
     color: #1eabf9;
     line-height: 1.4;
- 
 }
 
-#text-align{
+.text-align{
     text-align: center!important;
 }
