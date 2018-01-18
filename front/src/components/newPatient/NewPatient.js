@@ -138,6 +138,7 @@ class NewPatient extends Component {
               id="patientName"
               value={ this.state.formData.patientName }
               onChange={ this.handleChange }
+              required
             /> <br/>
 
             <label htmlFor="medicalRecord">Prontuário</label>
@@ -148,6 +149,7 @@ class NewPatient extends Component {
               id="medicalRecord"
               value={ this.state.formData.medicalRecord }
               onChange={ this.handleChange }
+              required
             /> <br/>
 
             <label htmlFor="mv">Número MV</label>
@@ -157,6 +159,7 @@ class NewPatient extends Component {
               id="mv"
               value={ this.state.formData.mv }
               onChange={ this.handleChange }
+              required
             /> <br/>
 
             <label htmlFor="birthDate">Data de Nascimento</label>
@@ -166,6 +169,7 @@ class NewPatient extends Component {
               id="birthDate"
               value={ this.state.formData.birthDate }
               onChange={ this.handleChange }
+              required
             /> <br/>
 
             <label htmlFor="age">Idade</label>
@@ -175,15 +179,16 @@ class NewPatient extends Component {
               id="age"
               value={ this.state.formData.age }
               onChange={ this.handleChange }
+              required
             /> <br/>
 
             <label htmlFor="">Sexo</label>
-            <input type="radio" name="gender" id="" value="M" onChange={ this.handleChange } /> Masculino
+            <input type="radio" name="gender" id="" value="M" onChange={ this.handleChange } required /> Masculino
             <input type="radio" name="gender" id="" value="F" onChange={ this.handleChange } /> Feminino
             <br/>
 
             <label htmlFor="ethnicity">Etnia</label>
-            <select name="ethnicity" id="ethnicity" onChange={ this.handleChange } >
+            <select name="ethnicity" id="ethnicity" onChange={ this.handleChange } required >
               <option value="">-- Escolher --</option>
               <option value="0">Branco</option>
               <option value="1">Negro</option>
@@ -217,6 +222,7 @@ class NewPatient extends Component {
               id="telE"
               value={ this.state.formData.telE }
               onChange={ this.handleChange }
+              required
             /> <br/>
 
             <label htmlFor="cel">Celular</label>
@@ -226,6 +232,7 @@ class NewPatient extends Component {
               id="cel"
               value={ this.state.formData.cel }
               onChange={ this.handleChange }
+              required
             /> <br/>
 
             <label htmlFor="address">Endereço</label>
@@ -236,6 +243,7 @@ class NewPatient extends Component {
               id="address"
               value={ this.state.formData.address }
               onChange={ this.handleChange }
+              required
             /> <br/>
 
             <input type="submit" value="Salvar"/>
