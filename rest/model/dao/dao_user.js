@@ -26,7 +26,7 @@ Dao_user.new_user = function(data, callback, param){
 		result = keys.map(function(k){return result[k]})
 		
 		//Setting return data
-		ret.data = iduser:result[0]	
+		ret.data = {iduser:result[0]}
 		if(result.length == 0)
 			ret.success = 0
 
