@@ -53,4 +53,36 @@ Dao_pacient.new_pacient = function(param, data, callback){
 	//Dao_pacient.mysql_query(query, data, Dao_pacient.callback_new_pacient, par);
 }
 
+
+Dao_pacient.search_pacient = function(param, data, callback){
+	//Defining parameter to callback in same class
+	var par = {
+		param: param,
+		callback: callback
+	}
+
+	//TODO: JUST FOR TEST 
+	callback(param,{success:1,data:Pacient})
+
+	//var query = "SELECT new_pacient(?,?,?,?,?,?);"
+	//Dao_pacient.mysql_query(query, data, Dao_pacient.callback_search_pacient, par);
+}
+
+
+Dao_pacient.all_pacients = function(param, data, callback){
+	//Defining parameter to callback in same class
+	var par = {
+		param: param,
+		callback: callback
+	}
+
+	//TODO: JUST FOR TEST 
+	callback(param,{success:1,data:[Pacient]})
+
+	//var query = "SELECT new_pacient(?,?,?,?,?,?);"
+	//Dao_pacient.mysql_query(query, data, Dao_pacient.callback_all_pacients, par);
+}
+
+
+
 module.exports = Dao_pacient

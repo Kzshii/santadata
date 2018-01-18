@@ -20,7 +20,8 @@ Pacient.add = function(req, res){
 	}
 
 	//Getting and preparing data
-	data = [var_req.nome,
+	data = [var_req.iduser,
+	var_req.nome,
 	var_req.nr_prontuario,
 	var_req.nr_mv,
 	var_req.data_nasc,
@@ -35,5 +36,34 @@ Pacient.add = function(req, res){
 	Pacient.generic_dao_request(res,data, Dao_pacient.new_pacient)
 }
 
+
+Pacient.search = function(req, res){
+
+	//Check authentication
+	if(!Pacient.check_requisition(req)){
+		res.send(Pacient.error_message(500,"Bad request"));
+		return
+	}
+
+	//Getting and preparing data
+	data = [var_req.idpacient]
+
+	Pacient.generic_dao_request(res,data, Dao_pacient.search_pacient)
+}
+
+
+Pacient.all = function(req, res){
+
+	//Check authentication
+	if(!Pacient.check_requisition(req)){
+		res.send(Pacient.error_message(500,"Bad request"));
+		return
+	}
+
+	//Getting and preparing data
+	data = []
+
+	Pacient.generic_dao_request(res,data, Dao_pacient.all_pacients)
+}
 
 module.exports = Pacient;
