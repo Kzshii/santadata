@@ -7,6 +7,11 @@ var Base = require( './base_controller.js' );
 
 var Generic = Object.create(Base);
 
+/*
+* Decode data from route
+* @receive req {received route class}
+* @return req {class undecoded}
+*/
 Generic.decode_data = function(req){
 	try{
 		req = atob(req.data)
@@ -18,7 +23,6 @@ Generic.decode_data = function(req){
 
 	return req
 }
-
 
 /*
 * Make a generic dao request
