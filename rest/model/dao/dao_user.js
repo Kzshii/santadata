@@ -37,8 +37,8 @@ Dao_user.callback_new_user = function(param,ret){
 
 Dao_user.new_user = function(param, data, callback){
 	var par = {
-		param = param,
-		callback = callback
+		param: param,
+		callback: callback
 	}
 
 	var query = "SELECT new_user(?,?,?,?,?,?);"
