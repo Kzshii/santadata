@@ -58,7 +58,8 @@ class Login extends Component {
         <div className="loginBox">
 
           <div className="loginHead">
-            SD
+
+            
           </div>
 
           <LoginForm requestLogin={ this.requestLogin } />
