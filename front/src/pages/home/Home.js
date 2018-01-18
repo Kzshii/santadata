@@ -7,16 +7,16 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClickNewPatient = this.handleClickNewPatient.bind(this);
 
     this.state = {
       currentSession: <p>home</p>,
     };
   }
 
-  handleClick(event) {
+  handleClickNewPatient(event) {
     event.preventDefault();
-    this.switchSession(<NewPatient />);
+    this.switchSession( <NewPatient /> );
   }
 
   switchSession(target) {
@@ -29,14 +29,14 @@ class Home extends Component {
 
   render() {
     return(
-      <div>
+      <div className="Home" >
         <h1>Homepage</h1>
-        <button onClick={ this.handleClick } >
+        <button onClick={ this.handleClickNewPatient } >
           Novo Paciente
         </button>
-        <session>
+        <section>
           { this.state.currentSession }
-        </session>
+        </section>
 
       </div>
     );
