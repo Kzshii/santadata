@@ -19,8 +19,18 @@ Pacient.add = function(req, res){
 		return
 	}
 
-	//Getting and preparing data TODO: PEGAR DADOS CORRETOS
-	data = []//[var_req.name, var_req.email,var_req.login,var_req.pass,"-void-hash-",parseInt(var_req.type_user)]
+	//Getting and preparing data
+	data = [var_req.nome,
+	var_req.nr_prontuario,
+	var_req.nr_mv,
+	var_req.data_nasc,
+	var_req.idade,
+	var_req.etnia,
+	var_req.tel1,
+	var_req.tel2,
+	var_req.tel_emerg,
+	var_req.cel,
+	var_req.endereco]
 
 	Pacient.generic_dao_request(res,data, Dao_pacient.new_pacient)
 }
