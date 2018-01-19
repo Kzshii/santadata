@@ -3,45 +3,45 @@ import './PatientList.css';
 
 class PatientList extends Component {
 
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-
-    };
-	}
-
-	componentDidMount(event){
-		/* TODO: */
-	}
-	
-	dbConnect(event) {
-    /* TODO:Connection with db */
-  }
-
   render() {
+   
+    if (this.props.data != null) {
+      
+      console.log("Log da lista",this.props.data.map(
+        function(patient){
+          return patient.name;
+        }
+      ));
 
-    return(
-      <div className="PatientList">
-				{/*this.dbConnect*/}
-        <table>
-					<tr>
-						<th>Nome</th>
-						<th>Sobrenome</th>
-						<th>Idade</th>
-						<th>Número do prontuário</th> 
-						<th>Urgência</th>
-					</tr>
-					<tr>
-						<td>Edson</td>
-						<td>Simões Boldrini</td> 
-						<td>21</td>
-						<td>00000001</td>
-						<td>não ~sinal vermelho~</td>
-					</tr>
-        </table>
-      </div>
-    );
+      return(
+        <div className="PatientList">
+          {/* <h1>Tabela de Pacientes</h1> */}
+          <table>
+            <thead>
+              <tr>
+                <th>Paciente</th>
+                <th>Id</th>
+              </tr>
+            </thead>
+            <tbody>
+              { this.props.data.map(
+                (patient) => {
+                  return(
+                    <tr key={ patient.id } onClick={ this.props.itemAction } >
+                      <td>{ patient.name }</td>
+                      <td>{ patient.id }</td>
+                    </tr>
+                  );
+                }
+              ) }
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+    else{
+      return("pesquisar...")
+    }
   }
 }
 
