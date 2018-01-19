@@ -55,8 +55,8 @@ Dao_patient.callback_get = function(param,ret){
 	
 	//Setting return data
 	ret.data = ret.data[0]
-	if(result.length == 0)
-		ret.success = 0
+	//if(ret.data.length == 0)
+	//	ret.success = 0
 
 	//Returning data
 	//console.log("# Inserted patient: "+ret.data.idpatient)		
@@ -73,8 +73,8 @@ Dao_patient.callback_search = function(param,ret){
 		return
 	}
 
-	if(result.length == 0)
-		ret.success = 0
+	//if(ret.data.length == 0)
+	//	ret.success = 0
 	
 	callback(par,ret)	
 }
