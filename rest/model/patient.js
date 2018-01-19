@@ -15,6 +15,7 @@ var Paciente = {
 
 	//Dados paciente
 	nome: "",
+	cpf: "",
 	nr_prontuario: 0,
 	nr_mv: 0,
 	data_nasc: "",

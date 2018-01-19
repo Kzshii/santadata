@@ -98,7 +98,7 @@ Exame_fisico.data = {
 		},
 
 		//Sangue
-		sange:{
+		sangue:{
 			hemoglobina: 0.0,
 			linfocitos: 0.0,
 			sodio: 0.0,
