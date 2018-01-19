@@ -1,18 +1,18 @@
 /*
-* Dao Paciente
+* Dao patiente
 * 
 * (C) João Carlos Pandolfi Santana - 18/01/2018
 * joaopandolfi@gmail.com
 */
 
 
-var Pacient = require('../paciente.js')
+var patient = require('../patient.js')
 
 //Creating Class
 var Dao = require( './dao.js' );
-var Dao_pacient = Object.create(Dao);
+var Dao_patient = Object.create(Dao);
 
-Dao_pacient.callback_new_pacient = function(param,data){
+Dao_patient.callback_new_patient = function(param,data){
 	var callback = param.callback
 	var par = param.param
 
@@ -39,7 +39,7 @@ Dao_pacient.callback_new_pacient = function(param,data){
 	*/
 }
 
-Dao_pacient.new_pacient = function(param, data, callback){
+Dao_patient.new_patient = function(param, data, callback){
 	//Defining parameter to callback in same class
 	var par = {
 		param: param,
@@ -47,14 +47,14 @@ Dao_pacient.new_pacient = function(param, data, callback){
 	}
 
 	//TODO: JUST FOR TEST 
-	callback(param,{success:1,data:{idpacient:0}})
+	callback(param,{success:1,data:{idpatient:0}})
 
-	//var query = "SELECT new_pacient(?,?,?,?,?,?);"
-	//Dao_pacient.mysql_query(query, data, Dao_pacient.callback_new_pacient, par);
+	//var query = "SELECT new_patient(?,?,?,?,?,?);"
+	//Dao_patient.mysql_query(query, data, Dao_patient.callback_new_patient, par);
 }
 
 
-Dao_pacient.search_pacient = function(param, data, callback){
+Dao_patient.search_patient = function(param, data, callback){
 	//Defining parameter to callback in same class
 	var par = {
 		param: param,
@@ -62,14 +62,14 @@ Dao_pacient.search_pacient = function(param, data, callback){
 	}
 
 	//TODO: JUST FOR TEST 
-	callback(param,{success:1,data:Pacient})
+	callback(param,{success:1,data:patient})
 
-	//var query = "SELECT new_pacient(?,?,?,?,?,?);"
-	//Dao_pacient.mysql_query(query, data, Dao_pacient.callback_search_pacient, par);
+	//var query = "SELECT new_patient(?,?,?,?,?,?);"
+	//Dao_patient.mysql_query(query, data, Dao_patient.callback_search_patient, par);
 }
 
 
-Dao_pacient.all_pacients = function(param, data, callback){
+Dao_patient.all_patients = function(param, data, callback){
 	//Defining parameter to callback in same class
 	var par = {
 		param: param,
@@ -77,12 +77,12 @@ Dao_pacient.all_pacients = function(param, data, callback){
 	}
 
 	//TODO: JUST FOR TEST 
-	callback(param,{success:1,data:[Pacient]})
+	callback(param,{success:1,data:[patient]})
 
-	//var query = "SELECT new_pacient(?,?,?,?,?,?);"
-	//Dao_pacient.mysql_query(query, data, Dao_pacient.callback_all_pacients, par);
+	//var query = "SELECT new_patient(?,?,?,?,?,?);"
+	//Dao_patient.mysql_query(query, data, Dao_patient.callback_all_patients, par);
 }
 
 
 
-module.exports = Dao_pacient
+module.exports = Dao_patient
