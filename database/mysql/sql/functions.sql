@@ -45,7 +45,7 @@ DELIMITER ;
 -- @NOTE: Disable foreign key checks
 -- @returns id_patient
 -- -----------------------------------------------------
-DROP FUNCTION IF EXISTS new_user;
+DROP FUNCTION IF EXISTS new_patient;
 
 DELIMITER //
 CREATE FUNCTION new_patient(iduser_p VARCHAR(45), 
