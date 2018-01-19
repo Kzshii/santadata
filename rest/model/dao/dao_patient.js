@@ -131,7 +131,7 @@ Dao_patient.all = function(param, data, callback){
 	//TODO: JUST FOR TEST 
 	callback(param,{success:1,data:[patient,patient]})
 
-	var query = "SELECT * FROM 'full_patient';"
+	var query = "SELECT * FROM full_patient ;"
 	Dao_patient.mysql_query(query, data, Dao_patient.callback_all, par);
 }
 
