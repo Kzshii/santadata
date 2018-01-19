@@ -62,7 +62,7 @@ Dao_physical_exam.get = function(param, data, callback){
 	}
 
 	//TODO: JUST FOR TEST 
-	callback(param,{success:1,data:physical_exam})
+	callback(param,{success:1,data:physical_exam.data})
 
 	//var query = "SELECT new_patient(?,?,?,?,?,?);"
 	//Dao_physical_exam.mysql_query(query, data, Dao_physical_exam.callback_new, par);
