@@ -13,6 +13,9 @@ var Patient = Object.create(Generic);
 
 Patient.add = function(req, res){
 
+	var var_req = req.body;
+	var_req = Generic.decode_data(var_req)
+
 	//Check authentication
 	if(!Patient.check_requisition(req)){
 		res.send(Patient.error_message(500,"Bad request"));
@@ -38,6 +41,8 @@ Patient.add = function(req, res){
 
 
 Patient.search = function(req, res){
+	var var_req = req.body;
+	var_req = Generic.decode_data(var_req)
 
 	//Check authentication
 	if(!Patient.check_requisition(req)){
@@ -46,13 +51,31 @@ Patient.search = function(req, res){
 	}
 
 	//Getting and preparing data
-	data = [var_req.idpatient]
+	data = [var_req.name]
 
 	Patient.generic_dao_request(res,data, Dao_patient.search_patient)
 }
 
+Patient.get = function(req, res){
+	var var_req = req.body;
+	var_req = Generic.decode_data(var_req)
+
+	//Check authentication
+	if(!Patient.check_requisition(req)){
+		res.send(Patient.error_message(500,"Bad request"));
+		return
+	}
+
+	//Getting and preparing data
+	data = [this.url_data.q_id]
+
+	Patient.generic_dao_request(res,data, Dao_patient.get_patient)
+}
+
 
 Patient.all = function(req, res){
+	var var_req = req.body;
+	var_req = Generic.decode_data(var_req)
 
 	//Check authentication
 	if(!Patient.check_requisition(req)){

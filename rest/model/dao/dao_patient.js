@@ -69,6 +69,21 @@ Dao_patient.search_patient = function(param, data, callback){
 }
 
 
+Dao_patient.get_patient = function(param, data, callback){
+	//Defining parameter to callback in same class
+	var par = {
+		param: param,
+		callback: callback
+	}
+
+	//TODO: JUST FOR TEST 
+	callback(param,{success:1,data:patient})
+
+	//var query = "SELECT new_patient(?,?,?,?,?,?);"
+	//Dao_patient.mysql_query(query, data, Dao_patient.callback_search_patient, par);
+}
+
+
 Dao_patient.all_patients = function(param, data, callback){
 	//Defining parameter to callback in same class
 	var par = {
@@ -77,7 +92,7 @@ Dao_patient.all_patients = function(param, data, callback){
 	}
 
 	//TODO: JUST FOR TEST 
-	callback(param,{success:1,data:[patient]})
+	callback(param,{success:1,data:[patient,patient]})
 
 	//var query = "SELECT new_patient(?,?,?,?,?,?);"
 	//Dao_patient.mysql_query(query, data, Dao_patient.callback_all_patients, par);
