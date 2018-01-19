@@ -79,7 +79,7 @@ RETURNS INT
   
   SELECT LAST_INSERT_ID() INTO @id_people;
 
-  INSERT INTO patient (idpeople,iduser,protuary_number,mv_number) VALUES(
+  INSERT INTO patient (idpeople,iduser,prontuary_number,mv_number) VALUES(
     @id_people,
     iduser,
     nr_prontuario_p,
