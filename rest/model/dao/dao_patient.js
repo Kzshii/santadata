@@ -12,7 +12,7 @@ var patient = require('../patient.js')
 var Dao = require( './dao.js' );
 var Dao_patient = Object.create(Dao);
 
-Dao_patient.callback_new = function(param,data){
+Dao_patient.callback_new = function(param,ret){
 	var callback = param.callback
 	var par = param.param
 
