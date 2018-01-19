@@ -1,0 +1,118 @@
+html {
+	background: #1ca4fc;
+	font-family: Lato;
+
+}
+
+body{
+	    justify-content: center;
+}
+h2{
+	text-align: center;
+}
+
+input{
+     color: #1ca4fc;
+}
+.NewPatient{
+	background: #fff;
+	color: #1ca4fc;
+	width: 40%;
+    margin: 0 25%;
+	border-radius: 30px;
+    justify-content: space-between;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 30px;
+    padding-top: 25px;
+}
+.NewPatient input{
+	font-family: Lato;
+    font-size: 18px;
+    line-height: 1.2;
+    width: 80%;
+    height: 62px;
+    border-radius: 10px;
+    border: 2px solid #1ca4fc;
+    display: flex;
+      outline: none;
+
+   
+}
+
+.NewPatient form input{
+    padding: 0 30px 0 65px;
+}
+
+#age{
+ width: 40%;
+ margin-left: 30%;
+ padding-left: 30px;
+
+}
+
+#birthDate{
+    color: #999;
+    width: 70%;
+    max-width:70%;
+}
+
+.NewPatient .Button{
+	font-family: Lato;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+    width: 100%;
+    height: 62px;
+    border-radius: 10px;
+    background: #1ca4fc;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    
+}
+
+#gender{
+	font-size: 18px;
+    display: inline-block;
+    color: initial;
+    width: auto;
+    height: 30px;
+    margin-left: 30px;
+}
+
+.NewPatientHead {
+    height: 100px;
+    width: 40%;
+    background-image: url("../img/SANTADATA.svg");
+    margin: 0px auto 0 auto;
+    background-repeat: no-repeat;
+}
+
+.same-line{
+    display: table;
+}
+
+.same-line-table{
+    display: table-cell;
+}
+
+#Up{
+    line-height: 3;
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+#ethnicity{
+    margin-left: 65px;
+    font-size: 18px;
+}

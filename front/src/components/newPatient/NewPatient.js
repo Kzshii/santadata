@@ -126,63 +126,84 @@ class NewPatient extends Component {
   render() {
     return(
       <div className="NewPatient" >
+
+        <div className="NewPatientHead">
+        </div>
+
         <h2>Novo Paciente</h2>
 
           <form onSubmit={ this.handleSubmit } >
 
-            <label htmlFor="patientName">Nome</label>
+             {/*<label htmlFor="patientName">Nome</label>*/}
+
             <input
               className="inputText "
               type="text"
               name="patientName"
               id="patientName"
+              placeholder="Nome"
               value={ this.state.formData.patientName }
               onChange={ this.handleChange }
             /> <br/>
 
-            <label htmlFor="medicalRecord">Prontuário</label>
+            <label htmlFor="medicalRecord"></label>
+
             <input
               className="inputText "
               type="text"
               name="medicalRecord"
               id="medicalRecord"
+              placeholder= "Prontuário"
               value={ this.state.formData.medicalRecord }
               onChange={ this.handleChange }
             /> <br/>
 
-            <label htmlFor="mv">Número MV</label>
+          <label htmlFor="mv"></label>
+
             <input
               type="number"
               name="mv"
               id="mv"
+              placeholder="Número MV"
               value={ this.state.formData.mv }
               onChange={ this.handleChange }
             /> <br/>
 
-            <label htmlFor="birthDate">Data de Nascimento</label>
+
+            <div className="same-line">
+
+            <div className="same-line-table">
+            <label htmlFor="birthDate"></label>
             <input
               type="date"
               name="birthDate"
               id="birthDate"
+              placeholder="Data de Nascimento"
               value={ this.state.formData.birthDate }
               onChange={ this.handleChange }
-            /> <br/>
+            /> 
+            </div>
 
-            <label htmlFor="age">Idade</label>
+            <div className="same-line-table">
+            <label htmlFor="age"></label>
             <input
               type="number"
               name="age"
               id="age"
+              placeholder="Idade"
               value={ this.state.formData.age }
               onChange={ this.handleChange }
             /> <br/>
+            </div>
 
-            <label htmlFor="">Sexo</label>
-            <input type="radio" name="gender" id="" value="M" onChange={ this.handleChange } /> Masculino
-            <input type="radio" name="gender" id="" value="F" onChange={ this.handleChange } /> Feminino
+            </div>
+
+            <label htmlFor="" id="Up"><strong> Sexo </strong></label>
+            <input type="radio" name="gender" id="gender" value="M" onChange={ this.handleChange } /><strong> Masculino</strong>
+            <input type="radio" name="gender" id="gender" value="F" onChange={ this.handleChange } /> <strong>Feminino</strong>
             <br/>
 
-            <label htmlFor="ethnicity">Etnia</label>
+            <label htmlFor="ethnicity" id="Up"><strong>Etnia</strong></label>
             <select name="ethnicity" id="ethnicity" onChange={ this.handleChange } >
               <option value="">-- Escolher --</option>
               <option value="0">Branco</option>
@@ -192,53 +213,50 @@ class NewPatient extends Component {
             </select>
             <br/>
 
-            <label htmlFor="tel1">Telefone 1</label>
+            <label htmlFor="tel1"></label>
             <input
               type="tel"
               name="tel1"
               id="tel1"
+              placeholder="Telefone"
               value={ this.state.formData.tel1 }
               onChange={ this.handleChange }
             /> <br/>
 
-            <label htmlFor="tel2">Telefone 2</label>
-            <input
-              type="tel"
-              name="tel2"
-              id="tel2"
-              value={ this.state.formData.tel2 }
-              onChange={ this.handleChange }
-            /> <br/>
-
-            <label htmlFor="telE">Telefone para emergências</label>
-            <input
-              type="tel"
-              name="telE"
-              id="telE"
-              value={ this.state.formData.telE }
-              onChange={ this.handleChange }
-            /> <br/>
-
-            <label htmlFor="cel">Celular</label>
+            <label htmlFor="cel"></label>
             <input 
               type="tel"
               name="cel"
               id="cel"
+              placeholder="Celular"
               value={ this.state.formData.cel }
               onChange={ this.handleChange }
             /> <br/>
 
-            <label htmlFor="address">Endereço</label>
+            <label htmlFor="telE"> </label>
+            <input
+              type="tel"
+              name="telE"
+              id="telE"
+              placeholder="Telefone para Emergências"
+              value={ this.state.formData.telE }
+              onChange={ this.handleChange }
+            /> <br/>
+
+            
+
+            <label htmlFor="address"></label>
             <input
               className="inputText "
               type="text"
               name="address"
               id="address"
+              placeholder="Endereço"
               value={ this.state.formData.address }
               onChange={ this.handleChange }
             /> <br/>
 
-            <input type="submit" value="Salvar"/>
+            <input className="Button" type="submit" value="Salvar"/>
 
           </form>
       </div>

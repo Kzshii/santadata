@@ -5,6 +5,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 
 
+
 class LoginForm extends Component {
 
   constructor(props) {
@@ -46,28 +47,36 @@ class LoginForm extends Component {
 
   render() {
 
-
+var styles = {
+  textAlign:'center',
+};
 
     return(
       <div className="LoginForm">
         <form onSubmit={ this.handleSubmit }  >
 
-
-        
+          
           <input className="textInput" type="text" placeholder="Usuario" value={ this.state.user } onChange={ this.handleChangeEmail }  /> <br/>
+          <span className="focus-input100"></span>
+          <FontAwesomeIcon icon="faUser"/>
+          <span className="symbol-input100"></span>
+          <span className="lnr lnr-envelope"></span>
+            
+
 
           <input className="textInput"type="password" placeholder="Senha" value={ this.state.pass } onChange={ this.handleChangePassword } /> <br/>
           
           <input className="checkbox check" type="checkbox" id="rememberUserCheck" />
           <label className="remember check" htmlFor="rememberUserCheck">Lembre de mim</label> <br/>
-          <FontAwesomeIcon icon="rocket"/>
 
           <input id="LoginButton" type="submit" value="Entrar" />
 
-          <a id="Signup" className="text-align" href="#">
+          <a id="Signup" style={styles} className="text-align" href="#">
               Novo Cadastro
           </a>
+
         </form>
+
       </div>
     );
   }
