@@ -10,7 +10,6 @@ class PatientList extends Component {
 
 	componentDidMount(event){
     /* TODO: */
-    {console.log(this.props)}
 	}
 	
 	dbConnect(event) {
@@ -18,14 +17,32 @@ class PatientList extends Component {
   }
 
   render() {
-    {console.log(this.props.patients)}
+   
     if (this.props.patients != null){
+      {console.log(this.props.patients.map(
+        function(patient){
+          return patient.Name
+        }
+      ))}
       return(
         <div className="patientList">
           <h1>Tabela de Pacientes</h1>
           <table>
+            <thead>
             <tr><th>Paciente</th><th>Id</th></tr> 
-            
+            </thead>
+            <tbody>
+            {this.props.patients.map(
+              function(patient){
+                return(
+                  <tr key={patient.Id}>
+                    <td>{patient.Name}</td>
+                    <td>{patient.Id}</td>
+                  </tr>
+                )
+              }
+            )}
+            </tbody>
           </table>
         </div>
       );

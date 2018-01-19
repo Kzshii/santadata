@@ -98,15 +98,15 @@ class SearchPatient extends Component{
                     <input 
                     className="patientName"
                     type="text"
-                     id="patientName" 
-                     name="patientName"
-                     value={this.state.patientSearch.name} 
+                    id="patientName" 
+                    name="patientName"
+                    value={this.state.patientSearch.name} 
                     onChange={this.handleChange}>
                     </input>
                     <input type="submit" value="Buscar"></input>
                 </form>
 
-                 <PatientList patients={this.state.patientShow}/>
+                 <PatientList patients={this.state.patientsShow}/>
                 
             </div>
 
