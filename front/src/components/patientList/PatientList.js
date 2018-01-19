@@ -3,45 +3,37 @@ import './PatientList.css';
 
 class PatientList extends Component {
 
-  constructor(props) {
-    super(props);
-	
-	}
-
-	componentDidMount(event){
-    /* TODO: */
-	}
-	
-	dbConnect(event) {
-    /* TODO:Connection with db */
-  }
-
   render() {
    
-    if (this.props.patients != null){
-      {console.log(this.props.patients.map(
+    if (this.props.data != null) {
+      
+      console.log("Log da lista",this.props.data.map(
         function(patient){
-          return patient.Name
+          return patient.name;
         }
-      ))}
+      ));
+
       return(
-        <div className="patientList">
-          <h1>Tabela de Pacientes</h1>
+        <div className="PatientList">
+          {/* <h1>Tabela de Pacientes</h1> */}
           <table>
             <thead>
-            <tr><th>Paciente</th><th>Id</th></tr> 
+              <tr>
+                <th>Paciente</th>
+                <th>Id</th>
+              </tr>
             </thead>
             <tbody>
-            {this.props.patients.map(
-              function(patient){
-                return(
-                  <tr key={patient.Id}>
-                    <td>{patient.Name}</td>
-                    <td>{patient.Id}</td>
-                  </tr>
-                )
-              }
-            )}
+              { this.props.data.map(
+                (patient) => {
+                  return(
+                    <tr key={ patient.id } onClick={ this.props.itemAction } >
+                      <td>{ patient.name }</td>
+                      <td>{ patient.id }</td>
+                    </tr>
+                  );
+                }
+              ) }
             </tbody>
           </table>
         </div>
