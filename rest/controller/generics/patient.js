@@ -37,7 +37,7 @@ Patient.add = function(req, res){
 	var_req.cel,
 	var_req.endereco]
 
-	Patient.generic_dao_request(res,data, Dao_patient.new_patient)
+	Patient.generic_dao_request(res,data, Dao_patient.new)
 }
 
 
@@ -54,7 +54,7 @@ Patient.search = function(req, res){
 	//Getting and preparing data
 	data = [var_req.name]
 
-	Patient.generic_dao_request(res,data, Dao_patient.search_patient)
+	Patient.generic_dao_request(res,data, Dao_patient.search)
 }
 
 Patient.get = function(req, res){
@@ -70,7 +70,7 @@ Patient.get = function(req, res){
 	//Getting and preparing data
 	data = [this.url_data.q_id]
 
-	Patient.generic_dao_request(res,data, Dao_patient.get_patient)
+	Patient.generic_dao_request(res,data, Dao_patient.get)
 }
 
 
@@ -87,7 +87,7 @@ Patient.all = function(req, res){
 	//Getting and preparing data
 	data = []
 
-	Patient.generic_dao_request(res,data, Dao_patient.all_patients)
+	Patient.generic_dao_request(res,data, Dao_patient.all)
 }
 
 module.exports = Patient;
