@@ -10,7 +10,7 @@ module.exports = function (app) {
 	var c_patient = require( '../../controller/generics/patient' );
 
 	//Herança
-	var Pacient = Object.create(Base_generic);
+	var Patient = Object.create(Base_generic);
 	
 
 	Patient.init(app);
