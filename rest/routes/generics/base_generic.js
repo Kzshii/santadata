@@ -9,13 +9,15 @@ var id_route = "{id}/";
 
 var rx = require( '../../libs/regex_patterns' );
 
+end_route = end_route.replace("{id_user}",rx.base_64).replace("{hash}",rx.base_64)
+id_route = id_route.replace("{id}",rx.id) + end_route
+
 var Generic = {
 	app: null,
 
-
 	sufix: {
-		end_route: end_route.replace("{id_user}",rx.base_64).replace("{hash}",rx.base_64),
-		id_route: id_route.replace("{id}",rx.base_64) + end_route,
+		end_route: end_route,
+		id_route: id_route,
 		none:""
 	},
 
