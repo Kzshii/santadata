@@ -101,7 +101,7 @@ Dao_patient.search = function(param, data, callback){
 		callback: callback
 	}
 
-	var query = "SELECT * FROM full_patient WHERE name LIKE %?%;"
+	var query = "SELECT * FROM full_patient WHERE name LIKE ?;"
 	Dao_patient.mysql_query(query, data, Dao_patient.callback_search, par);
 }
 
