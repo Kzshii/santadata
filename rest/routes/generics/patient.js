@@ -17,7 +17,7 @@ module.exports = function (app) {
 
 	Patient.add_route("/gen/new/patient/", c_patient.add, Patient.sufix.end_route, Patient.type.post)
 	Patient.add_route("/gen/search/patient/", c_patient.search, Patient.sufix.end_route, Patient.type.post)
-	Patient.add_route("/gen/get/patient/", c_patient.get, Patient.sufix.end_route, Patient.type.post)
+	Patient.add_route("/gen/get/patient/", c_patient.get, Patient.sufix.id_route, Patient.type.post)
 	Patient.add_route("/gen/all/patient/", c_patient.all, Patient.sufix.end_route, Patient.type.post)
 	Patient.add_route("/gen/update/patient/", c_patient.update, Patient.sufix.id_route, Patient.type.post)
 	
