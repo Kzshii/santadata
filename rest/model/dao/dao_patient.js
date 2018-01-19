@@ -38,7 +38,7 @@ Dao_patient.callback_new = function(param,data){
 	
 }
 
-Dao_patient.callback_get = function(param,data){
+Dao_patient.callback_get = function(param,ret){
 	var callback = param.callback
 	var par = param.param
 
@@ -63,7 +63,7 @@ Dao_patient.callback_get = function(param,data){
 	callback(par,ret)	
 }
 
-Dao_patient.callback_search = function(param,data){
+Dao_patient.callback_search = function(param,ret){
 	var callback = param.callback
 	var par = param.param
 

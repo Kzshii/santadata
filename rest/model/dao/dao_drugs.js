@@ -11,7 +11,7 @@ var drugs = require('../drugs.js')
 var Dao = require( './dao.js' );
 var Dao_drugs = Object.create(Dao);
 
-Dao_drugs.callback_new = function(param,data){
+Dao_drugs.callback_new = function(param,ret){
 	var callback = param.callback
 	var par = param.param
 
