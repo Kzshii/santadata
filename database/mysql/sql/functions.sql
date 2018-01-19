@@ -67,7 +67,7 @@ RETURNS INT
 
   SET FOREIGN_KEY_CHECKS=0;
   INSERT INTO people (name,cpf,dtnasc,tel1,tel2,tel_emerg,cel,address) VALUES(
-    name_p,
+    nome_p,
     cpf_p,
     data_nasc_p,
     tel1_p,
