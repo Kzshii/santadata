@@ -116,7 +116,7 @@ Dao_patient.get = function(param, data, callback){
 		callback: callback
 	}
 
-	var query = "SELECT * FROM 'full_patient' WHERE idpatient = ?;"
+	var query = "SELECT * FROM full_patient WHERE idpatient = ?;"
 	Dao_patient.mysql_query(query, data, Dao_patient.callback_search, par);
 }
 
