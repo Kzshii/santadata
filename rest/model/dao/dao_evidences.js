@@ -1,7 +1,7 @@
 /*
-* Dao Usuario
+* Dao Evidencias
 * 
-* (C) João Carlos Pandolfi Santana - 18/01/2018
+* (C) João Carlos Pandolfi Santana - 19/01/2018
 * joaopandolfi@gmail.com
 */
 
