@@ -23,7 +23,7 @@ Patient.add = function(req, res){
 	}
 
 	//Getting and preparing data
-	data = [var_req.iduser,
+	data = [var_req.id_register,
 	var_req.nome,
 	var_req.cpf,
 	var_req.nr_prontuario,
