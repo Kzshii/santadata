@@ -113,7 +113,7 @@ class NewPatient extends Component {
 
     axios.defaults.baseURL = 'https://31.220.54.251:8443/';
     axios.post(
-      'gen/new/pacient/1/MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=/', /* this.props.user.id+this.props.user.hash, */
+      'gen/new/patient/1/MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=/', /* this.props.user.id+this.props.user.hash, */
       "data="+data
     )
     .then(
