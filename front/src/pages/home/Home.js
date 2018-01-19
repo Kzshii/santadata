@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import NewPatient from './../../components/newPatient/NewPatient';
+import SearchPatient from './../../components/searchPatient/SearchPatient';
 
 class Home extends Component {
   
@@ -10,7 +11,7 @@ class Home extends Component {
     this.handleClickNewPatient = this.handleClickNewPatient.bind(this);
 
     this.state = {
-      currentSession: <p>home</p>,
+      currentSession: <SearchPatient/>,
     };
   }
 
