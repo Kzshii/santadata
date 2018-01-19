@@ -68,7 +68,7 @@ Patient.get = function(req, res){
 	}
 
 	//Getting and preparing data
-	data = [this.url_data.q_id]
+	data = [Patient.url_data.q_id]
 
 	Patient.generic_dao_request(res,data, Dao_patient.get)
 }
