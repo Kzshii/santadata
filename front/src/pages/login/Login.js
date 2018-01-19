@@ -21,7 +21,7 @@ class Login extends Component {
 
     var data = Base64.encode({
       'user': loginData.user,
-      'pass': loginData.pass
+      'pass': loginData.pass /* TODO: Passar md5 na pass. Path: ./rest/libs/helper/md5.js */
     });
 
     console.log("login data",loginData);

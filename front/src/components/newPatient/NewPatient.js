@@ -13,6 +13,7 @@ class NewPatient extends Component {
     this.state = {
       formData: {
         patientName: '',
+        cpf: '',
         medicalRecord: '',
         mv: '',
         birthDate: '',
@@ -37,6 +38,9 @@ class NewPatient extends Component {
     switch(event.target.name){
       case 'patientName':
         formData.patientName = value;
+        break;
+      case 'cpf':
+        formData.cpf = value;
         break;
       case 'medicalRecord':
         formData.medicalRecord = value;
@@ -92,6 +96,7 @@ class NewPatient extends Component {
       {
         id_register: '1',
         nome: formData.patientName,
+        cpf: formData.cpf,
         nr_prontuario: formData.medicalRecord,
         nr_mv: formData.mv,
         data_nasc: formData.birthDate,
@@ -139,6 +144,15 @@ class NewPatient extends Component {
               value={ this.state.formData.patientName }
               onChange={ this.handleChange }
               required
+            /> <br/>
+
+            <label htmlFor="cpf">CPF</label>
+            <input
+              type="text"
+              name="cpf"
+              id="cpf"
+              value={ this.state.formData.cpf }
+              onChange={ this.handleChange }
             /> <br/>
 
             <label htmlFor="medicalRecord">Prontuário</label>
