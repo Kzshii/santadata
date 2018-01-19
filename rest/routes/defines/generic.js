@@ -6,7 +6,8 @@
 module.exports = function (app) {
 
 	app = require('../generics/drugs')(app);
-	app = require('../generics/pacient')(app);
+	app = require('../generics/exams')(app);
+	app = require('../generics/patient')(app);
 	app = require('../generics/user')(app);
 
 	return app;

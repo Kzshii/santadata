@@ -1,23 +1,28 @@
+/*
+* Indexa as rotas de controle dos medicamentos
+* (C) João Carlos Pandolfi Santana - 19/01/2018
+* joaopandolfi@gmail.com
+*/
+
+
 module.exports = function (app) {
 
-	var rx = require( '../../libs/regex_patterns' );
-	var drugs = require( '../../controller/generics/drugs' );
+	var Base_generic = require( './base_generic.js' );
+	var c_drugs = require( '../../controller/generics/physical_exam');
+
+	//Herança
+	var Drugs = Object.create(Base_generic);
 	
-	//==> Routes
-	var end_route = "{id_user}/{hash}/";
-	var id_route = "{id}/";
+	Drugs.init(app);
+
+	//Ministred Drugs
+	Drugs.add_route("/gen/new/drug/", c_drugs.add, Drugs.sufix.end_route, Drugs.type.post)
+	Drugs.add_route("/gen/search/drug/", c_drugs.search, Drugs.sufix.end_route, Drugs.type.post)
+	Drugs.add_route("/gen/get/drug/", c_drugs.get, Drugs.sufix.id_route, Drugs.type.post)
+	//Drugs.add_route("/gen/all/patient/", c_drugs.all, Drugs.sufix.end_route, Drugs.type.post)
+	Drugs.add_route("/gen/update/drug/", c_drugs.update, Drugs.sufix.id_route, Drugs.type.post)
 	
-	end_route = end_route.replace("{id_user}",rx.base_64).replace("{hash}",rx.base_64);
-	id_route = id_route.replace("{id}",rx.id) + end_route;
+	//Other exam
 
-	//New drug
-	app.route("/gen/new/drug/"+end_route).all(drugs.add);//post();
-
-	//Search
-	app.route("/gen/search/drug/"+id_route).all(drugs.search);
-
-	//Update
-	app.route("/gen/update/drug/"+id_route).all(drugs.update);	
-
-	return app;
+	return Drugs.prepare();
 };
