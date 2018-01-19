@@ -40,7 +40,7 @@ class PatientList extends Component {
       );
     }
     else{
-      return("pesquisar...")
+      return("");
     }
   }
 }

@@ -51,7 +51,7 @@ class SearchPatient extends Component {
     
     axios.defaults.baseURL = 'https://31.220.54.251:8443/';
     
-    axios.post(
+    /* axios.post(
       'gen/search/patient/1/MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=/', // this.props.user.id+this.props.user.hash,
       'data='+Base64.encode(
         {
@@ -67,7 +67,7 @@ class SearchPatient extends Component {
           data: response.data.data,
         });
       }
-    ).catch();
+    ).catch(); */
     
     /* test block */
     return({

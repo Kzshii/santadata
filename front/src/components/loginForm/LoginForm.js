@@ -15,8 +15,8 @@ class LoginForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     
     this.state = {
-      // user: 'joaopandolfi', /* test only */
-      // pass: '123',          /* test only */
+      user: 'joaopandolfi', /* test only */
+      pass: '123',          /* test only */
       remember: false,
     };
   }
@@ -45,8 +45,6 @@ class LoginForm extends Component {
   }
 
   render() {
-
-
 
     return(
       <div className="LoginForm">

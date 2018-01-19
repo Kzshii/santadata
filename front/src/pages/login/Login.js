@@ -29,13 +29,13 @@ class Login extends Component {
 
     axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 
-    /* Dados de teste */
+    /* Bypass */
     this.props.onLogin(
       {
         user_id: 1,
-        type_user: 'medic',
-        hash: '12345',
-        name: 'jhon',
+        type_user: 1,
+        hash: 'MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=',
+        name: 'João Carlos',
         picture: 'none',
       }
     );
@@ -47,9 +47,9 @@ class Login extends Component {
     .then(
       function(response) {
         if(response.data.success === 1){
-          // TODO: login success
+          this.props.onLogin(response.data.data);
         } else if(response.data.success === 0){
-          // TODO: login failed
+          alert("Verifique seu usuário e senha!");
         } else {
           // TODO: falha na rota
         }
@@ -57,7 +57,7 @@ class Login extends Component {
     )
     .catch(
       function(error) {
-        console.log(error);
+        alert(error);
       }
     ); */
   }
@@ -65,7 +65,7 @@ class Login extends Component {
   render() {
 
     return(
-      <div className="loginPage">
+      <div className="LoginPage">
         <div className="loginBox">
 
           <div className="loginHead">

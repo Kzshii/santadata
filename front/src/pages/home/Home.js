@@ -8,7 +8,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.handleClickNewPatient = this.handleClickNewPatient.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.switchSession = this.switchSession.bind(this);
 
     this.state = {
@@ -16,9 +16,18 @@ class Home extends Component {
     };
   }
 
-  handleClickNewPatient(event) {
+  handleClick(event) {
     event.preventDefault();
-    this.switchSession( <NewPatient  /> );
+
+    switch(event.target.name) {
+      case 'newPatient':
+        this.switchSession( <NewPatient  /> );
+        break;
+      case 'searchPatient':
+        this.switchSession(<SearchPatient switchSession={ this.switchSession } />);
+    }
+
+    
   }
 
   switchSession(target) {
@@ -33,9 +42,12 @@ class Home extends Component {
   render() {
     return(
       <div className="Home" >
-        <h1>Homepage</h1>
-        <button onClick={ this.handleClickNewPatient } >
+        <h1>Bem vindo {this.props.userData.name } </h1>
+        <button name="newPatient" onClick={ this.handleClick } >
           Novo Paciente
+        </button>
+        <button name="searchPatient" onClick={ this.handleClick } >
+          Buscar Paciente
         </button>
         <section>
           { this.state.currentSession }

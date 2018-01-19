@@ -45,7 +45,7 @@ class App extends Component{
         );
       case "home":
         return(
-          <Home />
+          <Home userData={ this.state.activeUser } />
         );
       default:
         return(
