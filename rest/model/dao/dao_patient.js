@@ -1,5 +1,5 @@
 /*
-* Dao patiente
+* Dao paciente
 * 
 * (C) João Carlos Pandolfi Santana - 18/01/2018
 * joaopandolfi@gmail.com
