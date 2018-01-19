@@ -46,13 +46,14 @@ Patient.search = function(req, res){
 	var_req = Generic.decode_data(var_req)
 
 	//Check authentication
-	if(!Patient.check_requisition(req)){
+	if(!Patient.check_requisition(req) || var_req.name == null){
 		res.send(Patient.error_message(500,"Bad request"));
 		return
 	}
 
 	//Getting and preparing data
-	data = [var_req.name]
+	regex = "%{data}%"
+	data = [regex.replace("{data}",var_req.name)]
 
 	Patient.generic_dao_request(res,data, Dao_patient.search)
 }
