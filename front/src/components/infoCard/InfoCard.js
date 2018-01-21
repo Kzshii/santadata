@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './infoCard.css';
+import Button from './../button/Button';
+import imgDefault from './../../pages/img/user.png'
 
 class InfoCard extends Component {
 
@@ -13,13 +15,22 @@ class InfoCard extends Component {
 
     if((this.props.data) != null){
 
-      const date= new Date(this.props.data.dtnasc).toLocaleDateString() /* passando data para formato padrão */
-      
+     const date= new Date(this.props.data.dtnasc).toLocaleDateString() /* passando data para formato padrão */
+
+     if ((this.props.data.picture)){
+       var imgUser= this.props.data.picture       
+     }else{
+       
+       var imgUser= imgDefault
+     }
+
     return(
+      
       <div className="InfoCard">
 
-        <div className="patientImg">
-          <span>Imagem Aqui...</span>
+        <div className="patientImgBox">
+         
+          <img className="patientImg" src={imgUser} />
         </div>
 
        <div className="pacientName">
