@@ -3,23 +3,24 @@ import './PatientProfile.css';
 import InfoCard from './../infoCard/InfoCard';
 import Base64 from './../../lib/base64';
 import axios from 'axios';
-
+import Button from './../button/Button';
 
 class PatientProfile extends Component {
 
   constructor(props){
 
+    
     super(props)
+    this.searchPatient = this.searchPatient.bind(this);
 
-      
     this.state= {
       userData: null,
 
     }
+  }
 
-    this.searchPatient(1)
-    
-
+  componentDidMount(){
+    this.searchPatient(this.props.id)
   }
 
   searchPatient(id) {
@@ -37,41 +38,29 @@ class PatientProfile extends Component {
       (response)=>{
         this.setState({
           userData: response.data.data[0]
+          
         })
-
-        console.log(this.state)
+        console.log(this.state.userData)
       }
     ).catch(); 
     
-    
-    
-    /* test block */
-  /*   return({
-      data: [
-        {name: "Arthur", id: "55"},{name: "Arthur Cristo", id: "58"}
-      ]
-    }); */
   }
-
-
-
-
-
-
-
-
 
   render() {
     return(
       <div className="PatientProfile">
         <div className="patientData">
-          <InfoCard data="" />
+        <InfoCard data={this.state.userData} />
         </div>
         <div className="allergies"></div>
         <div className="currentState"></div>
         <div className="ICFER"></div>
         <div className="comorbidities"></div>
         <div className="timeLine"></div>
+
+      
+
+
       </div>
     );
   }
