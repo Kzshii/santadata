@@ -14,8 +14,7 @@ class InfoCard extends Component {
     if((this.props.data) != null){
 
       const date= new Date(this.props.data.dtnasc).toLocaleDateString() /* passando data para formato padrão */
-
-      alert(date)
+      
     return(
       <div className="InfoCard">
 
@@ -61,10 +60,6 @@ class InfoCard extends Component {
 
       </div> 
       
-
-      
-
-
     );
     }else{
       return(
