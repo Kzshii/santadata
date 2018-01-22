@@ -3,6 +3,7 @@ import './SearchPatient.css';
 import Base64 from './../../lib/base64';
 import axios from 'axios';
 import PatientList from './../../components/patientList/PatientList';
+import PatientProfile from './../patientProfile/PatientProfile';
 
 class SearchPatient extends Component {
   
@@ -96,9 +97,9 @@ class SearchPatient extends Component {
     
   }
 
-  openPatient() {
-    this.props.switchSession(/* TODO: Setar a sessão para  */);
-  }
+  openPatient(patientId) {
+    this.props.switchSession( <PatientProfile id={patientId} switchSession={this.props.switchSession}/> );
+  } 
   
   render() {
     return(

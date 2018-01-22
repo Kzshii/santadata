@@ -24,7 +24,9 @@ class Home extends Component {
         this.switchSession( <NewPatient  /> );
         break;
       case 'searchPatient':
-        this.switchSession(<SearchPatient switchSession={ this.switchSession } />);
+        this.switchSession( <SearchPatient switchSession={ this.switchSession } /> );
+      default:
+        break;
     }
 
     
@@ -37,6 +39,7 @@ class Home extends Component {
         currentSession: target,
       }
     );
+    console.log(this.state.currentSession)
   }
 
   render() {
