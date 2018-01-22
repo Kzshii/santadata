@@ -4,12 +4,14 @@ import InfoCard from './../infoCard/InfoCard';
 import Base64 from './../../lib/base64';
 import axios from 'axios';
 import Button from './../button/Button';
+import NewConsult from './../newConsult/NewConsult';
 
 class PatientProfile extends Component {
 
   constructor(props) {
     super(props);
     this.searchPatient = this.searchPatient.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
       patientData: null,
@@ -52,7 +54,9 @@ class PatientProfile extends Component {
       <div className="PatientProfile">
 
         <h1>Perfil do Paciente</h1>
-        <input type="submit" value="newConsult"/>
+        <button name="newConsult" onClick={this.handleSubmit}>
+          NovaConsulta
+        </button>
         <div className="patientData">
           <InfoCard data={ this.state.patientData } />
         </div>

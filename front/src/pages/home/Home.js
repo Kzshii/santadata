@@ -39,6 +39,7 @@ class Home extends Component {
         currentSession: target,
       }
     );
+    console.log(this.state.currentSession)
   }
 
   render() {
