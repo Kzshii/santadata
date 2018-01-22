@@ -41,12 +41,18 @@ class PatientProfile extends Component {
     ).catch();
   }
 
+  handleSubmit(event){
+    event.preventDefault();
+
+    this.props.switchSession(<NewConsult patient={this.props.patientData}/>)
+  }
+
   render() {
     return(
       <div className="PatientProfile">
 
         <h1>Perfil do Paciente</h1>
-
+        <input type="submit" value="newConsult"/>
         <div className="patientData">
           <InfoCard data={ this.state.patientData } />
         </div>

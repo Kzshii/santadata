@@ -98,7 +98,7 @@ class SearchPatient extends Component {
   }
 
   openPatient(patientId) {
-    this.props.switchSession( <PatientProfile id={patientId} /> );
+    this.props.switchSession( <PatientProfile id={patientId} switchSession={this.props.switchSession}/> );
   } 
   
   render() {
