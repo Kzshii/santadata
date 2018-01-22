@@ -10,18 +10,15 @@ class Anamnese extends Component {
 		this.handleChange = this.handleChange.bind(this);
         
     this.state = {
-			prepare: {
-
-			},
-			'formData': {
-
-			},
+			prepare: {},
+			formData: {},
     }
 	}
 	
-	componentWillMount(){
+	componentWillMount() {
+		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
-			"",
+			"prepare/anamnese/",
 			{}
 		).then(
 			function(response) {
@@ -70,16 +67,12 @@ class Anamnese extends Component {
 	}
 
 	handleChange(event) {
-		console.log("ELEMENTO",event.target);
 		let formData = this.state.formData;
-		const state = 'formData.'+event.target.name;
-		console.log("target do state",event.target.name);
-
-		this.setState(
-			{
-				formData: event.target.value
-			}
-		);
+		formData[event.target.name] = event.target.value;
+		this.setState({
+			formData: formData,
+		});
+		console.log("STATE", this.state);
 	}
 
 	render(){
@@ -89,14 +82,14 @@ class Anamnese extends Component {
 
           <form onSubmit={ this.handleSubmit } >
 
-						<label htmlFor="mainComplaint">Queixa principal:</label>
-						<select name="mainComplaint" id="mainComplaint" onChange={ this.handleChange } required >
+						<label htmlFor="qp_type">Queixa principal:</label>
+						<select name="qp_type" id="qp_type" onChange={ this.handleChange } required >
 							<option value="">-- Escolher --</option>
 							{
 								this.state.prepare.qp_type.map(
 									(qp_type) => {
 										return(
-											<option value={ qp_type.id }>{ qp_type.label }</option>
+											<option key={ qp_type.id } value={ qp_type.id }>{ qp_type.label }</option>
 										);
 									}
 								)
@@ -104,24 +97,25 @@ class Anamnese extends Component {
 						</select>
 						<br/>
 
-						<label htmlFor="mainComplaintHistory">História da doença atual:</label>
-            <input
+						<label htmlFor="hda">História da doença atual:</label>
+            <textarea
               className="inputText "
               type="text"
-              name="mainComplaintHistory"
-              id="mainComplaintHistory"
+              name="hda"
+              id="hda"
+							value={ this.state.formData.hda }
               onChange={ this.handleChange }
               required
-            /> 
+            />
 						<br/>
 						
-						<label htmlFor="patologicHistory">História patológica:</label>
+						<label htmlFor="hist_pat">História patológica:</label>
 						{ 
 							this.state.prepare.hist_pat.map(
 								(hist_pat) => {
 									return(
-										<div>
-											<input type="checkbox" name="hist_pat" value={ hist_pat.id } />
+										<div key={ hist_pat.id }>
+											<input type="checkbox" name="hist_pat" value={ hist_pat.id } onChange={ this.handleChange } />
 											<label htmlFor="">{ hist_pat.label }</label>
 										</div>
 									);
@@ -131,12 +125,12 @@ class Anamnese extends Component {
 						<br/>
 						
 						<label htmlFor="fisiologicHistory">História fisiológica:</label>
-						<select name="fisiologicHistory" id="fisiologicHistory" onChange={ this.handleChange } required >
+						<select name="hist_fis" id="fisiologicHistory" onChange={ this.handleChange } required >
 							{
 								this.state.prepare.hist_fis.map(
 									(hist_fis) => {
 										return(
-											<option value={ hist_fis.id }>{ hist_fis.label }</option>
+											<option key={ hist_fis.id } value={ hist_fis.id }>{ hist_fis.label }</option>
 										);
 									}
 								)
