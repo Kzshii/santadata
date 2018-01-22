@@ -3,7 +3,7 @@ import './Anamnese.css';
 import Base64 from '../../lib/base64';
 import axios from 'axios';
 
-class Anamnese extends Comment{
+class Anamnese extends Component {
   constructor(props){
     super(props);
         
