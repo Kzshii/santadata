@@ -15,18 +15,18 @@ class Anamnese extends Component {
 	render(){
 		return(
 			<div className="Anamnese">
-				<h2>Novo Paciente</h2>
+				<h2>Anamnese</h2>
 
           <form onSubmit={ this.handleSubmit } >
 
 						<label htmlFor="mainComplaint">Queixa principal:</label>
-							<select name="mainComplaint" id="mainComplaint" onChange={ this.handleChange } required >
-								<option value="">-- Escolher --</option>
-								<option value="0">Dor torácica</option>
-								<option value="1">Dispneia</option>
-								<option value="2">Síncope</option>
-								<option value="3">Palpitações</option>
-							</select>
+						<select name="mainComplaint" id="mainComplaint" onChange={ this.handleChange } required >
+							<option value="">-- Escolher --</option>
+							<option value="0">Dor torácica</option>
+							<option value="1">Dispneia</option>
+							<option value="2">Síncope</option>
+							<option value="3">Palpitações</option>
+						</select>
 						<br/>
 
 						<label htmlFor="mainComplaintHistory">História da doença atual:</label>
@@ -40,7 +40,7 @@ class Anamnese extends Component {
               required
             /> 
 						<br/>
-
+						
 						<label htmlFor="patologicHistory">História patológica</label>
             <input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> Falta de aderência ao tratamento
             <input type="checkbox" name="gender" id="1" value="1" onChange={ this.handleChange } /> Maior intensidade dos sintomas
@@ -55,17 +55,17 @@ class Anamnese extends Component {
             <br/>
 
 						<label htmlFor="fisiologicHistory">História fisiológica:</label>
-							<select name="fisiologicHistory" id="fisiologicHistory" onChange={ this.handleChange } required >
-								<option value="">-- Escolher --</option>
-								<option value="0">Oligúria</option>
-								<option value="1">Anúria</option>
-								<option value="2">Poliúria</option>
-								<option value="3">Polaciúria</option>
-								<option value="4">Nictúria</option>
-								<option value="5">Urgência</option>
-								<option value="6">Retenção urinária</option>
-								<option value="7">Incontinência urinária</option>
-							</select>
+						<select name="fisiologicHistory" id="fisiologicHistory" onChange={ this.handleChange } required >
+							<option value="">-- Escolher --</option>
+							<option value="0">Oligúria</option>
+							<option value="1">Anúria</option>
+							<option value="2">Poliúria</option>
+							<option value="3">Polaciúria</option>
+							<option value="4">Nictúria</option>
+							<option value="5">Urgência</option>
+							<option value="6">Retenção urinária</option>
+							<option value="7">Incontinência urinária</option>
+						</select>
 						<br/>
 
 						<label htmlFor="familyHistory">História familiar</label>
@@ -88,42 +88,42 @@ class Anamnese extends Component {
             <br/>
 
 						<label htmlFor="economicSituation">Situação econômica:</label>
-							<select name="economicSitiation" id="economicSituation" onChange={ this.handleChange } required >
-								<option value="">-- Escolher --</option>
-								<option value="0">Baixa renda</option>
-								<option value="1">Moderada</option>
-								<option value="2">Renda alta</option>
-							</select>
+						<select name="economicSitiation" id="economicSituation" onChange={ this.handleChange } required >
+							<option value="">-- Escolher --</option>
+							<option value="0">Baixa renda</option>
+							<option value="1">Moderada</option>
+							<option value="2">Renda alta</option>
+						</select>
 						<br/>
 
 						<label htmlFor="religion">Situação econômica:</label>
-							<select name="religion" id="religion" onChange={ this.handleChange } required >
-								<option value="">-- Escolher --</option>
-								<option value="0">Evangélica</option>
-								<option value="1">Católica</option>
-								<option value="2">Espírita</option>
-								<option value="3">Testemunha de Jeová</option>
-								<option value="4">Ateu</option>
-								<option value="5">Outra</option>
-							</select>
+						<select name="religion" id="religion" onChange={ this.handleChange } required >
+							<option value="">-- Escolher --</option>
+							<option value="0">Evangélica</option>
+							<option value="1">Católica</option>
+							<option value="2">Espírita</option>
+							<option value="3">Testemunha de Jeová</option>
+							<option value="4">Ateu</option>
+							<option value="5">Outra</option>
+						</select>
 						<br/>
 
 						<label htmlFor="educationSituation">Situação econômica:</label>
-							<select name="educationSitiation" id="educationSituation" onChange={ this.handleChange } required >
-								<option value="">-- Escolher --</option>
-								<option value="0">Ensino Fundamental</option>
-								<option value="1">Ensino Médio</option>
-								<option value="2">Ensino Superior</option>
-							</select>
+						<select name="educationSitiation" id="educationSituation" onChange={ this.handleChange } required >
+							<option value="">-- Escolher --</option>
+							<option value="0">Ensino Fundamental</option>
+							<option value="1">Ensino Médio</option>
+							<option value="2">Ensino Superior</option>
+						</select>
 						<br/>
 						
 						<label htmlFor="familiarRelationship">Situação econômica:</label>
-							<select name="familiarRelationship" id="familiarRelationship" onChange={ this.handleChange } required >
-								<option value="">-- Escolher --</option>
-								<option value="0">Boa</option>
-								<option value="1">Mediana</option>
-								<option value="2">Ruim</option>
-							</select>
+						<select name="familiarRelationship" id="familiarRelationship" onChange={ this.handleChange } required >
+							<option value="">-- Escolher --</option>
+							<option value="0">Boa</option>
+							<option value="1">Mediana</option>
+							<option value="2">Ruim</option>
+						</select>
 						<br/>
 						
 						<h3>Estilo de vida</h3>
@@ -142,13 +142,13 @@ class Anamnese extends Component {
             <br/>
 
 						<label htmlFor="physicalActivity">Atividades físicas:</label>
-							<select name="physicalActivity" id="physicalActivity" onChange={ this.handleChange } required >
-								<option value="">-- Escolher --</option>
-								<option value="0">Pessoa Sendentária</option>
-								<option value="1">Exerce atividades físicas moderadas</option>
-								<option value="2">Exerce atividades físicas intensas e constantes</option>
-								<option value="2">Exerce atividades físicas ocasionais</option>
-							</select>
+						<select name="physicalActivity" id="physicalActivity" onChange={ this.handleChange } required >
+							<option value="">-- Escolher --</option>
+							<option value="0">Pessoa Sendentária</option>
+							<option value="1">Exerce atividades físicas moderadas</option>
+							<option value="2">Exerce atividades físicas intensas e constantes</option>
+							<option value="2">Exerce atividades físicas ocasionais</option>
+						</select>
 						<br/>
 
 						<h3>Fumo</h3>
