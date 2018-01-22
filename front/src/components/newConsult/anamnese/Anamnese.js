@@ -1,17 +1,87 @@
 import React, { Component } from 'react';
 import './Anamnese.css';
-import Base64 from '../../lib/base64';
+import Base64 from './../../../lib/base64';
 import axios from 'axios';
 
 class Anamnese extends Component {
   constructor(props){
-    super(props);
+		super(props);
+		
+		this.handleChange = this.handleChange.bind(this);
         
     this.state = {
+			prepare: {
 
+			},
+			'formData': {
+
+			},
     }
 	}
 	
+	componentWillMount(){
+		axios.post(
+			"",
+			{}
+		).then(
+			function(response) {
+				this.setState(
+					{
+						prepare: response.data.data,
+					}
+				);
+			}
+		).catch();
+
+		this.setState(
+			{
+				prepare: {
+					qp_type: [
+						{id: 0, label: "Dor torácica"},
+						{id: 1, label: "Dispneia"},
+						{id: 2, label: "Síncope"},
+						{id: 3, label: "Palpitações"}
+					],
+					hist_pat: [
+						{id: 0,label: "Falta de aderência ao tratamento"},
+						{id: 1,label: "Maior intensidade dos sintomas"},
+						{id: 2,label: "Parada cardio-respiratória revertida"},
+						{id: 3,label: "Redução de função cognitiva"},
+						{id: 4,label: "Caquexia"},
+						{id: 5,label: "Anorexia"},
+						{id: 6,label: "Síncope"},
+						{id: 7,label: "Apnéia do sono*"},
+						{id: 8,label: "Doença pulmonar associada"},
+						{id: 9,label: "Depressão"}
+					],
+					hist_fis:[
+						{id: 0,label: "Oligúria"},
+						{id: 1,label: "Anúria"},
+						{id: 2,label: "Poliúria"},
+						{id: 3,label: "Polaciúria"},
+						{id: 3,label: "Nictúria"},
+						{id: 3,label: "Urgência"},
+						{id: 3,label: "Retenção Urinária"},
+						{id: 3,label: "Incontinência Urinária"}
+					]
+				},
+			}
+		);
+	}
+
+	handleChange(event) {
+		console.log("ELEMENTO",event.target);
+		let formData = this.state.formData;
+		const state = 'formData.'+event.target.name;
+		console.log("target do state",event.target.name);
+
+		this.setState(
+			{
+				formData: event.target.value
+			}
+		);
+	}
+
 	render(){
 		return(
 			<div className="Anamnese">
@@ -22,10 +92,15 @@ class Anamnese extends Component {
 						<label htmlFor="mainComplaint">Queixa principal:</label>
 						<select name="mainComplaint" id="mainComplaint" onChange={ this.handleChange } required >
 							<option value="">-- Escolher --</option>
-							<option value="0">Dor torácica</option>
-							<option value="1">Dispneia</option>
-							<option value="2">Síncope</option>
-							<option value="3">Palpitações</option>
+							{
+								this.state.prepare.qp_type.map(
+									(qp_type) => {
+										return(
+											<option value={ qp_type.id }>{ qp_type.label }</option>
+										);
+									}
+								)
+							}
 						</select>
 						<br/>
 
@@ -35,14 +110,25 @@ class Anamnese extends Component {
               type="text"
               name="mainComplaintHistory"
               id="mainComplaintHistory"
-              value={ this.state.formData.mainComplaintHistory }
               onChange={ this.handleChange }
               required
             /> 
 						<br/>
 						
-						<label htmlFor="patologicHistory">História patológica</label>
-            <input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> Falta de aderência ao tratamento
+						<label htmlFor="patologicHistory">História patológica:</label>
+						{ 
+							this.state.prepare.hist_pat.map(
+								(hist_pat) => {
+									return(
+										<div>
+											<input type="checkbox" name="hist_pat" value={ hist_pat.id } />
+											<label htmlFor="">{ hist_pat.label }</label>
+										</div>
+									);
+								}
+							)
+						}
+            {/* <input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> Falta de aderência ao tratamento
             <input type="checkbox" name="gender" id="1" value="1" onChange={ this.handleChange } /> Maior intensidade dos sintomas
 						<input type="checkbox" name="gender" id="2" value="2" onChange={ this.handleChange } /> Parada cardio-respiratória revertida
 						<input type="checkbox" name="gender" id="3" value="3" onChange={ this.handleChange } /> Redução de função cognitiva
@@ -51,10 +137,10 @@ class Anamnese extends Component {
 						<input type="checkbox" name="gender" id="6" value="6" onChange={ this.handleChange } /> Síncope
 						<input type="checkbox" name="gender" id="7" value="6" onChange={ this.handleChange } /> Apnéia do sono
 						<input type="checkbox" name="gender" id="8" value="7" onChange={ this.handleChange } /> Doença pulmonar associada
-						<input type="checkbox" name="gender" id="9" value="8" onChange={ this.handleChange } /> Depressão
+						<input type="checkbox" name="gender" id="9" value="8" onChange={ this.handleChange } /> Depressão */}
             <br/>
 
-						<label htmlFor="fisiologicHistory">História fisiológica:</label>
+						{/* <label htmlFor="fisiologicHistory">História fisiológica:</label>
 						<select name="fisiologicHistory" id="fisiologicHistory" onChange={ this.handleChange } required >
 							<option value="">-- Escolher --</option>
 							<option value="0">Oligúria</option>
@@ -308,7 +394,7 @@ class Anamnese extends Component {
               onChange={ this.handleChange }
               required
             /> 
-						<br/>
+						<br/> */}
 
 						<input type="submit" value="Salvar"/>
 
