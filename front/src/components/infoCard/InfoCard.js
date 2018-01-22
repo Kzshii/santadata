@@ -7,8 +7,6 @@ class InfoCard extends Component {
 
   constructor(props){
     super(props)
-    
-    
   }
 
   render() {
@@ -29,12 +27,11 @@ class InfoCard extends Component {
       <div className="InfoCard">
 
         <div className="patientImgBox">
-         
           <img className="patientImg" src={imgUser} />
         </div>
 
        <div className="pacientName">
-        <h4>Paciente</h4>
+        <h4>Nome</h4>
         <p>{this.props.data.name}</p>
        </div>
 

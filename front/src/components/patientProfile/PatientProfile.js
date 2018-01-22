@@ -49,8 +49,11 @@ class PatientProfile extends Component {
   render() {
     return(
       <div className="PatientProfile">
+        <h1>Perfil do Paciente</h1>
         <div className="patientData">
+
         <InfoCard data={this.state.userData} />
+
         </div>
         <div className="allergies"></div>
         <div className="currentState"></div>
