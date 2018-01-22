@@ -7,62 +7,54 @@ import Button from './../button/Button';
 
 class PatientProfile extends Component {
 
-  constructor(props){
-
-    
-    super(props)
+  constructor(props) {
+    super(props);
     this.searchPatient = this.searchPatient.bind(this);
 
-    this.state= {
-      userData: null,
-
-    }
+    this.state = {
+      patientData: null,
+    };
   }
 
   componentDidMount(){
-    this.searchPatient(this.props.id)
+    this.searchPatient(this.props.id);
   }
 
   searchPatient(id) {
-    var patientId= 4 /* this.props.id */
+    var patientId = 4; /* this.props.id */
     
     axios.defaults.baseURL = 'https://31.220.54.251:8443/';
     
-     axios.post(
+    axios.post(
       'gen/get/patient/'+patientId+'/1/MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=/', 
       'data='+Base64.encode(
         {}
       )
     )
     .then(
-      (response)=>{
+      (response) => {
         this.setState({
-          userData: response.data.data[0]
-          
-        })
-        console.log(this.state.userData)
+          patientData: response.data.data[0]
+        });
+        console.log(this.state.patientData);
       }
-    ).catch(); 
-    
+    ).catch();
   }
 
   render() {
     return(
       <div className="PatientProfile">
+
         <h1>Perfil do Paciente</h1>
+
         <div className="patientData">
-
-        <InfoCard data={this.state.userData} />
-
+          <InfoCard data={ this.state.patientData } />
         </div>
         <div className="allergies"></div>
         <div className="currentState"></div>
         <div className="ICFER"></div>
         <div className="comorbidities"></div>
         <div className="timeLine"></div>
-
-      
-
 
       </div>
     );
