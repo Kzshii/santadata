@@ -31,8 +31,7 @@ class Evidences extends Component {
 
 						<label htmlFor="monitoringTime">Tempo de acompanhamento ambulatorial:</label>
             <input
-              className="inputText "
-              type="text"
+              type="number"
               name="monitoringTime"
               id="monitoringTime"
               value={ this.state.formData.monitoringTime }
@@ -41,12 +40,12 @@ class Evidences extends Component {
             /> 
 						<br/>
 
-						<label htmlFor="firstDate">Data da primeira consulta:</label>
+						<label htmlFor="firstVisit">Data da primeira consulta:</label>
             <input
               type="date"
-              name="firstDate"
-              id="firstDate"
-              value={ this.state.formData.firstDate }
+              name="firstVisit"
+              id="firstVisit"
+              value={ this.state.formData.firstVisit }
               onChange={ this.handleChange }
               required
             /> 
