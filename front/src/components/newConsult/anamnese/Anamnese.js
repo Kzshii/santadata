@@ -59,10 +59,10 @@ class Anamnese extends Component {
 						{id: 1,label: "Anúria"},
 						{id: 2,label: "Poliúria"},
 						{id: 3,label: "Polaciúria"},
-						{id: 3,label: "Nictúria"},
-						{id: 3,label: "Urgência"},
-						{id: 3,label: "Retenção Urinária"},
-						{id: 3,label: "Incontinência Urinária"}
+						{id: 4,label: "Nictúria"},
+						{id: 5,label: "Urgência"},
+						{id: 6,label: "Retenção Urinária"},
+						{id: 7,label: "Incontinência Urinária"}
 					]
 				},
 			}
@@ -128,6 +128,22 @@ class Anamnese extends Component {
 								}
 							)
 						}
+						<br/>
+						
+						<label htmlFor="fisiologicHistory">História fisiológica:</label>
+						<select name="fisiologicHistory" id="fisiologicHistory" onChange={ this.handleChange } required >
+							{
+								this.state.prepare.hist_fis.map(
+									(hist_fis) => {
+										return(
+											<option value={ hist_fis.id }>{ hist_fis.label }</option>
+										);
+									}
+								)
+							}
+						</select>
+						<br/>
+
             {/* <input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> Falta de aderência ao tratamento
             <input type="checkbox" name="gender" id="1" value="1" onChange={ this.handleChange } /> Maior intensidade dos sintomas
 						<input type="checkbox" name="gender" id="2" value="2" onChange={ this.handleChange } /> Parada cardio-respiratória revertida
@@ -137,22 +153,8 @@ class Anamnese extends Component {
 						<input type="checkbox" name="gender" id="6" value="6" onChange={ this.handleChange } /> Síncope
 						<input type="checkbox" name="gender" id="7" value="6" onChange={ this.handleChange } /> Apnéia do sono
 						<input type="checkbox" name="gender" id="8" value="7" onChange={ this.handleChange } /> Doença pulmonar associada
-						<input type="checkbox" name="gender" id="9" value="8" onChange={ this.handleChange } /> Depressão */}
+						<input type="checkbox" name="gender" id="9" value="8" onChange={ this.handleChange } /> Depressão 
             <br/>
-
-						{/* <label htmlFor="fisiologicHistory">História fisiológica:</label>
-						<select name="fisiologicHistory" id="fisiologicHistory" onChange={ this.handleChange } required >
-							<option value="">-- Escolher --</option>
-							<option value="0">Oligúria</option>
-							<option value="1">Anúria</option>
-							<option value="2">Poliúria</option>
-							<option value="3">Polaciúria</option>
-							<option value="4">Nictúria</option>
-							<option value="5">Urgência</option>
-							<option value="6">Retenção urinária</option>
-							<option value="7">Incontinência urinária</option>
-						</select>
-						<br/>
 
 						<label htmlFor="familyHistory">História familiar</label>
             <input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> Enxaqueca
