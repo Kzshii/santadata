@@ -17,7 +17,10 @@ class NewConsult extends Comment{
 			<div className="NewConsult">
 				{/* anamnese */}
 				{/* evidences */}
+				{/* interventions */}
 				{/* medicines */}
+				{/* physicalExams */}
+				{/* predictors */}
 			</div>
 
 
