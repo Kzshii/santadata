@@ -4,59 +4,83 @@ import Base64 from '../../lib/base64';
 import axios from 'axios';
 import Anamnese from "./anamnese/Anamnese";
 import Evidences from "./evidences/Evidences";
-import Interventions from "./interventions/Interventions";
+
+/* import Interventions from "./interventions/Interventions";
 import Medicines from "./medicines/Medicines";
 import PhysicalExams from "./physicalExams/PhysicalExams";
-import Predictor from "./predictors/Predictors";
+import Predictor from "./predictors/Predictors"; */
+
+
+
+const sections= [<Anamnese title="Anamnese" />,<Evidences title="Evidencias"/>];
+
 
 class NewConsult extends Component {
+
 	constructor(props) {
     super(props);
-    this.goTo = this.goTo.bind(this);
+    this.nextSection = this.nextSection.bind(this);
+    this.prevSection = this.prevSection.bind(this);
+    this.goToSection = this.goToSection.bind(this);
 			
-		this.state = {
-			currentSection: 0,
-
-			sections: [
-					<Anamnese/>,
-					<Evidences/>,
-         ] 
-		};
+    this.state = {
+        currentSection: 0,
+      };
   }
-  
 
-  goTo(command){
 
-    switch(command){
-      case "next":
-        var i = this.state.currentSection + 1;
-        console.log(this.state.sections[i])
-        this.setState({
-          currentSection: i,
-        })
-      case "prev":
-        var i= this.state.currentSection - 1;
-        this.setState({
-          currentSection: i,
-         })
-      default:
-        this.setState({
-          currentSection: command
-        })
+  nextSection(){
+
+    if(this.state.currentSection < sections.length -1){
+      var i= this.state.currentSection +1;
+
+      this.setState({
+        currentSection: i
+      })
     }
+
+  }
+
+  prevSection(){
+
+    if(this.state.currentSection>0){
+      var i= this.state.currentSection -1;
+
+      this.setState({
+        currentSection: i
+      })
+    }
+  }
+
+  goToSection(section){
+
+    this.setState({
+      currentSection: section
+    })
 
   }
 	
 	render() {
+    
 		return(
+
 			<div className="NewConsult">
 				
+        <div className="sections">
+          {
+            sections.map((comp,indice)=> {
+              return(
+                <button name={comp.props.title} onClick= { 
+                ()=>{this.goToSection(indice)}}> {comp.props.title} </button>
+              )
+            })   
+          }
+        </div>
 
-        <button name="Anterior" onClick={()=> {this.goTo("prev")}}>Anterior</button>
-        <button name="Proximo" onClick={()=> {this.goTo("next")}}>Proximo</button>
-
-        {console.log(this.state.sections[this.state.currentSection])}
-				{this.state.sections[(this.state.currentSection)+1]}
+        {sections[(this.state.currentSection)]}
+        
+        <button name="prev" onClick={this.prevSection}>Anterior</button>
+        <button name="next" onClick={this.nextSection}>Proximo</button>
 				
 			</div>
 		);
