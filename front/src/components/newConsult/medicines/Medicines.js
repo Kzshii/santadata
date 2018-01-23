@@ -33,69 +33,165 @@ class Medicines extends Component {
 		this.setState(
 			{
 				prepare: {
-
-					// Registro de Evidencias
-					ev_estado:
+          //Medicamentos ministrados no paciente
+          
+          //ministrados:
+ 
+          IECA: 
+          [
+						{id: 0,label: "Captopril"}, 
+						// Dose inicial = 6,24mg 
+						// Dose alvo = 50mg 
+						// Duração = 8h/8h
+						{id: 1,label: "Enalapril"},
+						// Dose inicial = 2,5mg 
+						// Dose alvo = 10mg 
+						// Duração 12/12h
+						{id: 2,label: "Lisinopril"},
+						{id: 3,label: "Cilazapril"},
+						{id: 4,label: "Ramipril"},
+						{id: 5,label: "Trandolapril"},
+			
+						{
+							droga:drogas.void,
+							date:"00/00/0000",
+							hour:"00:00",
+							charge: "50mg",
+							gap: 12, // horas
+						}
+					],
+			
+					BRA:
 					[
-						{id: 0,label: "Primeira consulta"},
-						{id: 1,label: "Em tratamento"},
-						{id: 2,label: "Desistente/Desaparecido"},
-						{id: 3,label: "Reinternação"},
+						{id: 0,label: "Losartana"}, 
+						// Dose inicial = 25mg
+						// Dose alvo = 50 a 150mg
+						// Duração = 1x ao dia
+						{id: 1,label: "Valsartana"},
+						// Dose inicial = 20mg
+						// Dose alvo = 160mg 
+						// Duração 12 em 12 horas
+						{id: 2,label: "Candersatan"},
+			
+						{
+							droga:drogas.void,
+							date:"00/00/0000",
+							hour:"00:00",
+							charge: "50mg",
+							gap: 12, // horas
+						}
 					],
-
-					// Tempo do acompanhamento Ambulatorial
-					amb_start_time: "", //
-
-
-					// Data Primeira Consulta
-					date_consult: "00/00/0000",
-
-
-					// Etiologia
-					ev_etiologia:
-					[								
-						{id: 0,label: "A Esclarecer"},
-						{id: 1,label: "Doença Arterial Coronariana (DAC)"},
-						{id: 2,label: "Hipertensão Arterial Sistêmica (HAS)"},
-						{id: 3,label: "Cardiomiopatia Dilatada Idiopática"},
-						{id: 4,label: "Cardiomiopatia Chagásica"},
-						{id: 5,label: "Valvulopatias"},
-						{id: 6,label: "Alcoólica"},
-						{id: 7,label: "Pós Quimioterapia"},
-					],
-
-					// Co-morbidades
-					ev_comorbidades:
+			
+					beta_bloqueadores:
 					[
-						{id: 0,label: "Hipertensão Arterial Sistemica (HAS)"},
-						{id: 1,label: "Diabetes Mélitus (DM)"},
-						{id: 2,label: "Dislipidemia (DLP)"},
-						{id: 3,label: "Tabagismo (TBG)"},
-						{id: 4,label: "Doença Arterial Coronariana (DAC)"},
-						{id: 5,label: "Fibrilação atrial (FA)"},
-						{id: 6, label: "Uso de Anti-coagulante Oral"},
-						{id: 7,label: "Insuficiência Renal Crônica (IRC)"},
-						{id: 8,label: "Tireóide (hipo ou hipertireoidismo)"},
+						{id: 0,label: "Carvedilol"}, 
+						// Dose inicial = 3,125mg
+						// Dose Alvo = 25 a 50mg
+						// Duração = 12 em 12 horas
+						{id: 1,label: "Metroprolol"},
+						{id: 2,label: "Bisoprolol"},
+						{id: 3,label: "Propanolol"},
 					],
-
-					// Eventos Adversos
-					ev_adversos:
+					
+					bloq_canaisca:
 					[
-						{id: 0,label: "Infarto Agudo do Miocárdio (IAM)"},
-						{id: 1,label: "Acidente Vascular Cerebral (AVC)"},
-						{id: 2,label: "Internação (INT)"},
+						{id: 0,label: "Verapamil"},
+						{id: 1,label: "Diltiazem"},
+			
+						{
+							droga:drogas.void,
+							date:"00/00/0000",
+							hour:"00:00",
+							charge: "50mg",
+							gap: 12, // horas
+						}
 					],
-
-					// Obito
-					ev_obito:
+			
+					diureticos:
 					[
-						{id: 0,label: "Sim"},
-						{id: 1,label: "Nao"},
+						{id: 0,label: "Hidroclorotiazida"},
+						{id: 1,label: "Furosemida"},
+						{id: 2,label: "Espirolactona"},
+						// Dose inicial = 12,5mg
+						// Dose Alvo = 50mg
+			
+						{
+							droga:drogas.void,
+							date:"00/00/0000",
+							hour:"00:00",
+							charge: "50mg",
+							gap: 12, // horas
+						}
 					],
-				},
-			}
+				
+					digitalico:
+					[
+						{id: 0,label: "digoxina"},
+					
+						{
+							droga:drogas.void,
+							date:"00/00/0000",
+							hour:"00:00",
+							charge: "50mg",
+							gap: 12 // horas
+						}
+					],
+			
+					AAS: 
+					[
+						{id: 0,label: "Uso"},
+					],
+			
+					estatina:
+					[			
+						{id: 0,label: "Sinvastatina"},
+						{id: 1,label: "Atorvastatina"},
+					],
+			
+					hidralazina: 
+					[
+						{id: 0,label: "Apresolina"},
+					],
+			
+					nitrato:
+					[
+						{id: 0,label: "Dinitrato de Isossorbida"},
+					],
+			
+					anticoagulante: 
+					[
+						{id: 0,label: "Heparina"},
+						{id: 0,label: "Dabigatran"},
+					],
+			
+					antiarritmico: 
+					[
+						{id: 0,label: "Amiodarona"},
+					],
+				
+			
+					//Medicamentos prescritos para o paciente
+					//prescritos: 
+			
+					sarcubitril_valsartana:
+					[
+						{id: 0,label: "Entresto"},
+						// Dose inicial = 49/51mg 
+						// Dose alvo = 97 mg/103 mg 
+						// Duração = duas vezes ao dia
+						{
+							droga:drogas.void,
+							date:"00/00/0000",
+							hour:"00:00",
+							charge: "50mg",
+							total_charge: 1, //qtd de doses
+							gap: 12, // horas
+						}
+					]
+				}
+			},
 		);
-	}  
+	} 
 
   handleChange(event) {
 		const target = event.target;
@@ -133,18 +229,23 @@ class Medicines extends Component {
 			<div className="Medicines">
 				<h2>Medicamentos</h2>
 
-          <form onSubmit={ this.handleSubmit } >
+          <form onSubmit={ () => this.props.saveData("medicines",this.state.formData) } >
 
 						<h3>Remédios ministrados</h3>
 
 						<label htmlFor="ieca">IECA</label>
-						<input type="radio" name="gender" id="0" value="0" onChange={ this.handleChange } /> Nenhum
-            <input type="radio" name="gender" id="1" value="1" onChange={ this.handleChange } /> Captopril
-            <input type="radio" name="gender" id="2" value="2" onChange={ this.handleChange } /> Enalapril
-						<input type="radio" name="gender" id="3" value="3" onChange={ this.handleChange } /> Lisinopril
-						<input type="radio" name="gender" id="4" value="4" onChange={ this.handleChange } /> Cilazapril
-						<input type="radio" name="gender" id="5" value="5" onChange={ this.handleChange } /> Ramipril
-						<input type="radio" name="gender" id="6" value="6" onChange={ this.handleChange } /> Trandolapril
+						{
+							this.state.prepare.IECA.map(
+								(IECA) => {
+									return(
+										<div key={ IECA.id }>
+											<input type="radio" name="IECA" value={ IECA.id } onChange={ this.handleChange }/>
+											<label htmlFor="">{ IECA.label }</label>
+										</div>
+									);
+								}
+							)
+						}
             <br/>
 
 						<label htmlFor="firstDosageDate">Data da primeira dose:</label>
@@ -152,7 +253,7 @@ class Medicines extends Component {
               type="date"
               name="firstDosageDate"
               id="firstDosageDate"
-              value={ this.state.formData.firstDosageDate }
+              value={ this.state.formData.IECA.date }
               onChange={ this.handleChange }
               required
             /> 
@@ -163,7 +264,7 @@ class Medicines extends Component {
               type="number"
               name="firstDosageHour"
               id="firstDosageHour"
-              value={ this.state.formData.firstDosageHour }
+              value={ this.state.formData.IECA.hour }
               onChange={ this.handleChange }
               required
             /> 
@@ -174,7 +275,7 @@ class Medicines extends Component {
               type="number"
               name="dosage"
               id="dosage"
-              value={ this.state.formData.dosage }
+              value={ this.state.formData.IECA.charge }
               onChange={ this.handleChange }
               required
             /> 
@@ -185,17 +286,25 @@ class Medicines extends Component {
               type="number"
               name="gapDosage"
               id="gapDosage"
-              value={ this.state.formData.gapDosage }
+              value={ this.state.formData.IECA.gap }
               onChange={ this.handleChange }
               required
             /> 
 						<br/>
 
 						<label htmlFor="bra">BRA</label>
-						<input type="radio" name="gender" id="0" value="0" onChange={ this.handleChange } /> Nenhum
-            <input type="radio" name="gender" id="1" value="1" onChange={ this.handleChange } /> Losartana
-            <input type="radio" name="gender" id="2" value="2" onChange={ this.handleChange } /> Valsartana
-						<input type="radio" name="gender" id="3" value="3" onChange={ this.handleChange } /> Candersatan
+						{
+							this.state.prepare.IECA.map(
+								(BRA) => {
+									return(
+										<div key={ BRA.id }>
+											<input type="radio" name="BRA" value={ BRA.id } onChange={ this.handleChange }/>
+											<label htmlFor="">{ BRA.label }</label>
+										</div>
+									);
+								}
+							)
+						}
             <br/>
 
 						<label htmlFor="firstDosageDate">Data da primeira dose:</label>
@@ -203,7 +312,7 @@ class Medicines extends Component {
               type="date"
               name="firstDosageDate"
               id="firstDosageDate"
-              value={ this.state.formData.firstDosageDate }
+              value={ this.state.formData.BRA.date }
               onChange={ this.handleChange }
               required
             /> 
@@ -214,7 +323,7 @@ class Medicines extends Component {
               type="number"
               name="firstDosageHour"
               id="firstDosageHour"
-              value={ this.state.formData.firstDosageHour }
+              value={ this.state.formData.BRA.hour }
               onChange={ this.handleChange }
               required
             /> 
@@ -225,7 +334,7 @@ class Medicines extends Component {
               type="number"
               name="dosage"
               id="dosage"
-              value={ this.state.formData.dosage }
+              value={ this.state.formData.BRA.charge }
               onChange={ this.handleChange }
               required
             /> 
@@ -236,7 +345,7 @@ class Medicines extends Component {
               type="number"
               name="gapDosage"
               id="gapDosage"
-              value={ this.state.formData.gapDosage }
+              value={ this.state.formData.BRA.gap }
               onChange={ this.handleChange }
               required
             /> 

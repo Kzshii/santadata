@@ -35,7 +35,7 @@ class Evidences extends Component {
 				prepare: {
 
 					// Registro de Evidencias
-					ev_estado:
+					ev_estado: // 1
 					[
 						{id: 0,label: "Primeira consulta"},
 						{id: 1,label: "Em tratamento"},
@@ -52,7 +52,7 @@ class Evidences extends Component {
 
 
 					// Etiologia
-					ev_etiologia:
+					ev_etiologia: // 0..*
 					[								
 						{id: 0,label: "A Esclarecer"},
 						{id: 1,label: "Doença Arterial Coronariana (DAC)"},
@@ -65,7 +65,7 @@ class Evidences extends Component {
 					],
 
 					// Co-morbidades
-					ev_comorbidades:
+					ev_comorbidades: // 0..*
 					[
 						{id: 0,label: "Hipertensão Arterial Sistemica (HAS)"},
 						{id: 1,label: "Diabetes Mélitus (DM)"},
@@ -79,7 +79,7 @@ class Evidences extends Component {
 					],
 
 					// Eventos Adversos
-					ev_adversos:
+					ev_adversos: // 0..*
 					[
 						{id: 0,label: "Infarto Agudo do Miocárdio (IAM)"},
 						{id: 1,label: "Acidente Vascular Cerebral (AVC)"},
@@ -87,7 +87,7 @@ class Evidences extends Component {
 					],
 
 					// Obito
-					ev_obito:
+					ev_obito: // 1
 					[
 						{id: 0,label: "Sim"},
 						{id: 1,label: "Nao"},
