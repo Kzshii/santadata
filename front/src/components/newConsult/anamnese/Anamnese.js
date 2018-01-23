@@ -33,12 +33,16 @@ class Anamnese extends Component {
 		this.setState(
 			{
 				prepare: {
+
+					// Queixa principal
 					qp_type: [
 						{id: 0, label: "Dor torácica"},
 						{id: 1, label: "Dispneia"},
 						{id: 2, label: "Síncope"},
 						{id: 3, label: "Palpitações"}
 					],
+
+					// História patológica
 					hist_pat: [
 						{id: 0,label: "Falta de aderência ao tratamento"},
 						{id: 1,label: "Maior intensidade dos sintomas"},
@@ -51,6 +55,8 @@ class Anamnese extends Component {
 						{id: 8,label: "Doença pulmonar associada"},
 						{id: 9,label: "Depressão"}
 					],
+
+					// Historia Fisiológica
 					hist_fis:[
 						{id: 0,label: "Oligúria"},
 						{id: 1,label: "Anúria"},
@@ -60,7 +66,54 @@ class Anamnese extends Component {
 						{id: 5,label: "Urgência"},
 						{id: 6,label: "Retenção Urinária"},
 						{id: 7,label: "Incontinência Urinária"}
-					]
+					],
+
+					// Historia familiar
+					hist_fam:[
+						{id: 0,label: "Enxaqueca"},
+						{id: 1,label: "Diabetes"},
+						{id: 2,label: "Hipertensão Arterial Sistemica (HAS)"},
+						{id: 3,label: "Tuberculose"},
+						{id: 4,label: "Cancer"},
+						{id: 5,label: "Doenca Arterial Coronariana (DAC)"},
+						{id: 6,label: "Acidente Vascular Cerebral (AVC)"},
+						{id: 7,label: "Dislipidemias"},
+						{id: 8,label: "Varizes"}
+					],
+
+					// História psico-social
+					san_basico:[
+						{id: 0,label: "Sim"},
+						{id: 1,label: "Não"}
+					],			
+
+					socio_econ:[
+						{id: 0,label: "Baixa Renda"},
+						{id: 1,label: "Moderada"},
+						{id: 2,label: "Renda Alta"}
+					],
+
+					cultural:[
+						{id: 0,label: "Evangélica"},
+						{id: 1,label: "Católica"},
+						{id: 2,label: "Espírita"},
+						{id: 3,label: "Testemunha de Jeová"},
+						{id: 4,label: "Ateu"},
+						{id: 5,label: "Outra"}
+					],
+
+					escolar:[
+						{id: 0,label: "Ensino Fundamental"},
+						{id: 1,label: "Ensino Médio"},
+						{id: 2,label: "Ensino Superior"}
+					],
+
+					relacao_fam:[
+						{id: 0,label: "Boa"},
+						{id: 1,label: "Mediana"},
+						{id: 2,label: "Ruim"}
+					],
+
 				},
 			}
 		);
@@ -68,7 +121,7 @@ class Anamnese extends Component {
 
 	handleChange(event) {
 		let formData = this.state.formData;
-		formData[event.target.name] = event.target.value;
+		formData[event.target.name] = event.target.type === 'checkbox' ? ()=>{} : event.target.value;
 		this.setState({
 			formData: formData,
 		});
@@ -80,7 +133,7 @@ class Anamnese extends Component {
 			<div className="Anamnese">
 				<h2>Anamnese</h2>
 
-          <form onSubmit={ () => this.props.saveData(this.state.formData) } >
+          <form onSubmit={ () => this.props.saveData("anamnese",this.state.formData) } >
 
 						<label htmlFor="qp_type">Queixa principal:</label>
 						<select name="qp_type" id="qp_type" onChange={ this.handleChange } required >
@@ -138,29 +191,22 @@ class Anamnese extends Component {
 						</select>
 						<br/>
 
-            {/* <input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> Falta de aderência ao tratamento
-            <input type="checkbox" name="gender" id="1" value="1" onChange={ this.handleChange } /> Maior intensidade dos sintomas
-						<input type="checkbox" name="gender" id="2" value="2" onChange={ this.handleChange } /> Parada cardio-respiratória revertida
-						<input type="checkbox" name="gender" id="3" value="3" onChange={ this.handleChange } /> Redução de função cognitiva
-						<input type="checkbox" name="gender" id="4" value="4" onChange={ this.handleChange } /> Caqueixa
-						<input type="checkbox" name="gender" id="5" value="5" onChange={ this.handleChange } /> Anorexia
-						<input type="checkbox" name="gender" id="6" value="6" onChange={ this.handleChange } /> Síncope
-						<input type="checkbox" name="gender" id="7" value="6" onChange={ this.handleChange } /> Apnéia do sono
-						<input type="checkbox" name="gender" id="8" value="7" onChange={ this.handleChange } /> Doença pulmonar associada
-						<input type="checkbox" name="gender" id="9" value="8" onChange={ this.handleChange } /> Depressão 
+						<label htmlFor="">Possui Saneamento básico? </label>
+						{
+							this.state.prepare.san_basico.map(
+								(san_basico) => {
+									return(
+										<div key={ san_basico.id }>
+											<input type="radio" value={ san_basico.id } onChange={ this.handleChange }/>
+											<label htmlFor="">{ san_basico.label }</label>
+										</div>
+									);
+								}
+							)
+						}
             <br/>
 
-						<label htmlFor="familyHistory">História familiar</label>
-            <input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> Enxaqueca
-            <input type="checkbox" name="gender" id="1" value="1" onChange={ this.handleChange } /> Diabetes
-						<input type="checkbox" name="gender" id="2" value="2" onChange={ this.handleChange } /> Hipertensão Arterial Sistemica(HAS)
-						<input type="checkbox" name="gender" id="3" value="3" onChange={ this.handleChange } /> Tuberculose
-						<input type="checkbox" name="gender" id="4" value="4" onChange={ this.handleChange } /> Cancer
-						<input type="checkbox" name="gender" id="5" value="5" onChange={ this.handleChange } /> Doença Arterial Coronariana
-						<input type="checkbox" name="gender" id="6" value="6" onChange={ this.handleChange } /> Acidente Vascular Cerebral (AVC)
-						<input type="checkbox" name="gender" id="7" value="7" onChange={ this.handleChange } /> Dislipidemias
-						<input type="checkbox" name="gender" id="8" value="8" onChange={ this.handleChange } /> Varizes
-            <br/>
+            {/*
 
 						<h3>História psico-social</h3>
 
