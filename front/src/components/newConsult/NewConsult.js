@@ -4,6 +4,7 @@ import './NewConsult.css';
 //import axios from 'axios';
 import Anamnese from "./anamnese/Anamnese";
 import Evidences from "./evidences/Evidences";
+import PatientProfile from './../patientProfile/PatientProfile';
 
 /* import Interventions from "./interventions/Interventions";
 import Medicines from "./medicines/Medicines";
@@ -18,6 +19,7 @@ class NewConsult extends Component {
     this.prevSection = this.prevSection.bind(this);
     this.goToSection = this.goToSection.bind(this);
     this.storeFormData = this.storeFormData.bind(this);
+    this.saveConsult= this.saveConsult.bind(this);
 
     this.sections = [
       <Anamnese title="Anamnese" saveData={ this.storeFormData } />,
@@ -39,6 +41,8 @@ class NewConsult extends Component {
         consultData: consultData,
       }
     );
+    this.nextSection()
+
     console.log("CONSULTA:",this.state.consultData);
   }
 
@@ -59,6 +63,7 @@ class NewConsult extends Component {
       this.setState({
         currentSection: i
       });
+
     }
   }
 
@@ -67,7 +72,14 @@ class NewConsult extends Component {
       currentSection: section
     });
   }
-	
+  
+  
+  saveConsult(){
+    //Salvar Consulta
+    alert("Consulta Salva");
+    this.props.switchSession(<PatientProfile patient={this.props.patient} switchSession={this.props.switchSession}/>)
+  }
+
 	render() {
     return(
 			<div className="NewConsult">
@@ -84,6 +96,7 @@ class NewConsult extends Component {
               }
             )
           }
+          <button name="saveConsult" onClick={this.saveConsult}>Salvar Consulta</button>
         </div>
 
         { this.sections[this.state.currentSection] }

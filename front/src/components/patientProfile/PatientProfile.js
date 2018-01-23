@@ -46,7 +46,7 @@ class PatientProfile extends Component {
   handleSubmit(event){
     event.preventDefault();
 
-    this.props.switchSession(<NewConsult patient={this.props.patientData}/>)
+    this.props.switchSession(<NewConsult patient={this.props.patientData} switchSession={this.props.switchSession}/>)
   }
 
   render() {
