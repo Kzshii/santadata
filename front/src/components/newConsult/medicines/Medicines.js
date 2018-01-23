@@ -196,7 +196,7 @@ class Medicines extends Component {
   handleChange(event) {
 		const target = event.target;
 		const name = target.name;
-		const value = target.value
+		const value = target.value;
 
 		let formData = this.state.formData;
 		
@@ -224,7 +224,7 @@ class Medicines extends Component {
 		console.log("STATE", this.state);
 	}	
 	
-	render(){
+	render() {
 		return(
 			<div className="Medicines">
 				<h2>Medicamentos</h2>
@@ -576,11 +576,8 @@ class Medicines extends Component {
 
 					</form>
 			</div>
-
-
-		)
+		);
 	}
-
 }
 
 export default Medicines;

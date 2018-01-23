@@ -8,6 +8,7 @@ class Anamnese extends Component {
 		super(props);
 		
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
         
     this.state = {
 			prepare: {},
@@ -19,7 +20,7 @@ class Anamnese extends Component {
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
 			"prepare/anamnese/",
-			{}
+			"data="+Base64.encode({})
 		).then(
 			function(response) {
 				this.setState(
@@ -28,8 +29,13 @@ class Anamnese extends Component {
 					}
 				);
 			}
-		).catch();
+		).catch(
+			function(error) {
+				console.log("AXIOS ERROR:",error);
+			}
+		);
 
+		/* test only */
 		this.setState(
 			{
 				prepare: {
@@ -223,7 +229,7 @@ class Anamnese extends Component {
 	handleChange(event) {
 		const target = event.target;
 		const name = target.name;
-		const value = target.value
+		const value = target.value;
 
 		let formData = this.state.formData;
 		
@@ -240,7 +246,6 @@ class Anamnese extends Component {
 				let index = formData[name].indexOf(value);
 				formData[name].splice(index, 1);
 			}
-
 		} else {
 			formData[name] = value;
 		}
@@ -251,15 +256,20 @@ class Anamnese extends Component {
 		console.log("STATE", this.state);
 	}
 
+	handleSubmit(event) {
+		event.preventDefault();
+		this.props.saveData("anamnese",this.state.formData);
+	}
+
 	render(){
 		return(
 			<div className="Anamnese">
 				<h2>Anamnese</h2>
 
-				<form onSubmit={ () => this.props.saveData("anamnese",this.state.formData) } >
+				<form onSubmit={ this.handleSubmit  } >
 
 					<label htmlFor="qp_type">Queixa principal:</label>
-					<select name="qp_type" id="qp_type" onChange={ this.handleChange } required >
+					<select name="qp_type" id="qp_type" onChange={ this.handleChange }  >
 						<option value="">-- Escolher --</option>
 						{
 							this.state.prepare.qp_type.map(
@@ -281,7 +291,7 @@ class Anamnese extends Component {
 						id="actualDiseaseHistory"
 						value={ this.state.formData.hda }
 						onChange={ this.handleChange }
-						required
+						
 					/>
 					<br/>
 					
@@ -301,7 +311,7 @@ class Anamnese extends Component {
 					<br/>
 					
 					<label htmlFor="fisiologicHistory">História fisiológica:</label>
-					<select name="hist_fis" id="fisiologicHistory" onChange={ this.handleChange } required >
+					<select name="hist_fis" id="fisiologicHistory" onChange={ this.handleChange }  >
 						<option value="">-- Escolher --</option>
 						{
 							this.state.prepare.hist_fis.map(
@@ -346,7 +356,7 @@ class Anamnese extends Component {
 					<br/>
 
 					<label htmlFor="economicSituation">Situação econômica:</label>
-					<select name="economicSitiation" id="economicSituation" onChange={ this.handleChange } required >
+					<select name="economicSitiation" id="economicSituation" onChange={ this.handleChange }  >
 						<option value="">-- Escolher --</option>
 						{
 							this.state.prepare.socio_econ.map(
@@ -361,7 +371,7 @@ class Anamnese extends Component {
 					<br/>
 
 					<label htmlFor="religion">Religião:</label>
-					<select name="religion" id="religion" onChange={ this.handleChange } required >
+					<select name="religion" id="religion" onChange={ this.handleChange }  >
 						<option value="">-- Escolher --</option>
 						{
 							this.state.prepare.cultural.map(
@@ -376,7 +386,7 @@ class Anamnese extends Component {
 					<br/>
 
 					<label htmlFor="educationSituation">Situação educacional:</label>
-					<select name="educationSitiation" id="educationSituation" onChange={ this.handleChange } required >
+					<select name="educationSitiation" id="educationSituation" onChange={ this.handleChange }  >
 						<option value="">-- Escolher --</option>
 						{
 							this.state.prepare.socio_econ.map(
@@ -391,7 +401,7 @@ class Anamnese extends Component {
 					<br/>
 
 					<label htmlFor="familiarRelationship">Relação familiar:</label>
-					<select name="familiarRelationship" id="familiarRelationship" onChange={ this.handleChange } required >
+					<select name="familiarRelationship" id="familiarRelationship" onChange={ this.handleChange }  >
 						<option value="">-- Escolher --</option>
 						{
 							this.state.prepare.relacao_fam.map(
@@ -423,7 +433,7 @@ class Anamnese extends Component {
 					<br/>
 
 					<label htmlFor="physicalActivity">Atividades físicas:</label>
-					<select name="physicalActivity" id="physicalActivity" onChange={ this.handleChange } required >
+					<select name="physicalActivity" id="physicalActivity" onChange={ this.handleChange }  >
 						<option value="">-- Escolher --</option>
 						{
 							this.state.prepare.ativ_fisica.map(
@@ -477,7 +487,7 @@ class Anamnese extends Component {
 						id="dailyCigaretteAmount"
 						value={ this.state.formData.tabag_quant }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -489,7 +499,7 @@ class Anamnese extends Component {
 						id="smokingFrequency"
 						value={ this.state.formData.tabag_freq }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -500,7 +510,7 @@ class Anamnese extends Component {
 						id="startSmoking"
 						value={ this.state.formData.tabag_date }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -511,7 +521,7 @@ class Anamnese extends Component {
 						id="smokingTime"
 						value={ this.state.formData.tabag_tempo }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -555,7 +565,7 @@ class Anamnese extends Component {
 						id="dailyAlcoholicBevAmount"
 						value={ this.state.formData.etil_quant }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -567,7 +577,7 @@ class Anamnese extends Component {
 						id="alcoholicBevFrequency"
 						value={ this.state.formData.etil_freq }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -578,7 +588,7 @@ class Anamnese extends Component {
 						id="startDrinking"
 						value={ this.state.formData.etil_date }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 					
@@ -589,7 +599,7 @@ class Anamnese extends Component {
 						id="drinkingTime"
 						value={ this.state.formData.etil_tempo }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -633,7 +643,7 @@ class Anamnese extends Component {
 						id="dailyDrugsAmount"
 						value={ this.state.formData.drogas_quant }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -645,7 +655,7 @@ class Anamnese extends Component {
 						id="drugsFrequency"
 						value={ this.state.formData.drogas_freq }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -656,7 +666,7 @@ class Anamnese extends Component {
 						id="startDrugs"
 						value={ this.state.formData.drogas_date }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 					
@@ -667,7 +677,7 @@ class Anamnese extends Component {
 						id="drugsTime"
 						value={ this.state.formData.drogas_tempo }
 						onChange={ this.handleChange }
-						required
+						
 					/> 
 					<br/>
 
@@ -675,11 +685,8 @@ class Anamnese extends Component {
 
 				</form>
 			</div>
-
-
 		)
 	}
-
 }
 
 export default Anamnese;

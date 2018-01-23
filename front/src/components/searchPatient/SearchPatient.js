@@ -86,7 +86,7 @@ class SearchPatient extends Component {
     var patientsList = [];
     
     for(let i = 0; i < searchResult.length; i++) {
-      if(((searchResult[i].name).search(searchData.name)) !== -1){
+      if((searchResult[i].name).search(searchData.name) !== -1) {
         patientsList.push(searchResult[i]);
       }
     }
@@ -94,7 +94,6 @@ class SearchPatient extends Component {
     this.setState({
       show: patientsList
     });
-    
   }
 
   openPatient(patientId) {

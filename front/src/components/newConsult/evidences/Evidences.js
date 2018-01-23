@@ -4,10 +4,11 @@ import Base64 from '../../../lib/base64';
 import axios from 'axios';
 
 class Evidences extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 				
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
 			prepare: {},
@@ -19,7 +20,7 @@ class Evidences extends Component {
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
 			"prepare/evidences/",
-			{}
+			"data="+Base64.encode({})
 		).then(
 			function(response) {
 				this.setState(
@@ -30,6 +31,7 @@ class Evidences extends Component {
 			}
 		).catch();
 
+    /* test only */
 		this.setState(
 			{
 				prepare: {
@@ -46,10 +48,8 @@ class Evidences extends Component {
 					// Tempo do acompanhamento Ambulatorial
 					amb_start_time: "", //
 
-
 					// Data Primeira Consulta
 					date_consult: "00/00/0000",
-
 
 					// Etiologia
 					ev_etiologia: // 0..*
@@ -100,7 +100,7 @@ class Evidences extends Component {
 	handleChange(event) {
 		const target = event.target;
 		const name = target.name;
-		const value = target.value
+		const value = target.value;
 
 		let formData = this.state.formData;
 		
@@ -126,14 +126,19 @@ class Evidences extends Component {
 			formData: formData,
 		});
 		console.log("STATE", this.state);
-	}			
+  }
+  
+  handleSubmit(event) {
+		event.preventDefault();
+    this.props.saveData("evidences",this.state.formData);
+	}
 
 	render(){
 		return(
 			<div className="Evidences">
 				<h2>Evidências</h2>
 
-				<form onSubmit={ () => this.props.saveData("evidences",this.state.formData) } >
+				<form onSubmit={ this.handleSubmit } >
 
 					<label htmlFor="evidencesRegistry">Queixa principal:</label>
 					<select name="evidencesRegistry" id="evidencesResgistry" onChange={ this.handleChange } required >
@@ -177,7 +182,7 @@ class Evidences extends Component {
 						this.state.prepare.ev_etiologia.map(
 							(ev_etiologia) => {
 								return(
-									<div key={ ev_etiologia }>
+									<div key={ ev_etiologia.id }>
 										<input type="checkbox" name="ev_etiologia" value={ ev_etiologia.id } onChange={ this.handleChange } />
 										<label htmlFor="">{ ev_etiologia.label }</label>
 									</div>
@@ -187,7 +192,7 @@ class Evidences extends Component {
 					}
 					<br/>
 
-					<label htmlFor="Comorbidities">Comorbidades</label>
+					<label htmlFor="comorbidities">Comorbidades</label>
 					{ 
 						this.state.prepare.ev_comorbidades.map(
 							(ev_comorbidades) => {
