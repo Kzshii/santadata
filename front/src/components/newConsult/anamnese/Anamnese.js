@@ -80,7 +80,7 @@ class Anamnese extends Component {
 			<div className="Anamnese">
 				<h2>Anamnese</h2>
 
-          <form onSubmit={ this.handleSubmit } >
+          <form onSubmit={ () => this.props.saveData(this.state.formData) } >
 
 						<label htmlFor="qp_type">Queixa principal:</label>
 						<select name="qp_type" id="qp_type" onChange={ this.handleChange } required >
