@@ -11,6 +11,7 @@ var config = require('../../constants/config.js');
 //Databases
 var Mysql = require('../../libs/persistence/mysql.js');
 var Mongodb = require('../../libs/persistence/mongodb.js');
+var Pg = require('../../libs/persistence/postgre.js');
 
 var Dao = {
 
@@ -33,7 +34,22 @@ var Dao = {
 			message: message
 		}
 	},
+/*
+	pg_query: async function pg_query(query, data, callback, parm) {
+      
+       try {
+ 			var result = await Pg.query(query,data);
+       		callback(param, Dao.format_response(result))
 
+      }
+      catch(err){
+    		result = Dao.format_error(500,"Database error")
+			console.log(result)
+			callback(param, result)
+      }
+
+	},
+*/
 	mysql_query: function(query, data, callback, param){
 		try{
 			var sql = Mysql.format(query, data);

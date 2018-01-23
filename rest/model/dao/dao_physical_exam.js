@@ -11,7 +11,7 @@ var physical_exam = require('../physical_exam.js')
 var Dao = require( './dao.js' );
 var Dao_physical_exam = Object.create(Dao);
 
-Dao_physical_exam.callback_new = function(param,data){
+Dao_physical_exam.callback_new = function(param,ret){
 	var callback = param.callback
 	var par = param.param
 

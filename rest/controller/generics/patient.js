@@ -23,7 +23,7 @@ Patient.add = function(req, res){
 	}
 
 	//Getting and preparing data
-	data = [var_req.iduser,
+	data = [var_req.id_register,
 	var_req.nome,
 	var_req.cpf,
 	var_req.nr_prontuario,
@@ -46,13 +46,14 @@ Patient.search = function(req, res){
 	var_req = Generic.decode_data(var_req)
 
 	//Check authentication
-	if(!Patient.check_requisition(req)){
+	if(!Patient.check_requisition(req) || var_req.name == null){
 		res.send(Patient.error_message(500,"Bad request"));
 		return
 	}
 
 	//Getting and preparing data
-	data = [var_req.name]
+	regex = "%{data}%"
+	data = [regex.replace("{data}",var_req.name)]
 
 	Patient.generic_dao_request(res,data, Dao_patient.search)
 }
@@ -68,7 +69,7 @@ Patient.get = function(req, res){
 	}
 
 	//Getting and preparing data
-	data = [this.url_data.q_id]
+	data = [Patient.url_data.q_id]
 
 	Patient.generic_dao_request(res,data, Dao_patient.get)
 }
