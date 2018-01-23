@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './NewConsult.css';
-//import Base64 from '../../lib/base64';
 //import axios from 'axios';
 import Anamnese from "./anamnese/Anamnese";
 import Evidences from "./evidences/Evidences";
 import PatientProfile from './../patientProfile/PatientProfile';
+import base64 from '../../lib/base64';
+import Interventions from "./interventions/Interventions";
+/* import Medicines from "./medicines/Medicines"; */
 
-/* import Interventions from "./interventions/Interventions";
-import Medicines from "./medicines/Medicines";
-import PhysicalExams from "./physicalExams/PhysicalExams";
-import Predictor from "./predictors/Predictors"; */
+/* import PhysicalExams from "./physicalExams/PhysicalExams";
+import Predictor from "./predictors/Predictors";   */
 
 class NewConsult extends Component {
 
@@ -24,10 +24,14 @@ class NewConsult extends Component {
     this.sections = [
       <Anamnese title="Anamnese" saveData={ this.storeFormData } />,
       <Evidences title="Evidências" saveData={ this.storeFormData } />,
+      <Interventions title="Intervenções" saveData={ this.storeFormData } />,
     ];
 			
     this.state = {
       currentSection: 0,
+
+      
+
       consultData: {},
     };
   }
@@ -76,6 +80,23 @@ class NewConsult extends Component {
   
   saveConsult(){
     //Salvar Consulta
+
+    const consulData= this.state.consultData;
+
+
+    console.log("paciente aqui: =)")
+    console.log(this.props.patient)
+
+ 
+    const data= base64.encode({
+
+      id_pacient: this.props.patient.idpatient,
+      id_user: "",
+
+      data: consulData,
+
+    }) 
+      
     alert("Consulta Salva");
     this.props.switchSession(<PatientProfile patient={this.props.patient} switchSession={this.props.switchSession}/>)
   }
@@ -89,7 +110,7 @@ class NewConsult extends Component {
             this.sections.map(
               (comp,indice) => {
                 return(
-                  <button name={ comp.props.title}  onClick= { () => { this.goToSection(indice)} } >
+                  <button key={comp.props.title} name={ comp.props.title}  onClick= { () => { this.goToSection(indice)} } >
                     { comp.props.title }
                   </button>
                 );

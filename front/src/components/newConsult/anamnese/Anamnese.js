@@ -681,7 +681,7 @@ class Anamnese extends Component {
 					/> 
 					<br/>
 
-					<input type="submit" value="Salvar"/>
+					<input type="submit" value={"salvar" +" "+ this.props.title}/>
 
 				</form>
 			</div>

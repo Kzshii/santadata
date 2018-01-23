@@ -38,7 +38,7 @@ class PatientProfile extends Component {
         this.setState({
           patientData: response.data.data[0]
         });
-        console.log(this.state.patientData);
+
       }
     ).catch();
   }
@@ -46,7 +46,9 @@ class PatientProfile extends Component {
   handleSubmit(event){
     event.preventDefault();
 
-    this.props.switchSession(<NewConsult patient={this.props.patientData} switchSession={this.props.switchSession}/>)
+    console.log("Aqui")
+    console.log(this.state.patientData)
+    this.props.switchSession(<NewConsult patient={this.state.patientData} switchSession={this.props.switchSession}/>)
   }
 
   render() {
