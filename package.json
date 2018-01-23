@@ -23,6 +23,7 @@
     "mongodb": "^2.2.34",
     "mysql": "^2.14.1",
     "node-webhooks": "^1.2.4",
+    "pg": "^7.4.1",
     "superagent": "^3.8.2"
   }
 }
