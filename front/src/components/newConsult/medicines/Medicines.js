@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Medicines.css';
-//import Base64 from '../../lib/base64';
-//import axios from 'axios';
+import Base64 from '../../../lib/base64';
+import axios from 'axios';
 
 class Medicines extends Component {
   constructor(props){
@@ -18,7 +18,7 @@ class Medicines extends Component {
   componentWillMount() {
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
-			"prepare/evidences/",
+			"prepare/medicines/",
 			{}
 		).then(
 			function(response) {
@@ -53,7 +53,7 @@ class Medicines extends Component {
 						{id: 5,label: "Trandolapril"},
 			
 						{
-							droga:drogas.void,
+							//droga:drogas.void,
 							date:"00/00/0000",
 							hour:"00:00",
 							charge: "50mg",
@@ -74,7 +74,7 @@ class Medicines extends Component {
 						{id: 2,label: "Candersatan"},
 			
 						{
-							droga:drogas.void,
+							//droga:drogas.void,
 							date:"00/00/0000",
 							hour:"00:00",
 							charge: "50mg",
@@ -99,7 +99,7 @@ class Medicines extends Component {
 						{id: 1,label: "Diltiazem"},
 			
 						{
-							droga:drogas.void,
+							//droga:drogas.void,
 							date:"00/00/0000",
 							hour:"00:00",
 							charge: "50mg",
@@ -116,7 +116,7 @@ class Medicines extends Component {
 						// Dose Alvo = 50mg
 			
 						{
-							droga:drogas.void,
+							//droga:drogas.void,
 							date:"00/00/0000",
 							hour:"00:00",
 							charge: "50mg",
@@ -129,7 +129,7 @@ class Medicines extends Component {
 						{id: 0,label: "digoxina"},
 					
 						{
-							droga:drogas.void,
+							//droga:drogas.void,
 							date:"00/00/0000",
 							hour:"00:00",
 							charge: "50mg",
@@ -180,7 +180,7 @@ class Medicines extends Component {
 						// Dose alvo = 97 mg/103 mg 
 						// Duração = duas vezes ao dia
 						{
-							droga:drogas.void,
+							//droga:drogas.void,
 							date:"00/00/0000",
 							hour:"00:00",
 							charge: "50mg",
@@ -226,7 +226,7 @@ class Medicines extends Component {
 	
 	render() {
 		return(
-			<div className="Medicines">
+			<div className="medicines">
 				<h2>Medicamentos</h2>
 
           <form onSubmit={ () => this.props.saveData("medicines",this.state.formData) } >
@@ -294,7 +294,7 @@ class Medicines extends Component {
 
 						<label htmlFor="bra">BRA</label>
 						{
-							this.state.prepare.IECA.map(
+							this.state.prepare.BRA.map(
 								(BRA) => {
 									return(
 										<div key={ BRA.id }>
@@ -352,17 +352,33 @@ class Medicines extends Component {
 						<br/>
 
 						<label htmlFor="betaBlockers">Beta-bloqueadores</label>
-						<input type="radio" name="gender" id="0" value="0" onChange={ this.handleChange } /> Nenhum
-            <input type="radio" name="gender" id="1" value="1" onChange={ this.handleChange } /> Carvedilol
-            <input type="radio" name="gender" id="2" value="2" onChange={ this.handleChange } /> Metropolol
-						<input type="radio" name="gender" id="3" value="3" onChange={ this.handleChange } /> Bisoprolol
-						<input type="radio" name="gender" id="4" value="4" onChange={ this.handleChange } /> Propanolol
+						{
+							this.state.prepare.beta_bloqueadores.map(
+								(beta_bloqueadores) => {
+									return(
+										<div key={ beta_bloqueadores.id }>
+											<input type="radio" name="beta_bloqueadores" value={ beta_bloqueadores.id } onChange={ this.handleChange }/>
+											<label htmlFor="">{ beta_bloqueadores.label }</label>
+										</div>
+									);
+								}
+							)
+						}
             <br/>
 
 						<label htmlFor="canaiscaBlockers">Bloqueadores de Canaisca</label>
-						<input type="radio" name="gender" id="0" value="0" onChange={ this.handleChange } /> Nenhum
-            <input type="radio" name="gender" id="1" value="1" onChange={ this.handleChange } /> Verapamil
-            <input type="radio" name="gender" id="2" value="2" onChange={ this.handleChange } /> Diltiazem
+						{
+							this.state.prepare.bloq_canaisca.map(
+								(bloq_canaisca) => {
+									return(
+										<div key={ bloq_canaisca.id }>
+											<input type="radio" name="bloq_canaisca" value={ bloq_canaisca.id } onChange={ this.handleChange }/>
+											<label htmlFor="">{ bloq_canaisca.label }</label>
+										</div>
+									);
+								}
+							)
+						}
             <br/>
 
 						<label htmlFor="firstDosageDate">Data da primeira dose:</label>
