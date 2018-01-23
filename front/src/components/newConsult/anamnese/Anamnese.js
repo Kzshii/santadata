@@ -221,8 +221,30 @@ class Anamnese extends Component {
 	}
 
 	handleChange(event) {
+		const target = event.target;
+		const name = target.name;
+		const value = target.value
+
 		let formData = this.state.formData;
-		formData[event.target.name] = event.target.type === 'checkbox' ? ()=>{} : event.target.value;
+		
+		if(target.type === 'checkbox') {
+			if(target.checked) {
+				/* insere */
+				if(formData[name] == null) {
+					formData[name] = [value];
+				} else {
+					formData[name].push(value);
+				}
+			} else {
+				/* remove */
+				let index = formData[name].indexOf(value);
+				formData[name].splice(index, 1);
+			}
+
+		} else {
+			formData[name] = value;
+		}
+		
 		this.setState({
 			formData: formData,
 		});
@@ -234,424 +256,424 @@ class Anamnese extends Component {
 			<div className="Anamnese">
 				<h2>Anamnese</h2>
 
-          <form onSubmit={ () => this.props.saveData("anamnese",this.state.formData) } >
+				<form onSubmit={ () => this.props.saveData("anamnese",this.state.formData) } >
 
-						<label htmlFor="qp_type">Queixa principal:</label>
-						<select name="qp_type" id="qp_type" onChange={ this.handleChange } required >
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.qp_type.map(
-									(qp_type) => {
-										return(
-											<option key={ qp_type.id } value={ qp_type.id }>{ qp_type.label }</option>
-										);
-									}
-								)
+					<label htmlFor="qp_type">Queixa principal:</label>
+					<select name="qp_type" id="qp_type" onChange={ this.handleChange } required >
+						<option value="">-- Escolher --</option>
+						{
+							this.state.prepare.qp_type.map(
+								(qp_type) => {
+									return(
+										<option key={ qp_type.id } value={ qp_type.id }>{ qp_type.label }</option>
+									);
+								}
+							)
+						}
+					</select>
+					<br/>
+
+					<label htmlFor="actualDiseaseHistory">História da doença atual:</label>
+					<textarea
+						className="inputText "
+						type="text"
+						name="actualDiseaseHistory"
+						id="actualDiseaseHistory"
+						value={ this.state.formData.hda }
+						onChange={ this.handleChange }
+						required
+					/>
+					<br/>
+					
+					<label htmlFor="hist_pat">História patológica:</label>
+					{ 
+						this.state.prepare.hist_pat.map(
+							(hist_pat) => {
+								return(
+									<div key={ hist_pat.id }>
+										<input type="checkbox" name="hist_pat" value={ hist_pat.id } onChange={ this.handleChange } />
+										<label htmlFor="">{ hist_pat.label }</label>
+									</div>
+								);
 							}
-						</select>
-						<br/>
-
-						<label htmlFor="actualDiseaseHistory">História da doença atual:</label>
-            <textarea
-              className="inputText "
-              type="text"
-              name="actualDiseaseHistory"
-              id="actualDiseaseHistory"
-							value={ this.state.formData.hda }
-              onChange={ this.handleChange }
-              required
-            />
-						<br/>
-						
-						<label htmlFor="hist_pat">História patológica:</label>
-						{ 
-							this.state.prepare.hist_pat.map(
-								(hist_pat) => {
+						)
+					}
+					<br/>
+					
+					<label htmlFor="fisiologicHistory">História fisiológica:</label>
+					<select name="hist_fis" id="fisiologicHistory" onChange={ this.handleChange } required >
+						<option value="">-- Escolher --</option>
+						{
+							this.state.prepare.hist_fis.map(
+								(hist_fis) => {
 									return(
-										<div key={ hist_pat.id }>
-											<input type="checkbox" name="hist_pat" value={ hist_pat.id } onChange={ this.handleChange } />
-											<label htmlFor="">{ hist_pat.label }</label>
-										</div>
+										<option key={ hist_fis.id } value={ hist_fis.id }>{ hist_fis.label }</option>
 									);
 								}
 							)
 						}
-						<br/>
-						
-						<label htmlFor="fisiologicHistory">História fisiológica:</label>
-						<select name="hist_fis" id="fisiologicHistory" onChange={ this.handleChange } required >
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.hist_fis.map(
-									(hist_fis) => {
-										return(
-											<option key={ hist_fis.id } value={ hist_fis.id }>{ hist_fis.label }</option>
-										);
-									}
-								)
+					</select>
+					<br/>
+
+					<label htmlFor="hist_fam">História familiar:</label>
+					{ 
+						this.state.prepare.hist_fam.map(
+							(hist_fam) => {
+								return(
+									<div key={ hist_fam.id }>
+										<input type="checkbox" name="hist_fam" value={ hist_fam.id } onChange={ this.handleChange } />
+										<label htmlFor="">{ hist_fam.label }</label>
+									</div>
+								);
 							}
-						</select>
-						<br/>
+						)
+					}
+					<br/>
 
-						<label htmlFor="hist_fam">História familiar:</label>
-						{ 
-							this.state.prepare.hist_fam.map(
-								(hist_fam) => {
-									return(
-										<div key={ hist_fam.id }>
-											<input type="checkbox" name="hist_fam" value={ hist_fam.id } onChange={ this.handleChange } />
-											<label htmlFor="">{ hist_fam.label }</label>
-										</div>
-									);
-								}
-							)
-						}
-						<br/>
-
-						<label htmlFor="">Possui Saneamento básico? </label>
-						{
-							this.state.prepare.san_basico.map(
-								(san_basico) => {
-									return(
-										<div key={ san_basico.id }>
-											<input type="radio" name="san_basico" value={ san_basico.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ san_basico.label }</label>
-										</div>
-									);
-								}
-							)
-						}
-            <br/>
-
-						<label htmlFor="economicSituation">Situação econômica:</label>
-						<select name="economicSitiation" id="economicSituation" onChange={ this.handleChange } required >
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.socio_econ.map(
-									(socio_econ) => {
-										return(
-											<option key={ socio_econ.id } value={ socio_econ.id }>{ socio_econ.label }</option>
-										)
-									}
-								)
+					<label htmlFor="">Possui Saneamento básico? </label>
+					{
+						this.state.prepare.san_basico.map(
+							(san_basico) => {
+								return(
+									<div key={ san_basico.id }>
+										<input type="radio" name="san_basico" value={ san_basico.id } onChange={ this.handleChange }/>
+										<label htmlFor="">{ san_basico.label }</label>
+									</div>
+								);
 							}
-						</select>
-						<br/>
+						)
+					}
+					<br/>
 
-						<label htmlFor="religion">Religião:</label>
-						<select name="religion" id="religion" onChange={ this.handleChange } required >
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.cultural.map(
-									(cultural) => {
-										return(
-											<option key={ cultural.id } value={ cultural.id }>{ cultural.label }</option>
-										)
-									}
-								)
+					<label htmlFor="economicSituation">Situação econômica:</label>
+					<select name="economicSitiation" id="economicSituation" onChange={ this.handleChange } required >
+						<option value="">-- Escolher --</option>
+						{
+							this.state.prepare.socio_econ.map(
+								(socio_econ) => {
+									return(
+										<option key={ socio_econ.id } value={ socio_econ.id }>{ socio_econ.label }</option>
+									)
+								}
+							)
+						}
+					</select>
+					<br/>
+
+					<label htmlFor="religion">Religião:</label>
+					<select name="religion" id="religion" onChange={ this.handleChange } required >
+						<option value="">-- Escolher --</option>
+						{
+							this.state.prepare.cultural.map(
+								(cultural) => {
+									return(
+										<option key={ cultural.id } value={ cultural.id }>{ cultural.label }</option>
+									)
+								}
+							)
+						}
+					</select>
+					<br/>
+
+					<label htmlFor="educationSituation">Situação educacional:</label>
+					<select name="educationSitiation" id="educationSituation" onChange={ this.handleChange } required >
+						<option value="">-- Escolher --</option>
+						{
+							this.state.prepare.socio_econ.map(
+								(escolar) => {
+									return(
+										<option key={ escolar.id } value={ escolar.id }>{ escolar.label }</option>
+									)
+								}
+							)
+						}
+					</select>
+					<br/>
+
+					<label htmlFor="familiarRelationship">Relação familiar:</label>
+					<select name="familiarRelationship" id="familiarRelationship" onChange={ this.handleChange } required >
+						<option value="">-- Escolher --</option>
+						{
+							this.state.prepare.relacao_fam.map(
+								(relacao_fam) => {
+									return(
+										<option key={ relacao_fam.id } value={ relacao_fam.id }>{ relacao_fam.label }</option>
+									)
+								}
+							)
+						}
+					</select>
+					<br/>
+
+					<h3>Estilo de vida</h3>
+											
+					<label htmlFor="feeding">Alimentação:</label>
+					{
+						this.state.prepare.alimentacao.map(
+							(alimentacao) => {
+								return(
+									<div key={ alimentacao.id }>
+										<input type="checkbox" name="alimentacao" value={ alimentacao.id } onChange={ this.handleChange }/>
+										<label htmlFor="">{ alimentacao.label }</label>
+									</div>
+								);
 							}
-						</select>
-						<br/>
+						)
+					}
+					<br/>
 
-						<label htmlFor="educationSituation">Situação educacional:</label>
-						<select name="educationSitiation" id="educationSituation" onChange={ this.handleChange } required >
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.socio_econ.map(
-									(escolar) => {
-										return(
-											<option key={ escolar.id } value={ escolar.id }>{ escolar.label }</option>
-										)
-									}
-								)
+					<label htmlFor="physicalActivity">Atividades físicas:</label>
+					<select name="physicalActivity" id="physicalActivity" onChange={ this.handleChange } required >
+						<option value="">-- Escolher --</option>
+						{
+							this.state.prepare.ativ_fisica.map(
+								(ativ_fisica) => {
+									return(
+										<option key={ ativ_fisica.id } value={ ativ_fisica.id }>{ ativ_fisica.label }</option>
+									)
+								}
+							)
+						}
+					</select>
+					<br/>
+
+					<h3>Fumo</h3>
+
+					<label htmlFor="">Faz uso?</label>
+					{
+						this.state.prepare.tabagismo.map(
+							(tabagismo) => {
+								return(
+									<div key={ tabagismo.id }>
+										<input type="radio" name="tabagismo" value={ tabagismo.id } onChange={ this.handleChange }/>
+										<label htmlFor="">{ tabagismo.label }</label>
+									</div>
+								);
 							}
-						</select>
-						<br/>
+						)
+					}
+					<br/>
 
-						<label htmlFor="familiarRelationship">Relação familiar:</label>
-						<select name="familiarRelationship" id="familiarRelationship" onChange={ this.handleChange } required >
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.relacao_fam.map(
-									(relacao_fam) => {
-										return(
-											<option key={ relacao_fam.id } value={ relacao_fam.id }>{ relacao_fam.label }</option>
-										)
-									}
-								)
+					<label htmlFor="smoke">Tipos de fumo:</label>
+					{
+						this.state.prepare.tabag_tipo.map(
+							(tabag_tipo) => {
+								return(
+									<div key={ tabag_tipo.id }>
+										<input type="checkbox" name="tabag_tipo" value={ tabag_tipo.id } onChange={ this.handleChange }/>
+										<label htmlFor="">{ tabag_tipo.label }</label>
+									</div>
+								);
 							}
-						</select>
-						<br/>
+						)
+					}
+					<br/>
 
-						<h3>Estilo de vida</h3>
-												
-						<label htmlFor="feeding">Alimentação:</label>
-						{
-							this.state.prepare.alimentacao.map(
-								(alimentacao) => {
-									return(
-										<div key={ alimentacao.id }>
-											<input type="checkbox" name="alimentacao" value={ alimentacao.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ alimentacao.label }</label>
-										</div>
-									);
-								}
-							)
-						}
-            <br/>
+					<label htmlFor="dailyCigaretteAmount">Quantidade diária:</label>
+					<input
+						className="inputText "
+						type="text"
+						name="dailyCigaretteAmount"
+						id="dailyCigaretteAmount"
+						value={ this.state.formData.tabag_quant }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
 
-						<label htmlFor="physicalActivity">Atividades físicas:</label>
-						<select name="physicalActivity" id="physicalActivity" onChange={ this.handleChange } required >
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.ativ_fisica.map(
-									(ativ_fisica) => {
-										return(
-											<option key={ ativ_fisica.id } value={ ativ_fisica.id }>{ ativ_fisica.label }</option>
-										)
-									}
-								)
+					<label htmlFor="smokingFrequency">Frequencia e quantidade de fumo:</label>
+					<input
+						className="inputText "
+						type="text"
+						name="smokingFrequency"
+						id="smokingFrequency"
+						value={ this.state.formData.tabag_freq }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
+
+					<label htmlFor="startSmoking">Data de início:</label>
+					<input
+						type="date"
+						name="startSmoking"
+						id="startSmoking"
+						value={ this.state.formData.tabag_date }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
+
+					<label htmlFor="smokingTime">Tempo que fuma:</label>
+					<input
+						type="number"
+						name="smokingTime"
+						id="smokingTime"
+						value={ this.state.formData.tabag_tempo }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
+
+					<h3>Alcool</h3>
+
+					<label htmlFor="">Faz uso?</label>
+					{
+						this.state.prepare.etilismo.map(
+							(etilismo) => {
+								return(
+									<div key={ etilismo.id }>
+										<input type="radio" name="etilismo" value={ etilismo.id } onChange={ this.handleChange }/>
+										<label htmlFor="">{ etilismo.label }</label>
+									</div>
+								);
 							}
-						</select>
-						<br/>
+						)
+					}
+					<br/>
 
-						<h3>Fumo</h3>
+					<label htmlFor="alcoholicBeverages">Tipos de bebidas:</label>
+					{
+						this.state.prepare.etil_tipo.map(
+							(etil_tipo) => {
+								return(
+									<div key={ etil_tipo.id }>
+										<input type="checkbox" name="etil_tipo" value={ etil_tipo.id } onChange={ this.handleChange }/>
+										<label htmlFor="">{ etil_tipo.label }</label>
+									</div>
+								);
+							}
+						)
+					}	
+					<br/>
 
-						<label htmlFor="">Faz uso?</label>
-						{
-							this.state.prepare.tabagismo.map(
-								(tabagismo) => {
-									return(
-										<div key={ tabagismo.id }>
-											<input type="radio" name="tabagismo" value={ tabagismo.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ tabagismo.label }</label>
-										</div>
-									);
-								}
-							)
-						}
-						<br/>
+					<label htmlFor="dailyAlcoholicBevAmount">Quantidade diária:</label>
+					<input
+						className="inputText "
+						type="text"
+						name="dailyAlcoholicBevAmount"
+						id="dailyAlcoholicBevAmount"
+						value={ this.state.formData.etil_quant }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
 
-						<label htmlFor="smoke">Tipos de fumo:</label>
-						{
-							this.state.prepare.tabag_tipo.map(
-								(tabag_tipo) => {
-									return(
-										<div key={ tabag_tipo.id }>
-											<input type="checkbox" name="tabag_tipo" value={ tabag_tipo.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ tabag_tipo.label }</label>
-										</div>
-									);
-								}
-							)
-						}
-            <br/>
+					<label htmlFor="alcoholicBevFrequency">Frequencia e quantidade de bebidas alcólicas:</label>
+					<input
+						className="inputText "
+						type="text"
+						name="alcoholicBevFrequency"
+						id="alcoholicBevFrequency"
+						value={ this.state.formData.etil_freq }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
 
-						<label htmlFor="dailyCigaretteAmount">Quantidade diária:</label>
-            <input
-              className="inputText "
-              type="text"
-              name="dailyCigaretteAmount"
-              id="dailyCigaretteAmount"
-              value={ this.state.formData.tabag_quant }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
+					<label htmlFor="startDrinking">Data de início:</label>
+					<input
+						type="date"
+						name="startDrinking"
+						id="startDrinking"
+						value={ this.state.formData.etil_date }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
+					
+					<label htmlFor="drinkingTime">Tempo que bebe:</label>
+					<input
+						type="number"
+						name="drinkingTime"
+						id="drinkingTime"
+						value={ this.state.formData.etil_tempo }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
 
-						<label htmlFor="smokingFrequency">Frequencia e quantidade de fumo:</label>
-            <input
-              className="inputText "
-              type="text"
-              name="smokingFrequency"
-              id="smokingFrequency"
-              value={ this.state.formData.tabag_freq }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
+					<h3>Drogas</h3>
 
-						<label htmlFor="startSmoking">Data de início:</label>
-            <input
-              type="date"
-              name="startSmoking"
-              id="startSmoking"
-              value={ this.state.formData.tabag_date }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
+					<label htmlFor="">Faz uso?</label>
+					{
+						this.state.prepare.uso_drogas.map(
+							(uso_drogas) => {
+								return(
+									<div key={ uso_drogas.id }>
+										<input type="radio" name="uso_drogas" value={ uso_drogas.id } onChange={ this.handleChange }/>
+										<label htmlFor="">{ uso_drogas.label }</label>
+									</div>
+								);
+							}
+						)
+					}
+					<br/>
 
-						<label htmlFor="smokingTime">Tempo que fuma:</label>
-            <input
-              type="number"
-              name="smokingTime"
-              id="smokingTime"
-              value={ this.state.formData.tabag_tempo }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
+					<label htmlFor="smoke">Tipos de drogas:</label>
+					{
+						this.state.prepare.drogas_tipo.map(
+							(drogas_tipo) => {
+								return(
+									<div key={ drogas_tipo.id }>
+										<input type="checkbox" name="drogas_tipo" value={ drogas_tipo.id } onChange={ this.handleChange }/>
+										<label htmlFor="">{ drogas_tipo.label }</label>
+									</div>
+								);
+							}
+						)
+					}	
+					<br/>
 
-						<h3>Alcool</h3>
+					<label htmlFor="dailyDrugsAmount">Quantidade diária:</label>
+					<input
+						className="inputText "
+						type="text"
+						name="dailyDrugsAmount"
+						id="dailyDrugsAmount"
+						value={ this.state.formData.drogas_quant }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
 
-						<label htmlFor="">Faz uso?</label>
-						{
-							this.state.prepare.etilismo.map(
-								(etilismo) => {
-									return(
-										<div key={ etilismo.id }>
-											<input type="radio" name="etilismo" value={ etilismo.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ etilismo.label }</label>
-										</div>
-									);
-								}
-							)
-						}
-						<br/>
+					<label htmlFor="drugsFrequency">Frequencia e quantidade das drogas:</label>
+					<input
+						className="inputText "
+						type="text"
+						name="drugsFrequency"
+						id="drugsFrequency"
+						value={ this.state.formData.drogas_freq }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
 
-						<label htmlFor="alcoholicBeverages">Tipos de bebidas:</label>
-						{
-							this.state.prepare.etil_tipo.map(
-								(etil_tipo) => {
-									return(
-										<div key={ etil_tipo.id }>
-											<input type="checkbox" name="etil_tipo" value={ etil_tipo.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ etil_tipo.label }</label>
-										</div>
-									);
-								}
-							)
-						}	
-            <br/>
+					<label htmlFor="startDrugs">Data de início:</label>
+					<input
+						type="date"
+						name="startDrugs"
+						id="startDrugs"
+						value={ this.state.formData.drogas_date }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
+					
+					<label htmlFor="drugsTime">Tempo:</label>
+					<input
+						type="number"
+						name="drugsTime"
+						id="drugsTime"
+						value={ this.state.formData.drogas_tempo }
+						onChange={ this.handleChange }
+						required
+					/> 
+					<br/>
 
-						<label htmlFor="dailyAlcoholicBevAmount">Quantidade diária:</label>
-            <input
-              className="inputText "
-              type="text"
-              name="dailyAlcoholicBevAmount"
-              id="dailyAlcoholicBevAmount"
-              value={ this.state.formData.etil_quant }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
+					<input type="submit" value="Salvar"/>
 
-						<label htmlFor="alcoholicBevFrequency">Frequencia e quantidade de bebidas alcólicas:</label>
-            <input
-              className="inputText "
-              type="text"
-              name="alcoholicBevFrequency"
-              id="alcoholicBevFrequency"
-              value={ this.state.formData.etil_freq }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
-
-						<label htmlFor="startDrinking">Data de início:</label>
-            <input
-              type="date"
-              name="startDrinking"
-              id="startDrinking"
-              value={ this.state.formData.etil_date }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
-						
-						<label htmlFor="drinkingTime">Tempo que bebe:</label>
-            <input
-              type="number"
-              name="drinkingTime"
-              id="drinkingTime"
-              value={ this.state.formData.etil_tempo }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
-
-						<h3>Drogas</h3>
-
-						<label htmlFor="">Faz uso?</label>
-						{
-							this.state.prepare.uso_drogas.map(
-								(uso_drogas) => {
-									return(
-										<div key={ uso_drogas.id }>
-											<input type="radio" name="uso_drogas" value={ uso_drogas.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ uso_drogas.label }</label>
-										</div>
-									);
-								}
-							)
-						}
-						<br/>
-
-						<label htmlFor="smoke">Tipos de drogas:</label>
-						{
-							this.state.prepare.drogas_tipo.map(
-								(drogas_tipo) => {
-									return(
-										<div key={ drogas_tipo.id }>
-											<input type="checkbox" name="drogas_tipo" value={ drogas_tipo.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ drogas_tipo.label }</label>
-										</div>
-									);
-								}
-							)
-						}	
-            <br/>
-
-						<label htmlFor="dailyDrugsAmount">Quantidade diária:</label>
-            <input
-              className="inputText "
-              type="text"
-              name="dailyDrugsAmount"
-              id="dailyDrugsAmount"
-              value={ this.state.formData.drogas_quant }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
-
-						<label htmlFor="drugsFrequency">Frequencia e quantidade das drogas:</label>
-            <input
-              className="inputText "
-              type="text"
-              name="drugsFrequency"
-              id="drugsFrequency"
-              value={ this.state.formData.drogas_freq }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
-
-						<label htmlFor="startDrugs">Data de início:</label>
-            <input
-              type="date"
-              name="startDrugs"
-              id="startDrugs"
-              value={ this.state.formData.drogas_date }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
-						
-						<label htmlFor="drugsTime">Tempo:</label>
-            <input
-              type="number"
-              name="drugsTime"
-              id="drugsTime"
-              value={ this.state.formData.drogas_tempo }
-              onChange={ this.handleChange }
-              required
-            /> 
-						<br/>
-
-						<input type="submit" value="Salvar"/>
-
-					</form>
+				</form>
 			</div>
 
 
