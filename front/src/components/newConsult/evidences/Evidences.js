@@ -1,31 +1,152 @@
 import React, { Component } from 'react';
 import './Evidences.css';
-//import Base64 from '../../lib/base64';
-//import axios from 'axios';
+import Base64 from '../../../lib/base64';
+import axios from 'axios';
 
 class Evidences extends Component {
   constructor(props){
     super(props);
-        
-    this.state = {
+				
+		this.handleChange = this.handleChange.bind(this);
 
+    this.state = {
+			prepare: {},
+			formData: {},
     };
 	}
+
+	componentWillMount() {
+		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+		axios.post(
+			"prepare/evidences/",
+			{}
+		).then(
+			function(response) {
+				this.setState(
+					{
+						prepare: response.data.data,
+					}
+				);
+			}
+		).catch();
+
+		this.setState(
+			{
+				prepare: {
+
+					// Registro de Evidencias
+					ev_estado:
+					[
+						{id: 0,label: "Primeira consulta"},
+						{id: 1,label: "Em tratamento"},
+						{id: 2,label: "Desistente/Desaparecido"},
+						{id: 3,label: "Reinternação"},
+					],
+
+					// Tempo do acompanhamento Ambulatorial
+					amb_start_time: "", //
+
+
+					// Data Primeira Consulta
+					date_consult: "00/00/0000",
+
+
+					// Etiologia
+					ev_etiologia:
+					[								
+						{id: 0,label: "A Esclarecer"},
+						{id: 1,label: "Doença Arterial Coronariana (DAC)"},
+						{id: 2,label: "Hipertensão Arterial Sistêmica (HAS)"},
+						{id: 3,label: "Cardiomiopatia Dilatada Idiopática"},
+						{id: 4,label: "Cardiomiopatia Chagásica"},
+						{id: 5,label: "Valvulopatias"},
+						{id: 6,label: "Alcoólica"},
+						{id: 7,label: "Pós Quimioterapia"},
+					],
+
+					// Co-morbidades
+					ev_comorbidades:
+					[
+						{id: 0,label: "Hipertensão Arterial Sistemica (HAS)"},
+						{id: 1,label: "Diabetes Mélitus (DM)"},
+						{id: 2,label: "Dislipidemia (DLP)"},
+						{id: 3,label: "Tabagismo (TBG)"},
+						{id: 4,label: "Doença Arterial Coronariana (DAC)"},
+						{id: 5,label: "Fibrilação atrial (FA)"},
+						{id: 6, label: "Uso de Anti-coagulante Oral"},
+						{id: 7,label: "Insuficiência Renal Crônica (IRC)"},
+						{id: 8,label: "Tireóide (hipo ou hipertireoidismo)"},
+					],
+
+					// Eventos Adversos
+					ev_adversos:
+					[
+						{id: 0,label: "Infarto Agudo do Miocárdio (IAM)"},
+						{id: 1,label: "Acidente Vascular Cerebral (AVC)"},
+						{id: 2,label: "Internação (INT)"},
+					],
+
+					// Obito
+					ev_obito:
+					[
+						{id: 0,label: "Sim"},
+						{id: 1,label: "Nao"},
+					],
+				},
+			}
+		);
+	}
 	
+	handleChange(event) {
+		const target = event.target;
+		const name = target.name;
+		const value = target.value
+
+		let formData = this.state.formData;
+		
+		if(target.type === 'checkbox') {
+			if(target.checked) {
+				/* insere */
+				if(formData[name] == null) {
+					formData[name] = [value];
+				} else {
+					formData[name].push(value);
+				}
+			} else {
+				/* remove */
+				let index = formData[name].indexOf(value);
+				formData[name].splice(index, 1);
+			}
+
+		} else {
+			formData[name] = value;
+		}
+		
+		this.setState({
+			formData: formData,
+		});
+		console.log("STATE", this.state);
+	}			
+
 	render(){
 		return(
 			<div className="Evidences">
 				<h2>Evidências</h2>
 
-				<form onSubmit={ this.handleSubmit } >
+				<form onSubmit={ () => this.props.saveData("evidences",this.state.formData) } >
 
 					<label htmlFor="evidencesRegistry">Queixa principal:</label>
 					<select name="evidencesRegistry" id="evidencesResgistry" onChange={ this.handleChange } required >
 						<option value="">-- Escolher --</option>
-						<option value="0">Primeira consulta</option>
-						<option value="1">Em tratamento</option>
-						<option value="2">Desistência/Desaparacido</option>
-						<option value="3">Reinternação</option>
+						{
+							this.state.prepare.ev_estado.map(
+								(ev_estado) => {
+									return(
+										<option key={ ev_estado.id } value={ ev_estado.id }>{ ev_estado.label }</option>
+									)
+								}
+							)
+						}
 					</select>
 					<br/>
 
@@ -34,7 +155,7 @@ class Evidences extends Component {
 						type="number"
 						name="monitoringTime"
 						id="monitoringTime"
-						value={ this.state.formData.monitoringTime }
+						value={ this.state.formData.amb_start_time }
 						onChange={ this.handleChange }
 						required
 					/> 
@@ -45,44 +166,70 @@ class Evidences extends Component {
 						type="date"
 						name="firstVisit"
 						id="firstVisit"
-						value={ this.state.formData.firstVisit }
+						value={ this.state.formData.date_consult }
 						onChange={ this.handleChange }
 						required
 					/> 
 					<br/>
 
 					<label htmlFor="etiology">Etiologia</label>
-					<input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> A esclarecer
-					<input type="checkbox" name="gender" id="1" value="1" onChange={ this.handleChange } /> Doença Arterial Coronariana
-					<input type="checkbox" name="gender" id="2" value="2" onChange={ this.handleChange } /> Hipertensão Arterial Sistêmica (HAS)
-					<input type="checkbox" name="gender" id="3" value="3" onChange={ this.handleChange } /> Cardiomiopatia Dilatada Idiopática
-					<input type="checkbox" name="gender" id="4" value="4" onChange={ this.handleChange } /> Cardiomiopatia Chagásica
-					<input type="checkbox" name="gender" id="5" value="5" onChange={ this.handleChange } /> Valvuloplatias
-					<input type="checkbox" name="gender" id="6" value="6" onChange={ this.handleChange } /> Alcólica
-					<input type="checkbox" name="gender" id="7" value="6" onChange={ this.handleChange } /> Pós-quimioterapia
+					{ 
+						this.state.prepare.ev_etiologia.map(
+							(ev_etiologia) => {
+								return(
+									<div key={ ev_etiologia }>
+										<input type="checkbox" name="ev_etiologia" value={ ev_etiologia.id } onChange={ this.handleChange } />
+										<label htmlFor="">{ ev_etiologia.label }</label>
+									</div>
+								);
+							}
+						)
+					}
 					<br/>
 
 					<label htmlFor="Comorbidities">Comorbidades</label>
-					<input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> Hipertensão Arterial Sistêmica (HAS)
-					<input type="checkbox" name="gender" id="1" value="1" onChange={ this.handleChange } /> Diabetes Mélitus (DM)
-					<input type="checkbox" name="gender" id="2" value="2" onChange={ this.handleChange } /> Dislipidemia (DLP)
-					<input type="checkbox" name="gender" id="3" value="3" onChange={ this.handleChange } /> Tabagismo (TBG)
-					<input type="checkbox" name="gender" id="4" value="4" onChange={ this.handleChange } /> Doença Arterial Coronariana (DAC)
-					<input type="checkbox" name="gender" id="5" value="5" onChange={ this.handleChange } /> Fibrilação Arterial (FA)
-					<input type="checkbox" name="gender" id="6" value="6" onChange={ this.handleChange } /> Uso de Anti-coagulante Oral
-					<input type="checkbox" name="gender" id="7" value="6" onChange={ this.handleChange } /> Insuficiência Renal Crônica (IRC)
-					<input type="checkbox" name="gender" id="7" value="6" onChange={ this.handleChange } /> Tireóide (Hipo ou Hipertireodismo)
+					{ 
+						this.state.prepare.ev_comorbidades.map(
+							(ev_comorbidades) => {
+								return(
+									<div key={ ev_comorbidades.id }>
+										<input type="checkbox" name="ev_comorbidades" value={ ev_comorbidades.id } onChange={ this.handleChange } />
+										<label htmlFor="">{ ev_comorbidades.label }</label>
+									</div>
+								);
+							}
+						)
+					}
 					<br/>
 
 					<label htmlFor="adverseEvents">Eventos adversos</label>
-					<input type="checkbox" name="gender" id="0" value="0" onChange={ this.handleChange } /> Hipertensão Agudo do Miocárdio (HAM)
-					<input type="checkbox" name="gender" id="1" value="1" onChange={ this.handleChange } /> Acidente Vascular Cerebral (AVC)
-					<input type="checkbox" name="gender" id="2" value="2" onChange={ this.handleChange } /> Internação (INT)
+					{ 
+						this.state.prepare.ev_adversos.map(
+							(ev_adversos) => {
+								return(
+									<div key={ ev_adversos.id }>
+										<input type="checkbox" name="ev_adversos" value={ ev_adversos.id } onChange={ this.handleChange } />
+										<label htmlFor="">{ ev_adversos.label }</label>
+									</div>
+								);
+							}
+						)
+					}
 					<br/>
 
 					<label htmlFor="">Óbito?</label>
-					<input type="radio" name="gender" id="Y" value="Y" onChange={ this.handleChange } required /> Sim
-					<input type="radio" name="gender" id="N" value="N" onChange={ this.handleChange } /> Não
+					{
+						this.state.prepare.ev_obito.map(
+							(ev_obito) => {
+								return(
+									<div key={ ev_obito.id }>
+										<input type="radio" name="ev_obito" value={ ev_obito.id } onChange={ this.handleChange }/>
+										<label htmlFor="">{ ev_obito.label }</label>
+									</div>
+								);
+							}
+						)
+					}
 					<br/>	
 
 					<input type="submit" value="Salvar"/>

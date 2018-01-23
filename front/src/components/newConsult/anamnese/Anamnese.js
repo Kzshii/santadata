@@ -12,7 +12,7 @@ class Anamnese extends Component {
     this.state = {
 			prepare: {},
 			formData: {},
-    }
+    };
 	}
 	
 	componentWillMount() {

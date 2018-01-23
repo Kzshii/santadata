@@ -7,10 +7,126 @@ class Medicines extends Component {
   constructor(props){
     super(props);
         
-    this.state = {
+		this.handleChange = this.handleChange.bind(this);
 
-    }
-	}
+    this.state = {
+			prepare: {},
+			formData: {},
+    };
+  }
+
+  componentWillMount() {
+		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+		axios.post(
+			"prepare/evidences/",
+			{}
+		).then(
+			function(response) {
+				this.setState(
+					{
+						prepare: response.data.data,
+					}
+				);
+			}
+		).catch();
+
+		this.setState(
+			{
+				prepare: {
+
+					// Registro de Evidencias
+					ev_estado:
+					[
+						{id: 0,label: "Primeira consulta"},
+						{id: 1,label: "Em tratamento"},
+						{id: 2,label: "Desistente/Desaparecido"},
+						{id: 3,label: "Reinternação"},
+					],
+
+					// Tempo do acompanhamento Ambulatorial
+					amb_start_time: "", //
+
+
+					// Data Primeira Consulta
+					date_consult: "00/00/0000",
+
+
+					// Etiologia
+					ev_etiologia:
+					[								
+						{id: 0,label: "A Esclarecer"},
+						{id: 1,label: "Doença Arterial Coronariana (DAC)"},
+						{id: 2,label: "Hipertensão Arterial Sistêmica (HAS)"},
+						{id: 3,label: "Cardiomiopatia Dilatada Idiopática"},
+						{id: 4,label: "Cardiomiopatia Chagásica"},
+						{id: 5,label: "Valvulopatias"},
+						{id: 6,label: "Alcoólica"},
+						{id: 7,label: "Pós Quimioterapia"},
+					],
+
+					// Co-morbidades
+					ev_comorbidades:
+					[
+						{id: 0,label: "Hipertensão Arterial Sistemica (HAS)"},
+						{id: 1,label: "Diabetes Mélitus (DM)"},
+						{id: 2,label: "Dislipidemia (DLP)"},
+						{id: 3,label: "Tabagismo (TBG)"},
+						{id: 4,label: "Doença Arterial Coronariana (DAC)"},
+						{id: 5,label: "Fibrilação atrial (FA)"},
+						{id: 6, label: "Uso de Anti-coagulante Oral"},
+						{id: 7,label: "Insuficiência Renal Crônica (IRC)"},
+						{id: 8,label: "Tireóide (hipo ou hipertireoidismo)"},
+					],
+
+					// Eventos Adversos
+					ev_adversos:
+					[
+						{id: 0,label: "Infarto Agudo do Miocárdio (IAM)"},
+						{id: 1,label: "Acidente Vascular Cerebral (AVC)"},
+						{id: 2,label: "Internação (INT)"},
+					],
+
+					// Obito
+					ev_obito:
+					[
+						{id: 0,label: "Sim"},
+						{id: 1,label: "Nao"},
+					],
+				},
+			}
+		);
+	}  
+
+  handleChange(event) {
+		const target = event.target;
+		const name = target.name;
+		const value = target.value
+
+		let formData = this.state.formData;
+		
+		if(target.type === 'checkbox') {
+			if(target.checked) {
+				/* insere */
+				if(formData[name] == null) {
+					formData[name] = [value];
+				} else {
+					formData[name].push(value);
+				}
+			} else {
+				/* remove */
+				let index = formData[name].indexOf(value);
+				formData[name].splice(index, 1);
+			}
+
+		} else {
+			formData[name] = value;
+		}
+		
+		this.setState({
+			formData: formData,
+		});
+		console.log("STATE", this.state);
+	}	
 	
 	render(){
 		return(
