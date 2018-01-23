@@ -106,6 +106,7 @@ class Interventions extends Component {
 								}
 							)						
 						}
+						<br/>
 
 						<label htmlFor="implantes">Implantes</label>
 						{
@@ -120,6 +121,7 @@ class Interventions extends Component {
 								}
 							)						
 						}
+						<br/>
 
 					</form>
 					
