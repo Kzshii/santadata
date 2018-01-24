@@ -9,10 +9,10 @@ class Home extends Component {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
-    this.switchSession = this.switchSession.bind(this);
+    this.switchSection = this.switchSection.bind(this);
 
     this.state = {
-      currentSession: <SearchPatient switchSession={ this.switchSession } />,
+      currentSection: <SearchPatient switchSection={ this.switchSection } />,
     };
   }
 
@@ -21,10 +21,10 @@ class Home extends Component {
 
     switch(event.target.name) {
       case 'newPatient':
-        this.switchSession( <NewPatient  /> );
+        this.switchSection( <NewPatient  /> );
         break;
       case 'searchPatient':
-        this.switchSession( <SearchPatient switchSession={ this.switchSession } /> );
+        this.switchSection( <SearchPatient switchSection={ this.switchSection } /> );
       default:
         break;
     }
@@ -32,14 +32,14 @@ class Home extends Component {
     
   }
 
-  switchSession(target) {
-    console.log("Switch session", target);
+  switchSection(target) {
+    console.log("Switch section", target);
     this.setState(
       {
-        currentSession: target,
+        currentSection: target,
       }
     );
-    console.log(this.state.currentSession)
+    console.log(this.state.currentSection);
   }
 
   render() {
@@ -53,7 +53,7 @@ class Home extends Component {
           Buscar Paciente
         </button>
         <section>
-          { this.state.currentSession }
+          { this.state.currentSection }
         </section>
 
       </div>
