@@ -169,13 +169,13 @@ class General extends Component {
 						</select>
 						<br/>
 
-						<label htmlFor="refl_hepatojugular">Refl Heptojugular</label>
+						<label htmlFor="refl_heptojugular">Refl Heptjugular</label>
 						{ 
 							this.state.prepare.refl_heptojugular.map(
 								(row) => {
 									return(
 										<div key={ row.id }>
-											<input type="radio" name="refl_hepatojugular" value={ row.id } onChange={ this.handleChange } />
+											<input type="radio" name="refl_heptojugular" value={ row.id } onChange={ this.handleChange } />
 											<label htmlFor="">{ row.label }</label>
 										</div>
 									);

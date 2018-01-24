@@ -81,7 +81,7 @@ class Bioquimic extends Component {
 	render(){
 		return(
 			<div className="physicalExams">
-				<h3>Bioquímicos</h3>
+				<h3>Bioquímicos:</h3>
 				
 				<Creatina/>
 				<Sangue/>

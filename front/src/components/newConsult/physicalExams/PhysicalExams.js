@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './PhysicalExams.css';
 import Base64 from '../../../lib/base64';
 import axios from 'axios';
+import Bioquimic from "./bioquimic/Bioquimic";
+import Cardio from "./cardio/Cardio";
+import Complementary from "./complementary/Complementary";
+import General from "./general/General";
 
 
 class PhysicalExams extends Component {
@@ -35,35 +39,6 @@ class PhysicalExams extends Component {
 			{
 				prepare: {
 
-					complementar:{
-
-						//ECG
-						eletro: // 0..*
-						[ 
-							{id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
-							{id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
-							{id: 2, label: "Supra do Segmento ST"},
-							{id: 3, label: "Sobrecarga Atrial (SA)"},
-							{id: 3, label: "Sobrecargo de Ventrículo (SV)"},
-							{id: 3, label: "Flutter Atrial"},
-							{id: 3, label: "Fibrilação Atrial (FA)"},
-						],
-
-						//Ecocardiograma
-						primeira_FE: "", // texto numérico
-						primeiro_VE_diast: "",
-						primeiro_VE_sist: "",
-
-						ultima_FE: "", // texto numérico
-						ultima_VE_diast: "",
-						ultima_VE_sist: "",		
-
-						delta_FE: "", // diferença entre ultima_FE - primeira_FE
-						delta_VE: "", // diferença entre ultima_VE_sist - primeira_FE_sist
-						ps_ap: "", // texto numérico
-
-						
-					},
 				},
 			}
 		);
@@ -110,10 +85,17 @@ class PhysicalExams extends Component {
 			<div className="physicalExams">
 				<h2>Exames Físicos</h2>
 
+				{/*
 					<form onSubmit={ () => this.props.saveData("physicalExams",this.state.formData) }>
 						
 					</form>
-					
+				*/}
+
+				<General/>
+				<Cardio/>
+				<Bioquimic/>
+				<Complementary/>
+
 			</div>
 		)
 	}
