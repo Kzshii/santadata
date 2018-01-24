@@ -55,12 +55,12 @@ var styles = {
       <div className="LoginForm">
         <form onSubmit={ this.handleSubmit }  >
 
-          
+           <span className="symbol-input100"> <i className="far fa-envelope"></i></span>
+
           <input className="textInput" type="text" placeholder="Usuario" value={ this.state.user } onChange={ this.handleChangeEmail }  /> <br/>
-          <span className="focus-input100"></span>
-          <FontAwesomeIcon icon="faUser"/>
-          <span className="symbol-input100"></span>
-          <span className="lnr lnr-envelope"></span>
+          {/*<span className="focus-input100"></span>*/}
+         
+         
             
 
 
