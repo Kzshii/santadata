@@ -103,18 +103,18 @@ class SearchPatient extends Component {
   render() {
     return(
       <div className="SearchPatient">
-        <h1>Busca de Paciente</h1>
         <form onSubmit={ this.handleSubmit } >
           
-          <label htmlFor= "patientName"> Nome </label>
+          <label htmlFor= "patientName"></label>
           <input 
             className="patientName"
             type="text"
             id="patientName" 
             name="patientName"
+            placeholder= "Buscar Paciente"
             value={ this.state.search.name }
             onChange={ this.handleChange }
-          /> <br/>
+          /> 
 
           <input type="submit" value="Buscar" />
 
