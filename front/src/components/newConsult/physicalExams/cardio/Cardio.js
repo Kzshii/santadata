@@ -112,18 +112,17 @@ class Cardio extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.saveData("anamnese",this.state.formData);
+		this.props.saveData("cardio",this.state.formData);
 	}
 
 	render(){
 		return(
 			<div className="cardio">
-				<h2>Exames Físicos</h2>
 
+				<h3>Cardiovasculares:</h3>
+				
 					<form onSubmit={ () => this.props.saveData("cardio",this.state.formData) }>
-						
-						<h3>Cardiovascular:</h3>
-
+				
 						<label htmlFor="ritmo">Ritmo</label>
 						<select name="ritmo" id="ritmo" onChange={ this.handleChange }>
 							<option value="">-- Escolher --</option>

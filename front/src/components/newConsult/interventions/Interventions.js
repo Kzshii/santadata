@@ -85,6 +85,11 @@ class Interventions extends Component {
 		console.log("STATE", this.state);
 	}	
 
+	handleSubmit(event) {
+		event.preventDefault();
+		this.props.saveData("interventions",this.state.formData);
+	}
+
 	render(){
 		return(
 			<div className="interventions">

@@ -124,9 +124,9 @@ class General extends Component {
 		return(
 			<div className="general">
 
+				<h3>Gerais:</h3>
+
 					<form onSubmit={ () => this.props.saveData("general",this.state.formData) }>
-						
-						<h3>Geral:</h3>
 
 						<label htmlFor="state">Estado:</label>
 						<textarea
