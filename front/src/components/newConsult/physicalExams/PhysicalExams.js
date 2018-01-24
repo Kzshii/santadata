@@ -95,8 +95,9 @@ class PhysicalExams extends Component {
 						]
 					},
 
+					
 					//Dados medicos
-					medicos: // texto 
+					geral2: // texto 
 					{ 
 						estado: "",
 						//edema: Exame_fisico.types.geral.edemas[0],
@@ -109,7 +110,7 @@ class PhysicalExams extends Component {
 						imc: 0.0, // peso/altura^2 
 					},
 
-					cardiovascular: // texto
+					cardiovascular2: // texto
 					{
 						//ritmo: Exame_fisico.types.cardiovascular.ritmo[0],
 						//inspecao: Exame_fisico.types.void,	//Exame_fisico.types.cardiovascular.inspecao[0],
@@ -120,7 +121,7 @@ class PhysicalExams extends Component {
 						pressao_arterial: 0,
 					},
 
-					bioquimico: {
+					bioquimico2: {
 						
 						//Creatina
 						creatina: // texto numerico
@@ -132,7 +133,7 @@ class PhysicalExams extends Component {
 						},
 
 							//Sangue
-						sange: // texto numerico
+						sangue2: // texto numerico
 						{
 							hemoglobina: 0.0,
 							linfocitos: 0.0,
@@ -141,7 +142,7 @@ class PhysicalExams extends Component {
 						},
 					},
 
-					complementar:{
+					complementar2:{
 
 						//ECG
 						eletro: // 0..*
@@ -167,6 +168,8 @@ class PhysicalExams extends Component {
 						delta_FE: "", // diferença entre ultima_FE - primeira_FE
 						delta_VE: "", // diferença entre ultima_VE_sist - primeira_FE_sist
 						ps_ap: "", // texto numérico
+
+						
 					},
 				},
 			}
@@ -216,12 +219,11 @@ class PhysicalExams extends Component {
 						<label htmlFor="edemas">Edemas</label>
 						<select name="edema" id="edema" onChange={ this.handleChange }>
 							<option value="">-- Escolher --</option>
-							{
-								
+							{	
 								this.state.prepare.geral.edemas.map(
-									(edemas) => {
+									(row) => {
 										return (
-											<option key={ edemas.id } value={ edemas.id }>{ edemas.label }</option>
+											<option key={ row.id } value={ row.id }>{ row.label }</option>
 										);
 									}
 								)						
@@ -233,11 +235,72 @@ class PhysicalExams extends Component {
 						<select name="ascultas_respiratorias" id="ascultas_respiratorias" onChange={ this.handleChange }>
 							<option value="">-- Escolher --</option>
 							{
-								
 								this.state.prepare.geral.auscultas_resp.map(
-									(ascultas_respiratorias) => {
+									(row) => {
 										return (
-											<option key={ ascultas_respiratorias.id } value={ ascultas_respiratorias.id }>{ ascultas_respiratorias.label }</option>
+											<option key={ row.id } value={ row.id }>{ row.label }</option>
+										);
+									}
+								)						
+							}
+						</select>
+						<br/>
+
+						<h3>Cardiovascular:</h3>
+
+						<label htmlFor="ritmo">Ritmo</label>
+						<select name="ritmo" id="ritmo" onChange={ this.handleChange }>
+							<option value="">-- Escolher --</option>
+							{
+								this.state.prepare.cardiovascular.ritmo.map(
+									(row) => {
+										return (
+											<option key={ row.id } value={ row.id }>{ row.label }</option>
+										);
+									}
+								)						
+							}
+						</select>
+						<br/>
+
+						<label htmlFor="inspecao">Inspeção cardiovascular</label>
+						<select name="inspecao" id="inspecao" onChange={ this.handleChange }>
+							<option value="">-- Escolher --</option>
+							{
+								this.state.prepare.cardiovascular.inspecao.map(
+									(row) => {
+										return (
+											<option key={ row.id } value={ row.id }>{ row.label }</option>
+										);
+									}
+								)						
+							}
+						</select>
+						<br/>
+
+						<label htmlFor="bulhas">Bulhas</label>
+						<select name="bulhas" id="bulhas" onChange={ this.handleChange }>
+							<option value="">-- Escolher --</option>
+							{
+								this.state.prepare.cardiovascular.bulhas.map(
+									(row) => {
+										return (
+											<option key={ row.id } value={ row.id }>{ row.label }</option>
+										);
+									}
+								)						
+							}
+						</select>
+						<br/>
+
+						<label htmlFor="palpacao">Palpação</label>
+						<select name="palpacao" id="palpacao" onChange={ this.handleChange }>
+							<option value="">-- Escolher --</option>
+							{
+								this.state.prepare.cardiovascular.palpacao.map(
+									(row) => {
+										return (
+											<option key={ row.id } value={ row.id }>{ row.label }</option>
 										);
 									}
 								)						

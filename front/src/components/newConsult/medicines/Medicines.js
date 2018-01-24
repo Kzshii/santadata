@@ -36,43 +36,51 @@ class Medicines extends Component {
           //Medicamentos ministrados no paciente
           
           //ministrados:
+					IECA: 
+					{
  
-          IECA: 
-          [
-						{id: 0,label: "Captopril"}, 
-						// Dose inicial = 6,24mg 
-						// Dose alvo = 50mg 
-						// Duração = 8h/8h
-						{id: 1,label: "Enalapril"},
-						// Dose inicial = 2,5mg 
-						// Dose alvo = 10mg 
-						// Duração 12/12h
-						{id: 2,label: "Lisinopril"},
-						{id: 3,label: "Cilazapril"},
-						{id: 4,label: "Ramipril"},
-						{id: 5,label: "Trandolapril"},
-			
+						select: // 1
+						[ 
+							{id: 0,label: "Captopril"}, 
+							// Dose inicial = 6,24mg 
+							// Dose alvo = 50mg 
+							// Duração = 8h/8h
+							{id: 1,label: "Enalapril"},
+							// Dose inicial = 2,5mg 
+							// Dose alvo = 10mg 
+							// Duração 12/12h
+							{id: 2,label: "Lisinopril"},
+							{id: 3,label: "Cilazapril"},
+							{id: 4,label: "Ramipril"},
+							{id: 5,label: "Trandolapril"},
+						],
+
+						input: // 1
 						{
-							//droga:drogas.void,
+							//{droga:drogas.void},
 							date:"00/00/0000",
 							hour:"00:00",
 							charge: "50mg",
 							gap: 12, // horas
-						}
-					],
+						},
+					},
 			
 					BRA:
-					[
-						{id: 0,label: "Losartana"}, 
-						// Dose inicial = 25mg
-						// Dose alvo = 50 a 150mg
-						// Duração = 1x ao dia
-						{id: 1,label: "Valsartana"},
-						// Dose inicial = 20mg
-						// Dose alvo = 160mg 
-						// Duração 12 em 12 horas
-						{id: 2,label: "Candersatan"},
-			
+					{
+						select:
+						[
+							{id: 0,label: "Losartana"}, 
+							// Dose inicial = 25mg
+							// Dose alvo = 50 a 150mg
+							// Duração = 1x ao dia
+							{id: 1,label: "Valsartana"},
+							// Dose inicial = 20mg
+							// Dose alvo = 160mg 
+							// Duração 12 em 12 horas
+							{id: 2,label: "Candersatan"},
+						],
+						
+						input:
 						{
 							//droga:drogas.void,
 							date:"00/00/0000",
@@ -80,24 +88,22 @@ class Medicines extends Component {
 							charge: "50mg",
 							gap: 12, // horas
 						}
-					],
+					},
 			
 					beta_bloqueadores:
-					[
-						{id: 0,label: "Carvedilol"}, 
-						// Dose inicial = 3,125mg
-						// Dose Alvo = 25 a 50mg
-						// Duração = 12 em 12 horas
-						{id: 1,label: "Metroprolol"},
-						{id: 2,label: "Bisoprolol"},
-						{id: 3,label: "Propanolol"},
-					],
-					
-					bloq_canaisca:
-					[
-						{id: 0,label: "Verapamil"},
-						{id: 1,label: "Diltiazem"},
-			
+					{
+						select:
+						[
+							{id: 0,label: "Carvedilol"}, 
+							// Dose inicial = 3,125mg
+							// Dose Alvo = 25 a 50mg
+							// Duração = 12 em 12 horas
+							{id: 1,label: "Metroprolol"},
+							{id: 2,label: "Bisoprolol"},
+							{id: 3,label: "Propanolol"},
+						],
+
+						input:
 						{
 							//droga:drogas.void,
 							date:"00/00/0000",
@@ -105,7 +111,25 @@ class Medicines extends Component {
 							charge: "50mg",
 							gap: 12, // horas
 						}
-					],
+					},
+					
+					bloq_canaisca:
+					{
+						select:
+						[
+							{id: 0,label: "Verapamil"},
+							{id: 1,label: "Diltiazem"},
+						],
+						
+						input:
+						{
+							//droga:drogas.void,
+							date:"00/00/0000",
+							hour:"00:00",
+							charge: "50mg",
+							gap: 12, // horas
+						}
+					},
 			
 					diureticos:
 					[
@@ -235,12 +259,12 @@ class Medicines extends Component {
 
 						<label htmlFor="ieca">IECA</label>
 						{
-							this.state.prepare.IECA.map(
-								(IECA) => {
+							this.state.prepare.IECA.select.map(
+								(row) => {
 									return(
-										<div key={ IECA.id }>
-											<input type="radio" name="IECA" value={ IECA.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ IECA.label }</label>
+										<div key={ row.id }>
+											<input type="radio" name="IECA" value={ row.id } onChange={ this.handleChange }/>
+											<label htmlFor="">{ row.label }</label>
 										</div>
 									);
 								}
@@ -253,7 +277,7 @@ class Medicines extends Component {
               type="date"
               name="firstDosageDate"
               id="firstDosageDate"
-              value={ this.state.formData.IECA.date }
+              value={ this.state.prepare.IECA.input.date }
               onChange={ this.handleChange }
               required
             /> 
@@ -264,7 +288,7 @@ class Medicines extends Component {
               type="number"
               name="firstDosageHour"
               id="firstDosageHour"
-              value={ this.state.formData.IECA.hour }
+              value={ this.state.prepare.IECA.input.hour }
               onChange={ this.handleChange }
               required
             /> 
@@ -275,7 +299,7 @@ class Medicines extends Component {
               type="number"
               name="dosage"
               id="dosage"
-              value={ this.state.formData.IECA.charge }
+              value={ this.state.prepare.IECA.input.charge }
               onChange={ this.handleChange }
               required
             /> 
@@ -286,20 +310,21 @@ class Medicines extends Component {
               type="number"
               name="gapDosage"
               id="gapDosage"
-              value={ this.state.formData.IECA.gap }
+              value={ this.state.prepare.IECA.input.gap }
               onChange={ this.handleChange }
               required
             /> 
+						<br/>
 						<br/>
 
 						<label htmlFor="bra">BRA</label>
 						{
-							this.state.prepare.BRA.map(
-								(BRA) => {
+							this.state.prepare.BRA.select.map(
+								(row) => {
 									return(
-										<div key={ BRA.id }>
-											<input type="radio" name="BRA" value={ BRA.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ BRA.label }</label>
+										<div key={ row.id }>
+											<input type="radio" name="BRA" value={ row.id } onChange={ this.handleChange }/>
+											<label htmlFor="">{ row.label }</label>
 										</div>
 									);
 								}
@@ -312,7 +337,7 @@ class Medicines extends Component {
               type="date"
               name="firstDosageDate"
               id="firstDosageDate"
-              value={ this.state.formData.BRA.date }
+              value={ this.state.prepare.BRA.input.date }
               onChange={ this.handleChange }
               required
             /> 
@@ -323,7 +348,7 @@ class Medicines extends Component {
               type="number"
               name="firstDosageHour"
               id="firstDosageHour"
-              value={ this.state.formData.BRA.hour }
+              value={ this.state.prepare.BRA.input.hour }
               onChange={ this.handleChange }
               required
             /> 
@@ -334,7 +359,7 @@ class Medicines extends Component {
               type="number"
               name="dosage"
               id="dosage"
-              value={ this.state.formData.BRA.charge }
+              value={ this.state.prepare.BRA.input.charge }
               onChange={ this.handleChange }
               required
             /> 
@@ -345,35 +370,21 @@ class Medicines extends Component {
               type="number"
               name="gapDosage"
               id="gapDosage"
-              value={ this.state.formData.BRA.gap }
+              value={ this.state.prepare.BRA.input.gap }
               onChange={ this.handleChange }
               required
             /> 
+						<br/>
 						<br/>
 
 						<label htmlFor="betaBlockers">Beta-bloqueadores</label>
 						{
-							this.state.prepare.beta_bloqueadores.map(
-								(beta_bloqueadores) => {
+							this.state.prepare.beta_bloqueadores.select.map(
+								(row) => {
 									return(
-										<div key={ beta_bloqueadores.id }>
-											<input type="radio" name="beta_bloqueadores" value={ beta_bloqueadores.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ beta_bloqueadores.label }</label>
-										</div>
-									);
-								}
-							)
-						}
-            <br/>
-
-						<label htmlFor="canaiscaBlockers">Bloqueadores de Canaisca</label>
-						{
-							this.state.prepare.bloq_canaisca.map(
-								(bloq_canaisca) => {
-									return(
-										<div key={ bloq_canaisca.id }>
-											<input type="radio" name="bloq_canaisca" value={ bloq_canaisca.id } onChange={ this.handleChange }/>
-											<label htmlFor="">{ bloq_canaisca.label }</label>
+										<div key={ row.id }>
+											<input type="radio" name="beta_bloqueadores" value={ row.id } onChange={ this.handleChange }/>
+											<label htmlFor="">{ row.label }</label>
 										</div>
 									);
 								}
@@ -386,7 +397,7 @@ class Medicines extends Component {
               type="date"
               name="firstDosageDate"
               id="firstDosageDate"
-              value={ this.state.formData.firstDosageDate }
+              value={ this.state.prepare.beta_bloqueadores.input.date }
               onChange={ this.handleChange }
               required
             /> 
@@ -397,7 +408,7 @@ class Medicines extends Component {
               type="number"
               name="firstDosageHour"
               id="firstDosageHour"
-              value={ this.state.formData.firstDosageHour }
+              value={ this.state.prepare.beta_bloqueadores.input.hour }
               onChange={ this.handleChange }
               required
             /> 
@@ -408,7 +419,7 @@ class Medicines extends Component {
               type="number"
               name="dosage"
               id="dosage"
-              value={ this.state.formData.dosage }
+              value={ this.state.prepare.beta_bloqueadores.input.charge }
               onChange={ this.handleChange }
               required
             /> 
@@ -419,11 +430,73 @@ class Medicines extends Component {
               type="number"
               name="gapDosage"
               id="gapDosage"
-              value={ this.state.formData.gapDosage }
+              value={ this.state.prepare.beta_bloqueadores.input.gap }
               onChange={ this.handleChange }
               required
             /> 
 						<br/>
+						<br/>
+
+						<label htmlFor="canaiscaBlockers">Bloqueadores de Canaisca</label>
+						{
+							this.state.prepare.bloq_canaisca.select.map(
+								(row) => {
+									return(
+										<div key={ row.id }>
+											<input type="radio" name="bloq_canaisca" value={ row.id } onChange={ this.handleChange }/>
+											<label htmlFor="">{ row.label }</label>
+										</div>
+									);
+								}
+							)
+						}
+            <br/>
+
+						<label htmlFor="firstDosageDate">Data da primeira dose:</label>
+            <input
+              type="date"
+              name="firstDosageDate"
+              id="firstDosageDate"
+              value={ this.state.prepare.bloq_canaisca.input.date }
+              onChange={ this.handleChange }
+              required
+            /> 
+						<br/>
+
+						<label htmlFor="firstDosageHour">Hora de início:</label>
+            <input
+              type="number"
+              name="firstDosageHour"
+              id="firstDosageHour"
+              value={ this.state.prepare.bloq_canaisca.input.hour }
+              onChange={ this.handleChange }
+              required
+            /> 
+						<br/>
+
+						<label htmlFor="dosage">Dose:</label>
+            <input
+              type="number"
+              name="dosage"
+              id="dosage"
+              value={ this.state.prepare.bloq_canaisca.input.charge }
+              onChange={ this.handleChange }
+              required
+            /> 
+						<br/>
+
+						<label htmlFor="gapDosage">Intervalo entre doses:</label>
+            <input
+              type="number"
+              name="gapDosage"
+              id="gapDosage"
+              value={ this.state.prepare.bloq_canaisca.input.gap }
+              onChange={ this.handleChange }
+              required
+            /> 
+						<br/>
+
+						{/*
 
 						<label htmlFor="diureticos">Diuréticos</label>
 						<input type="radio" name="gender" id="0" value="0" onChange={ this.handleChange } /> Nenhum
@@ -588,7 +661,9 @@ class Medicines extends Component {
             /> 
 						<br/>
 
-						<input type="submit" value={"salvar" +" "+ this.props.title}/>
+						*/}
+
+						<input type="submit" value="Salvar"/>
 
 					</form>
 			</div>
