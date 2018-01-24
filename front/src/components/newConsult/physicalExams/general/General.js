@@ -4,7 +4,7 @@ import Base64 from '../../../../lib/base64';
 import axios from 'axios';
 
 
-class PhysicalExams extends Component {
+class General extends Component {
   constructor(props){
     super(props);
         
@@ -19,7 +19,7 @@ class PhysicalExams extends Component {
   componentWillMount() {
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
-			"prepare/physicalExams/",
+			"prepare/general/",
 			{}
 		).then(
 			function(response) {
@@ -35,52 +35,52 @@ class PhysicalExams extends Component {
 			{
 				prepare: {
 
-						//void: {id: -1, label: "Vazio"},
-						estado: "",
+					//void: {id: -1, label: "Vazio"},
+					estado: "",
 
-						//Tipos de edemas fisicos 
-						edemas: // 1
-						[ 
-							{id: 0,label: "Sem Edema"},
-							{id: 1,label: "+/++++"},
-							{id: 2,label: "++/++++"},
-							{id: 3,label: "+++/++++"},
-							{id: 4,label: "++++/++++"},
-						],
+					//Tipos de edemas fisicos 
+					edemas: // 1
+					[ 
+						{id: 0,label: "Sem Edema"},
+						{id: 1,label: "+/++++"},
+						{id: 2,label: "++/++++"},
+						{id: 3,label: "+++/++++"},
+						{id: 4,label: "++++/++++"},
+					],
 
-						//Auscutas respiratorias
-						auscultas_resp: // 1
-						[
-							{id: 0,label: "Nenhum"},
-							{id: 1,label: "MV Fisiológico"},
-							{id: 2,label: "Creptações basais"},
-							{id: 3,label: "Creptações difusas"},
-						],
+					//Auscutas respiratorias
+					auscultas_resp: // 1
+					[
+						{id: 0,label: "Nenhum"},
+						{id: 1,label: "MV Fisiológico"},
+						{id: 2,label: "Creptações basais"},
+						{id: 3,label: "Creptações difusas"},
+					],
 
-						refl_heptojugular:
-						[
-							{id: 0,label: "Sim"},
-							{id: 1,label: "Não"},
-						],
+					refl_heptojugular:
+					[
+						{id: 0,label: "Sim"},
+						{id: 1,label: "Não"},
+					],
 
-						turg_jugular:
-						[
-							{id: 0,label: "Sim"},
-							{id: 1,label: "Não"},
-						],
+					turg_jugular:
+					[
+						{id: 0,label: "Sim"},
+						{id: 1,label: "Não"},
+					],
 
-						ascite:
-						[
-							{id: 0,label: "Sim"},
-							{id: 1,label: "Não"},
-						],
+					ascite:
+					[
+						{id: 0,label: "Sim"},
+						{id: 1,label: "Não"},
+					],
 
-						peso: 0.0,
-						altura: 0.0,
-						imc: 0.0, // peso/altura^2 
+					peso: 0.0,
+					altura: 0.0,
+					imc: 0.0, // peso/altura^2 
 
-						},
 				},
+			},
 		);
 	} 
 
@@ -122,8 +122,7 @@ class PhysicalExams extends Component {
 
 	render(){
 		return(
-			<div className="interventions">
-				<h2>Exames Físicos</h2>
+			<div className="general">
 
 					<form onSubmit={ () => this.props.saveData("general",this.state.formData) }>
 						
@@ -237,6 +236,11 @@ class PhysicalExams extends Component {
 
 						<label htmlFor="imc">IMC:</label>
 
+						<br/>
+
+
+						<input type="submit" value={"salvar" +" "+ this.props.title}/>
+
 					</form>
 					
 			</div>
@@ -244,4 +248,4 @@ class PhysicalExams extends Component {
 	}
 }
 
-export default PhysicalExams;
+export default General;

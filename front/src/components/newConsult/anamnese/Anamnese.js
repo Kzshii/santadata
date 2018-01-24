@@ -481,25 +481,21 @@ class Anamnese extends Component {
 
 					<label htmlFor="dailyCigaretteAmount">Quantidade diária:</label>
 					<input
-						className="number"
-						type="text"
+						type="number"
 						name="dailyCigaretteAmount"
 						id="dailyCigaretteAmount"
 						value={ this.state.formData.tabag_quant }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 
 					<label htmlFor="smokingFrequency">Frequencia e quantidade de fumo:</label>
 					<input
-						className="inputText"
 						type="text"
 						name="smokingFrequency"
 						id="smokingFrequency"
 						value={ this.state.formData.tabag_freq }
-						onChange={ this.handleChange }
-						
+						onChange={ this.handleChange }		
 					/> 
 					<br/>
 
@@ -509,8 +505,7 @@ class Anamnese extends Component {
 						name="startSmoking"
 						id="startSmoking"
 						value={ this.state.formData.tabag_date }
-						onChange={ this.handleChange }
-						
+						onChange={ this.handleChange }	
 					/> 
 					<br/>
 
@@ -521,7 +516,6 @@ class Anamnese extends Component {
 						id="smokingTime"
 						value={ this.state.formData.tabag_tempo }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 
@@ -559,25 +553,21 @@ class Anamnese extends Component {
 
 					<label htmlFor="dailyAlcoholicBevAmount">Quantidade diária:</label>
 					<input
-						className="number"
-						type="text"
+						type="number"
 						name="dailyAlcoholicBevAmount"
 						id="dailyAlcoholicBevAmount"
 						value={ this.state.formData.etil_quant }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 
 					<label htmlFor="alcoholicBevFrequency">Frequencia e quantidade de bebidas alcólicas:</label>
 					<input
-						className="inputText"
 						type="text"
 						name="alcoholicBevFrequency"
 						id="alcoholicBevFrequency"
 						value={ this.state.formData.etil_freq }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 
@@ -588,7 +578,6 @@ class Anamnese extends Component {
 						id="startDrinking"
 						value={ this.state.formData.etil_date }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 					
@@ -599,7 +588,6 @@ class Anamnese extends Component {
 						id="drinkingTime"
 						value={ this.state.formData.etil_tempo }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 
@@ -637,25 +625,21 @@ class Anamnese extends Component {
 
 					<label htmlFor="dailyDrugsAmount">Quantidade diária:</label>
 					<input
-						className="number"
-						type="text"
+						type="number"
 						name="dailyDrugsAmount"
 						id="dailyDrugsAmount"
 						value={ this.state.formData.drogas_quant }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 
 					<label htmlFor="drugsFrequency">Frequencia e quantidade das drogas:</label>
 					<input
-						className="inputText"
 						type="text"
 						name="drugsFrequency"
 						id="drugsFrequency"
 						value={ this.state.formData.drogas_freq }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 
@@ -666,7 +650,6 @@ class Anamnese extends Component {
 						id="startDrugs"
 						value={ this.state.formData.drogas_date }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 					
@@ -677,7 +660,6 @@ class Anamnese extends Component {
 						id="drugsTime"
 						value={ this.state.formData.drogas_tempo }
 						onChange={ this.handleChange }
-						
 					/> 
 					<br/>
 
