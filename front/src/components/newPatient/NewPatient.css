@@ -1,11 +1,9 @@
-html {
-	background: #1ca4fc;
-	font-family: Lato;
 
-}
 
-body{
+.NewPatient{
 	    justify-content: center;
+        background: #1ca4fc;
+    font-family: Lato;
 }
 h2{
 	text-align: center;

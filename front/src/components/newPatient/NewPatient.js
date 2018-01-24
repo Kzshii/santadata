@@ -163,7 +163,7 @@ class NewPatient extends Component {
 
             <label htmlFor="medicalRecord">Prontuário</label>
             <input
-              className="inputText "
+              className="inputText"
               type="text"
               name="medicalRecord"
               id="medicalRecord"
@@ -199,6 +199,8 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> <br/>
+
+            </div>
 
             <div className="same-line-table">
             <label htmlFor="age"></label>
