@@ -97,7 +97,7 @@ class SearchPatient extends Component {
   }
 
   openPatient(patientId) {
-    this.props.switchSection( <PatientProfile id={patientId} switchSection={this.props.switchSection}/> );
+    this.props.switchSection( <PatientProfile patientId={ patientId } switchSection={ this.props.switchSection }/> );
   } 
   
   render() {

@@ -4,7 +4,7 @@ import './NewConsult.css';
 import Anamnese from "./anamnese/Anamnese";
 import Evidences from "./evidences/Evidences";
 import PatientProfile from './../patientProfile/PatientProfile';
-import base64 from '../../lib/base64';
+import Base64 from '../../lib/base64';
 import Interventions from "./interventions/Interventions";
 import Predictors from "./predictors/Predictors"; 
 
@@ -32,9 +32,6 @@ class NewConsult extends Component {
 			
     this.state = {
       currentSection: 0,
-
-      
-
       consultData: {},
     };
   }
@@ -48,6 +45,7 @@ class NewConsult extends Component {
         consultData: consultData,
       }
     );
+
     this.nextSection()
 
     console.log("CONSULTA:",this.state.consultData);
@@ -55,7 +53,7 @@ class NewConsult extends Component {
 
   nextSection() {
     if(this.state.currentSection < this.sections.length - 1) {
-      var i = this.state.currentSection +1;
+      let i = this.state.currentSection +1;
 
       this.setState({
         currentSection: i
@@ -65,7 +63,7 @@ class NewConsult extends Component {
 
   prevSection() {
     if(this.state.currentSection > 0 ) {
-      var i = this.state.currentSection -1;
+      let i = this.state.currentSection - 1;
 
       this.setState({
         currentSection: i
@@ -83,25 +81,21 @@ class NewConsult extends Component {
   
   saveConsult(){
     //Salvar Consulta
+    const consultData = this.state.consultData;
 
-    const consulData= this.state.consultData;
-
-
-    console.log("paciente aqui: =)")
-    console.log(this.props.patient)
-
+    console.log("paciente aqui: =)", this.props.patient);
  
-    const data= base64.encode({
+    const data= Base64.encode({
 
       id_pacient: this.props.patient.idpatient,
       id_user: "",
 
-      data: consulData,
+      data: consultData,
 
     }) 
       
     alert("Consulta Salva");
-    this.props.switchSession(<PatientProfile patient={this.props.patient} switchSession={this.props.switchSession}/>)
+    this.props.switchSection(<PatientProfile patient={ this.props.patient } switchSection={ this.props.switchSection }/>)
   }
 
 	render() {
@@ -111,20 +105,24 @@ class NewConsult extends Component {
         <div className="sections">
           {
             this.sections.map(
-              (comp,indice) => {
+              (comp,index) => {
                 return(
-                  <button key={comp.props.title} name={ comp.props.title}  onClick= { () => { this.goToSection(indice)} } >
+                  <button key={ comp.props.title } name={ comp.props.title }  onClick= { () => { this.goToSection(index) } } >
                     { comp.props.title }
                   </button>
                 );
               }
             )
           }
-          <button name="saveConsult" onClick={this.saveConsult}>Salvar Consulta</button>
+          <button name="saveConsult" onClick={ this.saveConsult }>
+            Salvar Consulta
+          </button>
         </div>
-
-        { this.sections[this.state.currentSection] }
         
+        <section className="consultSection">
+          { this.sections[this.state.currentSection] }
+        </section>
+                
         <button name="prev" onClick={ this.prevSection }>Anterior</button>
         <button name="next" onClick={ this.nextSection }>Proximo</button>
 				

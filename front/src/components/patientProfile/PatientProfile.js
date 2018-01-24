@@ -11,7 +11,7 @@ class PatientProfile extends Component {
   constructor(props) {
     super(props);
     this.searchPatient = this.searchPatient.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       patientData: null,
@@ -38,17 +38,15 @@ class PatientProfile extends Component {
         this.setState({
           patientData: response.data.data[0]
         });
-
       }
     ).catch();
   }
 
-  handleSubmit(event){
+  handleClick(event){
     event.preventDefault();
 
-    console.log("Aqui")
-    console.log(this.state.patientData)
-    this.props.switchSession(<NewConsult patient={this.state.patientData} switchSession={this.props.switchSession}/>)
+    console.log("Aqui",this.state.patientData);
+    this.props.switchSection(<NewConsult patient={ this.state.patientData } switchSection={ this.props.switchSession }/>);
   }
 
   render() {
@@ -56,7 +54,7 @@ class PatientProfile extends Component {
       <div className="PatientProfile">
 
         <h1>Perfil do Paciente</h1>
-        <button name="newConsult" onClick={this.handleSubmit}>
+        <button name="newConsult" onClick={ this.handleClick }>
           NovaConsulta
         </button>
         <div className="patientData">
