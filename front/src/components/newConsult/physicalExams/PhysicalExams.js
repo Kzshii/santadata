@@ -19,7 +19,7 @@ class PhysicalExams extends Component {
   componentWillMount() {
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
-			"prepare/interventions/",
+			"prepare/physicalExams/",
 			{}
 		).then(
 			function(response) {
@@ -34,140 +34,149 @@ class PhysicalExams extends Component {
 		this.setState(
 			{
 				prepare: {
-				
-					//void: {id: -1, label: "Vazio"},
 
-					geral: {
+					//var Exame_fisico = Object.create(Base);
 
-						//Tipos de edemas fisicos 
-						edemas: // 1
-						[ 
-							{id: 0,label: "Sem Edema"},
-							{id: 1,label: "+/++++"},
-							{id: 2,label: "++/++++"},
-							{id: 3,label: "+++/++++"},
-							{id: 4,label: "++++/++++"},
-						],
+					//Exame_fisico.types = {
+						//void: {id: -1, label: "Vazio"},
 
-						//Auscutas respiratorias
-						auscultas_resp: // 1
-						[
-							{id: 0,label: "Nenhum"},
-							{id: 1,label: "MV Fisiológico"},
-							{id: 2,label: "Creptações basais"},
-							{id: 3,label: "Creptações difusas"},
-						],
-					},
+						geral: {
 
-					cardiovascular:{ 
+							estado: "",
 
-						//Ritmo cardiovascular
-						ritmo: // 1
-						[
-							{id: 0, label: "Regular"},
-							{id: 1, label: "Irregular"},
-						],
+							//Tipos de edemas fisicos 
+							edemas: // 1
+							[ 
+								{id: 0,label: "Sem Edema"},
+								{id: 1,label: "+/++++"},
+								{id: 2,label: "++/++++"},
+								{id: 3,label: "+++/++++"},
+								{id: 4,label: "++++/++++"},
+							],
 
-						//Inpecao cardiovascular
-						inspecao: // 1
-						[
-							{id: 0, label: "Ictus Cordis Visivel"},
-							{id: 1, label: "Ictus de VD"},
-							{id: 2, label: "Movimento em bascula"},
-						],
+							//Auscutas respiratorias
+							auscultas_resp: // 1
+							[
+								{id: 0,label: "Nenhum"},
+								{id: 1,label: "MV Fisiológico"},
+								{id: 2,label: "Creptações basais"},
+								{id: 3,label: "Creptações difusas"},
+							],
 
-						//Bulhas
-						bulhas: // 1
-						[
-							{id: 0, label: "B1 e B2"},
-							{id: 1, label: "B3"},
-							{id: 2, label: "B4"},
-							{id: 3, label: "B3 e B4"},
-						],
+							refl_heptojugular:
+							[
+								{id: 0,label: "Sim"},
+								{id: 1,label: "Não"},
+							],
 
-						//Palpacao
-						palpacao: // 1..*
-						[
-							{id: 0, label: "Ictus não palpável"},
-							{id: 1, label: "Ictus palpável"},
-							{id: 2, label: "Desviado E para Baixo"},
-							{id: 3, label: "LHC 5 EIEC"},
-						]
-					},
+							turg_jugular:
+							[
+								{id: 0,label: "Sim"},
+								{id: 1,label: "Não"},
+							],
 
-					
-					//Dados medicos
-					geral2: // texto 
-					{ 
-						estado: "",
-						//edema: Exame_fisico.types.geral.edemas[0],
-						//auscuta_resp: Exame_fisico.types.geral.auscutas_resp[0],
-						refl_heptojugular: 0, // 0 or 1
-						turg_jugular: 0, //0 or 1
-						ascite: 0, //0 or 1 --> TODO: checar se esta escrito corretamente
-						peso: 0.0,
-						altura: 0.0,
-						imc: 0.0, // peso/altura^2 
-					},
+							ascite:
+							[
+								{id: 0,label: "Sim"},
+								{id: 1,label: "Não"},
+							],
 
-					cardiovascular2: // texto
-					{
-						//ritmo: Exame_fisico.types.cardiovascular.ritmo[0],
-						//inspecao: Exame_fisico.types.void,	//Exame_fisico.types.cardiovascular.inspecao[0],
-						//bulhas: Exame_fisico.types.void,	//Exame_fisico.types.cardiovascular.bulhas[0]
-						auscuta: "",
-						//palpacao: Exame_fisico.types.void,	//Exame_fisico.types.cardiovascular.palpacao[0]
-						fc: 0,
-						pressao_arterial: 0,
-					},
+							peso: 0.0,
+							altura: 0.0,
+							imc: 0.0, // peso/altura^2 
 
-					bioquimico2: {
-						
-						//Creatina
-						creatina: // texto numerico
-						{
-							basal: 0.0,
-							ultima: 0.0,
-							delta: 0.0,
-							clearence_atual: 0.0,
 						},
+
+						cardiovascular:{ 
+
+							//Ritmo cardiovascular
+							ritmo: // 1
+							[
+								{id: 0, label: "Regular"},
+								{id: 1, label: "Irregular"},
+							],
+
+							//Inpecao cardiovascular
+							inspecao: // 1
+							[
+								{id: 0, label: "Ictus Cordis Visivel"},
+								{id: 1, label: "Ictus de VD"},
+								{id: 2, label: "Movimento em bascula"},
+							],
+
+							//Bulhas
+							bulhas: // 1
+							[
+								{id: 0, label: "B1 e B2"},
+								{id: 1, label: "B3"},
+								{id: 2, label: "B4"},
+								{id: 3, label: "B3 e B4"},
+							],
+
+							auscuta: "",
+
+							//Palpacao
+							palpacao: // 1..*
+							[
+								{id: 0, label: "Ictus não palpável"},
+								{id: 1, label: "Ictus palpável"},
+								{id: 2, label: "Desviado E para Baixo"},
+								{id: 3, label: "LHC 5 EIEC"},
+							],
+
+							fc: 0,
+
+							pressao_arterial: 0,
+
+						},
+
+						bioquimico: {
+							
+							//Creatina
+							creatina: // texto numerico
+							{
+								basal: 0.0,
+								ultima: 0.0,
+								delta: 0.0,
+								clearence_atual: 0.0,
+							},
 
 							//Sangue
-						sangue2: // texto numerico
-						{
-							hemoglobina: 0.0,
-							linfocitos: 0.0,
-							sodio: 0.0,
-							outros: "", // Plain Text
+							sangue: // texto numerico
+							{
+								hemoglobina: 0.0,
+								linfocitos: 0.0,
+								sodio: 0.0,
+								outros: "", // Plain Text
+							},
 						},
-					},
 
-					complementar2:{
+						complementar:{
 
-						//ECG
-						eletro: // 0..*
-						[ 
-							{id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
-							{id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
-							{id: 2, label: "Supra do Segmento ST"},
-							{id: 3, label: "Sobrecarga Atrial (SA)"},
-							{id: 3, label: "Sobrecargo de Ventrículo (SV)"},
-							{id: 3, label: "Flutter Atrial"},
-							{id: 3, label: "Fibrilação Atrial (FA)"},
-						],
+							//ECG
+							eletro: // 0..*
+							[ 
+								{id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
+								{id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
+								{id: 2, label: "Supra do Segmento ST"},
+								{id: 3, label: "Sobrecarga Atrial (SA)"},
+								{id: 3, label: "Sobrecargo de Ventrículo (SV)"},
+								{id: 3, label: "Flutter Atrial"},
+								{id: 3, label: "Fibrilação Atrial (FA)"},
+							],
 
-						//Ecocardiograma
-						primeira_FE: "", // texto numérico
-						primeiro_VE_diast: "",
-						primeiro_VE_sist: "",
+							//Ecocardiograma
+							primeira_FE: "", // texto numérico
+							primeiro_VE_diast: "",
+							primeiro_VE_sist: "",
 
-						ultima_FE: "", // texto numérico
-						ultima_VE_diast: "",
-						ultima_VE_sist: "",		
+							ultima_FE: "", // texto numérico
+							ultima_VE_diast: "",
+							ultima_VE_sist: "",		
 
-						delta_FE: "", // diferença entre ultima_FE - primeira_FE
-						delta_VE: "", // diferença entre ultima_VE_sist - primeira_FE_sist
-						ps_ap: "", // texto numérico
+							delta_FE: "", // diferença entre ultima_FE - primeira_FE
+							delta_VE: "", // diferença entre ultima_VE_sist - primeira_FE_sist
+							ps_ap: "", // texto numérico
 
 						
 					},
@@ -207,6 +216,11 @@ class PhysicalExams extends Component {
 		console.log("STATE", this.state);
 	}	
 
+	handleSubmit(event) {
+		event.preventDefault();
+		this.props.saveData("anamnese",this.state.formData);
+	}
+
 	render(){
 		return(
 			<div className="interventions">
@@ -215,6 +229,18 @@ class PhysicalExams extends Component {
 					<form onSubmit={ () => this.props.saveData("physicalExams",this.state.formData) }>
 						
 						<h3>Geral:</h3>
+
+						<label htmlFor="state">Estado:</label>
+						{console.log(this.state)}
+						<textarea
+							className="inputText"
+							type="text"
+							name="state"
+							id="state"
+							value={ this.state.prepare.geral.estado }
+							onChange={ this.handleChange }
+						/>
+						<br/>
 						
 						<label htmlFor="edemas">Edemas</label>
 						<select name="edema" id="edema" onChange={ this.handleChange }>

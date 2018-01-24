@@ -481,7 +481,7 @@ class Anamnese extends Component {
 
 					<label htmlFor="dailyCigaretteAmount">Quantidade diária:</label>
 					<input
-						className="inputText "
+						className="number"
 						type="text"
 						name="dailyCigaretteAmount"
 						id="dailyCigaretteAmount"
@@ -493,7 +493,7 @@ class Anamnese extends Component {
 
 					<label htmlFor="smokingFrequency">Frequencia e quantidade de fumo:</label>
 					<input
-						className="inputText "
+						className="inputText"
 						type="text"
 						name="smokingFrequency"
 						id="smokingFrequency"
@@ -559,7 +559,7 @@ class Anamnese extends Component {
 
 					<label htmlFor="dailyAlcoholicBevAmount">Quantidade diária:</label>
 					<input
-						className="inputText "
+						className="number"
 						type="text"
 						name="dailyAlcoholicBevAmount"
 						id="dailyAlcoholicBevAmount"
@@ -571,7 +571,7 @@ class Anamnese extends Component {
 
 					<label htmlFor="alcoholicBevFrequency">Frequencia e quantidade de bebidas alcólicas:</label>
 					<input
-						className="inputText "
+						className="inputText"
 						type="text"
 						name="alcoholicBevFrequency"
 						id="alcoholicBevFrequency"
@@ -637,7 +637,7 @@ class Anamnese extends Component {
 
 					<label htmlFor="dailyDrugsAmount">Quantidade diária:</label>
 					<input
-						className="inputText "
+						className="number"
 						type="text"
 						name="dailyDrugsAmount"
 						id="dailyDrugsAmount"
@@ -649,7 +649,7 @@ class Anamnese extends Component {
 
 					<label htmlFor="drugsFrequency">Frequencia e quantidade das drogas:</label>
 					<input
-						className="inputText "
+						className="inputText"
 						type="text"
 						name="drugsFrequency"
 						id="drugsFrequency"
