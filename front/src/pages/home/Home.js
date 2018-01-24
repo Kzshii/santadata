@@ -25,6 +25,8 @@ class Home extends Component {
         break;
       case 'searchPatient':
         this.switchSession( <SearchPatient switchSession={ this.switchSession } /> );
+      case 'intro':
+        this.switchSession( <intro switchSession={ this.switchSession } /> );
       default:
         break;
     }
@@ -58,7 +60,7 @@ class Home extends Component {
 
       <nav id="nav-menu-container">
         <ul className="nav-menu">
-          <li className="menu-active"><a href="#intro">Painel</a></li>
+          <li className="menu-active"><a name="intro" onClick={ this.handleClick }>Painel</a></li>
 
           <li className="menu-active"><a name="newPatient" onClick={ this.handleClick } > Novo Paciente</a></li>
 
@@ -90,7 +92,7 @@ class Home extends Component {
 
       
 
-      <body id="intro">
+      {/*<body id="intro">
 
         <div className= "intro-text">
 
@@ -107,7 +109,7 @@ class Home extends Component {
         </div>
 
       
-        {/*
+       
         <button name="newPatient" onClick={ this.handleClick } >
           Novo Paciente
         </button>
@@ -117,9 +119,9 @@ class Home extends Component {
         <section>
           { this.state.currentSession }
         </section>
-      */}
+     
         </div>
-        </body>
+        </body> */}
       </div>
     );
   }
