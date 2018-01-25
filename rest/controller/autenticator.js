@@ -124,7 +124,7 @@ var Autenticator = {
 				var user =  {
 					user_id: results.iduser,
 					type_user: results.type_user,
-					hash: Autenticator.generate_hash_id(results.id),
+					hash: Autenticator.generate_hash_id(results.iduser),
 					name: results.name,
 					picture: results.picture
 				}
