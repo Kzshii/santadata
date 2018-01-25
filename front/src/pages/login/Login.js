@@ -63,7 +63,7 @@ class Login extends Component {
 
     return(
       <div className="LoginPage">
-        <div className="loginBox">
+        <div className="loginBox container">
 
           <div className="loginHead">
 

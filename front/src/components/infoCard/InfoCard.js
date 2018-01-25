@@ -22,11 +22,17 @@ class InfoCard extends Component {
       }
       
       return(
+
+
         <div className="InfoCard">
+
+
         
           <div className="patientImgBox">
-            <img className="patientImg" src={ imgUser } />
+            <img className="patientImg rounded-circle float-left" src={"https://smiledesignspecialist.com/wp-content/uploads/2015/11/implant-man-teaser.jpg"} />
           </div>
+
+          
           
           <div className="pacientName">
             <h4>Nome</h4>

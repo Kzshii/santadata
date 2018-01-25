@@ -16,27 +16,35 @@ class PatientList extends Component {
       return(
         <div className="PatientList">
           {/* <h1>Tabela de Pacientes</h1> */}
-          <table>
-            <thead>
+
+          <table className="table table-bordered">
+            <thead className="thead-light">
               <tr>
-                <th>Paciente</th>
-                <th>Id</th>
+
+                <th scope="col">Paciente</th>
+                <th scope="col">Id</th>
+                
               </tr>
             </thead>
             <tbody>
               { this.props.data.map(
                 (patient) => {
                   return(
+
+             
                     
-                    <tr key={ patient.id } onClick={ () => {this.props.itemAction(patient.id)} } >                    
+                    <tr key={ patient.id } onClick={ () => {this.props.itemAction(patient.id)} } >  
+                                  
                       <td>{ patient.name }</td>
                       <td>{ patient.id }</td>
                     </tr>
+
                   );
                 }
               ) }
             </tbody>
           </table>
+      
         </div>
       );
     }

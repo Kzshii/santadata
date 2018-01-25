@@ -130,79 +130,140 @@ class NewPatient extends Component {
 
   render() {
     return(
+
+    <div className="wrap">
       <div className="NewPatient" >
+
+        <div className="NewPatientHead">
+        </div>
+
         <h2>Novo Paciente</h2>
 
           <form onSubmit={ this.handleSubmit } >
 
+            
             <label htmlFor="patientName">Nome</label>
+            <div className="wrap-input100 validate-input m-b-16">
             <input
-              className="inputText "
+              className="input100 textInput"
               type="text"
               name="patientName"
               id="patientName"
+              placeholder="Nome"
               value={ this.state.formData.patientName }
               onChange={ this.handleChange }
               required
-            /> <br/>
+            /> 
+                <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-user"></span>
+                </span>
+            </div>
 
             <label htmlFor="cpf">CPF</label>
+            <div className="wrap-input100 validate-input m-b-16">
             <input
+              className="input100 textInput"
               type="text"
               name="cpf"
               id="cpf"
+              placeholder="CPF"
               value={ this.state.formData.cpf }
               onChange={ this.handleChange }
-            /> <br/>
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-address-card"></span>
+                </span>
+            </div>
+            
+
 
             <label htmlFor="medicalRecord">Prontuário</label>
+            <div className="wrap-input100 validate-input m-b-16">
             <input
-              className="inputText "
+              className="input100 textInput"
               type="text"
               name="medicalRecord"
               id="medicalRecord"
+              placeholder= "Prontuário"
               value={ this.state.formData.medicalRecord }
               onChange={ this.handleChange }
               required
-            /> <br/>
+            /> 
+             <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-file"></span>
+                </span>
+            </div>
 
-            <label htmlFor="mv">Número MV</label>
+          <label htmlFor="mv">MV</label>
+          <div className="wrap-input100 validate-input m-b-16">
+
             <input
+              className="input100 textInput"
               type="number"
               name="mv"
               id="mv"
+              placeholder="Número MV"
               value={ this.state.formData.mv }
               onChange={ this.handleChange }
               required
-            /> <br/>
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-sort-numeric-down"></span>
+                </span>
+            </div>
+
 
             <label htmlFor="birthDate">Data de Nascimento</label>
+            <div className="wrap-input100 validate-input m-b-16">
             <input
+              className="input100 textInput"
               type="date"
               name="birthDate"
               id="birthDate"
+              placeholder="Data de Nascimento"
               value={ this.state.formData.birthDate }
               onChange={ this.handleChange }
               required
-            /> <br/>
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-birthday-cake"></span>
+                </span>
+            </div>
 
+      
+
+   
+      
             <label htmlFor="age">Idade</label>
+            <div className="wrap-input100 m-b-16">
             <input
+              className="input100 textInput"
               type="number"
               name="age"
               id="age"
+              placeholder="Idade"
               value={ this.state.formData.age }
               onChange={ this.handleChange }
               required
-            /> <br/>
+            /> 
+            <span className="focus-input100"></span>
+                
+              
+            </div>
+           
 
-            <label htmlFor="">Sexo</label>
-            <input type="radio" name="gender" id="" value="M" onChange={ this.handleChange } required /> Masculino
-            <input type="radio" name="gender" id="" value="F" onChange={ this.handleChange } /> Feminino
+            <label htmlFor="" id="Up">Sexo </label>
+            <input type="radio" name="gender" id="gender" value="M" onChange={ this.handleChange } /><strong> Masculino</strong>
+            <input type="radio" name="gender" id="gender" value="F" onChange={ this.handleChange } /> <strong>Feminino</strong>
             <br/>
 
-            <label htmlFor="ethnicity">Etnia</label>
-            <select name="ethnicity" id="ethnicity" onChange={ this.handleChange } required >
+            <label htmlFor="ethnicity" id="Up">Etnia</label>
+            <select name="ethnicity" id="ethnicity" onChange={ this.handleChange } >
               <option value="">-- Escolher --</option>
               <option value="0">Branco</option>
               <option value="1">Negro</option>
@@ -211,58 +272,82 @@ class NewPatient extends Component {
             </select>
             <br/>
 
-            <label htmlFor="tel1">Telefone 1</label>
+            <label htmlFor="tel1">Telefone</label>
+            <div className="wrap-input100 validate-input m-b-16">
             <input
+              className="input100 textInput"
               type="tel"
               name="tel1"
               id="tel1"
+              placeholder="Telefone"
               value={ this.state.formData.tel1 }
               onChange={ this.handleChange }
-            /> <br/>
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-phone"></span>
+                </span>
+            </div>
 
-            <label htmlFor="tel2">Telefone 2</label>
-            <input
-              type="tel"
-              name="tel2"
-              id="tel2"
-              value={ this.state.formData.tel2 }
-              onChange={ this.handleChange }
-            /> <br/>
-
-            <label htmlFor="telE">Telefone para emergências</label>
-            <input
-              type="tel"
-              name="telE"
-              id="telE"
-              value={ this.state.formData.telE }
-              onChange={ this.handleChange }
-              required
-            /> <br/>
 
             <label htmlFor="cel">Celular</label>
+            <div className="wrap-input100 validate-input m-b-16">
             <input 
+              className="input100 textInput"
               type="tel"
               name="cel"
               id="cel"
+              placeholder="Celular"
               value={ this.state.formData.cel }
               onChange={ this.handleChange }
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-mobile"></span>
+                </span>
+            </div>
+
+            <label htmlFor="telE">Contato de Emergência</label>
+            <div className="wrap-input100 validate-input m-b-16">
+            <input
+              className="input100 textInput"
+              type="tel"
+              name="telE"
+              id="telE"
+              placeholder="Contato de Emergência"
+              value={ this.state.formData.telE }
+              onChange={ this.handleChange }
               required
-            /> <br/>
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-ambulance"></span>
+                </span>
+            </div>
+
 
             <label htmlFor="address">Endereço</label>
+            <div className="wrap-input100 validate-input m-b-16">
             <input
-              className="inputText "
+              className="input100 textInput"
               type="text"
               name="address"
               id="address"
+              placeholder="Endereço"
               value={ this.state.formData.address }
               onChange={ this.handleChange }
               required
-            /> <br/>
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-map-marker-alt"></span>
+                </span>
+            </div>
 
-            <input type="submit" value="Salvar"/>
+            <input id="Save" className="Button" type="submit" value="Salvar"/>
 
           </form>
+      </div>
       </div>
     );
   }

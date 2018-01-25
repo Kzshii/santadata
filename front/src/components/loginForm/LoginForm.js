@@ -5,6 +5,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 
 
+
 class LoginForm extends Component {
 
   constructor(props) {
@@ -46,27 +47,70 @@ class LoginForm extends Component {
 
   render() {
 
-    return(
-      <div className="LoginForm">
-        <form onSubmit={ this.handleSubmit }  >
+var styles = {
+  textAlign:'center',
+};
 
+    return(
+
+   
+
+      <div className="LoginForm  ">
+
+        <form className="wrap-login100 " onSubmit={ this.handleSubmit }  >
+
+          
+
+           <div className="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required">
+            <input className="input100 textInput" type="text" name="email" placeholder="Usuario" value={ this.state.user } onChange={ this.handleChangeEmail } />
+
+                <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-envelope"></span>
+                </span>
+          </div>
+
+          
+          
+         <div class="wrap-input100 validate-input m-b-16" data-validate ="Password is required">
+            <input className="textInput input100" type="password" placeholder="Senha" value={ this.state.pass } onChange={ this.handleChangePassword }/>
+            <span className="focus-input100"></span>
+            <span className="symbol-input100">
+              <span className="fas fa-lock"></span>
+            </span>
+          </div>
+         
+            
+
+
+  
+          
+          
+
+          <div className="contact100-form-checkbox m-l-4">
+            <input className="checkbox check input-checkbox100" id="rememberUserCheck" type="checkbox" name="remember-me"/>
+            <label className="remember check label-checkbox100" htmlFor="rememberUserCheck" >
+              Lembre de mim
+            </label>
+          </div>
 
         
-          <input className="textInput" type="text" placeholder="Usuario" value={ this.state.user } onChange={ this.handleChangeEmail }  /> <br/>
-
-          <input className="textInput"type="password" placeholder="Senha" value={ this.state.pass } onChange={ this.handleChangePassword } /> <br/>
-          
-          <input className="checkbox check" type="checkbox" id="rememberUserCheck" />
-          <label className="remember check" htmlFor="rememberUserCheck">Lembre de mim</label> <br/>
-          <FontAwesomeIcon icon="rocket"/>
 
           <input id="LoginButton" type="submit" value="Entrar" />
 
-          <a id="Signup" className="text-align" href="#">
-              Novo Cadastro
-          </a>
+          <div className="text-center w-full p-t-50">
+
+            <a id="Signup" className="txt1 hov1" href="#">
+              Novo Cadastro           
+            </a>
+          </div>
+
+          
+
         </form>
+
       </div>
+     
     );
   }
 }

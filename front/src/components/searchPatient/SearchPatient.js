@@ -73,7 +73,7 @@ class SearchPatient extends Component {
     /* test block */
     return({
       data: [
-        {name: "Arthur", id: "55"},{name: "Arthur Cristo", id: "58"}
+        {name: "Arthur", id: "55"},{name: "Arthur Cristo", id: "56"}, {name: "Joao Lopez", id: "57"}, {name: "Ludmyla Almeida", id: "58"}
       ]
     });
   }
@@ -103,24 +103,34 @@ class SearchPatient extends Component {
   render() {
     return(
       <div className="SearchPatient">
-        <h1>Busca de Paciente</h1>
+
         <form onSubmit={ this.handleSubmit } >
           
-          <label htmlFor= "patientName"> Nome </label>
+          <label htmlFor= "patientName"></label>
+          <div className="wrap-input100 validate-input m-b-16">
           <input 
             className="patientName"
             type="text"
             id="patientName" 
             name="patientName"
+            placeholder= "Buscar Paciente"
             value={ this.state.search.name }
             onChange={ this.handleChange }
-          /> <br/>
+          /> 
+          <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                </span>
 
-          <input type="submit" value="Buscar" />
+         <button className="button-size" type="submit" value="Buscar">
+                <span className="fas fa-search"></span>
+                </button>
+          </div>
+
+          
 
         </form>
         
-        <PatientList data={ this.state.show } itemAction={ this.openPatient } />
+        <PatientList className="PatientList" data={ this.state.show } itemAction={ this.openPatient } />
       </div>
     );
   }

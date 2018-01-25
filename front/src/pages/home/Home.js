@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import NewPatient from './../../components/newPatient/NewPatient';
 import SearchPatient from './../../components/searchPatient/SearchPatient';
+import Intro from './../../components/intro/Intro';
 
 class Home extends Component {
   
@@ -12,7 +13,7 @@ class Home extends Component {
     this.switchSection = this.switchSection.bind(this);
 
     this.state = {
-      currentSection: <SearchPatient switchSection={ this.switchSection } />,
+      currentSession: <Intro />,
     };
   }
 
@@ -20,16 +21,18 @@ class Home extends Component {
     event.preventDefault();
 
     switch(event.target.name) {
+      case 'intro':
+        this.switchSession( <Intro  /> );
+        break;
       case 'newPatient':
-        this.switchSection( <NewPatient  /> );
+        this.switchSession( <NewPatient switchSession={ this.switchSession } /> );
         break;
       case 'searchPatient':
-        this.switchSection( <SearchPatient switchSection={ this.switchSection } /> );
+        this.switchSession( <SearchPatient switchSession={ this.switchSession } /> );
+        break;
       default:
         break;
     }
-
-    
   }
 
   switchSection(target) {
@@ -45,17 +48,41 @@ class Home extends Component {
   render() {
     return(
       <div className="Home" >
-        <h1>Bem vindo {this.props.userData.name } </h1>
-        <button name="newPatient" onClick={ this.handleClick } >
-          Novo Paciente
-        </button>
-        <button name="searchPatient" onClick={ this.handleClick } >
-          Buscar Paciente
-        </button>
+
+        <header className="nav" id="header">
+          <div className="container">
+            <div id="logo" className="pull-left">
+              <a href="#">
+                <img src='https://svgshare.com/i/57j.svg' alt='logo' title="" onClick={ this.handleClick } name="intro"/>
+              </a> 
+            </div>
+
+            <nav id="nav-menu-container">
+              <ul className="nav-menu">
+                <li className="menu-active"><a name="intro" onClick={ this.handleClick }>Painel</a></li>
+                <li className="menu-active"><a name="newPatient" onClick={ this.handleClick } >Novo Paciente</a></li>
+                <li className="menu-active"><a name="searchPatient" onClick={ this.handleClick } >Buscar Paciente</a></li>
+                <li>
+                  <a href="#">Usuário</a>
+                  <ul>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Log out</a></li>
+                    <li><a href="#">Something</a></li>
+                    <li><a href="#">BLAH BLAH BLAH</a></li>
+                  </ul>
+                </li>
+
+                {/*IF WE WANT SOMETHING TO DROPDOWN*/}
+              </ul>
+            </nav>
+            {/*<!-- #nav-menu-container -->*/}
+          </div>
+        </header>
+        {/*<!-- #header -->*/}
+   
         <section>
           { this.state.currentSection }
         </section>
-
       </div>
     );
   }
