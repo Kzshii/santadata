@@ -4,6 +4,7 @@ import Base64 from './../../lib/base64';
 import axios from 'axios';
 
 class Intro extends Component {
+
   constructor(props){
     super(props);
   }
