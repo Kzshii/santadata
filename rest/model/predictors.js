@@ -6,23 +6,23 @@
 */
 var Base = require( './base_consult.js' );
 
-var Preditores_Morte = Object.Create(Base);
+var Preditores_Morte = Object.create(Base);
 
 Preditores_Morte.types = {
-	void {id: -1, label: "Vazio"},
+	void :{id: -1, label: "Vazio"},
 
 	geral: {
 		// Morte súbita recuperada
 		morte_subita: [
 			{id: 0,label: "Sim"},
 			{id: 1,label: "Nao"}
-		]
+		],
 
 		// Episódio de taquicardia ventricular sustentada
 		ep_taq:[
 			{id: 0,label: "Sim"},
 			{id: 1,label: "Nao"}
-		]
+		],
 
 		// Disfunção ventricular com fração de ejeção ≤ 35% e o paciente se encontra sintomático.
 		disf_vent:[

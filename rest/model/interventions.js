@@ -6,9 +6,9 @@
 */
 var Base = require( './base_consult.js' );
 
-var Interventions = Object.Create(Base);
+var Interventions = Object.create(Base);
 
-Interventions.type: {
+Interventions.types = {
 	  
 	void: {id: -1, label: "Vazio"},
 

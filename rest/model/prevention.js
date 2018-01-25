@@ -6,10 +6,10 @@
 */
 var Base = require( './base_consult.js' );
 
-var Prevencao_Agravo = Object.Create(Base);
+var Prevencao_Agravo = Object.create(Base);
 
 Prevencao_Agravo.types = {
-	void {id: -1, label: "Vazio"},
+	void :{id: -1, label: "Vazio"},
 
 	// Cessar tabagismo
 	tabagismo: {},

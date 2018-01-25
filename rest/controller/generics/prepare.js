@@ -11,7 +11,7 @@
 var Anamnese = require("../../model/anamnese.js")
 var Predictors = require("../../model/predictors.js")
 var Prevention = require("../../model/prevention.js")
-var interventions = require("../../model/interventions.js")
+var Interventions = require("../../model/interventions.js")
 
 //Base class
 var Base = require( '../generic.js' );

@@ -81,7 +81,7 @@ Exame_fisico.data = {
 	geral: {
 		estado: "",
 		edema: Exame_fisico.types.geral.edemas[0],
-		auscuta_resp: Exame_fisico.types.geral.auscutas_resp[0],
+		auscuta_resp: Exame_fisico.types.geral.auscultas_resp[0],
 		refl_heptojugular: 0, // 0 or 1
 		turg_jugular: 0, //0 or 1
 		ascite: 0, //0 or 1
