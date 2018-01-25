@@ -24,13 +24,10 @@ class Login extends Component {
       'pass': loginData.pass /* TODO: Passar md5 na pass. Path: ./rest/libs/helper/md5.js */
     });
 
-    console.log("login data",loginData);
-    console.log("data",data);
-
     axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 
     /* Bypass */
-    this.props.onLogin(
+    /* this.props.onLogin(
       {
         user_id: 1,
         type_user: 1,
@@ -38,17 +35,17 @@ class Login extends Component {
         name: 'João Carlos',
         picture: 'none',
       }
-    );
+    ); */
 
-    /* axios.post(
+    axios.post(
       'auth/login/',
       "data="+data
     )
     .then(
-      function(response) {
-        if(response.data.success === 1){
+      (response) => {
+        if(response.data.success === 1) {
           this.props.onLogin(response.data.data);
-        } else if(response.data.success === 0){
+        } else if(response.data.success === 0) {
           alert("Verifique seu usuário e senha!");
         } else {
           // TODO: falha na rota
@@ -59,7 +56,7 @@ class Login extends Component {
       function(error) {
         alert(error);
       }
-    ); */
+    );
   }
 
   render() {
