@@ -17,7 +17,7 @@ Patient.add = function(req, res){
 	var_req = Generic.decode_data(var_req)
 
 	//Check authentication
-	if(!Patient.check_requisition(req)){
+	if(!Patient.check_requisition(var_req)){
 		res.send(Patient.error_message(500,"Bad request"));
 		return
 	}
