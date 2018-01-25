@@ -142,21 +142,29 @@ var Autenticator = {
 
 	login_route: function(req,res){
 
-		var var_req = req.body;
-		var_req = User.decode_data(var_req)
+		var var_req = req.body
+		var user = null
+		var pass = null
 
-		//Check authentication
-		if(!User.check_requisition(req) || Object.keys(var_req).length == 0){
-			res.status(404).send(User.error_message("Invalid request"));
+		try{
+			var_req = atob(var_req.data)
+			var_req = JSON.parse(var_req)
+			//Getting param data
+			user = var_req.user;
+			pass = var_req.pass;
+
+		}
+		catch(e){
+			res.status(500).send("Bad Formatation :(")
 			return
 		}
 
-		data = [var_req.user, var_req.pass]
+		data = [user,pass]
 	
 		//Calling Dao Function
 		Dao_user.login(res,data, function(res,result){
 			if(result.success == 0){
-				res.status(result.error).send(Generic.error_message(result.message));
+				res.status(result.error).send(error_message(result.message));
 			}
 			else{
 				var results = result.data[0]
