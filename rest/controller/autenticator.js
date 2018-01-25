@@ -15,6 +15,8 @@ var Mongodb = require('../libs/persistence/mongodb.js');
 var md5 = require('../libs/helper/md5.js');
 global.Buffer = global.Buffer || require('buffer').Buffer;
 
+//Database Manager
+var Dao_user = require('../model/dao/dao_user.js');
 
 //Redundant function
 function error_message(code, message){
@@ -83,7 +85,7 @@ var Autenticator = {
 	* @param user {login do usuario}
 	* @param pass {Senha do usuario}
 	*/
-	login_route: function(req,res){
+	login_route2: function(req,res){
 
 		var var_req = req.body
 		var user = null
@@ -136,6 +138,45 @@ var Autenticator = {
 			
 		});
 	},
+
+
+	login_route: function(req,res){
+
+		var var_req = req.body;
+		var_req = User.decode_data(var_req)
+
+		//Check authentication
+		if(!User.check_requisition(req) || Object.keys(var_req).length == 0){
+			res.status(404).send(User.error_message("Invalid request"));
+			return
+		}
+
+		data = [var_req.user, var_req.pass]
+	
+		//Calling Dao Function
+		Dao_user.login(res,data, function(res,result){
+			if(result.success == 0){
+				res.status(result.error).send(Generic.error_message(result.message));
+			}
+			else{
+				var results = result.data[0]
+
+				var user =  {
+					user_id: results.iduser,
+					type_user: results.type_user,
+					hash: Autenticator.generate_hash_id(results.id),
+					name: results.name,
+					picture: results.picture
+				}
+
+				result.data = user;
+				console.log("#=> LOGIN SUCESS :"+user.user_id)
+
+				res.send(JSON.stringify(result))
+			}
+		})
+	},
+
 
 	// DISABLED
 	renew_route: function(req,res){
