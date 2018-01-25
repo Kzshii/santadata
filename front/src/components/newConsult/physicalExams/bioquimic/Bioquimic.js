@@ -85,6 +85,9 @@ class Bioquimic extends Component {
 				
 				<Creatina/>
 				<Sangue/>
+
+				<input type="submit" value={"salvar" +" "+ this.props.title}/>
+				
 			</div>
 		)
 	}

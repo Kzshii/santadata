@@ -96,6 +96,8 @@ class PhysicalExams extends Component {
 				<Bioquimic/>
 				<Complementary/>
 
+				<input type="submit" value={"salvar" +" "+ this.props.title}/>
+
 			</div>
 		)
 	}

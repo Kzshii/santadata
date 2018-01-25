@@ -6,7 +6,8 @@ import Evidences from "./evidences/Evidences";
 import PatientProfile from './../patientProfile/PatientProfile';
 import Base64 from '../../lib/base64';
 import Interventions from "./interventions/Interventions";
-import Predictors from "./predictors/Predictors"; 
+import Predictors from "./predictors/Predictors";
+import PhysicalExams from "./physicalExams/PhysicalExams";
 
 /* import Medicines from "./medicines/Medicines"; */
 
@@ -27,6 +28,7 @@ class NewConsult extends Component {
       <Anamnese title="Anamnese" saveData={ this.storeFormData } />,
       <Evidences title="Evidências" saveData={ this.storeFormData } />,
       <Interventions title="Intervenções" saveData={ this.storeFormData } />,
+      <PhysicalExams title="Exames Físicos" saveData={ this.storeFormData } />,
       <Predictors title="Preditores" saveData={ this.storeFormData } />,
     ];
 			
