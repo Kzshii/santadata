@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './Medicines.css';
 import Base64 from '../../../lib/base64';
 import axios from 'axios';
-import Ieca from './Ieca.js';
+import Ieca from './ieca/Ieca.js';
+import Bra from './bra/Bra.js';
+import BetaBloqueadores from './betaBloqueadores/BetaBloqueadores.js'
 
 class Medicines extends Component {
   constructor(props){
@@ -254,10 +256,10 @@ class Medicines extends Component {
 	
 
 	addNewMedicine(medicine){
-
+		
 		var data= this.state.formData
 		data[medicine.name]= medicine;
-		
+
 		this.setState({
 			formData: data,
 		})
@@ -274,6 +276,8 @@ class Medicines extends Component {
 
 		const medicinesTypes= {
 			IECA: <Ieca form={this.state.prepare["IECA"]} title="IECA" addMedicine={this.addNewMedicine}/>,
+			BRA: <Bra form={this.state.prepare["BRA"]} title="BRA" addMedicine={this.addNewMedicine}/>,
+			beta_bloqueadores: <BetaBloqueadores form={this.state.prepare["beta_bloqueadores"]} title="beta_bloqueadores" addMedicine={this.addNewMedicine}/>,
 		}
 
 		console.log(medicinesTypes)

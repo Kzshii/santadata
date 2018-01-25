@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Base64 from '../../../lib/base64';
+import Base64 from '../../../../lib/base64';
 import axios from 'axios';
 
-class Ieca extends Component {
+class BetaBloqueadores extends Component {
 
 	constructor(props) {
 		super(props);
@@ -60,16 +60,16 @@ class Ieca extends Component {
 		
 		if(this.props.form) {
 			return(
-				<div className="ieca">
+				<div className="beta_bloqueadores">
 					<form onSubmit={this.handleSubmit}>
 
-						<label htmlFor="ieca">IECA</label>
+						<label htmlFor="beta_bloqueadores">BRA</label>
 						{
 							this.props.form.select.map(
 								(row) => {
 									return(
 										<div key={ row.id }>
-											<input type="radio" name="IECA" value={ row.id } onChange={ this.handleChange }/>
+											<input type="radio" name="beta_bloqueadores" value={ row.id } onChange={ this.handleChange }/>
 											<label htmlFor="">{ row.label }</label>
 										</div>
 									);
@@ -131,4 +131,4 @@ class Ieca extends Component {
 	}
 }
 
-export default Ieca;
+export default BetaBloqueadores;
