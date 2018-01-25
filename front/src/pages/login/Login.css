@@ -1,6 +1,5 @@
 body{
     background-attachment: fixed;
-    overflow: hidden;
    /* text-align: center;*/
 }
 
@@ -10,6 +9,7 @@ body{
 
 .LoginPage {
     background-color: #1ca4fc;
+    overflow: hidden;
     min-height: 100vh;
     width: 100%;
     height: 100%;
