@@ -53,22 +53,83 @@ class PatientProfile extends Component {
 
   render() {
     return(
-      <div className="PatientProfile">
+      <div className="PatientProfile float-left">
 
-        <h1>Perfil do Paciente</h1>
-        <button name="newConsult" onClick={this.handleSubmit}>
-          NovaConsulta
-        </button>
+
+      <div className="profile float-left">
+
+        <div className="top-bar">
+          <h3>Paciente</h3>
+        </div>
+        
+
+        <div className="NewConsult top-button-bar">
+               <button className="btn btn-outline-primary float-right" name="newConsult" onClick={this.handleSubmit}>
+                  NovaConsulta
+                </button>
+
+        </div> 
         <div className="patientData">
+
+
+
           <InfoCard data={ this.state.patientData } />
         </div>
-        <div className="allergies"></div>
-        <div className="currentState"></div>
-        <div className="ICFER"></div>
-        <div className="comorbidities"></div>
-        <div className="timeLine"></div>
 
-      </div>
+        </div>
+
+        <div className="allergies float-left">
+
+          <div className="top-bar">
+            <h3>Alergias</h3>
+          </div> 
+
+          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+          when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+        </div>
+
+        <div className="currentState float-left">
+
+          <div className="top-bar">
+            <h3>Estado Atual</h3>
+          </div> 
+
+          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+          when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+        </div>
+
+        <div className="ICFER float-left">
+
+          <div className="top-bar">
+            <h3>ICFER</h3>
+          </div> 
+
+          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+          when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+        </div>
+
+        <div className="comorbidities float-left">
+
+          <div className="top-bar">
+            <h3>Co-Morbilidades</h3>
+          </div> 
+
+          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+          when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+
+        </div>
+
+        </div>
+
+        
     );
   }
 }

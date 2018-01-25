@@ -21,13 +21,15 @@ class Home extends Component {
     event.preventDefault();
 
     switch(event.target.name) {
+      case 'intro':
+        this.switchSession( <Intro  /> );
+        break;
       case 'newPatient':
-        this.switchSession( <NewPatient  /> );
+        this.switchSession( <NewPatient switchSession={ this.switchSession } /> );
         break;
       case 'searchPatient':
         this.switchSession( <SearchPatient switchSession={ this.switchSession } /> );
-      case 'intro':
-        this.switchSession( <Intro switchSession={ this.switchSession } /> );
+        break;
       default:
         break;
     }
@@ -59,6 +61,7 @@ class Home extends Component {
               <ul className="nav-menu">
                 <li className="menu-active"><a name="intro" onClick={ this.handleClick }>Painel</a></li>
                 <li className="menu-active"><a name="newPatient" onClick={ this.handleClick } >Novo Paciente</a></li>
+                <li className="menu-active"><a name="searchPatient" onClick={ this.handleClick } >Buscar Paciente</a></li>
                 <li>
                   <a href="#">Usuário</a>
                   <ul>

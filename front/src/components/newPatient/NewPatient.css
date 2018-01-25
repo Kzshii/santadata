@@ -1,5 +1,5 @@
 .wrap {
-    background: #1ca4fc;
+    background: #1ca4fc!important;
     position: absolute;
     min-height: 100vh;
     width: 100%;
@@ -8,11 +8,11 @@
 
 }
 
-h2{
+.NewPatient h2{
 	text-align: center;
 }
 
-input{
+.NewPatient input{
      color: #1ca4fc;
 }
 
@@ -195,13 +195,13 @@ button:hover {
 
 
 /*---------------------------------------------*/
-.wrap-input100 {
+.NewPatient .wrap-input100 {
   position: relative;
   width: 100%;
   z-index: 1;
 }
 
-.input100 {
+.NewPatient .input100 {
   font-family: Lato;
   font-size: 18px;
   line-height: 1.2;
@@ -217,7 +217,7 @@ button:hover {
 
 /*------------------------------------------------------------------
 [ Focus ]*/
-.focus-input100 {
+.NewPatient .focus-input100 {
   display: block;
   position: absolute;
   border-radius: 30px;
@@ -230,7 +230,7 @@ button:hover {
   color: #1eabf9;
 }
 
-.input100:focus + .focus-input100 {
+.NewPatient .input100:focus + .focus-input100 {
   -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
   animation: anim-shadow 0.5s ease-in-out forwards;
 }
@@ -249,7 +249,7 @@ button:hover {
   }
 }
 
-.symbol-input100 {
+.NewPatient .symbol-input100 {
   font-size: 24px;
   color: #1eabf9;
 
@@ -275,7 +275,7 @@ button:hover {
   transition: all 0.4s;
 }
 
-.input100:focus + .focus-input100 + .symbol-input100 {
+.NewPatient .input100:focus + .focus-input100 + .symbol-input100 {
   color: #1ca4fc;
   padding-left: 18px;
 }
