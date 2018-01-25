@@ -44,8 +44,7 @@ class Medicines extends Component {
 					IECA: 
 					{
  
-						select: // 1
-						[ 
+						select: [ 
 							{id: 0,label: "Captopril"}, 
 							// Dose inicial = 6,24mg 
 							// Dose alvo = 50mg 
@@ -60,7 +59,7 @@ class Medicines extends Component {
 							{id: 5,label: "Trandolapril"},
 						],
 
-						input: // 1
+						input: 
 						{
 							//{droga:drogas.void},
 							date:"00/00/0000",
@@ -258,7 +257,6 @@ class Medicines extends Component {
 
 	addNewMedicine(medicine){
 		
-		console.log(medicine)
 	}
 
 	selectMedicine(event){
@@ -272,6 +270,7 @@ class Medicines extends Component {
 		const medicinesTypes= {
 			IECA: <Ieca form={this.state.prepare["IECA"]} title="IECA"/>,
 		}
+
 		console.log(medicinesTypes)
 
 		const medicines= Object.keys(this.state.prepare)
