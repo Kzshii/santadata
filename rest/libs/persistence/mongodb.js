@@ -94,7 +94,7 @@ var insert = {
      	 	update: {$inc:{sequence_value:1}},
      	 	new:true
    		}));
-	}
+	});
 }
 
 /*
