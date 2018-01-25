@@ -4,8 +4,11 @@
 * (C) João Carlos Pandolfi Santana - 10/01/2018
 */
 
+// =============== LIBS ================
+
 //Config
 var config = require('../constants/config.js');
+var config_db = require('../constants/databases.js');
 
 //Databases
 var Mysql = require('../libs/persistence/mysql.js');
@@ -18,11 +21,12 @@ global.Buffer = global.Buffer || require('buffer').Buffer;
 //Database Manager
 var Dao_user = require('../model/dao/dao_user.js');
 
+ // =============== FUNCTIONS ================
+
 //Redundant function
 function error_message(code, message){
 	return {success: 0, error:{code:code,message:message}};
 }
-
 
 // BASE 64 FUNCIONS
 if (typeof btoa === 'undefined') {
@@ -37,6 +41,7 @@ if (typeof atob === 'undefined') {
   };
 }
 
+// =============== CLASS ================
 
 var Autenticator = {
 
@@ -79,7 +84,7 @@ var Autenticator = {
 		return user;
 	},
 
-	/* TODO: JOGAR PARA DENTRO DO DAO
+	/*
 	* Efetua login do usuario pela rota
 	* @receive res.query {Variavel com os parametros}
 	* @param user {login do usuario}
@@ -119,7 +124,7 @@ var Autenticator = {
 				var user =  {
 					user_id: results.iduser,
 					type_user: results.type_user,
-					hash: Autenticator.generate_hash_id(results.id),
+					hash: Autenticator.generate_hash_id(results.iduser),
 					name: results.name,
 					picture: results.picture
 				}
@@ -136,6 +141,33 @@ var Autenticator = {
 	// DISABLED
 	renew_route: function(req,res){
 		return {success: 1, data:{}}
+	},
+
+	/*
+	* DEACTIVATE THIS FUNCTION
+	*/
+	config_mongo: function(req,res){
+		try{
+			console.log("Creating MONGO database")
+			Mongodb.createDb();
+
+			console.log("Creating Collections")
+			config_db.Mongo.collections.map(function(collection){
+				Mongodb.createCollection(collection);
+			})
+
+			console.log("Created")
+			res.send(JSON.stringify({collections:config_db.Mongo.collections}));
+			
+			/*Mongodb.search.one("user",{},function(result){
+				console.log(result)
+				res.send(JSON.stringify(result));
+			});*/
+		}
+		catch(e){
+			console.log("Error")
+			res.send("ERRO NO MONGO");
+		}
 	},
 
 	/*
