@@ -50,6 +50,13 @@ var Controller = {
 		return {success: 0, error:{code:code,message:message}};
 	},
 
+	format_response: function(data){
+		return {
+			success: 1,
+			data: data
+		}
+	},
+
 	test: test 
 }
 

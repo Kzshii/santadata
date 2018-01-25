@@ -13,8 +13,8 @@ Exame_fisico.types = {
 	void: {id: -1, label: "Vazio"},
 
 	geral: {
-		//Tipos de edemas fisicos
-		edemas: [
+		//Tipos de edemas fisicos 
+		edemas: [ // 1
 			{id: 0,label: "Sem Edema"},
 			{id: 1,label: "+/++++"},
 			{id: 2,label: "++/++++"},
@@ -23,7 +23,7 @@ Exame_fisico.types = {
 		],
 
 		//Auscutas respiratorias
-		auscutas_resp:[
+		auscultas_resp:[ // 1
 			{id: 0,label: "Nenhum"},
 			{id: 1,label: "MV Fisiológico"},
 			{id: 2,label: "Creptações basais"},
@@ -31,7 +31,7 @@ Exame_fisico.types = {
 		]
 	},
 
-	cardiovascular:{
+	cardiovascular:{ // 1
 		//Ritmo cardiovascular
 		ritmo:[
 			{id: 0, label: "Regular"},
@@ -39,14 +39,14 @@ Exame_fisico.types = {
 		],
 
 		//Inpecao cardiovascular
-		inspecao:[
+		inspecao:[ // 1
 			{id: 0, label: "Ictus Cordis Visivel"},
 			{id: 1, label: "Ictus de VD"},
 			{id: 2, label: "Movimento em bascula"}
 		],
 
 		//Bulhas
-		bulhas:[
+		bulhas:[ // 1
 			{id: 0, label: "B1 e B2"},
 			{id: 1, label: "B3"},
 			{id: 2, label: "B4"},
@@ -54,10 +54,23 @@ Exame_fisico.types = {
 		],
 
 		//Palpacao
-		palpacao:[
-			{id: 0, label: "Ictus palpável"},
-			{id: 1, label: "Desviado E q Baixo"},
-			{id: 2, label: "LHC 5 EIEC"}
+		palpacao:[ // 1...*
+			{id: 0, label: "Ictus não palpável"},
+			{id: 1, label: "Ictus palpável"},
+			{id: 2, label: "Desviado E para Baixo"},
+			{id: 3, label: "LHC 5 EIEC"}
+		]
+	},
+
+	complementar:{
+		eletro:[ // 0*...
+			{id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
+			{id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
+			{id: 2, label: "Supra do Segmento ST"},
+			{id: 3, label: "Sobrecarga Atrial (SA)"},
+			{id: 3, label: "Sobrecargo de Ventrículo (SV)"},
+			{id: 3, label: "Flutter Atrial"},
+			{id: 3, label: "Fibrilação Atrial (FA)"}
 		]
 	}
 }
@@ -109,6 +122,21 @@ Exame_fisico.data = {
 
 	complementar:{
 
+		//ECG
+		eletro:[],
+
+		//Ecocardiograma
+		primeira_FE: "", // texto numérico
+		primeiro_VE_diast: "",
+		primeiro_VE_sist: "",
+
+		ultima_FE: "", // texto numérico
+		ultima_VE_diast: "",
+		ultima_VE_sist: "",		
+
+		delta_FE: "", // diferença entre ultima_FE - primeira_FE
+		delta_VE: "", // diferença entre ultima_VE_sist - primeira_FE_sist
+		ps_ap: "" // texto numérico
 	}
 
 }
