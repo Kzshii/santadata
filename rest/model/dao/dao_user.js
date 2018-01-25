@@ -45,4 +45,10 @@ Dao_user.new_user = function(param, data, callback){
 }
 
 
+Dao_user.login = function(param, data, callback){
+
+	var query = "SELECT * FROM login WHERE login=? AND pass=? ;"
+	Dao_user.mysql_query(query, data, callback, param);
+}
+
 module.exports = Dao_user

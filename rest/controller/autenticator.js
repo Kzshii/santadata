@@ -15,6 +15,8 @@ var Mongodb = require('../libs/persistence/mongodb.js');
 var md5 = require('../libs/helper/md5.js');
 global.Buffer = global.Buffer || require('buffer').Buffer;
 
+//Database Manager
+var Dao_user = require('../model/dao/dao_user.js');
 
 //Redundant function
 function error_message(code, message){
@@ -102,40 +104,34 @@ var Autenticator = {
 			return
 		}
 
-		
+		data = [user,pass]
+
 		console.log("#=> Login process -- user:"+user)
 	
-		var sql = "SELECT * FROM login WHERE login=? AND pass=? ";
-		sql = Mysql.format(sql, [user,pass]);
-
-		Mysql.query(sql, function (err, results) {
-			if(err) { res.status(500).send("Database error"); return; }
-			var response = {
-				success: 1,
-				data:{}
+		//Calling Dao Function
+		Dao_user.login(res,data, function(res,result){
+			if(result.success == 0){
+				res.status(result.error).send(error_message(result.message));
 			}
+			else{
+				var results = result.data[0]
 
-			if(results.length > 0){
-	
 				var user =  {
-					user_id: results[0].iduser,
-					type_user: results[0].type_user,
-					hash: Autenticator.generate_hash_id(results[0].id),
-					name: results[0].name,
-					picture: results[0].picture
+					user_id: results.iduser,
+					type_user: results.type_user,
+					hash: Autenticator.generate_hash_id(results.id),
+					name: results.name,
+					picture: results.picture
 				}
 
-				response.data = user;
+				result.data = user;
 				console.log("#=> LOGIN SUCESS :"+user.user_id)
-				
-			}else
-				response.success = 0
-			
 
-			res.send(JSON.stringify(response));
-			
-		});
+				res.send(JSON.stringify(result))
+			}
+		})
 	},
+
 
 	// DISABLED
 	renew_route: function(req,res){
