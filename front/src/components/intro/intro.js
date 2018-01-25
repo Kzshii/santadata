@@ -11,7 +11,7 @@ class Intro extends Component {
   render() {
     return(
       <div id="Intro">
-        <div className= "intro-text">
+        <div className="intro-text">
           <div id="SAME-FUCKING-LINE">
             <a>
               <img id="doctor" src='https://plasticsurgeonforkids.com/wp-content/uploads/MAIN-HEADSHOT-Circle1.png' alt='logo' title=""/>
