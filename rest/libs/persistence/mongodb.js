@@ -27,6 +27,26 @@ var createCollection = function(collection){
 }
 
 
+var initialize = {
+	counters: function(counters){
+
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  db.createCollection('counters', function(err, res) {
+	    if (err) throw err;
+	    
+	    console.log("Counters Collection created!");
+
+	    counters.map(function(counter){
+	    	db.counters.insert({_id:counter,sequence_value:0})
+	    })
+	    
+	    db.close();
+	  });
+	});
+	}
+}
+
 /*
 * Insert Objects
 * Base response:
@@ -52,7 +72,6 @@ var insert = {
 		});
 	},
 
-
 	// Insert multiple objects in collection
 	objects: function(collection,objects,callback){
 		MongoClient.connect(url, function(err, db) {
@@ -65,6 +84,16 @@ var insert = {
 		    callback(res);
 		  });
 		});
+	},
+
+	next: function getNextSequenceValue(sequenceName,callback){
+		MongoClient.connect(url, function(err, db) {
+		  if (err) throw err;
+   		callback(db.counters.findAndModify({
+      	query:{_id: sequenceName },
+     	 	update: {$inc:{sequence_value:1}},
+     	 	new:true
+   		});
 	}
 }
 
