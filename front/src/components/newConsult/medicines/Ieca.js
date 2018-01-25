@@ -8,18 +8,15 @@ class Ieca extends Component {
 		super(props);
 
 		this.handleChange = this.handleChange.bind(this);
-		this.componentDidMount = this.componentDidMount.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 
 		this.state = {
-			formData: {}
+			formData: {
+				name: this.props.title,
+			}
 		};
 	}
-	
-	componentDidMount() {
-		/* this.setState({
-			formData: this.props.form.input
-		}) */
-	}
+
 
 	handleChange(event) {
 
@@ -53,12 +50,19 @@ class Ieca extends Component {
 		console.log("STATE", this.state);
 	}	
 
+	handleSubmit(event){
+		event.preventDefault();
+
+		this.props.addMedicine(this.state.formData);
+	}
+
 	render(){
 		
 		if(this.props.form) {
 			return(
 				<div className="ieca">
-					<form>
+					<form onSubmit={this.handleSubmit}>
+
 						<label htmlFor="ieca">IECA</label>
 						{
 							this.props.form.select.map(
@@ -98,7 +102,7 @@ class Ieca extends Component {
 
 						<label htmlFor="dosage">Dose:</label>
 						<input
-							type="number"
+							type="text"
 							name="charge"
 							id="dosage"
 							value={ this.state.formData.charge }
@@ -117,7 +121,7 @@ class Ieca extends Component {
 							required
 						/> 
 						<br/>
-						<br/>
+						<input type="submit" value="Adicionar Medicamento"/>
 					</form>
 				</div> 
 			)

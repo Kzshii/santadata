@@ -253,34 +253,37 @@ class Medicines extends Component {
 	}	
 	
 
-	
-
 	addNewMedicine(medicine){
+
+		var data= this.state.formData
+		data[medicine.name]= medicine;
 		
+		this.setState({
+			formData: data,
+		})
 	}
 
 	selectMedicine(event){
 		this.setState({
 			newMedicine: event.target.value
 		})
+
 	}
 
 	render() {
 
 		const medicinesTypes= {
-			IECA: <Ieca form={this.state.prepare["IECA"]} title="IECA"/>,
+			IECA: <Ieca form={this.state.prepare["IECA"]} title="IECA" addMedicine={this.addNewMedicine}/>,
 		}
 
 		console.log(medicinesTypes)
-
 		const medicines= Object.keys(this.state.prepare)
 		return(
 			<div className="Medicines">
 				<h2>Adicionar Medicamento:</h2>
-				<form onSubmit={this.addNewMedicine}>
+				<form onSubmit={this.handleSubmit}>
 					<select name="medicinesType" id="medicinesType" onChange={this.selectMedicine}>
-						{
-							
+						{			
 							medicines.map(
 								medicine => {
 									return(
@@ -290,7 +293,7 @@ class Medicines extends Component {
 							)
 						}
 					</select>
-					<input type="submit" value="adicionar"/>
+					<input type="submit" value="Salvar"/>
 				</form>
 				{medicinesTypes[this.state.newMedicine]}
 			</div>
