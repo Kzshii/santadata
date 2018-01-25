@@ -12,6 +12,7 @@ var Anamnese = require("../../model/anamnese.js")
 var Predictors = require("../../model/predictors.js")
 var Prevention = require("../../model/prevention.js")
 var Interventions = require("../../model/interventions.js")
+var Medicines = require("../../model/medicines.js")
 
 //Base class
 var Base = require( '../generic.js' );
@@ -38,7 +39,7 @@ Prepare.interventions = function(req,res){
 }
 
 Prepare.medicines = function(req,res){
-
+	Prepare.response(res,Medicines.types)
 }
 
 Prepare.predictors = function(req,res){
