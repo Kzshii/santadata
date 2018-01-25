@@ -152,9 +152,9 @@ var Autenticator = {
 			Mongodb.createDb();
 
 			console.log("Creating Collections")
-			config_db.Mongo.collections.map(collection){
+			config_db.Mongo.collections.map(function(collection){
 				Mongodb.createCollection(collection);
-			}
+			})
 
 			console.log("Created")
 			res.send(JSON.stringify({collections:config_db.Mongo.collections}));
