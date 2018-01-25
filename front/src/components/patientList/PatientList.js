@@ -27,21 +27,19 @@ class PatientList extends Component {
               </tr>
             </thead>
             <tbody>
-              { this.props.data.map(
-                (patient) => {
-                  return(
-
-             
-                    
-                    <tr key={ patient.id } onClick={ () => {this.props.itemAction(patient.id)} } >  
-                                  
-                      <td>{ patient.name }</td>
-                      <td>{ patient.id }</td>
-                    </tr>
-
-                  );
-                }
-              ) }
+              {
+                this.props.data.map(
+                  (patient) => {
+                    return(
+                      <tr key={ patient.idpatient } onClick={ () => {this.props.itemAction(patient.idpatient)} } >  
+                                    
+                        <td>{ patient.name }</td>
+                        <td>{ patient.idpatient }</td>
+                      </tr>
+                    );
+                  }
+                )
+              }
             </tbody>
           </table>
       

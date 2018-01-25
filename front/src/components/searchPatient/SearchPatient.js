@@ -28,8 +28,8 @@ class SearchPatient extends Component {
   }
   
   handleChange(event) {
-    var searchData = this.state.search;
-    var value = event.target.value;
+    let searchData = this.state.search;
+    const value = event.target.value;
     
     switch(event.target.name) {
       case "patientName":
@@ -50,38 +50,21 @@ class SearchPatient extends Component {
   searchPatient() {
     /*user= {this.props.user} */
     
-    axios.defaults.baseURL = 'https://31.220.54.251:8443/';
     
-    /* axios.post(
-      'gen/search/patient/1/MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=/', // this.props.user.id+this.props.user.hash,
-      'data='+Base64.encode(
-        {
-          name: this.state.search.name,
-        }
-      )
-    )
-    .then(
-      function(response) {
-        //const listPatients = response.data;
-        console.log("RETORNO: ", response.data);
-        return({
-          data: response.data.data,
-        });
-      }
-    ).catch(); */
     
     /* test block */
-    return({
+    /* return({
       data: [
         {name: "Arthur", id: "55"},{name: "Arthur Cristo", id: "56"}, {name: "Joao Lopez", id: "57"}, {name: "Ludmyla Almeida", id: "58"}
       ]
-    });
+    }); */
   }
   
   handleSubmit(event) {
     event.preventDefault();
     
-    const searchResult = (this.searchPatient()).data;
+    /* let searchResult = [];
+    searchResult = this.searchPatient();
     const searchData = this.state.search;
     var patientsList = [];
     
@@ -89,11 +72,22 @@ class SearchPatient extends Component {
       if((searchResult[i].name).search(searchData.name) !== -1) {
         patientsList.push(searchResult[i]);
       }
-    }
+    } */
+
+    const url = 'gen/search/patient/'+this.props.userData.user_id+'/'+this.props.userData.hash+'/';
+    axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+
+    axios.post( url,"data="+Base64.encode(this.state.search) )
+    .then(
+      (response) => {
+        console.log("RETORNO: ", response.data);
+        this.setState({
+          show: response.data.data
+        });
+      }
+    ).catch();
     
-    this.setState({
-      show: patientsList
-    });
+    console.log(this.state);
   }
 
   openPatient(patientId) {
@@ -108,26 +102,22 @@ class SearchPatient extends Component {
           
           <label htmlFor= "patientName"></label>
           <div className="wrap-input100 validate-input m-b-16">
-          <input 
-            className="patientName"
-            type="text"
-            id="patientName" 
-            name="patientName"
-            placeholder= "Buscar Paciente"
-            value={ this.state.search.name }
-            onChange={ this.handleChange }
-          /> 
-          <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                </span>
+            <input 
+              className="patientName"
+              type="text"
+              id="patientName" 
+              name="patientName"
+              placeholder= "Buscar Paciente"
+              value={ this.state.search.name }
+              onChange={ this.handleChange }
+            /> 
+            <span className="focus-input100"></span>
+            <span className="symbol-input100"></span>
 
-         <button className="button-size" type="submit" value="Buscar">
-                <span className="fas fa-search"></span>
-                </button>
+            <button className="button-size" type="submit" value="Buscar">
+              <span className="fas fa-search"></span>
+            </button>
           </div>
-
-          
-
         </form>
         
         <PatientList className="PatientList" data={ this.state.show } itemAction={ this.openPatient } />

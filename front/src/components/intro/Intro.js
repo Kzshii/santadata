@@ -19,7 +19,7 @@ class Intro extends Component {
             </a> 
   
             <div className="welcome">
-              <h1>Bem vindo,<br/> { "Doutor" } </h1>
+              <h1>Bem vindo,<br/> { this.props.userData.name } </h1>
             </div>
           </div>
         </div>

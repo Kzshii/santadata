@@ -72,7 +72,7 @@ var styles = {
 
           
           
-         <div class="wrap-input100 validate-input m-b-16" data-validate ="Password is required">
+         <div className="wrap-input100 validate-input m-b-16" data-validate ="Password is required">
             <input className="textInput input100" type="password" placeholder="Senha" value={ this.state.pass } onChange={ this.handleChangePassword }/>
             <span className="focus-input100"></span>
             <span className="symbol-input100">

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './NewPatient.css';
 import Base64 from './../../lib/base64';
 import axios from 'axios';
+import Intro from './../intro/Intro';
 
 class NewPatient extends Component {
   constructor(props) {
@@ -90,11 +91,11 @@ class NewPatient extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    var formData = this.state.formData;
+    const formData = this.state.formData;
 
-    var data = Base64.encode(
+    const data = Base64.encode(
       {
-        id_register: '1',
+        id_register: this.props.userData.user_id,
         nome: formData.patientName,
         cpf: formData.cpf,
         nr_prontuario: formData.medicalRecord,
@@ -111,14 +112,19 @@ class NewPatient extends Component {
       }
     );
 
+    const url = 'gen/new/patient/'+this.props.userData.user_id+'/'+this.props.userData.hash+'/';
+
     axios.defaults.baseURL = 'https://31.220.54.251:8443/';
-    axios.post(
-      'gen/new/patient/1/MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=/', /* this.props.user.id+this.props.user.hash, */
-      "data="+data
-    )
+    axios.post(url,"data="+data)
     .then(
-      function(response) {
+      (response) => {
         console.log("RETORNO", response.data);
+        if(response.data.data.success) {
+          alert("Paciente cadastrado com sucesso!");
+          this.props.switchSection(<Intro userData={ this.props.userData } />);
+        } else if(response.data.error) {
+          alert("Não foi possível cadastrar o paciente, tente novamente.");
+        }
       }
     )
     .catch(

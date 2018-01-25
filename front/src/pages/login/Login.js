@@ -44,17 +44,19 @@ class Login extends Component {
     .then(
       (response) => {
         if(response.data.success === 1) {
+          console.log("LOGIN SUCCESS",response.data.data);
           this.props.onLogin(response.data.data);
         } else if(response.data.success === 0) {
           alert("Verifique seu usuário e senha!");
         } else {
           // TODO: falha na rota
+          console.log("FALHA NA ROTA");
         }
       }
     )
     .catch(
       function(error) {
-        alert(error);
+        console.log("ERRO NO POST",error);
       }
     );
   }

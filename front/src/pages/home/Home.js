@@ -13,7 +13,7 @@ class Home extends Component {
     this.switchSection = this.switchSection.bind(this);
 
     this.state = {
-      currentSession: <Intro />,
+      currentSection: <Intro userData={ this.props.userData } />,
     };
   }
 
@@ -22,13 +22,13 @@ class Home extends Component {
 
     switch(event.target.name) {
       case 'intro':
-        this.switchSession( <Intro  /> );
+        this.switchSection( <Intro userData={ this.props.userData } /> );
         break;
       case 'newPatient':
-        this.switchSession( <NewPatient switchSession={ this.switchSession } /> );
+        this.switchSection( <NewPatient switchSection={ this.switchSection } userData={ this.props.userData } /> );
         break;
       case 'searchPatient':
-        this.switchSession( <SearchPatient switchSession={ this.switchSession } /> );
+        this.switchSection( <SearchPatient switchSection={ this.switchSection } userData={ this.props.userData } /> );
         break;
       default:
         break;
