@@ -61,7 +61,7 @@ var Autenticator = {
 	* @return hash (String) {Hash gerada para o usuario}
 	*/
 	generate_hash_id: function(user_id){
-		return escape(btoa(md5(user_id+config.secret_hash)));
+		return btoa(md5(user_id+config.secret_hash));
 	},
 
 	//TODO: Implementar
