@@ -47,7 +47,7 @@ class Home extends Component {
     return(
       <div className="Home" >
 
-        <header id="header">
+        <header className="nav" id="header">
           <div className="container">
             <div id="logo" className="pull-left">
               <a href="#">

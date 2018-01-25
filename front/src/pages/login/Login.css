@@ -82,7 +82,7 @@ button:hover {
 
 @media (min-width: 768px) {
   .loginBox{
-    margin: 5% auto auto 25%;
+    margin: 5% auto 5% 19%;
   }
 }
 
@@ -377,7 +377,7 @@ a{
 }
 
 
-/*PADDING CARAI*/
+/* THIS PADDING NEEDS TO FUCKIN WORK */
 .m-b-16{
     margin-bottom: 16px;
 
