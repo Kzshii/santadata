@@ -93,7 +93,7 @@ var insert = {
       	query:{_id: sequenceName },
      	 	update: {$inc:{sequence_value:1}},
      	 	new:true
-   		});
+   		}));
 	}
 }
 
