@@ -5,6 +5,7 @@ import axios from 'axios';
 import Ieca from './ieca/Ieca.js';
 import Bra from './bra/Bra.js';
 import BetaBloqueadores from './betaBloqueadores/BetaBloqueadores.js'
+import BloqCanaisca from './bloqCanaisca/BloqCanaisca.js'
 
 class Medicines extends Component {
   constructor(props){
@@ -278,6 +279,7 @@ class Medicines extends Component {
 			IECA: <Ieca form={this.state.prepare["IECA"]} title="IECA" addMedicine={this.addNewMedicine}/>,
 			BRA: <Bra form={this.state.prepare["BRA"]} title="BRA" addMedicine={this.addNewMedicine}/>,
 			beta_bloqueadores: <BetaBloqueadores form={this.state.prepare["beta_bloqueadores"]} title="beta_bloqueadores" addMedicine={this.addNewMedicine}/>,
+			bloq_canaisca: <BloqCanaisca form={this.state.prepare["bloq_canaisca"]} title="bloq_canaisca" addMedicine={this.addNewMedicine}/>
 		}
 
 		console.log(medicinesTypes)
