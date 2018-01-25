@@ -16,7 +16,6 @@ Patient.add = function(req, res){
 	var var_req = req.body;
 	var_req = Generic.decode_data(var_req)
 
-	console.log(req)
 
 	//Check authentication
 	if(!Patient.check_requisition(req)){
