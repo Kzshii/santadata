@@ -88,13 +88,14 @@ var insert = {
 
 	next: function getNextSequenceValue(sequenceName,callback){
 		MongoClient.connect(url, function(err, db) {
-		  if (err) throw err;
+		if (err) throw err;
    		callback(db.counters.findAndModify({
-      	query:{_id: sequenceName },
-     	 	update: {$inc:{sequence_value:1}},
-     	 	new:true
-   		}));
-	});
+	      	query:{_id: sequenceName },
+	     	 	update: {$inc:{sequence_value:1}},
+	     	 	new:true
+	   		}));
+		});
+	}
 }
 
 /*
