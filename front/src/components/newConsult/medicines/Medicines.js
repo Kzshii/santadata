@@ -253,15 +253,12 @@ class Medicines extends Component {
 		console.log("STATE", this.state);
 	}	
 	
-	addNewMedicine(event){
-		event.preventDefault();
-		let vet= this.state.newsMedicines
-		vet.push(event.target.value)
-		console.log(event.target)
 
-		this.setState({
-			newsMedicines: vet,
-		})
+	
+
+	addNewMedicine(medicine){
+		
+		console.log(medicine)
 	}
 
 	selectMedicine(event){
@@ -273,7 +270,7 @@ class Medicines extends Component {
 	render() {
 
 		const medicinesTypes= {
-			IECA: <Ieca form={this.state.prepare["IECA"]}/>,
+			IECA: <Ieca form={this.state.prepare["IECA"]} title="IECA"/>,
 		}
 		console.log(medicinesTypes)
 

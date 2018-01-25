@@ -8,7 +8,7 @@ import Base64 from '../../lib/base64';
 import Interventions from "./interventions/Interventions";
 import Predictors from "./predictors/Predictors"; 
 
-/* import Medicines from "./medicines/Medicines"; */
+import Medicines from "./medicines/Medicines"; 
 
 /* import PhysicalExams from "./physicalExams/PhysicalExams";
   */
@@ -28,6 +28,7 @@ class NewConsult extends Component {
       <Evidences title="Evidências" saveData={ this.storeFormData } />,
       <Interventions title="Intervenções" saveData={ this.storeFormData } />,
       <Predictors title="Preditores" saveData={ this.storeFormData } />,
+      <Medicines title="Medicines" saveData={ this.storeFormData } />,
     ];
 			
     this.state = {
