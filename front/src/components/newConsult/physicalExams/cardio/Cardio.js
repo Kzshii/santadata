@@ -9,6 +9,7 @@ class Cardio extends Component {
     super(props);
         
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
 			prepare: {},
@@ -115,7 +116,7 @@ class Cardio extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.saveData("cardio",this.state.formData);
+		this.props.addNewExam("cardio",this.state.formData);
 	}
 
 	render(){
@@ -125,7 +126,7 @@ class Cardio extends Component {
 
 					<h3>Cardiovasculares:</h3>
 					
-						<form onSubmit={ () => this.props.saveData("cardio",this.state.formData) }>
+						<form onSubmit={ this.handleSubmit }>
 					
 							<label htmlFor="ritmo">Ritmo</label>
 							<select name="ritmo" id="ritmo" onChange={ this.handleChange }>

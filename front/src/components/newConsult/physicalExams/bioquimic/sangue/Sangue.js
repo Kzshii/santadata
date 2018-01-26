@@ -80,7 +80,7 @@ class Sangue extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.saveData("sangue",this.state.formData);
+		this.props.addExam("sangue",this.state.formData);
 	}
 
 	render(){
@@ -88,7 +88,7 @@ class Sangue extends Component {
 			<div className="sangue">
 				<h4>Sangue</h4>
 
-					<form onSubmit={ () => this.props.saveData("sangue",this.state.formData) }>
+					<form onSubmit={ this.handleSubmit }>
 						
 						<label htmlFor="hemoglobina">Hemoglobina:</label>
 						<input

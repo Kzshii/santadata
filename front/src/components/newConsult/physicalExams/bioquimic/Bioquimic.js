@@ -77,7 +77,7 @@ class Bioquimic extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.saveData("bioquimic",this.state.formData);
+		this.props.addNewExam("bioquimic",this.state.formData);
 	}
 
 	render(){
@@ -85,11 +85,15 @@ class Bioquimic extends Component {
 		return(
 			<div className="physicalExams">
 				<h3>Bioquímicos:</h3>
-				
-				<Creatina form={this.props.form["creatina"]}/>
-				<Sangue form={this.props.form["sangue"]}/>
 
-				<input type="submit" value={"Salvar Exames " + this.props.title}/>
+				<form onSubmit={ this.handleSubmit }>
+					
+					<Creatina form={this.props.form["creatina"]}/>
+					<Sangue form={this.props.form["sangue"]}/>
+
+					<input type="submit" value={"Salvar Exames " + this.props.title}/>
+
+				</form>
 				
 			</div>
 		)

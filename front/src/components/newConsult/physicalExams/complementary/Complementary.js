@@ -9,6 +9,7 @@ class Complementary extends Component {
     super(props);
         
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
 			prepare: {},
@@ -100,7 +101,7 @@ class Complementary extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.saveData("complementary",this.state.formData);
+		this.props.addNewExam("complementary",this.state.formData);
 	}
 
 	render(){
@@ -110,7 +111,7 @@ class Complementary extends Component {
 			<div className="complementary">
 				<h3>Complementares:</h3>
 
-				<form onSubmit={ () => this.props.saveData("cardio",this.state.formData) }>
+				<form onSubmit={ this.handleSubmit }>
 
 					<label htmlFor="eletro">Eletrocardiograma</label>
 					{ 

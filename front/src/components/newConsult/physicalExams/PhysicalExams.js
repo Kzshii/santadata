@@ -300,10 +300,10 @@ class PhysicalExams extends Component {
 				<h2>Exames Físicos</h2>
 
 					<form onSubmit={this.handleSubmit}>
-						<General title="Gerais" form={this.state.prepare["geral"]} saveData={ this.storeFormData }/>,
-						<Cardio title="Cardiovasculares" form={this.state.prepare["cardio"]} saveData={ this.storeFormData }/>,
-						<Bioquimic title="Bioquímicos" form={this.state.prepare["bioquimico"]} saveData={ this.storeFormData }/>,
-						<Complementary title="Complementares" form={this.state.prepare["complementario"]} saveData={ this.storeFormData }/>,
+						<General title="Gerais" form={this.state.prepare["geral"]} addNewExam={ this.addNewExam }/>,
+						<Cardio title="Cardiovasculares" form={this.state.prepare["cardio"]} addNewExam={ this.addNewExam }/>,
+						<Bioquimic title="Bioquímicos" form={this.state.prepare["bioquimico"]} addNewExam={ this.addNewExam }/>,
+						<Complementary title="Complementários" form={this.state.prepare["complementario"]} addNewExam={ this.addNewExam }/>,
 						
 						{/* 						
 						<select name="examsType" id="examsType" onChange={this.selectExam}>

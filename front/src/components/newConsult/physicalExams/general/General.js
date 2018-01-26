@@ -9,6 +9,7 @@ class General extends Component {
     super(props);
         
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
 			prepare: {},
@@ -163,7 +164,7 @@ class General extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.saveData("anamnese",this.state.formData);
+		this.props.addNewExam("general",this.state.formData);
 	}
 
 	render(){
@@ -173,7 +174,7 @@ class General extends Component {
 
 					<h3>Gerais:</h3>
 
-						<form onSubmit={ () => this.props.saveData("general",this.state.formData) }>
+						<form onSubmit={ this.handleSubmit }>
 
 							<label htmlFor="state">Estado:</label>
 							<textarea

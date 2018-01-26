@@ -9,6 +9,7 @@ class Creatina extends Component {
     super(props);
         
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
 			prepare: {},
@@ -77,11 +78,11 @@ class Creatina extends Component {
 			formData: formData,
 		});
 		console.log("STATE", this.state);
-	}	
+	}
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.saveData("creatina",this.state.formData);
+		this.props.addExam("creatina",this.state.formData);
 	}
 
 	render(){
@@ -89,7 +90,7 @@ class Creatina extends Component {
 			<div className="creatina">
 				<h4>Creatina</h4>
 
-					<form onSubmit={ () => this.props.saveData("creatina",this.state.formData) }>
+					<form onSubmit={ this.handleSubmit }>
 						
 						<label htmlFor="creatinaBasal">Creatina Basal:</label>
 						<input
