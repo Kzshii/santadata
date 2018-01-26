@@ -4,8 +4,19 @@ import Base64 from '../../../lib/base64';
 import axios from 'axios';
 import Ieca from './ieca/Ieca.js';
 import Bra from './bra/Bra.js';
-import BetaBloqueadores from './betaBloqueadores/BetaBloqueadores.js'
-import BloqCanaisca from './bloqCanaisca/BloqCanaisca.js'
+import BetaBloqueadores from './betaBloqueadores/BetaBloqueadores.js';
+import BloqCanaisca from './bloqCanaisca/BloqCanaisca.js';
+import Digitalico from './digitalico/Digitalico.js';
+import Diureticos from './diureticos/Diureticos.js';
+import Ass from './ass/Ass.js';
+import Estatina from './estatina/Estatina.js';
+import Nitrato from './nitrato/Nitrato.js';
+import Antiarritmico from './antiarritmico/Antiarritmico.js';
+import Anticoagulante from './anticoagulante/Anticoagulante.js';
+import Hidralazina from './hidralazina/Hidralazina.js';
+import SarcubitrilValsartana from './sarcubitrilValsartana/SarcubitrilValsartana.js';
+
+
 
 class Medicines extends Component {
   constructor(props){
@@ -139,13 +150,16 @@ class Medicines extends Component {
 					},
 			
 					diureticos:
-					[
-						{id: 0,label: "Hidroclorotiazida"},
-						{id: 1,label: "Furosemida"},
-						{id: 2,label: "Espirolactona"},
+					{
+						select:
+						[
+							{id: 0,label: "Hidroclorotiazida"},
+							{id: 1,label: "Furosemida"},
+							{id: 2,label: "Espirolactona"},
 						// Dose inicial = 12,5mg
 						// Dose Alvo = 50mg
-			
+						],
+						input:
 						{
 							//droga:drogas.void,
 							date:"00/00/0000",
@@ -153,12 +167,15 @@ class Medicines extends Component {
 							charge: "50mg",
 							gap: 12, // horas
 						}
-					],
+					},
 				
 					digitalico:
-					[
+					{
+						select:
+						[
 						{id: 0,label: "digoxina"},
-					
+						],
+						input:
 						{
 							//droga:drogas.void,
 							date:"00/00/0000",
@@ -166,7 +183,7 @@ class Medicines extends Component {
 							charge: "50mg",
 							gap: 12 // horas
 						}
-					],
+					},
 			
 					AAS: 
 					[
@@ -205,11 +222,16 @@ class Medicines extends Component {
 					//prescritos: 
 			
 					sarcubitril_valsartana:
-					[
+					{	
+						select:
+						[
 						{id: 0,label: "Entresto"},
 						// Dose inicial = 49/51mg 
 						// Dose alvo = 97 mg/103 mg 
 						// Duração = duas vezes ao dia
+						],
+						input:
+
 						{
 							//droga:drogas.void,
 							date:"00/00/0000",
@@ -218,7 +240,7 @@ class Medicines extends Component {
 							total_charge: 1, //qtd de doses
 							gap: 12, // horas
 						}
-					]
+					}
 				}
 			},
 		);
@@ -272,14 +294,23 @@ class Medicines extends Component {
 		})
 
 	}
-
+	
 	render() {
 
 		const medicinesTypes= {
 			IECA: <Ieca form={this.state.prepare["IECA"]} title="IECA" addMedicine={this.addNewMedicine}/>,
 			BRA: <Bra form={this.state.prepare["BRA"]} title="BRA" addMedicine={this.addNewMedicine}/>,
 			beta_bloqueadores: <BetaBloqueadores form={this.state.prepare["beta_bloqueadores"]} title="beta_bloqueadores" addMedicine={this.addNewMedicine}/>,
-			bloq_canaisca: <BloqCanaisca form={this.state.prepare["bloq_canaisca"]} title="bloq_canaisca" addMedicine={this.addNewMedicine}/>
+			bloq_canaisca: <BloqCanaisca form={this.state.prepare["bloq_canaisca"]} title="bloq_canaisca" addMedicine={this.addNewMedicine}/>,
+			diureticos: <Diureticos form={this.state.prepare["diureticos"]} title="Diuréticos" addMedicine={this.addNewMedicine}/>,
+			digitalico: <Digitalico form={this.state.prepare["digitalico"]} title="Digitalico" addMedicine={this.addNewMedicine}/>,
+			AAS: <Ass form={this.state.prepare["AAS"]} title="AAS" addMedicine={this.addNewMedicine}/>,
+			estatina: <Estatina form={this.state.prepare["estatina"]} title="Estatina" addMedicine={this.addNewMedicine}/>,
+			nitrato: <Nitrato form={this.state.prepare["nitrato"]} title="Nitrato" addMedicine={this.addNewMedicine}/>,
+			anticoagulante: <Anticoagulante form={this.state.prepare["anticoagulante"]} title="Anticoagulante" addMedicine={this.addNewMedicine}/>,
+			antiarritmico: <Antiarritmico form={this.state.prepare["antiarritmico"]} title="Antiarritmico" addMedicine={this.addNewMedicine}/>,
+			sarcubitril_valsartana: <SarcubitrilValsartana form={this.state.prepare["sarcubitril_valsartana"]} title="Sarcubitril Valsartana" addMedicine={this.addNewMedicine}/>,
+			Hidralazina: <Hidralazina form={this.state.prepare["hidralazina"]} title="Hidralazina" addMedicine={this.addNewMedicine}/>,
 		}
 
 		console.log(medicinesTypes)
