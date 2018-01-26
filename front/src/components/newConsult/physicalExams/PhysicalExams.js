@@ -289,7 +289,7 @@ class PhysicalExams extends Component {
 			Geral: <General title="Gerais" form={this.state.prepare["geral"]} saveData={ this.storeFormData }/>,
 			Cardio: <Cardio title="Cardiovasculares" form={this.state.prepare["cardio"]} saveData={ this.storeFormData }/>,
 			Bioquímico: <Bioquimic title="Bioquímicos" form={this.state.prepare["bioquimico"]} saveData={ this.storeFormData }/>,
-			Complementários: <Complementary title="Complementários" form={this.state.prepare["complementario"]} saveData={ this.storeFormData }/>,
+			Complementários: <Complementary title="Complementares" form={this.state.prepare["complementario"]} saveData={ this.storeFormData }/>,
 		}
 
 		const exams = Object.keys(this.state.prepare);
@@ -303,7 +303,7 @@ class PhysicalExams extends Component {
 						<General title="Gerais" form={this.state.prepare["geral"]} saveData={ this.storeFormData }/>,
 						<Cardio title="Cardiovasculares" form={this.state.prepare["cardio"]} saveData={ this.storeFormData }/>,
 						<Bioquimic title="Bioquímicos" form={this.state.prepare["bioquimico"]} saveData={ this.storeFormData }/>,
-						<Complementary title="Complementários" form={this.state.prepare["complementario"]} saveData={ this.storeFormData }/>,
+						<Complementary title="Complementares" form={this.state.prepare["complementario"]} saveData={ this.storeFormData }/>,
 						
 						{/* 						
 						<select name="examsType" id="examsType" onChange={this.selectExam}>

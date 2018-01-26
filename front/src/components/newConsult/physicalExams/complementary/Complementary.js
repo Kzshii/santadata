@@ -108,7 +108,7 @@ class Complementary extends Component {
 		if(this.props.form) {
 		return(
 			<div className="complementary">
-				<h3>Complementários:</h3>
+				<h3>Complementares:</h3>
 
 				<form onSubmit={ () => this.props.saveData("cardio",this.state.formData) }>
 
