@@ -86,6 +86,7 @@ var insert = {
 		});
 	},
 
+	//Used in AutoIncrement Values
 	next: function getNextSequenceValue(sequenceName,callback){
 		MongoClient.connect(url, function(err, db) {
 		if (err) throw err;
