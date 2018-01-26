@@ -31,6 +31,7 @@ class Medicines extends Component {
     this.state = {
 			prepare: {},
 			formData: {},
+			trash: [],
 			newMedicine: "IECA"
     };
   }
@@ -284,9 +285,10 @@ class Medicines extends Component {
 		
 		var data= this.state.formData
 		data[medicine.name]= medicine;
-
+		this.state.trash.push(medicine)
 		this.setState({
 			formData: data,
+			trash: this.state.trash
 		})
 	}
 
@@ -340,6 +342,22 @@ class Medicines extends Component {
 					}
 				</select>
 				{medicinesTypes[this.state.newMedicine]}
+				<center>
+					<br></br>
+					<table name="list-medicines" padding="5px" text-align="center">
+					<tr><td> Nome </td> <td>| Carga </td><td>| Intervalo </td></tr>
+					{
+						console.log(this.state.trash)
+					}
+						{
+							this.state.trash.map((m)=>{
+								return(<tr><td align="center">{m.name}</td> <td align="center">{m.charge}</td > <td align="center">{m.gap}</td></tr>)
+							})
+						}
+					</table>
+					<br>
+					</br>
+				</center>
 				<form onSubmit={this.handleSubmit}>
 					<input className="Button" type="submit" value="Salvar"/>
 				</form>

@@ -75,7 +75,7 @@ class PatientProfile extends Component {
           </div>
 
         </div>
-
+{/*
         <div className="allergies float-left">
 
           <div className="top-bar">
@@ -88,6 +88,7 @@ class PatientProfile extends Component {
 
         </div>
 
+*/}
         <div className="currentState float-left">
 
           <div className="top-bar">
