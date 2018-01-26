@@ -289,7 +289,7 @@ class PhysicalExams extends Component {
 			Geral: <General title="Gerais" form={this.state.prepare["geral"]} saveData={ this.storeFormData }/>,
 			Cardio: <Cardio title="Cardiovasculares" form={this.state.prepare["cardio"]} saveData={ this.storeFormData }/>,
 			Bioquímico: <Bioquimic title="Bioquímicos" form={this.state.prepare["bioquimico"]} saveData={ this.storeFormData }/>,
-			Complementários: <Complementary title="Complementares" form={this.state.prepare["complementario"]} saveData={ this.storeFormData }/>,
+			Complementares: <Complementary title="Complementares" form={this.state.prepare["complementario"]} saveData={ this.storeFormData }/>,
 		}
 
 		const exams = Object.keys(this.state.prepare);
@@ -298,15 +298,12 @@ class PhysicalExams extends Component {
 			
 			<div className="physicalExams">
 				<h2>Exames Físicos</h2>
-
-					<form onSubmit={this.handleSubmit}>
-						<General title="Gerais" form={this.state.prepare["geral"]} addNewExam={ this.addNewExam }/>,
-						<Cardio title="Cardiovasculares" form={this.state.prepare["cardio"]} addNewExam={ this.addNewExam }/>,
-						<Bioquimic title="Bioquímicos" form={this.state.prepare["bioquimico"]} addNewExam={ this.addNewExam }/>,
-						<Complementary title="Complementários" form={this.state.prepare["complementario"]} addNewExam={ this.addNewExam }/>,
-						
-						{/* 						
-						<select name="examsType" id="examsType" onChange={this.selectExam}>
+					<General title="Gerais" form={this.state.prepare["geral"]} addNewExam={ this.addNewExam }/>
+					<Cardio title="Cardiovasculares" form={this.state.prepare["cardio"]} addNewExam={ this.addNewExam }/>
+					<Bioquimic title="Bioquímicos" form={this.state.prepare["bioquimico"]} addNewExam={ this.addNewExam }/>
+					<Complementary title="Complementares" form={this.state.prepare["complementario"]} addNewExam={ this.addNewExam }/>
+					<form onSubmit={this.handleSubmit}>					
+						{/* <select name="examsType" id="examsType" onChange={this.selectExam}>
 							{			
 								exams.map(
 									(row) => {
@@ -316,12 +313,10 @@ class PhysicalExams extends Component {
 									}
 								)
 							}
-						</select> 
-						*/}
-						
-						<input type="submit" value="Salvar"/>
+						</select>  */}
+						<input className="Button" type="submit" value="Salvar Exames"/>
 					</form>
-					{examTypes[this.state.newExam]}
+					{/* {examTypes[this.state.newExam]} */}
 			</div>
 		)
 	}

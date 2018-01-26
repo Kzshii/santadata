@@ -339,7 +339,7 @@ class Medicines extends Component {
 							)
 						}
 					</select>
-					<input type="submit" value="Salvar"/>
+					<input className="Button" type="submit" value="Salvar"/>
 				</form>
 				{medicinesTypes[this.state.newMedicine]}
 			</div>

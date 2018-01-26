@@ -217,7 +217,7 @@ class General extends Component {
 							</select>
 							<br/>
 
-							<label htmlFor="refl_heptojugular">Refl Heptjugular</label>
+							<label htmlFor="refl_heptojugular">Refluxo Hepatojugular</label>
 							{ 
 								this.props.form.refl_heptojugular.map(
 									(row) => {
@@ -232,7 +232,7 @@ class General extends Component {
 							}
 							<br/>
 
-							<label htmlFor="turg_jugular">Turg Jugular</label>
+							<label htmlFor="turg_jugular">Turgência Jugular</label>
 							{ 
 								this.props.form.turg_jugular.map(
 									(row) => {

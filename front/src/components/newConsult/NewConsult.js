@@ -99,7 +99,7 @@ class NewConsult extends Component {
     }) 
       
     alert("Consulta Salva");
-    this.props.switchSection(<PatientProfile patient={ this.props.patient } switchSection={ this.props.switchSection }/>)
+    //this.props.switchSection(<PatientProfile patient={ this.props.patient } switchSection={ this.props.switchSection }/>)
   }
 
 	render() {

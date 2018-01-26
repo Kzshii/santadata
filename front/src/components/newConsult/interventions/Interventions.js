@@ -128,7 +128,7 @@ class Interventions extends Component {
 						}
 						<br/>
 						
-						<input type="submit" value={"Salvar "+ this.props.title}/>
+						<input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
 					</form>
 					
 			</div>

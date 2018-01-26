@@ -284,6 +284,7 @@ class Anamnese extends Component {
 					<br/>
 
 					<label htmlFor="actualDiseaseHistory">História da doença atual:</label>
+					<br/>
 					<textarea
 						className="inputText "
 						type="text"
@@ -511,7 +512,7 @@ class Anamnese extends Component {
 
 					<label htmlFor="smokingTime">Tempo que fuma:</label>
 					<input
-						type="number"
+						type="text"
 						name="smokingTime"
 						id="smokingTime"
 						value={ this.state.formData.tabag_tempo }
@@ -553,7 +554,7 @@ class Anamnese extends Component {
 
 					<label htmlFor="dailyAlcoholicBevAmount">Quantidade diária:</label>
 					<input
-						type="number"
+						type="text"
 						name="dailyAlcoholicBevAmount"
 						id="dailyAlcoholicBevAmount"
 						value={ this.state.formData.etil_quant }
@@ -583,7 +584,7 @@ class Anamnese extends Component {
 					
 					<label htmlFor="drinkingTime">Tempo que bebe:</label>
 					<input
-						type="number"
+						type="text"
 						name="drinkingTime"
 						id="drinkingTime"
 						value={ this.state.formData.etil_tempo }
@@ -663,7 +664,7 @@ class Anamnese extends Component {
 					/> 
 					<br/>
 
-					<input type="submit" value={"Salvar "+ this.props.title}/>
+					<input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
 
 				</form>
 			</div>

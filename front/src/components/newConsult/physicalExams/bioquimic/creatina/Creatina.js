@@ -131,6 +131,7 @@ class Creatina extends Component {
 							onChange={ this.handleChange }
 						/> 
 						<br/>
+						<input type="submit" value=""/>
 						
 					</form>
 					

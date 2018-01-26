@@ -86,13 +86,10 @@ class Bioquimic extends Component {
 			<div className="physicalExams">
 				<h3>Bioquímicos:</h3>
 
+				<Creatina form={this.props.form["creatina"]}/>
+				<Sangue form={this.props.form["sangue"]}/>
 				<form onSubmit={ this.handleSubmit }>
-					
-					<Creatina form={this.props.form["creatina"]}/>
-					<Sangue form={this.props.form["sangue"]}/>
-
 					<input type="submit" value={"Salvar Exames " + this.props.title}/>
-
 				</form>
 				
 			</div>
