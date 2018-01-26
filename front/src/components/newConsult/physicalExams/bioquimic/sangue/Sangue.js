@@ -15,8 +15,9 @@ class Sangue extends Component {
 			formData: {},
     };
   }
-
+  /*
   componentWillMount() {
+	  	
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
 			"prepare/sangue/",
@@ -30,7 +31,7 @@ class Sangue extends Component {
 				);
 			}
 		).catch();
-
+		
 		this.setState(
 			{
 				prepare: {
@@ -44,6 +45,7 @@ class Sangue extends Component {
 			}
 		);
 	} 
+	*/
 
   handleChange(event) {
 		const target = event.target;

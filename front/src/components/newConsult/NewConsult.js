@@ -29,8 +29,9 @@ class NewConsult extends Component {
       <Evidences title="Evidências" saveData={ this.storeFormData } />,
       <Interventions title="Intervenções" saveData={ this.storeFormData } />,
       <PhysicalExams title="Exames Físicos" saveData={ this.storeFormData } />,
-      <Predictors title="Preditores" saveData={ this.storeFormData } />,
       <Medicines title="Medicamentos" saveData={ this.storeFormData } />,
+      <Predictors title="Preditores" saveData={ this.storeFormData } />,
+
     ];
 			
     this.state = {

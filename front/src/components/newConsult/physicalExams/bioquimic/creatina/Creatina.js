@@ -16,7 +16,9 @@ class Creatina extends Component {
     };
   }
 
+  /*
   componentWillMount() {
+	  	
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
 			"prepare/sangue/",
@@ -30,7 +32,7 @@ class Creatina extends Component {
 				);
 			}
 		).catch();
-
+		
 		this.setState(
 			{
 				prepare: {
@@ -44,6 +46,7 @@ class Creatina extends Component {
 			}
 		);
 	} 
+	*/
 
   handleChange(event) {
 		const target = event.target;

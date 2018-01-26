@@ -25,6 +25,7 @@ class Medicines extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.addNewMedicine= this.addNewMedicine.bind(this);
 		this.selectMedicine= this.selectMedicine.bind(this);
+		this.handleSubmit= this.handleSubmit.bind(this);
 
 
     this.state = {
@@ -35,6 +36,7 @@ class Medicines extends Component {
   }
 
   componentWillMount() {
+	  /*
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
 			"prepare/medicines/",
@@ -48,13 +50,13 @@ class Medicines extends Component {
 				);
 			}
 		).catch();
-
+		*/
 		this.setState(
 			{
 				prepare: {
-          //Medicamentos ministrados no paciente
+         			//Medicamentos ministrados no paciente
           
-          //ministrados:
+        			//ministrados:
 					IECA: 
 					{
  
@@ -230,8 +232,8 @@ class Medicines extends Component {
 						// Dose alvo = 97 mg/103 mg 
 						// Duração = duas vezes ao dia
 						],
-						input:
 
+						input:
 						{
 							//droga:drogas.void,
 							date:"00/00/0000",
@@ -292,7 +294,13 @@ class Medicines extends Component {
 		this.setState({
 			newMedicine: event.target.value
 		})
+	}
 
+	handleSubmit(event){
+		event.preventDefault();
+		
+		this.props.saveData("medicines", this.state.formData);
+		
 	}
 	
 	render() {
@@ -313,18 +321,19 @@ class Medicines extends Component {
 			Hidralazina: <Hidralazina form={this.state.prepare["hidralazina"]} title="Hidralazina" addMedicine={this.addNewMedicine}/>,
 		}
 
-		console.log(medicinesTypes)
+		//console.log(medicinesTypes)
 		const medicines= Object.keys(this.state.prepare)
+		
 		return(
-			<div className="Medicines">
-				<h2>Adicionar Medicamento:</h2>
+			<div className="medicines">
+				{/* <h2>Adicionar Medicamento:</h2> */}
 				<form onSubmit={this.handleSubmit}>
 					<select name="medicinesType" id="medicinesType" onChange={this.selectMedicine}>
 						{			
 							medicines.map(
-								medicine => {
+								(medicine) => {
 									return(
-									<option key={medicine} value={medicine}>{medicine}</option>
+										<option key={medicine} value={medicine}>{medicine}</option>
 									)
 								}
 							)

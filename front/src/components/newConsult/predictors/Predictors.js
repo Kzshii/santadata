@@ -95,7 +95,7 @@ class Predictors extends Component {
   
   handleSubmit(event) {
 		event.preventDefault();
-    this.props.saveData("evidences",this.state.formData);
+    this.props.saveData("predictors",this.state.formData);
   }
   
   render() {
@@ -145,6 +145,8 @@ class Predictors extends Component {
 							}
 						)
           }
+
+					<input type="submit" value={"Salvar "+ this.props.title}/>
           
         </form>
 

@@ -15,8 +15,9 @@ class Complementary extends Component {
 			formData: {},
     };
   }
-
+	/*
   componentWillMount() {
+
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
 			"prepare/complementary/",
@@ -34,7 +35,7 @@ class Complementary extends Component {
 		this.setState(
 			{
 				prepare: {
-
+					/*
 					//ECG
 					eletro: // 0..*
 					[ 
@@ -59,11 +60,12 @@ class Complementary extends Component {
 					delta_FE: "", // diferença entre ultima_FE - primeira_FE
 					delta_VE: "", // diferença entre ultima_VE_sist - primeira_FE_sist
 					ps_ap: "", // texto numérico
-					
+
 				},
 			}
 		);
 	} 
+	*/
 
   handleChange(event) {
 		const target = event.target;
@@ -102,6 +104,8 @@ class Complementary extends Component {
 	}
 
 	render(){
+
+		if(this.props.form) {
 		return(
 			<div className="complementary">
 				<h3>Complementários:</h3>
@@ -110,7 +114,7 @@ class Complementary extends Component {
 
 					<label htmlFor="eletro">Eletrocardiograma</label>
 					{ 
-						this.state.prepare.eletro.map(
+						this.props.form.eletro.map(
 							(row) => {
 								return(
 									<div key={ row.id }>
@@ -199,6 +203,10 @@ class Complementary extends Component {
 
 			</div>
 		)
+		}
+		else {
+			return("");
+		}
 	}
 }
 

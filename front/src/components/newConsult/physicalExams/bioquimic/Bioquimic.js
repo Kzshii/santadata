@@ -17,8 +17,9 @@ class Bioquimic extends Component {
 			formData: {},
     };
   }
-
+  /*
   componentWillMount() {
+	  	
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
 			"prepare/physicalExams/",
@@ -32,7 +33,7 @@ class Bioquimic extends Component {
 				);
 			}
 		).catch();
-
+		
 		this.setState(
 			{
 				prepare: {
@@ -41,6 +42,7 @@ class Bioquimic extends Component {
 			}
 		);
 	} 
+	*/
 
   handleChange(event) {
 		const target = event.target;
@@ -79,17 +81,22 @@ class Bioquimic extends Component {
 	}
 
 	render(){
+		if(this.props.form) {
 		return(
 			<div className="physicalExams">
 				<h3>Bioquímicos:</h3>
 				
-				<Creatina/>
-				<Sangue/>
+				<Creatina form={this.props.form["creatina"]}/>
+				<Sangue form={this.props.form["sangue"]}/>
 
 				<input type="submit" value={"Salvar Exames " + this.props.title}/>
 				
 			</div>
 		)
+		}
+		else {
+			return ("");
+		}
 	}
 }
 

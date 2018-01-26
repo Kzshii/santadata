@@ -16,7 +16,9 @@ class Cardio extends Component {
     };
   }
 
+	/*
   componentWillMount() {
+
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
 			"prepare/cardio/",
@@ -77,7 +79,8 @@ class Cardio extends Component {
 				},
 			},
 		);
-	} 
+	}
+	*/ 
 
   handleChange(event) {
 		const target = event.target;
@@ -116,109 +119,115 @@ class Cardio extends Component {
 	}
 
 	render(){
-		return(
-			<div className="cardio">
+		if(this.props.form) {
+			return(
+				<div className="cardio">
 
-				<h3>Cardiovasculares:</h3>
-				
-					<form onSubmit={ () => this.props.saveData("cardio",this.state.formData) }>
-				
-						<label htmlFor="ritmo">Ritmo</label>
-						<select name="ritmo" id="ritmo" onChange={ this.handleChange }>
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.ritmo.map(
-									(row) => {
-										return (
-											<option key={ row.id } value={ row.id }>{ row.label }</option>
-										);
-									}
-								)						
-							}
-						</select>
-						<br/>
-
-						<label htmlFor="inspecao">Inspeção cardiovascular</label>
-						<select name="inspecao" id="inspecao" onChange={ this.handleChange }>
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.inspecao.map(
-									(row) => {
-										return (
-											<option key={ row.id } value={ row.id }>{ row.label }</option>
-										);
-									}
-								)						
-							}
-						</select>
-						<br/>
-
-						<label htmlFor="bulhas">Bulhas</label>
-						<select name="bulhas" id="bulhas" onChange={ this.handleChange }>
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.bulhas.map(
-									(row) => {
-										return (
-											<option key={ row.id } value={ row.id }>{ row.label }</option>
-										);
-									}
-								)						
-							}
-						</select>
-						<br/>
-
-						<label htmlFor="ausculta">Ausculta:</label>
-						<input
-							type="text"
-							name="ausculta"
-							id="ausculta"
-							value={ this.state.formData.auscuta }
-							onChange={ this.handleChange }		
-						/> 
-						<br/>
-
-						<label htmlFor="palpacao">Palpação</label>
-						<select name="palpacao" id="palpacao" onChange={ this.handleChange }>
-							<option value="">-- Escolher --</option>
-							{
-								this.state.prepare.palpacao.map(
-									(row) => {
-										return (
-											<option key={ row.id } value={ row.id }>{ row.label }</option>
-										);
-									}
-								)						
-							}
-						</select>
-						<br/>
-
-						<label htmlFor="fc">FC:</label>
-						<input
-							type="number"
-							name="fc"
-							id="fc"
-							value={ this.state.formData.fc }
-							onChange={ this.handleChange }
-						/> 
-						<br/>
-
-						<label htmlFor="height">Pressão Arterial:</label>
-						<input
-							type="number"
-							name="pressao_arterial"
-							id="pressao_arterial"
-							value={ this.state.formData.pressao_arterial }
-							onChange={ this.handleChange }
-						/> 
-						<br/>
-
-						<input type="submit" value={"Salvar Exames " + this.props.title}/>
-
-					</form>
+					<h3>Cardiovasculares:</h3>
 					
-			</div>
-		)
+						<form onSubmit={ () => this.props.saveData("cardio",this.state.formData) }>
+					
+							<label htmlFor="ritmo">Ritmo</label>
+							<select name="ritmo" id="ritmo" onChange={ this.handleChange }>
+								<option value="">-- Escolher --</option>
+								{
+									this.props.form.ritmo.map(
+										(row) => {
+											return (
+												<option key={ row.id } value={ row.id }>{ row.label }</option>
+											);
+										}
+									)						
+								}
+							</select>
+							<br/>
+
+							<label htmlFor="inspecao">Inspeção cardiovascular</label>
+							<select name="inspecao" id="inspecao" onChange={ this.handleChange }>
+								<option value="">-- Escolher --</option>
+								{
+									this.props.form.inspecao.map(
+										(row) => {
+											return (
+												<option key={ row.id } value={ row.id }>{ row.label }</option>
+											);
+										}
+									)						
+								}
+							</select>
+							<br/>
+
+							<label htmlFor="bulhas">Bulhas</label>
+							<select name="bulhas" id="bulhas" onChange={ this.handleChange }>
+								<option value="">-- Escolher --</option>
+								{
+									this.props.form.bulhas.map(
+										(row) => {
+											return (
+												<option key={ row.id } value={ row.id }>{ row.label }</option>
+											);
+										}
+									)						
+								}
+							</select>
+							<br/>
+
+							<label htmlFor="ausculta">Ausculta:</label>
+							<input
+								type="text"
+								name="ausculta"
+								id="ausculta"
+								value={ this.state.formData.auscuta }
+								onChange={ this.handleChange }		
+							/> 
+							<br/>
+
+							<label htmlFor="palpacao">Palpação</label>
+							<select name="palpacao" id="palpacao" onChange={ this.handleChange }>
+								<option value="">-- Escolher --</option>
+								{
+									this.props.form.palpacao.map(
+										(row) => {
+											return (
+												<option key={ row.id } value={ row.id }>{ row.label }</option>
+											);
+										}
+									)						
+								}
+							</select>
+							<br/>
+
+							<label htmlFor="fc">FC:</label>
+							<input
+								type="number"
+								name="fc"
+								id="fc"
+								value={ this.state.formData.fc }
+								onChange={ this.handleChange }
+							/> 
+							<br/>
+
+							<label htmlFor="height">Pressão Arterial:</label>
+							<input
+								type="number"
+								name="pressao_arterial"
+								id="pressao_arterial"
+								value={ this.state.formData.pressao_arterial }
+								onChange={ this.handleChange }
+							/> 
+							<br/>
+
+							<input type="submit" value={"Salvar Exames " + this.props.title}/>
+
+						</form>
+						
+				</div>
+			)
+		}
+
+		else {
+			return("");
+		}
 	}
 }
 
