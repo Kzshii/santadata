@@ -40,6 +40,23 @@
     background: #fff;
 }
 
+.NewConsult #SaveConsult {
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 6px;
+    border-color: transparent;
+    background: #1ca4fc;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px 0 30px;
+    float: right;
+}
+
 .NewConsult textarea {
     width: 100%;
     font-family: Lato;
