@@ -9,7 +9,7 @@ import Interventions from "./interventions/Interventions";
 import Predictors from "./predictors/Predictors";
 import PhysicalExams from "./physicalExams/PhysicalExams";
 
-/* import Medicines from "./medicines/Medicines"; */
+import Medicines from "./medicines/Medicines"; 
 
 /* import PhysicalExams from "./physicalExams/PhysicalExams";
   */
@@ -30,6 +30,7 @@ class NewConsult extends Component {
       <Interventions title="Intervenções" saveData={ this.storeFormData } />,
       <PhysicalExams title="Exames Físicos" saveData={ this.storeFormData } />,
       <Predictors title="Preditores" saveData={ this.storeFormData } />,
+      <Medicines title="Medicamentos" saveData={ this.storeFormData } />,
     ];
 			
     this.state = {
