@@ -261,20 +261,20 @@ class PhysicalExams extends Component {
 		console.log("STATE", this.state);
 	}	
 
-	addNewExam(exam){
+	addNewExam(name,exam){
 		
-		var data= this.state.formData
-		data[exam.name]= exam;
+		var data= this.state.formData;
+		data[name] = exam;
 
 		this.setState({
 			formData: data,
-		})
+		});
 	}
 
 	selectExam(event){
 		this.setState({
 			newExam: event.target.value
-		})
+		});
 	}
 
 	handleSubmit(event) {
