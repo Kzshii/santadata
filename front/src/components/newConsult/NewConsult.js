@@ -118,7 +118,7 @@ class NewConsult extends Component {
               }
             )
           }
-          <button name="saveConsult" onClick={ this.saveConsult }>
+          <button id="SaveConsult" name="saveConsult" onClick={ this.saveConsult }>
             Salvar Consulta
           </button>
         </div>
