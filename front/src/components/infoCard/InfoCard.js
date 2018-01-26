@@ -12,28 +12,24 @@ class InfoCard extends Component {
   render() {
 
     if (this.props.data){
-      let imgUser;
+      let imgUser = imgDefault;;
       const date = new Date(this.props.data.dtnasc).toLocaleDateString(); /* passando data para formato padrão */
       
-      if(this.props.data.picture) {
+      /* if(this.props.data.picture) {
         imgUser = this.props.data.picture;
       } else {
         imgUser = imgDefault;
-      }
+      } */
       
       return(
 
-
         <div className="InfoCard">
 
-
-        
           <div className="patientImgBox">
-            <img className="patientImg rounded-circle float-left" src={"https://smiledesignspecialist.com/wp-content/uploads/2015/11/implant-man-teaser.jpg"} />
+            <img className="patientImg rounded-circle float-left" src={imgUser} />
+            {/* "https://smiledesignspecialist.com/wp-content/uploads/2015/11/implant-man-teaser.jpg" */}
           </div>
 
-          
-          
           <div className="pacientName">
             <h4>Nome</h4>
             <p>{ this.props.data.name }</p>
@@ -50,7 +46,7 @@ class InfoCard extends Component {
           </div>
           
           <div className="patientEtiny">
-            <h4>Etinia</h4>
+            <h4>Etnia</h4>
             <p>{ this.props.data.etiny }</p>
           </div>
           

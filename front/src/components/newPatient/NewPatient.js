@@ -20,7 +20,7 @@ class NewPatient extends Component {
         birthDate: '',
         age: '',
         gender: '',
-        ethnicity: '',
+        etiny: '',
         tel1: '',
         tel2: '',
         telE: '',
@@ -58,8 +58,8 @@ class NewPatient extends Component {
       case 'gender':
         formData.gender = value;
         break;
-      case 'ethnicity':
-        formData.ethnicity = value;
+      case 'etiny':
+        formData.etiny = value;
         break;
       case 'tel1':
         formData.tel1 = value;
@@ -103,7 +103,7 @@ class NewPatient extends Component {
         data_nasc: formData.birthDate,
         idade: formData.age,
         sexo: formData.gender,
-        etnia: formData.ethnicity, //[Branco, Negro, Pardo, Amarelo]
+        etnia: formData.etiny, //[Branco, Negro, Pardo, Amarelo]
         tel1: formData.tel1,
         tel2: formData.tel2,
         tel_emerg: formData.telE,
@@ -268,8 +268,8 @@ class NewPatient extends Component {
             <input type="radio" name="gender" id="gender" value="F" onChange={ this.handleChange } /> <strong>Feminino</strong>
             <br/>
 
-            <label htmlFor="ethnicity" id="Up">Etnia</label>
-            <select name="ethnicity" id="ethnicity" onChange={ this.handleChange } >
+            <label htmlFor="etiny" id="Up">Etnia</label>
+            <select name="etiny" id="etiny" onChange={ this.handleChange } >
               <option value="">-- Escolher --</option>
               <option value="0">Branco</option>
               <option value="1">Negro</option>

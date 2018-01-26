@@ -18,17 +18,19 @@ class PatientProfile extends Component {
     };
   }
 
-  componentDidMount(){
-    this.searchPatient(this.props.id);
+  componentWillMount(){
+    this.searchPatient(this.props.patientId);
   }
 
   searchPatient(id) {
-    var patientId = 4; /* this.props.id */
+    const patientId = id;
+    const user_id = this.props.userData.user_id;
+    const user_hash = this.props.userData.hash;
     
     axios.defaults.baseURL = 'https://31.220.54.251:8443/';
     
     axios.post(
-      'gen/get/patient/'+patientId+'/1/MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=/', 
+      'gen/get/patient/'+patientId+'/'+user_id+'/'+user_hash+'/',
       'data='+Base64.encode(
         {}
       )
@@ -39,40 +41,38 @@ class PatientProfile extends Component {
           patientData: response.data.data[0]
         });
       }
-    ).catch();
+    ).catch(
+      (error) => {
+        console.log("ERRO:",error);
+      }
+    );
   }
 
   handleClick(event){
     event.preventDefault();
 
     console.log("Aqui",this.state.patientData);
-    this.props.switchSection(<NewConsult patient={ this.state.patientData } switchSection={ this.props.switchSession }/>);
+    this.props.switchSection(<NewConsult patient={ this.state.patientData } switchSection={ this.props.switchSection }/>);
   }
 
   render() {
     return(
       <div className="PatientProfile float-left">
 
+        <div className="profile float-left">
 
-      <div className="profile float-left">
-
-        <div className="top-bar">
-          <h3>Paciente</h3>
-        </div>
-        
-
-        <div className="NewConsult top-button-bar">
-               <button className="btn btn-outline-primary float-right" name="newConsult" onClick={this.handleSubmit}>
-                  NovaConsulta
-                </button>
-
-        </div> 
-        <div className="patientData">
-
-
-
-          <InfoCard data={ this.state.patientData } />
-        </div>
+          <div className="top-bar">
+            <h3>Paciente</h3>
+          </div>
+          
+          <div className="NewConsult top-button-bar">
+              <button className="btn btn-outline-primary float-right" name="newConsult" onClick={ this.handleSubmit }>
+                NovaConsulta
+              </button>
+          </div> 
+          <div className="patientData">
+            <InfoCard data={ this.state.patientData } />
+          </div>
 
         </div>
 

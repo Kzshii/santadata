@@ -21,8 +21,8 @@ class PatientList extends Component {
             <thead className="thead-light">
               <tr>
 
+                <th scope="col">Prontuário</th>
                 <th scope="col">Paciente</th>
-                <th scope="col">Id</th>
                 
               </tr>
             </thead>
@@ -31,10 +31,10 @@ class PatientList extends Component {
                 this.props.data.map(
                   (patient) => {
                     return(
-                      <tr key={ patient.idpatient } onClick={ () => {this.props.itemAction(patient.idpatient)} } >  
+                      <tr key={ patient.idpatient } onClick={ () => { this.props.itemAction(patient.idpatient) } } >
                                     
+                        <td>{ patient.nr_prontuario }</td>
                         <td>{ patient.name }</td>
-                        <td>{ patient.idpatient }</td>
                       </tr>
                     );
                   }
