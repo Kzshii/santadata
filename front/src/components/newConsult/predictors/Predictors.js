@@ -25,18 +25,18 @@ class Predictors extends Component {
 			"prepare/predictors/",
 			"data="+Base64.encode({})
 		).then(
-			function(response) {
+			(response) => {
 				this.setState(
 					{
 						prepare: response.data.data,
 					}
 				);
 			}
-        ).catch();
+    ).catch();
 
-     /* test only */
+    /* test only */
 
-     this.setState({
+    this.setState({
 
       prepare: {
 

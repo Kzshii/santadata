@@ -52,7 +52,7 @@ class PatientProfile extends Component {
     event.preventDefault();
 
     console.log("Aqui",this.state.patientData);
-    this.props.switchSection(<NewConsult patient={ this.state.patientData } switchSection={ this.props.switchSection }/>);
+    this.props.switchSection(<NewConsult patient={ this.state.patientData } switchSection={ this.props.switchSection } userData={ this.props.userData } />);
   }
 
   render() {
@@ -66,7 +66,7 @@ class PatientProfile extends Component {
           </div>
           
           <div className="NewConsult top-button-bar">
-              <button className="btn btn-outline-primary float-right" name="newConsult" onClick={ this.handleSubmit }>
+              <button className="btn btn-outline-primary float-right" name="newConsult" onClick={ this.handleClick }>
                 NovaConsulta
               </button>
           </div> 

@@ -22,7 +22,7 @@ class Anamnese extends Component {
 			"prepare/anamnese/",
 			"data="+Base64.encode({})
 		).then(
-			function(response) {
+			(response) => {
 				this.setState(
 					{
 						prepare: response.data.data,

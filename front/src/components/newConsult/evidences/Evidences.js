@@ -22,7 +22,7 @@ class Evidences extends Component {
 			"prepare/evidences/",
 			"data="+Base64.encode({})
 		).then(
-			function(response) {
+			(response) => {
 				this.setState(
 					{
 						prepare: response.data.data,

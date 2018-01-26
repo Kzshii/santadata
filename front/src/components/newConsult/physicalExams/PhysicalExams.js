@@ -26,7 +26,7 @@ class PhysicalExams extends Component {
 			"prepare/physicalExams/",
 			{}
 		).then(
-			function(response) {
+			(response) => {
 				this.setState(
 					{
 						prepare: response.data.data,
@@ -91,10 +91,10 @@ class PhysicalExams extends Component {
 					</form>
 				*/}
 
-				<General/>
-				<Cardio/>
-				<Bioquimic/>
-				<Complementary/>
+				<General title="gerais" saveData={ this.storeFormData }/>
+				<Cardio title="cardiovasculares" saveData={ this.storeFormData }/>
+				<Bioquimic title="bioquímicos" saveData={ this.storeFormData }/>
+				<Complementary title="complementários" saveData={ this.storeFormData }/>
 
 				<input type="submit" value={"salvar" +" "+ this.props.title}/>
 

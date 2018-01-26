@@ -22,7 +22,7 @@ class Interventions extends Component {
 			"prepare/interventions/",
 			{}
 		).then(
-			function(response) {
+			(response) => {
 				this.setState(
 					{
 						prepare: response.data.data,

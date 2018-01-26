@@ -40,7 +40,7 @@ class Medicines extends Component {
 			"prepare/medicines/",
 			{}
 		).then(
-			function(response) {
+			(response) => {
 				this.setState(
 					{
 						prepare: response.data.data,
