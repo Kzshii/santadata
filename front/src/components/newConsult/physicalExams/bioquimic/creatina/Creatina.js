@@ -82,7 +82,7 @@ class Creatina extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.addExam("creatina",this.state.formData);
+		this.props.addNewExam("creatina",this.state.formData);
 	}
 
 	render(){
@@ -131,7 +131,7 @@ class Creatina extends Component {
 							onChange={ this.handleChange }
 						/> 
 						<br/>
-						<input type="submit" value=""/>
+						<input type="submit" value="Salvar Exame de Creatina"/>
 						
 					</form>
 					

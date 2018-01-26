@@ -327,21 +327,22 @@ class Medicines extends Component {
 		return(
 			<div className="medicines">
 				{/* <h2>Adicionar Medicamento:</h2> */}
+				<label htmlFor="">Selecione o tipo de medicamento</label>
+				<select name="medicinesType" id="medicinesType" onChange={this.selectMedicine}>
+					{			
+						medicines.map(
+							(medicine) => {
+								return(
+									<option key={medicine} value={medicine}>{medicine}</option>
+								)
+							}
+						)
+					}
+				</select>
+				{medicinesTypes[this.state.newMedicine]}
 				<form onSubmit={this.handleSubmit}>
-					<select name="medicinesType" id="medicinesType" onChange={this.selectMedicine}>
-						{			
-							medicines.map(
-								(medicine) => {
-									return(
-										<option key={medicine} value={medicine}>{medicine}</option>
-									)
-								}
-							)
-						}
-					</select>
 					<input className="Button" type="submit" value="Salvar"/>
 				</form>
-				{medicinesTypes[this.state.newMedicine]}
 			</div>
 		)
 	}

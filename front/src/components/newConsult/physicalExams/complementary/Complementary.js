@@ -113,7 +113,7 @@ class Complementary extends Component {
 
 				<form onSubmit={ this.handleSubmit }>
 
-					<label htmlFor="eletro">Eletrocardiograma</label>
+					<h4 htmlFor="eletro">Eletrocardiograma</h4>
 					{ 
 						this.props.form.eletro.map(
 							(row) => {

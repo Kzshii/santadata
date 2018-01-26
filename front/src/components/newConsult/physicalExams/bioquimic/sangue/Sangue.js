@@ -80,7 +80,7 @@ class Sangue extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.addExam("sangue",this.state.formData);
+		this.props.addNewExam("sangue",this.state.formData);
 	}
 
 	render(){
@@ -129,6 +129,7 @@ class Sangue extends Component {
 							onChange={ this.handleChange }
 						/> 
 						<br/>
+						<input type="submit" value="Salvar Exame de Sangue"/>
 						
 					</form>
 					

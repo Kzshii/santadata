@@ -176,7 +176,7 @@ class General extends Component {
 
 						<form onSubmit={ this.handleSubmit }>
 
-							<label htmlFor="state">Estado:</label>
+							<label htmlFor="state">Estado:</label> <br/>
 							<textarea
 								className="inputText"
 								type="text"
