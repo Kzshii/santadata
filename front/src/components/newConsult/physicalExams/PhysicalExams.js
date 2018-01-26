@@ -91,10 +91,10 @@ class PhysicalExams extends Component {
 					</form>
 				*/}
 
-				<General title="gerais" saveData={ this.storeFormData }/>
-				<Cardio title="cardiovasculares" saveData={ this.storeFormData }/>
-				<Bioquimic title="bioquímicos" saveData={ this.storeFormData }/>
-				<Complementary title="complementários" saveData={ this.storeFormData }/>
+				<General title="Gerais" saveData={ this.storeFormData }/>
+				<Cardio title="Cardiovasculares" saveData={ this.storeFormData }/>
+				<Bioquimic title="Bioquímicos" saveData={ this.storeFormData }/>
+				<Complementary title="Complementários" saveData={ this.storeFormData }/>
 
 				<input type="submit" value={"salvar" +" "+ this.props.title}/>
 

@@ -192,7 +192,7 @@ class Complementary extends Component {
 					<label htmlFor="ps_ap">Ps Ap:</label>
 					<br/>
 
-					<input type="submit" value={"salvar" +" "+ this.props.title}/>
+					<input type="submit" value={"Salvar Exames " + this.props.title}/>
 
 				</form>
 
