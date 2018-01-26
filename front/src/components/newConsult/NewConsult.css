@@ -40,6 +40,16 @@
     background: #fff;
 }
 
+.NewConsult textarea {
+    width: 100%;
+    font-family: Lato;
+    font-size: 18px;
+    line-height: 1.2;
+    border-radius: 10px;
+    border: 1px solid #1ca4fc;
+    outline: none;
+}
+
 .NewConsult .Button{
 	font-family: Lato;
     font-size: 16px;
