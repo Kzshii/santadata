@@ -17,6 +17,8 @@ class NewPatient extends Component {
         cpf: '',
         medicalRecord: '',
         mv: '',
+        same:'',
+        sus:'',
         birthDate: '',
         age: '',
         gender: '',
@@ -39,6 +41,12 @@ class NewPatient extends Component {
     switch(event.target.name){
       case 'patientName':
         formData.patientName = value;
+        break;
+      case 'same':
+        formData.same= value;
+        break;
+      case 'sus':
+        formData.sus=value;
         break;
       case 'cpf':
         formData.cpf = value;
@@ -100,6 +108,8 @@ class NewPatient extends Component {
         cpf: formData.cpf,
         nr_prontuario: formData.medicalRecord,
         nr_mv: formData.mv,
+        nr_same: formData.same,
+        nr_sus: formData.sus,
         data_nasc: formData.birthDate,
         idade: formData.age,
         sexo: formData.gender,
@@ -203,7 +213,7 @@ class NewPatient extends Component {
                 </span>
             </div>
 
-          <label htmlFor="mv">MV</label>
+          <label htmlFor="mv">Número MV</label>
           <div className="wrap-input100 validate-input m-b-16">
 
             <input
@@ -222,6 +232,48 @@ class NewPatient extends Component {
                 </span>
             </div>
 
+          <label htmlFor="same">Número SAME</label>
+          <div className="wrap-input100 validate-input m-b-16">
+
+            <input
+              className="input100 textInput"
+              type="number"
+              name="same"
+              id="same"
+              placeholder="Número SAME"
+              value={ this.state.formData.same }
+              onChange={ this.handleChange }
+              required
+            /> 
+            
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-sort-numeric-down"></span>
+                </span>
+            </div>
+
+
+
+            <label htmlFor="same">Cartão do SUS</label>
+          <div className="wrap-input100 validate-input m-b-16">
+
+            <input
+              className="input100 textInput"
+              type="number"
+              name="sus"
+              id="sus"
+              placeholder="Cartão do SUS"
+              value={ this.state.formData.sus}
+              onChange={ this.handleChange }
+              required
+            /> 
+            
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-sort-numeric-down"></span>
+                </span>
+            </div>
+          
 
             <label htmlFor="birthDate">Data de Nascimento</label>
             <div className="wrap-input100 validate-input m-b-16">
@@ -275,6 +327,7 @@ class NewPatient extends Component {
               <option value="1">Negro</option>
               <option value="2">Pardo</option>
               <option value="3">Amarelo</option>
+              <option value="4">Indefinido</option>
             </select>
             <br/>
 
