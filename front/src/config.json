@@ -3,7 +3,19 @@
     "baseURL": "https://31.220.54.251:8443/",
     "routes": {
       "login":"auth/login/",
-      "new_patient":""
+      "newPatient":"gen/new/patient/",
+      "searchPatient":"",
+      "getPatient":"",
+      "newConsult":"gen/new/consult/",
+      
+      "prepare": {
+        "anamnese":"prepare/anamnese/",
+        "evidences":"prepare/evidences/",
+        "interventions":"prepare/interventions/",
+        "medicines":"prepare/medicines/",
+        "predictors":"prepare/predictors/",
+        "prevention":"prepare/prevention/"
+      }
     }
   }
 }
