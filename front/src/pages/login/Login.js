@@ -26,19 +26,7 @@ class Login extends Component {
       'pass': loginData.pass /* TODO: Passar md5 na pass. Path: ./rest/libs/helper/md5.js */
     });
 
-    alert(Rest.baseURL);
     axios.defaults.baseURL = Rest.baseURL;
-
-    /* Bypass */
-    /* this.props.onLogin(
-      {
-        user_id: 1,
-        type_user: 1,
-        hash: 'MTY2Mjg5N2IzY2IyODBjOTA0NjE4M2QwMzg3ZGYzYzk=',
-        name: 'João Carlos',
-        picture: 'none',
-      }
-    ); */
 
     axios.post(
       Rest.routes.login,
