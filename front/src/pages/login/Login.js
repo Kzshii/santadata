@@ -3,6 +3,8 @@ import './Login.css';
 import LoginForm from './../../components/loginForm/LoginForm';
 import axios from 'axios';
 import Base64 from './../../lib/base64';
+import Config from './../../config.json';
+const Rest = Config.rest;
 
 class Login extends Component {
 
@@ -24,7 +26,8 @@ class Login extends Component {
       'pass': loginData.pass /* TODO: Passar md5 na pass. Path: ./rest/libs/helper/md5.js */
     });
 
-    axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+    alert(Rest.baseURL);
+    axios.defaults.baseURL = Rest.baseURL;
 
     /* Bypass */
     /* this.props.onLogin(
@@ -38,7 +41,7 @@ class Login extends Component {
     ); */
 
     axios.post(
-      'auth/login/',
+      Rest.routes.login,
       "data="+data
     )
     .then(

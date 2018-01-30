@@ -1,0 +1,9 @@
+{
+    "rest": {
+        "baseURL": "https://31.220.54.251:8443/",
+        "routes": {
+            "login":"auth/login/",
+            "new_patient":""
+        }
+    }
+}
