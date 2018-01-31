@@ -187,7 +187,7 @@ class NewPatient extends Component {
                 <span className="fas fa-address-card"></span>
                 </span>
             </div>
-            
+
           <label htmlFor="mv">Número MV</label>
           <div className="wrap-input100 validate-input m-b-16">
 
@@ -265,7 +265,7 @@ class NewPatient extends Component {
             <span className="focus-input100"></span>
                 <span className="symbol-input100">
                 <span className="fas fa-birthday-cake"></span>
-                </span>
+            </span>
             </div>
 
       
@@ -285,8 +285,9 @@ class NewPatient extends Component {
               required
             /> 
             <span className="focus-input100"></span>
-                
-              
+            <span className="symbol-input100">
+                <span className="fas fa-sort-numeric-down"></span>
+                </span>
             </div>
            
 
