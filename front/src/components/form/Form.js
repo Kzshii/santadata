@@ -33,20 +33,44 @@ class Form extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       formData: {},
     };
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleChange(event) {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
     
-  }
+    let formData = this.state.formData;
+    
+    if(target.type === 'checkbox') {
+      if(target.checked) {
+        /* insere */
+        if(formData[name] == null) {
+          formData[name] = [value];
+        } else {
+          formData[name].push(value);
+        }
+      } else {
+        /* remove */
+        let index = formData[name].indexOf(value);
+        formData[name].splice(index, 1);
+      }
+      
+    } else {
+      formData[name] = value;
+    }
+    
+    this.setState({
+      formData: formData,
+    });
+  }	
 
   render() {
-    console.log("FORM PROP INPUT LIST:", this.props.InputList);
     return(
       <div className="Form">
         {
@@ -75,6 +99,7 @@ class Form extends Component {
                       KeyTag={ "Select"+inputField.title }
                       OnChange={ this.handleChange }
                       OptionValue={ OptionValue }
+                      Name={ input }
                     />
                   );
                 
@@ -92,6 +117,7 @@ class Form extends Component {
                       KeyTag={ "Check"+inputField.title }
                       OnChange={ this.handleChange }
                       OptionValue={ OptionValue }
+                      Name={ input }
                     />
                   );
                 
@@ -104,6 +130,7 @@ class Form extends Component {
                       Label={ inputField.title }
                       OnChange={ this.handleChange }
                       Type={ inputField.type }
+                      Name={ input }
                     />
                   );
                 

@@ -29,6 +29,8 @@ class Checkgroup extends Component {
                     type="checkbox"
                     value={ option[this.props.OptionValue] }
                     id={ this.props.KeyTag+option.id }
+                    onChange={ this.props.OnChange }
+                    name={ this.props.Name }
                   />
                   <label htmlFor={ this.props.KeyTag+option.id }>{ option.label }</label>
                 </div>

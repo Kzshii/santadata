@@ -16,7 +16,12 @@ class Input extends Component {
     return(
       <div className="Input">
         <label htmlFor={ this.props.Id }>{ this.props.Label }</label>
-        <input type={ this.props.Type } name={ this.props.Name } id={ this.props.Id } onChange={ this.props.OnChange } />
+        <input
+          type={ this.props.Type }
+          name={ this.props.Name }
+          id={ this.props.Id }
+          onChange={ this.props.OnChange }
+        />
       </div>
     );
   }

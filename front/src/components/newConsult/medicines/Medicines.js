@@ -2,29 +2,13 @@ import React, { Component } from 'react';
 import './Medicines.css';
 import Form from './../../form/Form';
 import Select from './../../form/select/Select';
-/* import Ieca from './ieca/Ieca.js';
-import Bra from './bra/Bra.js';
-import BetaBloqueadores from './betaBloqueadores/BetaBloqueadores.js';
-import BloqCanaisca from './bloqCanaisca/BloqCanaisca.js';
-import Digitalico from './digitalico/Digitalico.js';
-import Diureticos from './diureticos/Diureticos.js';
-import Ass from './ass/Ass.js';
-import Estatina from './estatina/Estatina.js';
-import Nitrato from './nitrato/Nitrato.js';
-import Antiarritmico from './antiarritmico/Antiarritmico.js';
-import Anticoagulante from './anticoagulante/Anticoagulante.js';
-import Hidralazina from './hidralazina/Hidralazina.js';
-import SarcubitrilValsartana from './sarcubitrilValsartana/SarcubitrilValsartana.js'; */
-
-
 
 class Medicines extends Component {
   constructor(props){
     super(props);
     
     /* METHODS */
-		this.handleChange = this.handleChange.bind(this);
-		this.addNewMedicine = this.addNewMedicine.bind(this);
+		this.storeMedicine = this.storeMedicine.bind(this);
 		this.selectMedicine = this.selectMedicine.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.mountInputList = this.mountInputList.bind(this);
@@ -37,8 +21,7 @@ class Medicines extends Component {
     /* STATE */
     this.state = {
 			prepare: null,
-			formData: {},
-			trash: [],
+			storedMeds: [],
       selectedMedicine: "IECA",
       InputList: null
     };
@@ -107,7 +90,8 @@ class Medicines extends Component {
             type: {
               type: "select",
               title: "Tipo",
-              options:[ 
+              options:[
+                {id: "",label: "Escolher"},
                 {id: 0,label: "Captopril",dose_inicial:"6,24",dose_alvo:"50",intervalo:"8"},
                 // Dose inicial = 6,24mg 
                 // Dose alvo = 50mg 
@@ -134,6 +118,7 @@ class Medicines extends Component {
               type: "select",
               title: "Tipo",
               options: [
+                {id: "",label: "Escolher"},
                 {id: 0,label: "Losartana",dose_inicial:"25",dose_alvo:"50 a 150",intervalo:"24"},
                 // Dose inicial = 25mg
                 // Dose alvo = 50 a 150mg
@@ -157,6 +142,7 @@ class Medicines extends Component {
                 type: "select",
                 title: "Tipo",
                 options: [
+                  {id: "",label: "Escolher"},
                   {id: 0,label: "Carvedilol",dose_inicial:"3,125",dose_alvo:"25 a 50",intervalo:"12"}, 
                   // Dose inicial = 3,125mg
                   // Dose Alvo = 25 a 50mg
@@ -178,6 +164,7 @@ class Medicines extends Component {
               type: "select",
               title: "Tipo",
               options: [
+                {id: "",label: "Escolher"},
                 {id: 0,label: "Verapamil"},
                 {id: 1,label: "Diltiazem"},
               ],
@@ -194,6 +181,7 @@ class Medicines extends Component {
               type: "select",
               title: "Tipo",
               options: [
+                {id: "",label: "Escolher"},
                 {id: 0,label: "Hidroclorotiazida"},
                 {id: 1,label: "Furosemida"},
                 {id: 2,label: "Espirolactona"},
@@ -243,6 +231,7 @@ class Medicines extends Component {
               type: "select",
               title: "Tipo",
               options: [
+                {id: "",label: "Escolher"},
                 {id: 0,label: "Sinvastatina"},
                 {id: 1,label: "Atorvastatina"},
               ],
@@ -289,6 +278,7 @@ class Medicines extends Component {
               type: "select",
               title: "Tipo",
               options: [
+                {id: "",label: "Escolher"},
                 {id: 0,label: "Heparina"},
                 {id: 1,label: "Dabigatran"},
                 ],
@@ -337,45 +327,13 @@ class Medicines extends Component {
     );
   }
 
-  handleChange(event) {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-    
-    let formData = this.state.formData;
-    
-    if(target.type === 'checkbox') {
-      if(target.checked) {
-        /* insere */
-        if(formData[name] == null) {
-          formData[name] = [value];
-        } else {
-          formData[name].push(value);
-        }
-      } else {
-        /* remove */
-        let index = formData[name].indexOf(value);
-        formData[name].splice(index, 1);
-      }
-      
-    } else {
-      formData[name] = value;
-    }
-    
+  storeMedicine(medicine) {
+    let storedMeds = this.state.storedMeds;
+    const name = this.state.selectedMedicine;
+    medicine.name = name;
+    storedMeds.push(medicine);
     this.setState({
-      formData: formData,
-    });
-    console.log("STATE", this.state);
-  }	
-
-
-  addNewMedicine(medicine) {
-    var data = this.state.formData;
-    data[medicine.name] = medicine;
-    this.state.trash.push(medicine);
-    this.setState({
-      formData: data,
-      trash: this.state.trash
+      storedMeds: storedMeds
     });
   }
 
@@ -429,8 +387,6 @@ class Medicines extends Component {
   }
 
   render() {
-
-    console.log("MEDICINES RENDER STATE", this.state);
     if(!this.state.prepare) {
       return(
         <div>Loading</div>
@@ -441,88 +397,35 @@ class Medicines extends Component {
 
     return(
       <div className="Medicines">
-        <Select
-          Label="Escolha o tipo de medicamento"
-          Options={ this.SelectOptions }
-          OptionValue="value"
-          KeyTag="SelectMedicine"
-          OnChange={ this.selectMedicine }
-        />
+        <div className="InputMedicine">
+          <Select
+            Label="Escolha o tipo de medicamento"
+            Options={ this.SelectOptions }
+            OptionValue="value"
+            KeyTag="SelectMedicine"
+            OnChange={ this.selectMedicine }
+          />
 
-        <Form
-          OnSubmit={ this.handleSubmit }
-          InputList={ this.InputList } 
-          SubmitValue="Guardar medicamento"
-          Config={{
-            Select:{ 
-              OptionValue: "id"
-            },
-            Checkgroup:{
-              OptionValue: "id"
-            }
-          }}
-        />
+          <Form
+            OnSubmit={ this.storeMedicine }
+            InputList={ this.InputList } 
+            SubmitValue="Guardar medicamento"
+            Config={{
+              Select:{ 
+                OptionValue: "id"
+              },
+              Checkgroup:{
+                OptionValue: "id"
+              }
+            }}
+          />
+        </div>
+
+        {/* TODO: Exibir medicamentos adicionados à pool */}
 
         <input className="Button" type="submit" value="Salvar medicamentos e continuar" onMouseUp={ this.handleSubmit }/>
       </div>
     );
-    
-    
-    /* const medicinesTypes= {
-      IECA: <Ieca form={this.state.prepare["IECA"]} title="IECA" addMedicine={this.addNewMedicine}/>,
-      BRA: <Bra form={this.state.prepare["BRA"]} title="BRA" addMedicine={this.addNewMedicine}/>,
-      beta_bloqueadores: <BetaBloqueadores form={this.state.prepare["beta_bloqueadores"]} title="beta_bloqueadores" addMedicine={this.addNewMedicine}/>,
-      bloq_canaisca: <BloqCanaisca form={this.state.prepare["bloq_canaisca"]} title="bloq_canaisca" addMedicine={this.addNewMedicine}/>,
-      diureticos: <Diureticos form={this.state.prepare["diureticos"]} title="Diuréticos" addMedicine={this.addNewMedicine}/>,
-      digitalico: <Digitalico form={this.state.prepare["digitalico"]} title="Digitalico" addMedicine={this.addNewMedicine}/>,
-      AAS: <Ass form={this.state.prepare["AAS"]} title="AAS" addMedicine={this.addNewMedicine}/>,
-      estatina: <Estatina form={this.state.prepare["estatina"]} title="Estatina" addMedicine={this.addNewMedicine}/>,
-      nitrato: <Nitrato form={this.state.prepare["nitrato"]} title="Nitrato" addMedicine={this.addNewMedicine}/>,
-      anticoagulante: <Anticoagulante form={this.state.prepare["anticoagulante"]} title="Anticoagulante" addMedicine={this.addNewMedicine}/>,
-      antiarritmico: <Antiarritmico form={this.state.prepare["antiarritmico"]} title="Antiarritmico" addMedicine={this.addNewMedicine}/>,
-      sarcubitril_valsartana: <SarcubitrilValsartana form={this.state.prepare["sarcubitril_valsartana"]} title="Sarcubitril Valsartana" addMedicine={this.addNewMedicine}/>,
-      Hidralazina: <Hidralazina form={this.state.prepare["hidralazina"]} title="Hidralazina" addMedicine={this.addNewMedicine}/>,
-    } */
-    
-    //console.log(medicinesTypes)
-    /* const medicines= Object.keys(this.state.prepare)
-    
-    return(
-      <div className="medicines">
-      <label htmlFor="">Selecione o tipo de medicamento</label>
-      <select name="medicinesType" id="medicinesType" onChange={this.selectMedicine}>
-      {			
-        medicines.map(
-          (medicine) => {
-            return(
-              <option key={medicine} value={medicine}>{medicine}</option>
-            )
-          }
-        )
-      }
-      </select>
-      {medicinesTypes[this.state.newMedicine]}
-      <center>
-      <br></br>
-      <table name="list-medicines" padding="5px" text-align="center">
-      <tr><td> Nome </td> <td>| Carga </td><td>| Intervalo </td></tr>
-      {
-        console.log(this.state.trash)
-      }
-      {
-        this.state.trash.map((m)=>{
-          return(<tr><td align="center">{m.name}</td> <td align="center">{m.charge}</td > <td align="center">{m.gap}</td></tr>)
-        })
-      }
-      </table>
-      <br>
-      </br>
-      </center>
-      <form onSubmit={this.handleSubmit}>
-      <input className="Button" type="submit" value="Salvar"/>
-      </form>
-      </div>
-    ) */
   }
 }
 
