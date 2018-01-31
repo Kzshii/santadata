@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Form.css';
 import Select from './select/Select';
 import Checkgroup from './checkgroup/Checkgroup';
 
@@ -72,6 +73,16 @@ class Form extends Component {
                       OptionValue="id"
                     />
                   );
+                
+                {/* case 'date':
+                case 'number':
+                  return(
+                    <Input 
+                      key={ "Input"+inputField.title }
+                      Label={ inputField.title }
+                      onChange={ this.handleChange }
+                    />
+                  ); */}
                 
                 default:
                   console.log("elemento não listado");

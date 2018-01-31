@@ -23,20 +23,22 @@ class Medicines extends Component {
     super(props);
     
 		this.handleChange = this.handleChange.bind(this);
-		this.addNewMedicine= this.addNewMedicine.bind(this);
-		this.selectMedicine= this.selectMedicine.bind(this);
-		this.handleSubmit= this.handleSubmit.bind(this);
+		this.addNewMedicine = this.addNewMedicine.bind(this);
+		this.selectMedicine = this.selectMedicine.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.mountInputList = this.mountInputList.bind(this);
     
     
     this.state = {
-			prepare: {},
+			prepare: null,
 			formData: {},
 			trash: [],
-			selectedMedicine: "IECA",
+      selectedMedicine: "IECA",
+      InputList: null
     };
   }
   
-  componentWillMount() {
+  componentDidMount() {
     /*
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
@@ -375,6 +377,33 @@ class Medicines extends Component {
     this.setState({
       selectedMedicine: event.target.value
     });
+
+    this.mountInputList();
+  }
+
+  mountInputList() {
+    const med = this.state.selectedMedicine;
+    const meds = this.state.prepare[med];
+    console.log("MOUNT INPUT LIST MED:", meds);
+    const commom = this.state.prepare.commom;
+    const medKeys = Object.keys(meds);
+    const commomKeys = Object.keys(commom);
+    let InputList = {};
+
+    for(let i = 0; i < medKeys.length; i++) {
+      InputList[medKeys[i]] = meds[medKeys[i]];
+    }
+
+    for(let i = 0; i < commomKeys.length; i++) {
+      InputList[commomKeys[i]] = commom[commomKeys[i]];
+    }
+
+    console.log("MEDICINES MOUNT INPUT LIST:", InputList);
+
+    this.setState({
+      InputList: InputList,
+    });
+    console.log("MOUNT INPUT LIST - MEDICINES STATE",this.state.InputList);
   }
 
   handleSubmit(data){
@@ -382,6 +411,24 @@ class Medicines extends Component {
   }
 
   render() {
+
+    console.log("MEDICINES RENDER STATE", this.state);
+    if(!this.state.prepare) {
+      return(
+        <div>Loading</div>
+      );
+    }
+
+    if(!this.state.InputList){
+      this.mountInputList();
+    }
+
+    if(!this.state.InputList){
+      return(
+        <div>Loading</div>
+      );
+    }
+
     let options = Object.keys(this.state.prepare);
     let selectOptions = [];
 
@@ -406,7 +453,7 @@ class Medicines extends Component {
 
         <Form
           OnSubmit={ this.handleSubmit }
-          InputList={ this.state.prepare[this.state.selectedMedicine] }
+          InputList={ this.state.InputList } 
           SubmitValue="Guardar medicamento"
         />
 

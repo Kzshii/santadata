@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Checkgroup.css';
 
 /*
   Props: {
@@ -23,6 +24,7 @@ class Checkgroup extends Component {
   render() {
     return(
       <div className="Checkgroup">
+        <label>{ this.props.Label }</label>
         {
           this.props.Options.map(
             (option) => {
