@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import './LoginForm.css';
-import fontawesome from '@fortawesome/fontawesome';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-
-
-
 
 class LoginForm extends Component {
 
@@ -47,32 +42,22 @@ class LoginForm extends Component {
 
   render() {
 
-var styles = {
-  textAlign:'center',
-};
+    var styles = {
+      textAlign:'center',
+    };
 
     return(
-
-   
-
       <div className="LoginForm  ">
-
         <form className="wrap-login100 " onSubmit={ this.handleSubmit }  >
-
-          
-
-           <div className="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required">
+          <div className="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required">
             <input className="input100 textInput" type="text" name="email" placeholder="Usuario" value={ this.state.user } onChange={ this.handleChangeEmail } />
-
-                <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-envelope"></span>
-                </span>
+            <span className="focus-input100"></span>
+            <span className="symbol-input100">
+              <span className="fas fa-envelope"></span>
+            </span>
           </div>
 
-          
-          
-         <div className="wrap-input100 validate-input m-b-16" data-validate ="Password is required">
+          <div className="wrap-input100 validate-input m-b-16" data-validate ="Password is required">
             <input className="textInput input100" type="password" placeholder="Senha" value={ this.state.pass } onChange={ this.handleChangePassword }/>
             <span className="focus-input100"></span>
             <span className="symbol-input100">
@@ -80,13 +65,6 @@ var styles = {
             </span>
           </div>
          
-            
-
-
-  
-          
-          
-
           <div className="contact100-form-checkbox m-l-4">
             <input className="checkbox check input-checkbox100" id="rememberUserCheck" type="checkbox" name="remember-me"/>
             <label className="remember check label-checkbox100" htmlFor="rememberUserCheck" >
@@ -94,23 +72,15 @@ var styles = {
             </label>
           </div>
 
-        
-
           <input id="LoginButton" type="submit" value="Entrar" />
 
           <div className="text-center w-full p-t-50">
-
             <a id="Signup" className="txt1 hov1" href="#">
               Novo Cadastro           
             </a>
           </div>
-
-          
-
         </form>
-
       </div>
-     
     );
   }
 }
