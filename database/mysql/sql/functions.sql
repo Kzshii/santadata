@@ -60,13 +60,15 @@ CREATE FUNCTION new_patient(iduser_p VARCHAR(45),
         tel2_p VARCHAR(20),
         tel_emerg_p VARCHAR(20),
         cel_p VARCHAR(20),
-        endereco_p TEXT) 
+        endereco_p TEXT,
+        nr_same_p INT,
+        nr_sus_p INT) 
 
 RETURNS INT
   BEGIN
 
   SET FOREIGN_KEY_CHECKS=0;
-  INSERT INTO people (name,cpf,dtnasc,tel1,tel2,tel_emerg,cel,address) VALUES(
+  INSERT INTO people (name,cpf,dtnasc,tel1,tel2,tel_emerg,cel,address,nr_same,nr_sus) VALUES(
     nome_p,
     cpf_p,
     data_nasc_p,
@@ -74,7 +76,9 @@ RETURNS INT
     tel2_p,
     tel_emerg_p,
     cel_p,
-    endereco_p
+    endereco_p,
+    nr_same_p,
+    nr_sus_p
   );
   
   SELECT LAST_INSERT_ID() INTO @id_people;

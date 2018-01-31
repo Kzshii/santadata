@@ -36,7 +36,9 @@ Patient.add = function(req, res){
 	var_req.tel2,
 	var_req.tel_emerg,
 	var_req.cel,
-	var_req.endereco]
+	var_req.endereco,
+	var_req.nr_same,
+	var_req.nr_sus]
 
 	Patient.generic_dao_request(res,data, Dao_patient.new)
 }
