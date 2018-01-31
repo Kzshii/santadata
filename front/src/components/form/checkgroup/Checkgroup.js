@@ -23,8 +23,22 @@ class Checkgroup extends Component {
   render() {
     return(
       <div className="Checkgroup">
-        <input type="checkbox" name="" id=""/>
-        <label htmlFor=""></label>
+        {
+          this.props.Options.map(
+            (option) => {
+              return(
+                <div className="Checkbox" key={ this.props.KeyTag+option.id }>
+                  <input
+                    type="checkbox"
+                    value={ option[this.props.OptionValue] }
+                    id={ this.props.KeyTag+option.id }
+                  />
+                  <label htmlFor={ this.props.KeyTag+option.id }>{ option.label }</label>
+                </div>
+              );
+            }
+          )
+        }
       </div>
     );
   }

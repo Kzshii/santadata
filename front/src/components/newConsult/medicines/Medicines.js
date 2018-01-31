@@ -377,8 +377,7 @@ class Medicines extends Component {
     });
   }
 
-  handleSubmit(event){
-    event.preventDefault();
+  handleSubmit(data){
     this.props.saveData("medicines", this.state.formData);
   }
 
@@ -406,10 +405,12 @@ class Medicines extends Component {
         />
 
         <Form
-          Submit={ this.handleSubmit }
+          OnSubmit={ this.handleSubmit }
           InputList={ this.state.prepare[this.state.selectedMedicine] }
           SubmitValue="Guardar medicamento"
         />
+
+        <input className="Button" type="submit" value="Salvar medicamentos e continuar" onMouseUp={ this.handleSubmit }/>
       </div>
     );
     
