@@ -3,6 +3,23 @@ import './Medicines.css';
 import Form from './../../form/Form';
 import Select from './../../form/select/Select';
 
+/*
+  Medicines retorna um array com os medicamentos adicionados.
+  medicines: [
+    0: {
+      name: text,
+      type: numeric,
+      date: date,
+      charge: numeric,
+      gap: numeric,
+      hour: [0, 2]
+    },
+    1: {
+
+    },
+  ]
+*/
+
 class Medicines extends Component {
   constructor(props){
     super(props);
@@ -383,7 +400,7 @@ class Medicines extends Component {
   }
 
   handleSubmit(data) {
-    this.props.saveData("medicines", this.state.formData);
+    this.props.saveData("medicines", this.state.storedMeds);
   }
 
   render() {
