@@ -3,6 +3,7 @@ import './Form.css';
 import Select from './select/Select';
 import Checkgroup from './checkgroup/Checkgroup';
 import Input from './input/Input';
+import Radiogroup from './radiogroup/Radiogroup';
 
 /*
     Props: {
@@ -21,8 +22,11 @@ import Input from './input/Input';
       Config: {
         Select: {
           OptionValue: text,
-        }
+        },
         Checkgroup: {
+          OptionValue: text,
+        },
+        Radiogroup: {
           OptionValue: text,
         }
       }
@@ -105,7 +109,7 @@ class Form extends Component {
                 
                 case 'checkbox':
                   if(this.props.Config.Checkgroup.OptionValue) {
-                    OptionValue = this.props.Config.Select.OptionValue;
+                    OptionValue = this.props.Config.Checkgroup.OptionValue;
                   } else {
                     OptionValue = "value";
                   }
@@ -118,6 +122,23 @@ class Form extends Component {
                       OnChange={ this.handleChange }
                       OptionValue={ OptionValue }
                       Name={ input }
+                    />
+                  );
+
+                case 'radio':
+                  if(this.props.Config.Radiogroup.OptionValue) {
+                    OptionValue = this.props.Config.Radiogroup.OptionValue;
+                  } else {
+                    OptionValue = "value";
+                  }
+                  return(
+                    <Radiogroup 
+                      key={ "Radio"+inputField.title }
+                      Label={ inputField.title }
+                      Options={ inputField.options }
+                      KeyTag={ "Radio"+inputField.title }
+                      OnChange={ this.handleChange }
+                      OptionValue={ OptionValue }
                     />
                   );
                 
