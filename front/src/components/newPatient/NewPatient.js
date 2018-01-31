@@ -15,7 +15,6 @@ class NewPatient extends Component {
       formData: {
         patientName: '',
         cpf: '',
-        medicalRecord: '',
         mv: '',
         same:'',
         sus:'',
@@ -50,9 +49,6 @@ class NewPatient extends Component {
         break;
       case 'cpf':
         formData.cpf = value;
-        break;
-      case 'medicalRecord':
-        formData.medicalRecord = value;
         break;
       case 'mv':
         formData.mv = value;
@@ -106,7 +102,6 @@ class NewPatient extends Component {
         id_register: this.props.userData.user_id,
         nome: formData.patientName,
         cpf: formData.cpf,
-        nr_prontuario: formData.medicalRecord,
         nr_mv: formData.mv,
         nr_same: formData.same,
         nr_sus: formData.sus,
@@ -193,26 +188,6 @@ class NewPatient extends Component {
                 </span>
             </div>
             
-
-
-            <label htmlFor="medicalRecord">Prontuário</label>
-            <div className="wrap-input100 validate-input m-b-16">
-            <input
-              className="input100 textInput"
-              type="text"
-              name="medicalRecord"
-              id="medicalRecord"
-              placeholder= "Prontuário"
-              value={ this.state.formData.medicalRecord }
-              onChange={ this.handleChange }
-              required
-            /> 
-             <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-file"></span>
-                </span>
-            </div>
-
           <label htmlFor="mv">Número MV</label>
           <div className="wrap-input100 validate-input m-b-16">
 
