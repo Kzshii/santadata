@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
+import Select from './select/Select';
+import Checkgroup from './checkgroup/Checkgroup';
 
 /*
-    Props:
-      Submit: submit function pointer, defined on parent Component
-      InputList: json Object that contains all input fields
+    Props: {
+      SubmitValue: text,
+      Submit: function pointer,
+      InputList: {
+        input_one: {
+          type: text,
+          title: text,
+          options: [
+            many {} options
+          ],
+        }
+      },
+    }
 */
 
 class Form extends Component {
@@ -23,13 +35,35 @@ class Form extends Component {
   }
 
   render() {
+    console.log("FORM PROP INPUT LIST:", this.props.InputList);
     return(
       <div className="Form">
-        <form action="" onSubmit={ this.handleSubmit }>
+        <form onSubmit={ this.handleSubmit }>
           {
             Object.keys(this.props.InputList).map(
               (input) => {
-                switch( this.props.InputList[input] ) {
+                const inputField = this.props.InputList[input];
+
+                switch( inputField.type ) {
+                  case 'label':
+                    return(
+                      <label key={ "'abel"+inputField.value }>{ inputField.value }</label>
+                    );
+                  case 'select':
+                    return(
+                      <Select
+                        key={ "Select"+inputField.title }
+                        Label={ inputField.title }
+                        Options={ inputField.options }
+                        KeyTag={ "Select"+inputField.title }
+                        onChange={ this.handleChange }
+                        OptionValue="id"
+                      />
+                    );
+                  case 'checkbox':
+                    return(
+                      <Checkgroup />
+                    );
                   default:
                     console.log(this.props.InputList[input]);
                     break;
@@ -37,6 +71,7 @@ class Form extends Component {
               }
             )
           }
+          <input type="submit" value={ this.props.SubmitValue }/>
         </form>
       </div>
     );

@@ -4,7 +4,8 @@ import React, { Component } from 'react';
     Props: {
       Label: text,
       Name: text,
-      Id: numeric,
+      Id: text,
+      OptionValue: text (indica qual variável deve ir para o value)
       Options: [
         0: {
           id: numeric,
@@ -29,7 +30,6 @@ class Select extends Component {
   }
   
   render() {
-    console.log("SELECT PROPS OPTIONS:", this.props.Options);
     return(
       <div className="Select">
         <label htmlFor="">{ this.props.Label }</label>
@@ -38,7 +38,7 @@ class Select extends Component {
             this.props.Options.map(
               (option) => {
                 return(
-                  <option key={ this.props.KeyTag+option.id } value={ option.value } >{ option.label }</option>
+                  <option key={ this.props.KeyTag+option.id } value={ option[this.props.OptionValue] } >{ option.label }</option>
                 );
               }
             )

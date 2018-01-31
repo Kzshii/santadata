@@ -32,7 +32,7 @@ class Medicines extends Component {
 			prepare: {},
 			formData: {},
 			trash: [],
-			selectedMedicine: "",
+			selectedMedicine: "IECA",
     };
   }
   
@@ -56,27 +56,27 @@ class Medicines extends Component {
       {
         prepare: {
           //Medicamentos ministrados no paciente
-          
+              
           commom: {
             date: {
-              type: "date", // data
-              title: "Data",
+                type: "date", // data
+                title: "Data",
             },
-            
+                  
             charge: {
               type: "number", // mg
               title: "Carga",
               unity: "mg",
             },
-            
+                  
             gap: {
               type: "number", // horas
               title: "Intervalo",
               unity: "h",
             },
-            
+                  
             // Acrescentar momento do dia 0*...
-            
+                  
             // 0...*
             hour: {
               type: "checkbox",
@@ -89,10 +89,12 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          IECA: 
-          {
-            title: "IECA",
+
+          IECA: {
+            title: {
+              type: "label",
+              value: "IECA"
+            },
             
             type: {
               type: "select",
@@ -113,11 +115,13 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          BRA:
-          {
-            title: "BRA",
-            
+    
+          BRA: {
+            title: {
+              type: "label",
+              value: "BRA"
+            },
+              
             type: {
               type: "select",
               title: "Tipo",
@@ -134,29 +138,33 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          beta_bloqueadores:
-          {
-            title: "Beta Bloqueadores",
-            
+    
+          beta_bloqueadores: {
+            title: {
+              type: "label",
+              value: "Beta Bloqueadores"
+            },
+              
             type: {
-              type: "select",
-              title: "Tipo",
-              options: [
-                {id: 0,label: "Carvedilol",dose_inicial:"3,125",dose_alvo:"25 a 50",intervalo:"12"}, 
-                // Dose inicial = 3,125mg
-                // Dose Alvo = 25 a 50mg
-                // Duração = 12 em 12 horas
-                {id: 1,label: "Metroprolol"},
-                {id: 2,label: "Bisoprolol"},
-                {id: 3,label: "Propanolol"},
-              ],
+                type: "select",
+                title: "Tipo",
+                options: [
+                  {id: 0,label: "Carvedilol",dose_inicial:"3,125",dose_alvo:"25 a 50",intervalo:"12"}, 
+                  // Dose inicial = 3,125mg
+                  // Dose Alvo = 25 a 50mg
+                  // Duração = 12 em 12 horas
+                  {id: 1,label: "Metroprolol"},
+                  {id: 2,label: "Bisoprolol"},
+                  {id: 3,label: "Propanolol"},
+                ],
             }
           },
-          
-          bloq_canaisca:
-          {
-            title: "Bloqueador de Canal de Cálcio",
+            
+          bloq_canaisca: {
+            title: {
+              type: "label",
+              value: "Bloqueador de Canal de Cálcio"
+            },
             
             type: {
               type: "select",
@@ -167,10 +175,12 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          diureticos:
-          {
-            title: "Diuréticos",
+    
+          diureticos: {
+            title: {
+              type: "label",
+              value: "Diuréticos"
+            },
             
             type: {
               type: "select",
@@ -184,10 +194,12 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          digitalico:
-          {
-            title: "Digitálico",
+        
+          digitalico: {
+            title: {
+              type: "label",
+              value: "Digitálico"
+            },
             
             type: {
               type: "checkbox",
@@ -197,10 +209,12 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          AAS:
-          {
-            title: "AAS",
+    
+          AAS: {
+            title: {
+              type: "label",
+              value: "AAS"
+            },
             
             type: {
               type: "checkbox",
@@ -210,10 +224,12 @@ class Medicines extends Component {
               ]
             }
           },
-          
-          estatina:
-          {           
-            title: "Estatina",
+
+          estatina: {           
+            title: {
+              type:"label",
+              value:"Estatina"
+            },
             
             type: {
               type: "select",
@@ -224,10 +240,12 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          hidralazina: 
-          {
-            title: "Hidralazina",
+
+          hidralazina: {
+            title: {
+              type: "label",
+              value: "Hidralazina"
+            },
             
             type: {
               type: "checkbox",
@@ -237,10 +255,12 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          nitrato:
-          {
-            title: "Nitrato",
+
+          nitrato: {
+            title: {
+              type: "label",
+              value: "Nitrato"
+            },
             
             type: {
               type: "checkbox",
@@ -250,10 +270,12 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          anticoagulante: 
-          {
-            title: "Anticoagulante",
+
+          anticoagulante: {
+            title: {
+              type: "label",
+              value: "Anticoagulante"
+            },
             
             type: {
               type: "select",
@@ -261,13 +283,15 @@ class Medicines extends Component {
               options: [
                 {id: 0,label: "Heparina"},
                 {id: 1,label: "Dabigatran"},
-              ],
+                ],
             }
           },
-          
-          antiarritmico: 
-          {
-            title: "Antiarrítmico",
+
+          antiarritmico: {
+            title: {
+              type: "label",
+              value: "Antiarrítmico"
+            },
             
             type: {
               type: "checkbox",
@@ -277,14 +301,16 @@ class Medicines extends Component {
               ],
             }
           },
-          
-          
+      
+
           //Medicamentos prescritos para o paciente
           //prescritos: 
-          
-          sarcubitril_valsartana:
-          {
-            title: "Sarcubitril Valsartana",
+
+          sarcubitril_valsartana: {
+            title: {
+              type: "label",
+              value: "Sarcubitril Valsartana"
+            },
             
             type:{
               type:"checkbox",
@@ -365,14 +391,25 @@ class Medicines extends Component {
       selectOptions.push({
         id: i,
         value: option,
-        label:this.state.prepare[option].title
+        label:this.state.prepare[option].title.value
       });
     }
 
     return(
       <div className="Medicines">
-        <Select Label="Escolha o tipo de medicamento" Options={ selectOptions } KeyTag="SelectMedicine" onChange={ this.selectMedicine } />
-        {/* <Form Submit={this.handleSubmit} InputList={ this.state.prepare[this.state.selectedMedicine] } /> */}
+        <Select
+          Label="Escolha o tipo de medicamento"
+          Options={ selectOptions }
+          OptionValue="value"
+          KeyTag="SelectMedicine"
+          onChange={ this.selectMedicine }
+        />
+
+        <Form
+          Submit={ this.handleSubmit }
+          InputList={ this.state.prepare[this.state.selectedMedicine] }
+          SubmitValue="Guardar medicamento"
+        />
       </div>
     );
     
