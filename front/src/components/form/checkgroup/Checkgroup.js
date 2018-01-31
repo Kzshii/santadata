@@ -16,11 +16,6 @@ import './Checkgroup.css';
 */
 
 class Checkgroup extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return(
       <div className="Checkgroup">

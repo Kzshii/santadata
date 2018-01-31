@@ -20,21 +20,16 @@ import './Select.css';
         }
       ]
       KeyTag: text,
-      onChange: function pointer
+      OnChange: function pointer
     }
 */
 
 class Select extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  
   render() {
     return(
       <div className="Select">
         <label htmlFor="">{ this.props.Label }</label>
-        <select name={ this.props.Name } id={ this.props.Id } onChange={ this.props.onChange }>
+        <select name={ this.props.Name } id={ this.props.Id } onChange={ this.props.OnChange }>
           {
             this.props.Options.map(
               (option) => {

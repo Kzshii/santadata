@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Form.css';
 import Select from './select/Select';
 import Checkgroup from './checkgroup/Checkgroup';
+import Input from './input/Input';
 
 /*
     Props: {
@@ -11,11 +12,20 @@ import Checkgroup from './checkgroup/Checkgroup';
         input_one: {
           type: text,
           title: text,
+          value: any,
           options: [
             many {} options
           ],
         }
       },
+      Config: {
+        Select: {
+          OptionValue: text,
+        }
+        Checkgroup: {
+          OptionValue: text,
+        }
+      }
     }
 */
 
@@ -42,6 +52,7 @@ class Form extends Component {
         {
           Object.keys(this.props.InputList).map(
             (input) => {
+              let OptionValue;
               const inputField = this.props.InputList[input];
 
               switch( inputField.type ) {
@@ -51,38 +62,50 @@ class Form extends Component {
                   );
                 
                 case 'select':
+                  if(this.props.Config.Select.OptionValue) {
+                    OptionValue = this.props.Config.Select.OptionValue;
+                  } else {
+                    OptionValue = "value";
+                  }
                   return(
                     <Select
                       key={ "Select"+inputField.title }
                       Label={ inputField.title }
                       Options={ inputField.options }
                       KeyTag={ "Select"+inputField.title }
-                      onChange={ this.handleChange }
-                      OptionValue="id"
+                      OnChange={ this.handleChange }
+                      OptionValue={ OptionValue }
                     />
                   );
                 
                 case 'checkbox':
+                  if(this.props.Config.Checkgroup.OptionValue) {
+                    OptionValue = this.props.Config.Select.OptionValue;
+                  } else {
+                    OptionValue = "value";
+                  }
                   return(
                     <Checkgroup
                       key={ "Check"+inputField.title }
                       Label={ inputField.title }
                       Options={ inputField.options }
                       KeyTag={ "Check"+inputField.title }
-                      onChange={ this.handleChange }
-                      OptionValue="id"
+                      OnChange={ this.handleChange }
+                      OptionValue={ OptionValue }
                     />
                   );
                 
-                {/* case 'date':
+                case 'text':
+                case 'date':
                 case 'number':
                   return(
                     <Input 
                       key={ "Input"+inputField.title }
                       Label={ inputField.title }
-                      onChange={ this.handleChange }
+                      OnChange={ this.handleChange }
+                      Type={ inputField.type }
                     />
-                  ); */}
+                  );
                 
                 default:
                   console.log("elemento não listado");

@@ -22,13 +22,19 @@ class Medicines extends Component {
   constructor(props){
     super(props);
     
+    /* METHODS */
 		this.handleChange = this.handleChange.bind(this);
 		this.addNewMedicine = this.addNewMedicine.bind(this);
 		this.selectMedicine = this.selectMedicine.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.mountInputList = this.mountInputList.bind(this);
+    this.mountSelectOptions = this.mountSelectOptions.bind(this);
     
+    /* VARS */
+    this.InputList = {};
+    this.SelectOptions = [];
     
+    /* STATE */
     this.state = {
 			prepare: null,
 			formData: {},
@@ -327,7 +333,7 @@ class Medicines extends Component {
             }
           }
         }
-      },
+      }
     );
   }
 
@@ -363,9 +369,9 @@ class Medicines extends Component {
   }	
 
 
-  addNewMedicine(medicine){
-    var data= this.state.formData;
-    data[medicine.name]= medicine;
+  addNewMedicine(medicine) {
+    var data = this.state.formData;
+    data[medicine.name] = medicine;
     this.state.trash.push(medicine);
     this.setState({
       formData: data,
@@ -373,12 +379,26 @@ class Medicines extends Component {
     });
   }
 
-  selectMedicine(event){
+  selectMedicine(event) {
     this.setState({
       selectedMedicine: event.target.value
     });
+  }
 
-    this.mountInputList();
+  mountSelectOptions() {
+    let options = Object.keys(this.state.prepare);
+    let selectOptions = [];
+
+    for(let i = 1; i < options.length; i++) {
+      let option = options[i];
+      selectOptions.push({
+        id: i,
+        value: option,
+        label:this.state.prepare[option].title.value
+      });
+    }
+
+    this.SelectOptions = selectOptions;
   }
 
   mountInputList() {
@@ -400,13 +420,11 @@ class Medicines extends Component {
 
     console.log("MEDICINES MOUNT INPUT LIST:", InputList);
 
-    this.setState({
-      InputList: InputList,
-    });
+    this.InputList = InputList;
     console.log("MOUNT INPUT LIST - MEDICINES STATE",this.state.InputList);
   }
 
-  handleSubmit(data){
+  handleSubmit(data) {
     this.props.saveData("medicines", this.state.formData);
   }
 
@@ -418,43 +436,31 @@ class Medicines extends Component {
         <div>Loading</div>
       );
     }
-
-    if(!this.state.InputList){
-      this.mountInputList();
-    }
-
-    if(!this.state.InputList){
-      return(
-        <div>Loading</div>
-      );
-    }
-
-    let options = Object.keys(this.state.prepare);
-    let selectOptions = [];
-
-    for(let i = 1; i < options.length; i++) {
-      let option = options[i];
-      selectOptions.push({
-        id: i,
-        value: option,
-        label:this.state.prepare[option].title.value
-      });
-    }
+    this.mountInputList();
+    this.mountSelectOptions();
 
     return(
       <div className="Medicines">
         <Select
           Label="Escolha o tipo de medicamento"
-          Options={ selectOptions }
+          Options={ this.SelectOptions }
           OptionValue="value"
           KeyTag="SelectMedicine"
-          onChange={ this.selectMedicine }
+          OnChange={ this.selectMedicine }
         />
 
         <Form
           OnSubmit={ this.handleSubmit }
-          InputList={ this.state.InputList } 
+          InputList={ this.InputList } 
           SubmitValue="Guardar medicamento"
+          Config={{
+            Select:{ 
+              OptionValue: "id"
+            },
+            Checkgroup:{
+              OptionValue: "id"
+            }
+          }}
         />
 
         <input className="Button" type="submit" value="Salvar medicamentos e continuar" onMouseUp={ this.handleSubmit }/>
