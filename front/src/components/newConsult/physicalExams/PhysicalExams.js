@@ -12,15 +12,14 @@ class PhysicalExams extends Component {
   constructor(props){
     super(props);
         
-		this.handleChange = this.handleChange.bind(this);
-		this.addNewExam= this.addNewExam.bind(this);
-		this.selectExam= this.selectExam.bind(this);
-		this.handleSubmit= this.handleSubmit.bind(this);
+	this.inputList={};
+	this.selectOptions=[];
 
     this.state = {
-			prepare: {},
-			formData: {},
-			newExam: "Geral",
+			prepare: null,
+			storedExams:[],
+			selectedExam: "geral",
+			inputList: null
     };
   }
 
@@ -48,278 +47,350 @@ class PhysicalExams extends Component {
 					geral:
 					{
 						//void: {id: -1, label: "Vazio"},
-						estado: "",
+
+						title:{
+							type: 'label',
+							value: "Exame Físico Geral"
+						},
+
+						estado: {
+							type: "text",
+							title: "Estado"
+						},
 
 						//Tipos de edemas fisicos 
-						edemas: // 1
+						edemas: {// 1
+							type:"select",
+							title:"Edemas",
+							options:
 							[
+								{id: "", label: "Escolher"},
 								{ id: 0, label: "Sem Edema" },
 								{ id: 1, label: "+/++++" },
 								{ id: 2, label: "++/++++" },
 								{ id: 3, label: "+++/++++" },
 								{ id: 4, label: "++++/++++" },
 							],
+						},
 
 						//Auscutas respiratorias
-						auscultas_resp: // 1
+						auscultas_resp:{ // 1
+							type: "select",
+							title: "Ascultas Respiratórias",
+							options:
 							[
+								{ id: "", label: "Escolher" },
 								{ id: 0, label: "Nenhum" },
 								{ id: 1, label: "MV Fisiológico" },
 								{ id: 2, label: "Creptações basais" },
 								{ id: 3, label: "Creptações difusas" },
+								{ id: 4, label: "Edema Agudo do Pulmão" },
 							],
+						},
 
-						refl_heptojugular:
+						refl_heptojugular:{
+							type:"radio",
+							title: "Reflexo Heptojugular",
+							options:
 							[
 								{ id: 0, label: "Sim" },
 								{ id: 1, label: "Não" },
 							],
+						},
 
-						turg_jugular:
+						turg_jugular:{
+							type: "radio",
+							title:"Turgência Jugular",
+							options:
 							[
 								{ id: 0, label: "Sim" },
 								{ id: 1, label: "Não" },
 							],
+						},
 
-						ascite:
+						ascite:{
+							type: "radio",
+							title: "Ascite",
+							options:
 							[
 								{ id: 0, label: "Sim" },
 								{ id: 1, label: "Não" },
 							],
+						},
+						
+						perfusao:{
+							type: "radio",
+							title:"Perfusão",
+							options:[
+								{id: 0 , label: "Normal"},
+								{id: 1, label: "Baixa"},
+							]
+						},
 
-						peso: 0.0,
-						altura: 0.0,
-						imc: 0.0, // peso/altura^2 
-						//void: {id: -1, label: "Vazio"},
-						estado: "",
+						freq_respiratoria: {
+							type: "number",
+							title: "Frequência Repiratória"
+						},
 
-						//Tipos de edemas fisicos 
-						edemas: // 1
-							[
-								{ id: 0, label: "Sem Edema" },
-								{ id: 1, label: "+/++++" },
-								{ id: 2, label: "++/++++" },
-								{ id: 3, label: "+++/++++" },
-								{ id: 4, label: "++++/++++" },
-							],
+						derrame_pleural:{
+							type: "radio",
+							title: "Derrame Pleural",
+							opetions:[
+								{id:0, label:"Sim"},
+								{id:1, label:"Nao"},
+							]
+						},
 
-						//Auscutas respiratorias
-						auscultas_resp: // 1
-							[
-								{ id: 0, label: "Nenhum" },
-								{ id: 1, label: "MV Fisiológico" },
-								{ id: 2, label: "Creptações basais" },
-								{ id: 3, label: "Creptações difusas" },
-							],
-
-						refl_heptojugular:
-							[
-								{ id: 0, label: "Sim" },
-								{ id: 1, label: "Não" },
-							],
-
-						turg_jugular:
-							[
-								{ id: 0, label: "Sim" },
-								{ id: 1, label: "Não" },
-							],
-
-						ascite:
-							[
-								{ id: 0, label: "Sim" },
-								{ id: 1, label: "Não" },
-							],
-
-						peso: 0.0,
-						altura: 0.0,
-						imc: 0.0, // peso/altura^2 
+						peso: {
+							type:"text",
+							title: "Peso (kg)"
+						},
+						altura: {
+							type: "text",
+							title: "Altura (m)"
+						},
+						imc:{
+							type: "text",
+							title:"IMC"
+						}  // peso/altura^2 
 					},
 
 					cardio: 
 					{
+						title:{
+							type: 'label',
+							value: "Exame  Cardio"
+						},
+
+
+
 						//Ritmo cardiovascular
-						ritmo: // 1
+						ritmo: {// 1
+							type: "radio",
+							title:"Rítmo",
+							options:
 							[
 								{ id: 0, label: "Regular" },
 								{ id: 1, label: "Irregular" },
 							],
+						},
 
 						//Inpecao cardiovascular
-						inspecao: // 1
+						inspecao:{ // 1
+
+							type:"select",
+							title:"Inspeção",
+							options:
 							[
 								{ id: 0, label: "Ictus Cordis Visivel" },
 								{ id: 1, label: "Ictus de VD" },
 								{ id: 2, label: "Movimento em bascula" },
 							],
-
+						},
 						//Bulhas
-						bulhas: // 1
+						bulhas:{ // 1
+							type:"select",
+							title:"bulhas",
+							options:
 							[
 								{ id: 0, label: "B1 e B2" },
 								{ id: 1, label: "B3" },
 								{ id: 2, label: "B4" },
 								{ id: 3, label: "B3 e B4" },
 							],
+						},
 
 
-						auscuta: "",
+						auscuta: {
+							type: "text",
+							title:"Ascuta"
+						}
+						,
 
 						//Palpacao
-						palpacao: // 1..*
+						palpacao: {// 1..*
+
+							type:"checkbox",
+							title:"Palpação",
+							options:
 							[
 								{ id: 0, label: "Ictus não palpável" },
 								{ id: 1, label: "Ictus palpável" },
 								{ id: 2, label: "Desviado E para Baixo" },
 								{ id: 3, label: "LHC 5 EIEC" },
 							],
+						},
 
-						fc: 0,
+						fc:{
+							type:"text",
+							title:"Frequência Cardiaca",
 
-						pressao_arterial: 0,
+						},
+
+						pressao_arterial:{
+							type:"text",
+							title:"Pressão Arterial"
+						},
 					},
 
 					bioquimico:
 					{
+						title:{
+							type: 'label',
+							value: "Exame Bioquímico"
+						},
+
 						creatina:
 						{
-							basal: 0.0,
-							ultima: 0.0,
-							delta: 0.0,
-							clearence_atual: 0.0,
+							title:{
+								type:"label",
+								value: "Creatina"
+							},
+
+							basal:{
+								type:"text",
+								title:"Basal"
+							},
+							ultima:{
+								type:"text",
+								title:"Ultima"
+							},
+							delta: {
+								type:"text",
+								title:"Delta"
+							},
+							clearence_atual:{
+								type:"text",
+								title:"Clearence Atual"
+							}
 		
 						},
 
 						sangue:
 						{
-							hemoglobina: 0.0,
-							linfocitos: 0.0,
-							sodio: 0.0,
-							outros: "", // Plain Text
+							title:{
+								type:"label",
+								value:"Exame de Sangue"
+							},
+
+							hemoglobina: {
+								type: "text",
+								title:"Hemoglobina"
+							},
+							linfocitos: {
+								type: "text",
+								title: "Linfócitos"
+							},
+							sodio: {
+								type:"text",
+								title:"Sódio"
+							},
+							outros: {
+								type: "text",
+								title: "Outros"
+							}, // Plain Text
 						}
 					},
 
 					complementario:
 					{
-						//ECG
-						eletro: // 0..*
-						[ 
-							{id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
-							{id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
-							{id: 2, label: "Supra do Segmento ST"},
-							{id: 3, label: "Sobrecarga Atrial (SA)"},
-							{id: 4, label: "Sobrecargo de Ventrículo (SV)"},
-							{id: 5, label: "Flutter Atrial"},
-							{id: 6, label: "Fibrilação Atrial (FA)"},
-						],
+						title:{
+							type:"label",
+							value:"Complementário"
+						},
+						eletro:{ // 0..*
+							type: "checkbox",
+							title:"Eletrocardiograma",
+							options:
+							[ 
+								{id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
+								{id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
+								{id: 2, label: "Supra do Segmento ST"},
+								{id: 3, label: "Sobrecarga Atrial (SA)"},
+								{id: 4, label: "Sobrecargo de Ventrículo (SV)"},
+								{id: 5, label: "Flutter Atrial"},
+								{id: 6, label: "Fibrilação Atrial (FA)"},
+							],
+						},
 
 						//Ecocardiograma
-						primeira_FE: "", // texto numérico
-						primeiro_VE_diast: "",
-						primeiro_VE_sist: "",
+						primeira_FE: {
+							type: "text",
+							title:"Primeira FE"
+						}, // texto numérico
+						primeiro_VE_diast: {
+							type: "text",
+							title:"Primeiro VE Diast"
+						},
+						primeiro_VE_sist: {
+							type: "text",
+							title: "Primeiro VE"
+						},
 
-						ultima_FE: "", // texto numérico
-						ultima_VE_diast: "",
-						ultima_VE_sist: "",		
+						ultima_FE: {
+							type: "text",
+							title:"Ultima FE"
+						}, // texto numérico
+						ultima_VE_diast: {
+							type: "text",
+							title: "Ultima Ve Diast"
+						},
+						ultima_VE_sist: {
+							type: "text",
+							title: "Ultima Ve Sist"
+						},		
 
-						delta_FE: "", // diferença entre ultima_FE - primeira_FE
-						delta_VE: "", // diferença entre ultima_VE_sist - primeira_FE_sist
-						ps_ap: "", // texto numérico
+						delta_FE: {
+							type: "text",
+							title: "delta Fe"
+						}, // diferença entre ultima_FE - primeira_FE
+						delta_VE: {
+							type:"text",
+							title:"delta VE"
+						}, // diferença entre ultima_VE_sist - primeira_FE_sist
+						ps_ap: {
+							type: "text",
+							title: "ps_ap",
+						}, // texto numérico
 					}
 				},
 			}
 		);
-	} 
-
-  handleChange(event) {
-		const target = event.target;
-		const name = target.name;
-		const value = target.value
-
-		let formData = this.state.formData;
-		
-		if(target.type === 'checkbox') {
-			if(target.checked) {
-				/* insere */
-				if(formData[name] == null) {
-					formData[name] = [value];
-				} else {
-					formData[name].push(value);
-				}
-			} else {
-				/* remove */
-				let index = formData[name].indexOf(value);
-				formData[name].splice(index, 1);
-			}
-
-		} else {
-			formData[name] = value;
-		}
-		
-		this.setState({
-			formData: formData,
-		});
-		console.log("STATE", this.state);
-	}	
-
-	addNewExam(name,exam){
-		
-		var data= this.state.formData;
-		data[name] = exam;
-
-		this.setState({
-			formData: data,
-		});
 	}
 
-	selectExam(event){
-		this.setState({
-			newExam: event.target.value
-		});
+
+	mountSelectOptions(){
+		const nameExam= this.state.selectedExam;
+		const exam= this.state.prepare[nameExam];
+
 	}
 
-	handleSubmit(event) {
-		event.preventDefault();
-		this.props.saveData("physicalExams",this.state.formData);
-	}
 
 	render(){
+		if(!this.props.prepare){
+			return(
+				<div>Loading</div>
+			);
+		}else{
+			this.mountSelectOptions();
 
-		const examTypes = 
-		{
-			Geral: <General title="Gerais" form={this.state.prepare["geral"]} saveData={ this.storeFormData }/>,
-			Cardio: <Cardio title="Cardiovasculares" form={this.state.prepare["cardio"]} saveData={ this.storeFormData }/>,
-			Bioquímico: <Bioquimic title="Bioquímicos" form={this.state.prepare["bioquimico"]} saveData={ this.storeFormData }/>,
-			Complementares: <Complementary title="Complementares" form={this.state.prepare["complementario"]} saveData={ this.storeFormData }/>,
+			return(
+				<div className="InputExam">
+				
+				<Select label="Escolha o Tipo de Exame>"
+					Options= {this.selectOptions}
+					OptionValue= "value"
+					KeyTag= "SelectExam"
+					onChange= {this.selectExam}
+				/>
+				
+				
+				</div>
+			);
 		}
-
-		const exams = Object.keys(this.state.prepare);
-
-		return(
-			
-			<div className="physicalExams">
-				<h2>Exames Físicos</h2>
-					<General title="Gerais" form={this.state.prepare["geral"]} addNewExam={ this.addNewExam }/>
-					<Cardio title="Cardiovasculares" form={this.state.prepare["cardio"]} addNewExam={ this.addNewExam }/>
-					<Bioquimic title="Bioquímicos" form={this.state.prepare["bioquimico"]} addNewExam={ this.addNewExam }/>
-					<Complementary title="Complementares" form={this.state.prepare["complementario"]} addNewExam={ this.addNewExam }/>
-					<form onSubmit={this.handleSubmit}>					
-						{/* <select name="examsType" id="examsType" onChange={this.selectExam}>
-							{			
-								exams.map(
-									(row) => {
-										return(
-											<option key={row} value={row}>{row}</option>
-										)
-									}
-								)
-							}
-						</select>  */}
-						<input className="Button" type="submit" value="Salvar Exames"/>
-					</form>
-					{/* {examTypes[this.state.newExam]} */}
-			</div>
-		)
-	}
+	} 
 }
+
+
 
 export default PhysicalExams;
