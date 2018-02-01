@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import './PhysicalExams.css';
-import Base64 from '../../../lib/base64';
-import axios from 'axios';
-import Bioquimic from "./bioquimic/Bioquimic";
-import Cardio from "./cardio/Cardio";
-import Complementary from "./complementary/Complementary";
-import General from "./general/General";
+import Select from './../../form/select/Select';
 
 
 class PhysicalExams extends Component {
   constructor(props){
     super(props);
         
-	this.inputList={};
-	this.selectOptions=[];
+    this.inputList={};
+    this.selectOptions=[];
 
     this.state = {
 			prepare: null,
@@ -23,7 +18,7 @@ class PhysicalExams extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
 	  /*
 		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
 		axios.post(
@@ -358,13 +353,10 @@ class PhysicalExams extends Component {
 		);
 	}
 
-
 	mountSelectOptions(){
-		const nameExam= this.state.selectedExam;
-		const exam= this.state.prepare[nameExam];
-
+		const nameExam = this.state.selectedExam;
+		const exam = this.state.prepare[nameExam];
 	}
-
 
 	render(){
 		if(!this.props.prepare){
@@ -377,20 +369,18 @@ class PhysicalExams extends Component {
 			return(
 				<div className="InputExam">
 				
-				<Select label="Escolha o Tipo de Exame>"
-					Options= {this.selectOptions}
-					OptionValue= "value"
-					KeyTag= "SelectExam"
-					onChange= {this.selectExam}
-				/>
-				
+          <Select
+            Label="Escolha o Tipo de Exame>"
+            Options={ this.selectOptions }
+            OptionValue="value"
+            KeyTag="SelectExam"
+            OnChange={ this.selectExam }
+          />
 				
 				</div>
 			);
 		}
 	} 
 }
-
-
 
 export default PhysicalExams;
