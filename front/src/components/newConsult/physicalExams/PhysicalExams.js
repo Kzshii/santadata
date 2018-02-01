@@ -38,196 +38,196 @@ class PhysicalExams extends Component {
 		this.setState(
 			{
 				prepare: {
+          fisico: {
+            geral:
+            {
+              //void: {id: -1, label: "Vazio"},
 
-					geral:
-					{
-						//void: {id: -1, label: "Vazio"},
+              title:{
+                type: 'label',
+                value: "Exame Físico Geral"
+              },
 
-						title:{
-							type: 'label',
-							value: "Exame Físico Geral"
-						},
+              estado: {
+                type: "text",
+                title: "Estado"
+              },
 
-						estado: {
-							type: "text",
-							title: "Estado"
-						},
+              //Tipos de edemas fisicos 
+              edemas: {// 1
+                type:"select",
+                title:"Edemas",
+                options:
+                [
+                  {id: "", label: "Escolher"},
+                  { id: 0, label: "Sem Edema" },
+                  { id: 1, label: "+/++++" },
+                  { id: 2, label: "++/++++" },
+                  { id: 3, label: "+++/++++" },
+                  { id: 4, label: "++++/++++" },
+                ],
+              },
 
-						//Tipos de edemas fisicos 
-						edemas: {// 1
-							type:"select",
-							title:"Edemas",
-							options:
-							[
-								{id: "", label: "Escolher"},
-								{ id: 0, label: "Sem Edema" },
-								{ id: 1, label: "+/++++" },
-								{ id: 2, label: "++/++++" },
-								{ id: 3, label: "+++/++++" },
-								{ id: 4, label: "++++/++++" },
-							],
-						},
+              //Auscutas respiratorias
+              auscultas_resp:{ // 1
+                type: "select",
+                title: "Ascultas Respiratórias",
+                options:
+                [
+                  { id: "", label: "Escolher" },
+                  { id: 0, label: "Nenhum" },
+                  { id: 1, label: "MV Fisiológico" },
+                  { id: 2, label: "Creptações basais" },
+                  { id: 3, label: "Creptações difusas" },
+                  { id: 4, label: "Edema Agudo do Pulmão" },
+                ],
+              },
 
-						//Auscutas respiratorias
-						auscultas_resp:{ // 1
-							type: "select",
-							title: "Ascultas Respiratórias",
-							options:
-							[
-								{ id: "", label: "Escolher" },
-								{ id: 0, label: "Nenhum" },
-								{ id: 1, label: "MV Fisiológico" },
-								{ id: 2, label: "Creptações basais" },
-								{ id: 3, label: "Creptações difusas" },
-								{ id: 4, label: "Edema Agudo do Pulmão" },
-							],
-						},
+              refl_heptojugular:{
+                type:"radio",
+                title: "Reflexo Heptojugular",
+                options:
+                [
+                  { id: 0, label: "Sim" },
+                  { id: 1, label: "Não" },
+                ],
+              },
 
-						refl_heptojugular:{
-							type:"radio",
-							title: "Reflexo Heptojugular",
-							options:
-							[
-								{ id: 0, label: "Sim" },
-								{ id: 1, label: "Não" },
-							],
-						},
+              turg_jugular:{
+                type: "radio",
+                title:"Turgência Jugular",
+                options:
+                [
+                  { id: 0, label: "Sim" },
+                  { id: 1, label: "Não" },
+                ],
+              },
 
-						turg_jugular:{
-							type: "radio",
-							title:"Turgência Jugular",
-							options:
-							[
-								{ id: 0, label: "Sim" },
-								{ id: 1, label: "Não" },
-							],
-						},
+              ascite:{
+                type: "radio",
+                title: "Ascite",
+                options:
+                [
+                  { id: 0, label: "Sim" },
+                  { id: 1, label: "Não" },
+                ],
+              },
+              
+              perfusao:{
+                type: "radio",
+                title:"Perfusão",
+                options:[
+                  {id: 0 , label: "Normal"},
+                  {id: 1, label: "Baixa"},
+                ]
+              },
 
-						ascite:{
-							type: "radio",
-							title: "Ascite",
-							options:
-							[
-								{ id: 0, label: "Sim" },
-								{ id: 1, label: "Não" },
-							],
-						},
-						
-						perfusao:{
-							type: "radio",
-							title:"Perfusão",
-							options:[
-								{id: 0 , label: "Normal"},
-								{id: 1, label: "Baixa"},
-							]
-						},
+              freq_respiratoria: {
+                type: "number",
+                title: "Frequência Repiratória"
+              },
 
-						freq_respiratoria: {
-							type: "number",
-							title: "Frequência Repiratória"
-						},
+              derrame_pleural:{
+                type: "radio",
+                title: "Derrame Pleural",
+                opetions:[
+                  {id:0, label:"Sim"},
+                  {id:1, label:"Nao"},
+                ]
+              },
 
-						derrame_pleural:{
-							type: "radio",
-							title: "Derrame Pleural",
-							opetions:[
-								{id:0, label:"Sim"},
-								{id:1, label:"Nao"},
-							]
-						},
+              peso: {
+                type:"text",
+                title: "Peso (kg)"
+              },
+              altura: {
+                type: "text",
+                title: "Altura (m)"
+              },
+              imc:{
+                type: "text",
+                title:"IMC"
+              }  // peso/altura^2 
+            },
 
-						peso: {
-							type:"text",
-							title: "Peso (kg)"
-						},
-						altura: {
-							type: "text",
-							title: "Altura (m)"
-						},
-						imc:{
-							type: "text",
-							title:"IMC"
-						}  // peso/altura^2 
-					},
-
-					cardio: 
-					{
-						title:{
-							type: 'label',
-							value: "Exame  Cardio"
-						},
-
-
-
-						//Ritmo cardiovascular
-						ritmo: {// 1
-							type: "radio",
-							title:"Rítmo",
-							options:
-							[
-								{ id: 0, label: "Regular" },
-								{ id: 1, label: "Irregular" },
-							],
-						},
-
-						//Inpecao cardiovascular
-						inspecao:{ // 1
-
-							type:"select",
-							title:"Inspeção",
-							options:
-							[
-								{ id: 0, label: "Ictus Cordis Visivel" },
-								{ id: 1, label: "Ictus de VD" },
-								{ id: 2, label: "Movimento em bascula" },
-							],
-						},
-						//Bulhas
-						bulhas:{ // 1
-							type:"select",
-							title:"bulhas",
-							options:
-							[
-								{ id: 0, label: "B1 e B2" },
-								{ id: 1, label: "B3" },
-								{ id: 2, label: "B4" },
-								{ id: 3, label: "B3 e B4" },
-							],
-						},
+            cardio:
+            {
+              title:{
+                type: 'label',
+                value: "Exame  Cardio"
+              },
 
 
-						auscuta: {
-							type: "text",
-							title:"Ascuta"
-						}
-						,
 
-						//Palpacao
-						palpacao: {// 1..*
+              //Ritmo cardiovascular
+              ritmo: {// 1
+                type: "radio",
+                title:"Rítmo",
+                options:
+                [
+                  { id: 0, label: "Regular" },
+                  { id: 1, label: "Irregular" },
+                ],
+              },
 
-							type:"checkbox",
-							title:"Palpação",
-							options:
-							[
-								{ id: 0, label: "Ictus não palpável" },
-								{ id: 1, label: "Ictus palpável" },
-								{ id: 2, label: "Desviado E para Baixo" },
-								{ id: 3, label: "LHC 5 EIEC" },
-							],
-						},
+              //Inpecao cardiovascular
+              inspecao:{ // 1
 
-						fc:{
-							type:"text",
-							title:"Frequência Cardiaca",
+                type:"select",
+                title:"Inspeção",
+                options:
+                [
+                  { id: 0, label: "Ictus Cordis Visivel" },
+                  { id: 1, label: "Ictus de VD" },
+                  { id: 2, label: "Movimento em bascula" },
+                ],
+              },
+              //Bulhas
+              bulhas:{ // 1
+                type:"select",
+                title:"bulhas",
+                options:
+                [
+                  { id: 0, label: "B1 e B2" },
+                  { id: 1, label: "B3" },
+                  { id: 2, label: "B4" },
+                  { id: 3, label: "B3 e B4" },
+                ],
+              },
 
-						},
 
-						pressao_arterial:{
-							type:"text",
-							title:"Pressão Arterial"
-						},
-					},
+              auscuta: {
+                type: "text",
+                title:"Ascuta"
+              }
+              ,
 
+              //Palpacao
+              palpacao: {// 1..*
+
+                type:"checkbox",
+                title:"Palpação",
+                options:
+                [
+                  { id: 0, label: "Ictus não palpável" },
+                  { id: 1, label: "Ictus palpável" },
+                  { id: 2, label: "Desviado E para Baixo" },
+                  { id: 3, label: "LHC 5 EIEC" },
+                ],
+              },
+
+              fc:{
+                type:"text",
+                title:"Frequência Cardiaca",
+
+              },
+
+              pressao_arterial:{
+                type:"text",
+                title:"Pressão Arterial"
+              },
+            },
+          },
 					bioquimico:
 					{
 						title:{
@@ -286,12 +286,11 @@ class PhysicalExams extends Component {
 							}, // Plain Text
 						}
 					},
-
-					complementario:
+					complementar:
 					{
 						title:{
 							type:"label",
-							value:"Complementário"
+							value:"Complementar"
 						},
 						eletro:{ // 0..*
 							type: "checkbox",
