@@ -17,6 +17,7 @@ import Radiogroup from './radiogroup/Radiogroup';
           options: [
             many {} options
           ],
+          special
         }
       },
       Config: {
@@ -152,6 +153,7 @@ class Form extends Component {
                       OnChange={ this.handleChange }
                       Type={ inputField.type }
                       Name={ input }
+                      SpecialAttribute={ inputField.special }
                     />
                   );
                 
