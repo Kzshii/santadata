@@ -433,6 +433,9 @@ class Medicines extends Component {
               },
               Checkgroup:{
                 OptionValue: "id"
+              },
+              Radiogroup:{
+                OptionValue: "id"
               }
             }}
           />
