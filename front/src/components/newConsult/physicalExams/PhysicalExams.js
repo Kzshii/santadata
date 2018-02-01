@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import './PhysicalExams.css';
 import Select from './../../form/select/Select';
+import Form from './../../form/Form';
+import Radiogroup from './../../form/radiogroup/Radiogroup';
 
 
 class PhysicalExams extends Component {
   constructor(props){
     super(props);
-        
+    
+    this.mountSelectOptions= this.mountSelectOptions.bind(this);
+    this.selectExam= this.selectExam.bind(this);
     this.inputList={};
-    this.selectOptions=[];
+    this.SelectOptions=[];
+    this.exams=[];
 
     this.state = {
 			prepare: null,
 			storedExams:[],
-			selectedExam: "geral",
+			selectedExam: "fisico",
 			inputList: null
     };
   }
@@ -39,6 +44,12 @@ class PhysicalExams extends Component {
 			{
 				prepare: {
           fisico: {
+
+            title:{
+              type: 'label',
+              value: "Exame Físico"
+            },
+
             geral:
             {
               //void: {id: -1, label: "Vazio"},
@@ -350,33 +361,74 @@ class PhysicalExams extends Component {
 				},
 			}
 		);
-	}
+  }
+  
+  selectExam(event) {
+    this.setState({
+      selectedExam: event.target.value
+    });
+  }
 
-	mountSelectOptions(){
-		const nameExam = this.state.selectedExam;
-		const exam = this.state.prepare[nameExam];
+	mountSelectOptions(selectType){
+
+    let options = Object.keys(this.state.prepare);
+    let selectOptions= [];
+
+    for (let index = 0; index < options.length; index++) {
+      selectOptions.push({
+        id: index,
+        value: options[index],
+         label: this.state.prepare[options[index]].title.value
+       })
+    }
+      
+    this.SelectOptions= selectOptions;
+    
+    let exam= this.state.prepare[this.state.selectedExam]
+    options= Object.keys(exam);
+    selectOptions= [];
+
+    for (let index = 1; index < options.length; index++) {
+      selectOptions.push({
+        id: index - 1,
+        value: options[index],
+        label: exam[options[index]].title.value
+      })
+        
+    }
+    this.exams=selectOptions;    
 	}
 
 	render(){
-		if(!this.props.prepare){
+    
+		if(!this.state.prepare){
 			return(
 				<div>Loading</div>
 			);
 		}else{
-			this.mountSelectOptions();
-
+      this.mountSelectOptions();
+    
 			return(
 				<div className="InputExam">
 				
-          <Select
-            Label="Escolha o Tipo de Exame>"
-            Options={ this.selectOptions }
+        <Radiogroup
+            Label="Tipo de Exame"
+            Options={ this.SelectOptions }
             OptionValue="value"
             KeyTag="SelectExam"
             OnChange={ this.selectExam }
+            Name= "ExamsTypes"
           />
-				
+
+          <Select
+            Label="Exames"
+            Options={ this.exams }
+            OptionValue="value"
+            KeyTag="Exams"
+            OnChange={ this.selectExam }
+          />  
 				</div>
+        
 			);
 		}
 	} 
