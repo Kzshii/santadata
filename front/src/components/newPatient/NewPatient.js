@@ -15,7 +15,7 @@ class NewPatient extends Component {
     this.state = {
       formData: {
         patientName: '',
-        cpf: '',
+        idPatient: '',
         mv: '',
         same:'',
         sus:'',
@@ -27,7 +27,14 @@ class NewPatient extends Component {
         tel2: '',
         telE: '',
         cel: '',
-        address: '',
+        cep: '',
+        street: '',
+        homeNumber:'',
+        complement:'',
+        neighborhood:'',
+        city:'',
+        state:'',
+        country:'',
       },
 
       formExhibition:{
@@ -37,66 +44,35 @@ class NewPatient extends Component {
   }
 
   handleChange(event) {
-    /* recover formData and value*/
-    var formData = this.state.formData;
-    var value = event.target.value;
+		const target = event.target;
+		const name = target.name;
+		const value = target.value;
     
-    /* handle formData */
-    switch(event.target.name){
-      case 'patientName':
-        formData.patientName = value;
-        break;
-      case 'same':
-        formData.same= value;
-        break;
-      case 'sus':
-        formData.sus=value;
-        break;
-      case 'cpf':
-        formData.cpf = value;
-        break;
-      case 'mv':
-        formData.mv = value;
-        break;
-      case 'birthDate':
-        formData.birthDate = value;
-        break;
-      case 'age':
-        formData.age = value;
-        break;
-      case 'gender':
-        formData.gender = value;
-        break;
-      case 'etiny':
-        formData.etiny = value;
-        break;
-      case 'tel1':
-        formData.tel1 = value;
-        break;
-      case 'tel2':
-        formData.tel2 = value;
-        break;
-      case 'telE':
-        formData.telE = value;
-        break;
-      case 'cel':
-        formData.cel = value;
-        break;
-      case 'address':
-        formData.address = value;
-        break;
-      default:
-        console.log("não deu");
-    }
-
-    /* set new state */
-    this.setState(
-      {
-        formData: formData,
-      }
-    );
-  }
-
+		let formData = this.state.formData;
+		
+		if(target.type === 'checkbox') {
+			if(target.checked) {
+				/* insere */
+				if(formData[name] == null) {
+					formData[name] = [value];
+				} else {
+					formData[name].push(value);
+				}
+			} else {
+				/* remove */
+				let index = formData[name].indexOf(value);
+				formData[name].splice(index, 1);
+			}
+		} else {
+			formData[name] = value;
+		}
+		
+		this.setState({
+			formData: formData,
+		});
+		console.log("STATE", this.state);
+	}
+  
   handleSubmit(event) {
     event.preventDefault();
 
@@ -104,21 +80,28 @@ class NewPatient extends Component {
 
     const data = Base64.encode(
       {
-        id_register: this.props.userData.user_id,
-        nome: formData.patientName,
-        cpf: formData.cpf,
-        nr_mv: formData.mv,
-        nr_same: formData.same,
-        nr_sus: formData.sus,
-        data_nasc: formData.birthDate,
-        idade: formData.age,
-        sexo: formData.gender,
-        etnia: formData.etiny, //[Branco, Negro, Pardo, Amarelo]
+        idRegister: this.props.userData.user_id,
+        name: formData.patientName,
+        idPatient: formData.idPatient,
+        mv: formData.mv,
+        same: formData.same,
+        sus: formData.sus,
+        birthDate: formData.birthDate,
+        age: formData.age,
+        gender: formData.gender,
+        etiny: formData.etiny, //[Branco, Negro, Pardo, Amarelo, Indefinido]
         tel1: formData.tel1,
         tel2: formData.tel2,
-        tel_emerg: formData.telE,
+        telE: formData.telE,
         cel: formData.cel,
-        endereco: formData.address,
+        cep: formData.cep,
+        street: formData.street,
+        homeNumber:formData.homeNumber,
+        complement: formData.complement,
+        neighborhood:formData.neighborhood,
+        city:formData.city,
+        state:formData.state,
+        country:formData.country,
       }
     );
 
@@ -153,17 +136,16 @@ class NewPatient extends Component {
     var months = "";
     var years = "";
 
-    if (this.handleChange && this.state.formData.birthDate){
+    if (this.handleChange && this.state.formData.birthDate) {
 
       totalDays = ((todayDate.getTime() - birthDate.getTime()) / 86400000);
 
-      if (totalDays < 0){
+      if (totalDays < 0) {
         alert("Por favor, digite uma data válida!")
-        this.state.formExhibition.stringAge = "Inválida";
-        this.state.formData.age = "Inválida";
+        this.state.formExhibition.stringAge = "Data inválida";
       }
 
-      else{
+      else {
 
         years = Math.floor(totalDays / 365);
 
@@ -177,6 +159,11 @@ class NewPatient extends Component {
         
       }
     }
+
+    else {
+      this.state.formExhibition.stringAge = "Data inválida"
+    }
+
   }
 
 
@@ -212,15 +199,15 @@ class NewPatient extends Component {
                 </span>
             </div>
 
-            <label htmlFor="cpf">CPF ou Identidade</label>
+            <label htmlFor="idPatient">CPF ou Identidade</label>
             <div className="wrap-input100 validate-input m-b-16">
             <input
               className="input100 textInput"
-              type="text"
-              name="cpf"
-              id="cpf"
-              placeholder="CPF"
-              value={ this.state.formData.cpf }
+              type="number"
+              name="idPatient"
+              id="idPatient"
+              placeholder="CPF ou Identidade"
+              value={ this.state.formData.idPatient }
               onChange={ this.handleChange }
             /> 
             <span className="focus-input100"></span>
@@ -229,8 +216,8 @@ class NewPatient extends Component {
                 </span>
             </div>
 
-          <label htmlFor="mv">Número MV</label>
-          <div className="wrap-input100 validate-input m-b-16">
+            <label htmlFor="mv">Número MV</label>
+            <div className="wrap-input100 validate-input m-b-16">
 
             <input
               className="input100 textInput"
@@ -248,8 +235,8 @@ class NewPatient extends Component {
                 </span>
             </div>
 
-          <label htmlFor="same">Número SAME</label>
-          <div className="wrap-input100 validate-input m-b-16">
+            <label htmlFor="same">Número SAME</label>
+            <div className="wrap-input100 validate-input m-b-16">
 
             <input
               className="input100 textInput"
@@ -271,7 +258,7 @@ class NewPatient extends Component {
 
 
             <label htmlFor="same">Cartão do SUS</label>
-          <div className="wrap-input100 validate-input m-b-16">
+            <div className="wrap-input100 validate-input m-b-16">
 
             <input
               className="input100 textInput"
@@ -290,7 +277,7 @@ class NewPatient extends Component {
                 </span>
             </div>
           
-
+          
             <label htmlFor="birthDate">Data de Nascimento</label>
             <div className="wrap-input100 validate-input m-b-16">
             <input
@@ -406,16 +393,141 @@ class NewPatient extends Component {
                 </span>
             </div>
 
+            <label htmlFor="cep">CEP</label>
+            <div className="wrap-input100 validate-input m-b-16">
+            <input
+              className="input100 textInput"
+              type="number"
+              name="cep"
+              id="cep"
+              placeholder="CEP"
+              value={ this.state.formData.cep }
+              onChange={ this.handleChange }
+              required
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-map-marker-alt"></span>
+                </span>
+            </div>
 
-            <label htmlFor="address">Endereço</label>
+            <label htmlFor="street">Rua / Alameda / Avenida</label>
             <div className="wrap-input100 validate-input m-b-16">
             <input
               className="input100 textInput"
               type="text"
-              name="address"
-              id="address"
-              placeholder="Endereço"
-              value={ this.state.formData.address }
+              name="street"
+              id="street"
+              placeholder="Rua / Alameda / Avenida"
+              value={ this.state.formData.street }
+              onChange={ this.handleChange }
+              required
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-map-marker-alt"></span>
+                </span>
+            </div>
+
+            <label htmlFor="homeNumber">Número da residência</label>
+            <div className="wrap-input100 validate-input m-b-16">
+            <input
+              className="input100 textInput"
+              type="number"
+              name="homeNumber"
+              id="homeNumber"
+              placeholder="Número"
+              value={ this.state.formData.homeNumber }
+              onChange={ this.handleChange }
+              required
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-map-marker-alt"></span>
+                </span>
+            </div>
+
+            <label htmlFor="complement">Complemento / Bloco + Apartamento</label>
+            <div className="wrap-input100 validate-input m-b-16">
+            <input
+              className="input100 textInput"
+              type="text"
+              name="complement"
+              id="complement"
+              placeholder="Ex: Perto da praça do Papa / 601"
+              value={ this.state.formData.complement }
+              onChange={ this.handleChange }
+              required
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-map-marker-alt"></span>
+                </span>
+            </div>
+
+            <label htmlFor="neighborhood">Bairro</label>
+            <div className="wrap-input100 validate-input m-b-16">
+            <input
+              className="input100 textInput"
+              type="text"
+              name="neighborhood"
+              id="neighborhood"
+              placeholder="Bairro"
+              value={ this.state.formData.neighborhood }
+              onChange={ this.handleChange }
+              required
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-map-marker-alt"></span>
+                </span>
+            </div>
+
+            <label htmlFor="city">Cidade</label>
+            <div className="wrap-input100 validate-input m-b-16">
+            <input
+              className="input100 textInput"
+              type="text"
+              name="city"
+              id="city"
+              placeholder="Cidade"
+              value={ this.state.formData.city }
+              onChange={ this.handleChange }
+              required
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-map-marker-alt"></span>
+                </span>
+            </div>
+
+            <label htmlFor="state">Estado</label>
+            <div className="wrap-input100 validate-input m-b-16">
+            <input
+              className="input100 textInput"
+              type="text"
+              name="state"
+              id="state"
+              placeholder="Estado"
+              value={ this.state.formData.state }
+              onChange={ this.handleChange }
+              required
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-map-marker-alt"></span>
+                </span>
+            </div>
+
+            <label htmlFor="country">País</label>
+            <div className="wrap-input100 validate-input m-b-16">
+            <input
+              className="input100 textInput"
+              type="text"
+              name="country"
+              id="country"
+              placeholder="País"
+              value={ this.state.formData.country }
               onChange={ this.handleChange }
               required
             /> 
@@ -443,10 +555,11 @@ export default NewPatient;
 	data_nasc: "",
 	idade: 0,
 	sexo: "",
-	etnia: 0, //[Branco, Negro, Pardo, Amarelo]
+	etnia: 0, //[Branco, Negro, Pardo, Amarelo, Indefinido]
 	tel1: "",
 	tel2: "",
 	tel_emerg: "",
-	cel: "",
+  cel: "",
+  
 	endereco: "",
 */
