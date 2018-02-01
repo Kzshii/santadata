@@ -10,6 +10,7 @@ class NewPatient extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.ageCalc = this.ageCalc.bind(this);
 
     this.state = {
       formData: {
@@ -19,7 +20,7 @@ class NewPatient extends Component {
         same:'',
         sus:'',
         birthDate: '',
-        age: '',
+        age:'',
         gender: '',
         etiny: '',
         tel1: '',
@@ -28,6 +29,10 @@ class NewPatient extends Component {
         cel: '',
         address: '',
       },
+
+      formExhibition:{
+        stringAge: "",
+      }
     }
   }
 
@@ -124,7 +129,7 @@ class NewPatient extends Component {
     .then(
       (response) => {
         console.log("RETORNO", response.data);
-        if(response.data.data.success) {
+        if(response.data.success) {
           alert("Paciente cadastrado com sucesso!");
           this.props.switchSection(<Intro userData={ this.props.userData } />);
         } else if(response.data.error) {
@@ -138,6 +143,42 @@ class NewPatient extends Component {
       }
     );
   }
+
+  ageCalc(date){
+    
+    var birthDate = new Date(date);
+    var todayDate = new Date;
+    var totalDays = "";
+    var days = "";
+    var months = "";
+    var years = "";
+
+    if (this.handleChange && this.state.formData.birthDate){
+
+      totalDays = ((todayDate.getTime() - birthDate.getTime()) / 86400000);
+
+      if (totalDays < 0){
+        alert("Por favor, digite uma data válida!")
+        this.state.formExhibition.stringAge = "Inválida";
+        this.state.formData.age = "Inválida";
+      }
+
+      else{
+
+        years = Math.floor(totalDays / 365);
+
+        months = Math.floor((totalDays % 365) / 30);
+
+        days = Math.floor(((totalDays % 365) % 30)) ;
+        
+        this.state.formData.age = years;
+
+        this.state.formExhibition.stringAge = years + " Anos, " + months + " Meses e " + days + " Dias."
+        
+      }
+    }
+  }
+
 
   render() {
     return(
@@ -171,7 +212,7 @@ class NewPatient extends Component {
                 </span>
             </div>
 
-            <label htmlFor="cpf">CPF</label>
+            <label htmlFor="cpf">CPF ou Identidade</label>
             <div className="wrap-input100 validate-input m-b-16">
             <input
               className="input100 textInput"
@@ -268,21 +309,20 @@ class NewPatient extends Component {
             </span>
             </div>
 
-      
-
-   
+            { this.ageCalc(this.state.formData.birthDate)  }
       
             <label htmlFor="age">Idade</label>
             <div className="wrap-input100 m-b-16">
             <input
               className="input100 textInput"
-              type="number"
+              type="text"
               name="age"
               id="age"
               placeholder="Idade"
-              value={ this.state.formData.age }
+              value= { this.state.formExhibition.stringAge }
               onChange={ this.handleChange }
               required
+              readOnly
             /> 
             <span className="focus-input100"></span>
             <span className="symbol-input100">
@@ -290,13 +330,16 @@ class NewPatient extends Component {
                 </span>
             </div>
            
+            {/* TODO: Acertar o estilo desses campos */}
 
             <label htmlFor="" id="Up">Sexo </label>
+            <br/>
             <input type="radio" name="gender" id="gender" value="M" onChange={ this.handleChange } /><strong> Masculino</strong>
-            <input type="radio" name="gender" id="gender" value="F" onChange={ this.handleChange } /> <strong>Feminino</strong>
+            <input type="radio" name="gender" id="gender" value="F" onChange={ this.handleChange } /><strong> Feminino</strong>
             <br/>
 
-            <label htmlFor="etiny" id="Up">Etnia</label>
+            <label htmlFor="etiny" id="Up">Etnia </label>
+            <br/>
             <select name="etiny" id="etiny" onChange={ this.handleChange } >
               <option value="">-- Escolher --</option>
               <option value="0">Branco</option>
@@ -306,6 +349,9 @@ class NewPatient extends Component {
               <option value="4">Indefinido</option>
             </select>
             <br/>
+            <br/>
+
+            {/* Até aqui */}
 
             <label htmlFor="tel1">Telefone</label>
             <div className="wrap-input100 validate-input m-b-16">
