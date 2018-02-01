@@ -20,16 +20,35 @@ import './Select.css';
         }
       ]
       KeyTag: text,
-      OnChange: function pointer
+      OnChange: function pointer,
+      Disabled: boolean,
+      Required: boolean
     }
 */
 
 class Select extends Component {
   render() {
+    let disabled = false;
+    let required = false;
+
+    if(this.props.Disabled && (this.props.Disabled !== "false")) {
+      disabled = true;
+    }
+
+    if(this.props.Required && (this.props.Required !== "false")) {
+      required = true;
+    }
+
     return(
       <div className="Select">
         <label htmlFor="">{ this.props.Label }</label>
-        <select name={ this.props.Name } id={ this.props.Id } onChange={ this.props.OnChange }>
+        <select
+          name={ this.props.Name }
+          id={ this.props.Id }
+          onChange={ this.props.OnChange }
+          disabled={ disabled }
+          required={ required }
+        >
           {
             this.props.Options.map(
               (option) => {

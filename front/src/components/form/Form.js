@@ -153,7 +153,9 @@ class Form extends Component {
                       OnChange={ this.handleChange }
                       Type={ inputField.type }
                       Name={ input }
-                      SpecialAttribute={ inputField.special }
+                      Disabled={ inputField.disabled }
+                      ReadOnly={ inputField.readonly }
+                      Required={ inputField.required }
                     />
                   );
                 

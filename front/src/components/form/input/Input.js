@@ -7,59 +7,32 @@ import './Input.css';
       Type: text,
       Id: text,
       Name: text,
+      Value: any,
       OnChange: function pointer,
-      SpecialAttribute: text, // readonly, disabled, required
+      Disabled: boolean,
+      ReadOnly: boolean,
+      Required: boolean
     }
 */
 
 class Input extends Component {
   render() {
-    if(this.props.SpecialAttribute) {
-      switch(this.props.SpecialAttribute) {
-        case 'required':
-          return(
-            <div className="Input">
-              <label htmlFor={ this.props.Id }>{ this.props.Label }</label>
-              <input
-                type={ this.props.Type }
-                name={ this.props.Name }
-                id={ this.props.Id }
-                onChange={ this.props.OnChange }
-                required
-              />
-            </div>
-          );
-        case 'disabled':
-          return(
-            <div className="Input">
-              <label htmlFor={ this.props.Id }>{ this.props.Label }</label>
-              <input
-                type={ this.props.Type }
-                name={ this.props.Name }
-                id={ this.props.Id }
-                onChange={ this.props.OnChange }
-                disabled
-              />
-            </div>
-          );
-        case 'readOnly':
-          return(
-            <div className="Input">
-              <label htmlFor={ this.props.Id }>{ this.props.Label }</label>
-              <input
-                type={ this.props.Type }
-                name={ this.props.Name }
-                id={ this.props.Id }
-                onChange={ this.props.OnChange }
-                readOnly
-              />
-            </div>
-          );
-        default:
-          break;
-      }
+    let disabled = false;
+    let readOnly = false;
+    let required = false;
+
+    if(this.props.Disabled && (this.props.Disabled !== "false")) {
+      disabled = true;
     }
-    
+
+    if(this.props.ReadOnly && (this.props.ReadOnly !== "false")) {
+      readOnly = true;
+    }
+
+    if(this.props.Required && (this.props.Required !== "false")) {
+      required = true;
+    }
+        
     return(
       <div className="Input">
         <label htmlFor={ this.props.Id }>{ this.props.Label }</label>
@@ -68,6 +41,10 @@ class Input extends Component {
           name={ this.props.Name }
           id={ this.props.Id }
           onChange={ this.props.OnChange }
+          disabled={ disabled }
+          readOnly={ readOnly }
+          required={ required }
+          value={ this.props.Value }
         />
       </div>
     );
