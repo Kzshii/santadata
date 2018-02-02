@@ -6,7 +6,7 @@
     "routes": {
       "login":"auth/login/",
       "newPatient":"gen/new/patient/",
-      "searchPatient":"",
+      "searchPatient":"gen/search/patient/",
       "getPatient":"gen/get/patient",
       "newConsult":"gen/new/consult/",
       

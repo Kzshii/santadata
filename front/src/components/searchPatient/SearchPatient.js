@@ -4,7 +4,7 @@ import Base64 from './../../lib/base64';
 import axios from 'axios';
 import PatientList from './../../components/patientList/PatientList';
 import PatientProfile from './../patientProfile/PatientProfile';
-import Config from './../../config.json';
+import Post from './../../lib/axios';
 
 class SearchPatient extends Component {
   
@@ -25,7 +25,6 @@ class SearchPatient extends Component {
         name: '',
       }
     };
-
   }
   
   handleChange(event) {
@@ -75,20 +74,22 @@ class SearchPatient extends Component {
       }
     } */
 
-    const url = 'gen/search/patient/'+this.props.userData.user_id+'/'+this.props.userData.hash+'/';
-    axios.defaults.baseURL = Config.rest[Config.rest.environment];
-
-    axios.post( url,"data="+Base64.encode(this.state.search) )
-    .then(
-      (response) => {
-        console.log("RETORNO: ", response.data);
+    Post.command = (serverResponse) => {
+      if(serverResponse.success) {
         this.setState({
-          show: response.data.data
+          show: serverResponse.data
         });
       }
-    ).catch();
-    
-    console.log(this.state);
+    };
+
+    Post.data = this.state.search;
+
+    Post.urlData = [
+      this.props.userData.user_id,
+      this.props.userData.hash
+    ];
+
+    Post('searchPatient');
   }
 
   openPatient(patientId) {
