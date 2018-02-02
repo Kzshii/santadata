@@ -162,6 +162,7 @@ class Form extends Component {
                 
                 default:
                   console.log("elemento não listado");
+                  return(null);
                   break;
               }
             }
