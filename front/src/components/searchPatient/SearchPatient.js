@@ -62,6 +62,8 @@ class SearchPatient extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
+    const user_id = this.props.userData.user_id;
+    const user_hash = this.props.userData.hash;
     
     /* let searchResult = [];
     searchResult = this.searchPatient();
@@ -85,8 +87,8 @@ class SearchPatient extends Component {
     Post.data = this.state.search;
 
     Post.urlData = [
-      this.props.userData.user_id,
-      this.props.userData.hash
+      user_id,
+      user_hash
     ];
 
     Post('searchPatient');
