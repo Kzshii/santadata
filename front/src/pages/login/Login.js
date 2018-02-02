@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
 import LoginForm from './../../components/loginForm/LoginForm';
-import axios from 'axios';
-import Base64 from './../../lib/base64';
-import Config from './../../config.json';
-const Rest = Config.rest;
+import Post from './../../lib/axios';
 
 class Login extends Component {
 
@@ -20,40 +17,23 @@ class Login extends Component {
   }
 
   requestLogin(loginData) {
+    Post.command = (serverResponse) => {
+      if(serverResponse.success) {
+        this.props.onLogin(serverResponse.data);
+      } else {
+        alert("Login ou senha inválidos.");
+      }
+    };
 
-    var data = Base64.encode({
+    Post.data = {
       'user': loginData.user,
       'pass': loginData.pass /* TODO: Passar md5 na pass. Path: ./rest/libs/helper/md5.js */
-    });
+    };
 
-    axios.defaults.baseURL = Rest[Rest.environment];
-
-    axios.post(
-      Rest.routes.login,
-      "data="+data
-    )
-    .then(
-      (response) => {
-        if(response.data.success === 1) {
-          console.log("LOGIN SUCCESS",response.data.data);
-          this.props.onLogin(response.data.data);
-        } else if(response.data.success === 0) {
-          alert("Verifique seu usuário e senha!");
-        } else {
-          // TODO: falha na rota
-          console.log("FALHA NA ROTA");
-        }
-      }
-    )
-    .catch(
-      function(error) {
-        console.log("ERRO NO POST",error);
-      }
-    );
+    Post('login');
   }
 
   render() {
-
     return(
       <div className="LoginPage">
         <div className="loginBox container">
