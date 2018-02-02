@@ -8,7 +8,11 @@ Post.data = {};
 Post.command = (data) => {
   console.log("POST - DEFAULT COMMAND",data);
   return(data);
-}
+};
+
+Post.error = (error) => {
+  return(error);
+};
 
 export function Post(route, urlData, data) {
 
@@ -42,7 +46,7 @@ export function Post(route, urlData, data) {
     function(response) {
       if(response.request.status == 200) {
         console.log("LIB AXIOS - THEN OK:",response);
-        Post.command(response.data.data);
+        Post.command(response.data);
       } else {
         console.log("LIB AXIOS - THEN FAIL:",response);
         return(null);
@@ -52,7 +56,7 @@ export function Post(route, urlData, data) {
   .catch(
     function(error) {
       console.log("LIB AXIOS - CATCH:",error);
-      return(error);
+      Post.error(error);
     }
   );
 }
