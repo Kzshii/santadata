@@ -3,16 +3,17 @@ import './Radiogroup.css';
 
 /*
   Props: {
-    Label: text,
-    Name: text,
+    Label: text, REQUIRED
+    Name: text, REQUIRED
     Id: text,
-    OptionValue: text,
-    Options: [
+    KeyTag: text,
+    OptionValue: text, REQUIRED
+    Options: [ REQUIRED
       id: numeric,
       value: any,
       label: text
     ],
-    OnChange: function pointer,
+    OnChange: function pointer, REQUIRED
     Disabled: boolean,
     ReadOnly: boolean,
     Required: boolean

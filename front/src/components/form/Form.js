@@ -140,6 +140,7 @@ class Form extends Component {
                       KeyTag={ "Radio"+inputField.title }
                       OnChange={ this.handleChange }
                       OptionValue={ OptionValue }
+                      Name={ input }
                     />
                   );
                 
