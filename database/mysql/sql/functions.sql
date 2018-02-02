@@ -68,7 +68,7 @@ RETURNS INT
   BEGIN
 
   SET FOREIGN_KEY_CHECKS=0;
-  INSERT INTO people (name,cpf,dtnasc,tel1,tel2,tel_emerg,cel,address,nr_same,nr_sus) VALUES(
+  INSERT INTO people (name,cpf,dtnasc,tel1,tel2,tel_emerg,cel,address) VALUES(
     nome_p,
     cpf_p,
     data_nasc_p,
@@ -76,18 +76,18 @@ RETURNS INT
     tel2_p,
     tel_emerg_p,
     cel_p,
-    endereco_p,
-    nr_same_p,
-    nr_sus_p
+    endereco_p
   );
   
   SELECT LAST_INSERT_ID() INTO @id_people;
 
-  INSERT INTO patient (idpeople,iduser,prontuary_number,mv_number) VALUES(
+  INSERT INTO patient (idpeople,iduser,prontuary_number,mv_number,nr_same,nr_sus) VALUES(
     @id_people,
     iduser,
     nr_prontuario_p,
-    nr_mv_p
+    nr_mv_p,
+    nr_same_p,
+    nr_sus_p
   );
 
   SELECT LAST_INSERT_ID() INTO @id_patient;
