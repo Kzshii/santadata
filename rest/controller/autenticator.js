@@ -11,7 +11,7 @@ var config = require('../constants/config.js');
 var config_db = require('../constants/databases.js');
 
 //Databases
-var Mysql = require('../libs/persistence/mysql.js');
+//var Mysql = require('../libs/persistence/mysql.js');
 var Mongodb = require('../libs/persistence/mongodb.js');
 
 //Helpers
@@ -119,20 +119,24 @@ var Autenticator = {
 				res.status(result.error).send(error_message(result.message));
 			}
 			else{
-				var results = result.data[0]
+				if(result.data.length > 0){
+					var results = result.data[0]
 
-				var user =  {
-					user_id: results.iduser,
-					type_user: results.type_user,
-					hash: Autenticator.generate_hash_id(results.iduser),
-					name: results.name,
-					picture: results.picture
+					var user =  {
+						user_id: results.iduser,
+						type_user: results.type_user,
+						hash: Autenticator.generate_hash_id(results.iduser),
+						name: results.name,
+						picture: results.picture
+					}
+					
+					result.data = user;
+					console.log("#=> LOGIN SUCESS :"+user.user_id)
+
+					res.send(JSON.stringify(result))
 				}
-
-				result.data = user;
-				console.log("#=> LOGIN SUCESS :"+user.user_id)
-
-				res.send(JSON.stringify(result))
+				else
+					res.send(error_message("Invalid Login"));		
 			}
 		})
 	},

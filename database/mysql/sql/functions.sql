@@ -60,7 +60,9 @@ CREATE FUNCTION new_patient(iduser_p VARCHAR(45),
         tel2_p VARCHAR(20),
         tel_emerg_p VARCHAR(20),
         cel_p VARCHAR(20),
-        endereco_p TEXT) 
+        endereco_p TEXT,
+        nr_same_p INT,
+        nr_sus_p INT) 
 
 RETURNS INT
   BEGIN
@@ -79,11 +81,13 @@ RETURNS INT
   
   SELECT LAST_INSERT_ID() INTO @id_people;
 
-  INSERT INTO patient (idpeople,iduser,prontuary_number,mv_number) VALUES(
+  INSERT INTO patient (idpeople,iduser,prontuary_number,mv_number,nr_same,nr_sus) VALUES(
     @id_people,
     iduser,
     nr_prontuario_p,
-    nr_mv_p
+    nr_mv_p,
+    nr_same_p,
+    nr_sus_p
   );
 
   SELECT LAST_INSERT_ID() INTO @id_patient;
