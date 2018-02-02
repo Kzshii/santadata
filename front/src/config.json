@@ -1,6 +1,8 @@
 {
   "rest": {
-    "baseURL": "https://31.220.54.251:8443/",
+    "production": "https://31.220.54.251:8443/",
+    "development": "https://31.220.54.251:8444/",
+    "environment": "development",
     "routes": {
       "login":"auth/login/",
       "newPatient":"gen/new/patient/",
@@ -15,5 +17,9 @@
       "prepPredictors":"prepare/predictors/",
       "prepPrevention":"prepare/prevention/"
     }
+  },
+  "client": {
+    "production": "http://31.220.54.251:3000/",
+    "development": ""
   }
 }

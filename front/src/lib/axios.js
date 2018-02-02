@@ -33,7 +33,7 @@ export function Post(route, urlData, data) {
 
   let URL = Config.rest.routes[route]+urlComplement;
 
-  axios.defaults.baseURL = Config.rest.baseURL;
+  axios.defaults.baseURL = Config.rest[Config.rest.environment];
   axios.post(
     URL,
     "data="+Base64.encode(Post.data)
