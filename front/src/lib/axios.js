@@ -56,3 +56,5 @@ export function Post(route, urlData, data) {
     }
   );
 }
+
+export default Post;
