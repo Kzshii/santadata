@@ -320,21 +320,21 @@ class NewPatient extends Component {
            
             {/* TODO: Acertar o estilo desses campos */}
 
-            <label htmlFor="" id="Up">Sexo </label>
             <br/>
+            <label htmlFor="" id="Up">Sexo </label>
             <input type="radio" name="gender" id="gender" value="M" onChange={ this.handleChange } /><strong> Masculino</strong>
             <input type="radio" name="gender" id="gender" value="F" onChange={ this.handleChange } /><strong> Feminino</strong>
             <br/>
+            <br/>
 
             <label htmlFor="etiny" id="Up">Etnia </label>
-            <br/>
             <select name="etiny" id="etiny" onChange={ this.handleChange } >
-              <option value="">-- Escolher --</option>
-              <option value="0">Branco</option>
-              <option value="1">Negro</option>
-              <option value="2">Pardo</option>
-              <option value="3">Amarelo</option>
-              <option value="4">Indefinido</option>
+              <option style={{fontWeight: 'bold',}} value="">-- Escolher --</option>
+              <option style={{fontWeight: 'bold',}} value="0">Branco</option>
+              <option style={{fontWeight: 'bold',}} value="1">Negro</option>
+              <option style={{fontWeight: 'bold',}} value="2">Pardo</option>
+              <option style={{fontWeight: 'bold',}} value="3">Amarelo</option>
+              <option style={{fontWeight: 'bold',}} value="4">Indefinido</option>
             </select>
             <br/>
             <br/>

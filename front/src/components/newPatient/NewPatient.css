@@ -133,6 +133,13 @@ button:hover {
     
 }
 
+.newPatient button, select {
+  text-transform: none;
+  font-weight: bolder;
+  color: inherit;
+  margin-left: 115px;
+}
+
 .NewPatient .Button{
 	font-family: Lato;
     font-size: 16px;
@@ -162,8 +169,8 @@ button:hover {
     display: inline-block;
     color: initial;
     width: auto;
-    height: 30px;
-    margin-left: 30px;
+    height: 13px;
+    margin-left: 65px;
 }
 
 /*.NewPatientHead {
@@ -181,10 +188,6 @@ button:hover {
 .same-line-table{
     display: table-cell;
 }*/
-
-#Up{
-    font-size: 20px;
-}
 
 #ethnicity{
     margin-left: 30px;
