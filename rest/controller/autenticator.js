@@ -139,7 +139,7 @@ var Autenticator = {
 					res.send(JSON.stringify(result))
 				}
 				else
-					res.status(result.error).send(error_message("Invalid Login"));		
+					res.send(error_message("Invalid Login"));		
 			}
 		})
 	},
