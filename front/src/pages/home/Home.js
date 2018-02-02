@@ -36,13 +36,11 @@ class Home extends Component {
   }
 
   switchSection(target) {
-    console.log("Switch section", target);
     this.setState(
       {
         currentSection: target,
       }
     );
-    console.log(this.state.currentSection);
   }
 
   render() {

@@ -3,6 +3,7 @@ import './NewPatient.css';
 import Base64 from './../../lib/base64';
 import axios from 'axios';
 import Intro from './../intro/Intro';
+import Config from './../../config.json';
 
 class NewPatient extends Component {
   constructor(props) {
@@ -107,7 +108,7 @@ class NewPatient extends Component {
 
     const url = 'gen/new/patient/'+this.props.userData.user_id+'/'+this.props.userData.hash+'/';
 
-    axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+    axios.defaults.baseURL = Config.rest[Config.rest.environment];
     axios.post(url,"data="+data)
     .then(
       (response) => {

@@ -8,11 +8,7 @@ import Base64 from '../../lib/base64';
 import Interventions from "./interventions/Interventions";
 import Predictors from "./predictors/Predictors";
 import PhysicalExams from "./physicalExams/PhysicalExams";
-
-import Medicines from "./medicines/Medicines"; 
-
-/* import PhysicalExams from "./physicalExams/PhysicalExams";
-  */
+import Medicines from "./medicines/Medicines";
 
 class NewConsult extends Component {
 
@@ -31,7 +27,6 @@ class NewConsult extends Component {
       <PhysicalExams title="Exames Físicos" saveData={ this.storeFormData } />,
       <Medicines title="Medicamentos" saveData={ this.storeFormData } />,
       <Predictors title="Preditores" saveData={ this.storeFormData } />,
-
     ];
 			
     this.state = {
@@ -82,21 +77,17 @@ class NewConsult extends Component {
     });
   }
   
-  
   saveConsult(){
     //Salvar Consulta
     const consultData = this.state.consultData;
 
     console.log("paciente aqui: =)", this.props.patient);
  
-    const data= Base64.encode({
-
+    const data = Base64.encode({
       id_pacient: this.props.patient.idpatient,
       id_user: "",
-
       data: consultData,
-
-    }) 
+    });
       
     alert("Consulta Salva");
     //this.props.switchSection(<PatientProfile patient={ this.props.patient } switchSection={ this.props.switchSection }/>)

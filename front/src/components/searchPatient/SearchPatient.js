@@ -4,6 +4,7 @@ import Base64 from './../../lib/base64';
 import axios from 'axios';
 import PatientList from './../../components/patientList/PatientList';
 import PatientProfile from './../patientProfile/PatientProfile';
+import Config from './../../config.json';
 
 class SearchPatient extends Component {
   
@@ -75,7 +76,7 @@ class SearchPatient extends Component {
     } */
 
     const url = 'gen/search/patient/'+this.props.userData.user_id+'/'+this.props.userData.hash+'/';
-    axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+    axios.defaults.baseURL = Config.rest[Config.rest.environment];
 
     axios.post( url,"data="+Base64.encode(this.state.search) )
     .then(

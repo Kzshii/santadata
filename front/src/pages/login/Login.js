@@ -26,7 +26,7 @@ class Login extends Component {
       'pass': loginData.pass /* TODO: Passar md5 na pass. Path: ./rest/libs/helper/md5.js */
     });
 
-    axios.defaults.baseURL = Rest.baseURL;
+    axios.defaults.baseURL = Rest[Rest.environment];
 
     axios.post(
       Rest.routes.login,

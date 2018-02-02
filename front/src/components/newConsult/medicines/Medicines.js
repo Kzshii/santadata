@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Medicines.css';
 import Form from './../../form/Form';
 import Select from './../../form/select/Select';
+import { Post } from './../../../lib/axios';
 
 /*
   Medicines retorna um array com os medicamentos adicionados.
@@ -45,21 +46,13 @@ class Medicines extends Component {
   }
   
   componentDidMount() {
-    /*
-		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
-		axios.post(
-			"prepare/medicines/",
-			{}
-		).then(
-			(response) => {
-				this.setState(
-					{
-						prepare: response.data.data,
-					}
-				);
-			}
-		).catch();
-		*/
+    
+    /* Post.command = (data) => {
+      this.setState({ prepare: data });
+    }
+
+    Post('prepMedicines'); */
+		
     this.setState(
       {
         prepare: {
@@ -69,6 +62,7 @@ class Medicines extends Component {
             date: {
                 type: "date", // data
                 title: "Data",
+                required: "true"
             },
                   
             charge: {
@@ -404,6 +398,8 @@ class Medicines extends Component {
   }
 
   render() {
+    console.log("MEDICINES STATE:",this.state);
+    console.log("MEDICINES X:",this.x);
     if(!this.state.prepare) {
       return(
         <div>Loading</div>
@@ -422,7 +418,8 @@ class Medicines extends Component {
             KeyTag="SelectMedicine"
             OnChange={ this.selectMedicine }
           />
-
+          
+          <form action="">
           <Form
             OnSubmit={ this.storeMedicine }
             InputList={ this.InputList } 
@@ -439,6 +436,7 @@ class Medicines extends Component {
               }
             }}
           />
+          </form>
         </div>
 
         {/* TODO: Exibir medicamentos adicionados à pool */}

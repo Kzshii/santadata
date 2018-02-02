@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Interventions.css';
 import Base64 from '../../../lib/base64';
 import axios from 'axios';
-
+import Config from './../../../config.json';
 
 class Interventions extends Component {
   constructor(props){
@@ -17,7 +17,7 @@ class Interventions extends Component {
   }
 
   componentWillMount() {
-		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+		axios.defaults.baseURL = Config.rest[Config.rest.environment];
 		axios.post(
 			"prepare/interventions/",
 			{}
@@ -95,41 +95,41 @@ class Interventions extends Component {
 			<div className="interventions">
 				<h2>Intervenções</h2>
 
-					<form onSubmit={ () => this.props.saveData("interventions",this.state.formData) }>
-						<h3>Tipos de intervenções</h3>
-						
-						<label htmlFor="angio">Angio</label>
-						{
-							this.state.prepare.angio.map(
-								(angio) => {
-									return (
-										<div key={ angio.id }>
-											<input type="checkbox" name="angio" value={ angio.id } onChange={ this.handleChange } />
-											<label htmlFor="">{ angio.label }</label>
-										</div>
-									);
-								}
-							)						
-						}
-						<br/>
+        <form onSubmit={ () => this.props.saveData("interventions",this.state.formData) }>
+          <h3>Tipos de intervenções</h3>
+          
+          <label htmlFor="angio">Angio</label>
+          {
+            this.state.prepare.angio.map(
+              (angio) => {
+                return (
+                  <div key={ angio.id }>
+                    <input type="checkbox" name="angio" value={ angio.id } onChange={ this.handleChange } />
+                    <label htmlFor="">{ angio.label }</label>
+                  </div>
+                );
+              }
+            )						
+          }
+          <br/>
 
-						<label htmlFor="implantes">Implantes</label>
-						{
-							this.state.prepare.implantes.map(
-								(implantes) => {
-									return (
-										<div key={ implantes.id }>
-											<input type="checkbox" name="implantes" value={ implantes.id } onChange={ this.handleChange } />
-											<label htmlFor="">{ implantes.label }</label>
-										</div>
-									);
-								}
-							)						
-						}
-						<br/>
-						
-						<input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
-					</form>
+          <label htmlFor="implantes">Implantes</label>
+          {
+            this.state.prepare.implantes.map(
+              (implantes) => {
+                return (
+                  <div key={ implantes.id }>
+                    <input type="checkbox" name="implantes" value={ implantes.id } onChange={ this.handleChange } />
+                    <label htmlFor="">{ implantes.label }</label>
+                  </div>
+                );
+              }
+            )						
+          }
+          <br/>
+          
+          <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
+        </form>
 					
 			</div>
 		)

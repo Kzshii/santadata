@@ -5,6 +5,7 @@ import Base64 from './../../lib/base64';
 import axios from 'axios';
 import Button from './../button/Button';
 import NewConsult from './../newConsult/NewConsult';
+import Config from './../../config.json';
 
 class PatientProfile extends Component {
 
@@ -27,7 +28,7 @@ class PatientProfile extends Component {
     const user_id = this.props.userData.user_id;
     const user_hash = this.props.userData.hash;
     
-    axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+    axios.defaults.baseURL = Config.rest[Config.rest.environment];
     
     axios.post(
       'gen/get/patient/'+patientId+'/'+user_id+'/'+user_hash+'/',

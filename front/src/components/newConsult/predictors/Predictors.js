@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Predictors.css';
 import Base64 from '../../../lib/base64';
 import axios from 'axios';
+import Config from './../../../config.json';
 
 
 class Predictors extends Component {
@@ -20,7 +21,7 @@ class Predictors extends Component {
     
 	componentWillMount() {
         
-    axios.defaults.baseURL = 'https://31.220.54.251:8443/';
+    axios.defaults.baseURL = Config.rest[Config.rest.environment];
 		axios.post(
 			"prepare/predictors/",
 			"data="+Base64.encode({})
