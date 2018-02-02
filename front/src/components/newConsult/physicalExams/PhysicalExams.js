@@ -11,6 +11,11 @@ class PhysicalExams extends Component {
     
     this.mountSelectOptions= this.mountSelectOptions.bind(this);
     this.selectExam= this.selectExam.bind(this);
+    this.selectExamType= this.selectExamType.bind(this);
+    this.mountInputList= this.mountInputList.bind(this);
+    this.storeExam= this.storeExam.bind(this);
+    this.handleSubmit= this.handleSubmit.bind(this);
+
     this.inputList={};
     this.SelectOptions=[];
     this.exams=[];
@@ -18,7 +23,8 @@ class PhysicalExams extends Component {
     this.state = {
 			prepare: null,
 			storedExams:[],
-			selectedExam: "fisico",
+      selectedExamType: "fisico",
+      selectedExam:"geral",
 			inputList: null
     };
   }
@@ -141,7 +147,7 @@ class PhysicalExams extends Component {
               derrame_pleural:{
                 type: "radio",
                 title: "Derrame Pleural",
-                opetions:[
+                options:[
                   {id:0, label:"Sim"},
                   {id:1, label:"Nao"},
                 ]
@@ -363,10 +369,20 @@ class PhysicalExams extends Component {
 		);
   }
   
-  selectExam(event) {
+  selectExamType(event) {
+    let exams= Object.keys(this.state.prepare[event.target.value]);
+    let exam = exams[1];
+
+    this.setState({
+      selectedExamType: event.target.value,
+      selectedExam: exam
+    });
+  }
+
+  selectExam(event){
     this.setState({
       selectedExam: event.target.value
-    });
+    })
   }
 
 	mountSelectOptions(selectType){
@@ -384,7 +400,7 @@ class PhysicalExams extends Component {
       
     this.SelectOptions= selectOptions;
     
-    let exam= this.state.prepare[this.state.selectedExam]
+    let exam= this.state.prepare[this.state.selectedExamType]
     options= Object.keys(exam);
     selectOptions= [];
 
@@ -396,8 +412,34 @@ class PhysicalExams extends Component {
       })
         
     }
+     
     this.exams=selectOptions;    
 	}
+
+  storeExam(Exam){
+    let store = this.state.storedExams;
+
+    Exam.name= this.state.selectedExam;
+    Exam.type= this.state.selectedExamType;
+
+    store.push(Exam)
+
+    this.setState({
+      storedExams: store
+    })
+
+  }
+
+  mountInputList(){
+
+    let exam= this.state.selectedExam;
+    let examType= this.state.selectedExamType;
+
+    this.inputList= this.state.prepare[examType][exam];
+
+  }
+
+
 
 	render(){
     
@@ -407,7 +449,10 @@ class PhysicalExams extends Component {
 			);
 		}else{
       this.mountSelectOptions();
-    
+      this.mountInputList();
+      console.log("AQUI EM");
+      console.log(this.inputList);
+     
 			return(
 				<div className="InputExam">
 				
@@ -415,8 +460,8 @@ class PhysicalExams extends Component {
             Label="Tipo de Exame"
             Options={ this.SelectOptions }
             OptionValue="value"
-            KeyTag="SelectExam"
-            OnChange={ this.selectExam }
+            KeyTag="selectExam"
+            OnChange={ this.selectExamType }
             Name= "ExamsTypes"
           />
 
@@ -424,11 +469,30 @@ class PhysicalExams extends Component {
             Label="Exames"
             Options={ this.exams }
             OptionValue="value"
-            KeyTag="Exams"
+            KeyTag="exams"
             OnChange={ this.selectExam }
           />  
+
+          <Form
+            OnSubmit={ this.storeExam }
+            InputList={ this.inputList } 
+            SubmitValue="Guardar Exame"
+            Config={{
+              Select:{ 
+                OptionValue: "id"
+              },
+              Checkgroup:{
+                OptionValue: "id"
+              },
+              Radiogroup:{
+                OptionValue: "id"
+              }
+            }}
+          />
+
+          <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
 				</div>
-        
+      
 			);
 		}
 	} 
