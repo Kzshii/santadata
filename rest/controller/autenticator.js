@@ -116,6 +116,8 @@ var Autenticator = {
 		//Calling Dao Function
 		Dao_user.login(res,data, function(res,result){
 			console.log("teste")
+			console.log(result.data.length)
+			console.log(result.data)
 			if(result.success == 0){
 				res.status(result.error).send(error_message(result.message));
 			}
