@@ -11,7 +11,7 @@ var config = require('../constants/config.js');
 var config_db = require('../constants/databases.js');
 
 //Databases
-var Mysql = require('../libs/persistence/mysql.js');
+//var Mysql = require('../libs/persistence/mysql.js');
 var Mongodb = require('../libs/persistence/mongodb.js');
 
 //Helpers

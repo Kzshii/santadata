@@ -6,6 +6,12 @@
 
 
 var Config_databases = {
+	Mysql:{
+		production:"",
+		test: "",
+		user: "",
+		pass: ""
+	},
 	Mongo: {
 		collections: [
 		"user",
