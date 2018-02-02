@@ -31,9 +31,11 @@ export function Post(route, urlData, data) {
 
   let urlComplement = "";
 
-  for(let i = 0; i < Post.urlData.lenght ; i++) {
-    urlComplement = urlComplement+Post.urlData[i]+"/";
-  }
+  Post.urlData.map(
+    (urlItem) => {
+      urlComplement = urlComplement+urlItem+"/";
+    }
+  );
 
   let URL = Config.rest.routes[route]+urlComplement;
 
