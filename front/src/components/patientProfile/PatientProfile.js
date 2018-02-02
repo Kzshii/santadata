@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import './PatientProfile.css';
 import InfoCard from './../infoCard/InfoCard';
-import Base64 from './../../lib/base64';
-import axios from 'axios';
 import Button from './../button/Button';
 import NewConsult from './../newConsult/NewConsult';
-import Config from './../../config.json';
+import Post from './../../lib/axios';
 
 class PatientProfile extends Component {
 
   constructor(props) {
     super(props);
-    this.searchPatient = this.searchPatient.bind(this);
     this.handleClick = this.handleClick.bind(this);
 
     this.state = {
@@ -19,34 +16,26 @@ class PatientProfile extends Component {
     };
   }
 
-  componentWillMount(){
-    this.searchPatient(this.props.patientId);
-  }
-
-  searchPatient(id) {
-    const patientId = id;
+  componentDidMount(){
+    const patientId = this.props.patientId;
     const user_id = this.props.userData.user_id;
     const user_hash = this.props.userData.hash;
-    
-    axios.defaults.baseURL = Config.rest[Config.rest.environment];
-    
-    axios.post(
-      'gen/get/patient/'+patientId+'/'+user_id+'/'+user_hash+'/',
-      'data='+Base64.encode(
-        {}
-      )
-    )
-    .then(
-      (response) => {
+
+    Post.command = (serverResponse) => {
+      if(serverResponse.success) {
         this.setState({
-          patientData: response.data.data[0]
+          patientData: serverResponse.data[0]
         });
       }
-    ).catch(
-      (error) => {
-        console.log("ERRO:",error);
-      }
-    );
+    };
+
+    Post.urlData = [
+      patientId,
+      user_id,
+      user_hash
+    ];
+
+    Post('getPatient');
   }
 
   handleClick(event){
