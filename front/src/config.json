@@ -5,17 +5,15 @@
       "login":"auth/login/",
       "newPatient":"gen/new/patient/",
       "searchPatient":"",
-      "getPatient":"",
+      "getPatient":"gen/get/patient",
       "newConsult":"gen/new/consult/",
       
-      "prepare": {
-        "anamnese":"prepare/anamnese/",
-        "evidences":"prepare/evidences/",
-        "interventions":"prepare/interventions/",
-        "medicines":"prepare/medicines/",
-        "predictors":"prepare/predictors/",
-        "prevention":"prepare/prevention/"
-      }
+      "prepAnamnese":"prepare/anamnese/",
+      "prepEvidences":"prepare/evidences/",
+      "prepInterventions":"prepare/interventions/",
+      "prepMedicines":"prepare/medicines/",
+      "prepPredictors":"prepare/predictors/",
+      "prepPrevention":"prepare/prevention/"
     }
   }
 }
