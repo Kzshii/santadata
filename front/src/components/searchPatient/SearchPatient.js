@@ -79,7 +79,33 @@ class SearchPatient extends Component {
     Post.command = (serverResponse) => {
       if(serverResponse.success) {
         this.setState({
-          show: serverResponse.data
+          /* show: serverResponse.data */
+          show: [{
+            idRegister: this.props.userData.user_id,
+            patientName: 'Paciente ByPass',
+            idpatient: '1',
+            cpf: '',
+            rg: '',
+            mv: '123',
+            same:'123',
+            sus:'123',
+            birthDate: '2010-01-01',
+            age:'8',
+            gender: 'M',
+            ethnicity: 0,
+            tel1: 111,
+            tel2: 222,
+            telE: 333,
+            cel: 444,
+            cep: '123456',
+            street: 'Rua X',
+            homeNumber: 10,
+            complement:'',
+            neighborhood:'B1',
+            city:'C1',
+            state:'E1',
+            country:'Brasél',
+          }]
         });
       }
     };
