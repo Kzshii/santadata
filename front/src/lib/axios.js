@@ -36,7 +36,7 @@ export function Post(route, postInfo = {
   }) {
 
   if(route === undefined) {
-    console.log("Route missing");
+    console.log("LIB AXIOS - ROUTE MISSING!");
     return null;
   }
 
