@@ -1,42 +1,27 @@
 import React, { Component } from 'react';
 import './Evidences.css';
-import Base64 from '../../../lib/base64';
-import axios from 'axios';
-import Config from './../../../config.json';
 
 class Evidences extends Component {
   constructor(props) {
     super(props);
-				
+    
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-
+    
     this.state = {
-			prepare: {},
+			prepare: null,
 			formData: {},
     };
 	}
-
-	componentWillMount() {
-		axios.defaults.baseURL = Config.rest[Config.rest.environment];
-		axios.post(
-			"prepare/evidences/",
-			"data="+Base64.encode({})
-		).then(
-			(response) => {
-				this.setState(
-					{
-						prepare: response.data.data,
-					}
-				);
-			}
-		).catch();
-
+  
+	componentDidMount() {
+    this.props.prepare(this, "prepEvidences");
+    
     /* test only */
-		this.setState(
+		/* this.setState(
 			{
 				prepare: {
-
+          
 					// Registro de Evidencias
 					ev_estado: // 1
 					[
@@ -45,13 +30,13 @@ class Evidences extends Component {
 						{id: 2,label: "Desistente/Desaparecido"},
 						{id: 3,label: "Reinternação"},
 					],
-
+          
 					// Tempo do acompanhamento Ambulatorial
 					amb_start_time: "", //
-
+          
 					// Data Primeira Consulta
 					date_consult: "00/00/0000",
-
+          
 					// Etiologia
 					ev_etiologia: // 0..*
 					[								
@@ -64,7 +49,7 @@ class Evidences extends Component {
 						{id: 6,label: "Alcoólica"},
 						{id: 7,label: "Pós Quimioterapia"},
 					],
-
+          
 					// Co-morbidades
 					ev_comorbidades: // 0..*
 					[
@@ -78,7 +63,7 @@ class Evidences extends Component {
 						{id: 7,label: "Insuficiência Renal Crônica (IRC)"},
 						{id: 8,label: "Tireóide (hipo ou hipertireoidismo)"},
 					],
-
+          
 					// Eventos Adversos
 					ev_adversos: // 0..*
 					[
@@ -86,7 +71,7 @@ class Evidences extends Component {
 						{id: 1,label: "Acidente Vascular Cerebral (AVC)"},
 						{id: 2,label: "Internação (INT)"},
 					],
-
+          
 					// Obito
 					ev_obito: // 1
 					[
@@ -95,14 +80,14 @@ class Evidences extends Component {
 					],
 				},
 			}
-		);
+		); */
 	}
 	
 	handleChange(event) {
 		const target = event.target;
 		const name = target.name;
 		const value = target.value;
-
+    
 		let formData = this.state.formData;
 		
 		if(target.type === 'checkbox') {
@@ -118,7 +103,7 @@ class Evidences extends Component {
 				let index = formData[name].indexOf(value);
 				formData[name].splice(index, 1);
 			}
-
+      
 		} else {
 			formData[name] = value;
 		}
@@ -133,114 +118,119 @@ class Evidences extends Component {
 		event.preventDefault();
     this.props.saveData("evidences",this.state.formData);
 	}
-
+  
 	render(){
+    if(!this.state.prepare) {
+      return(
+        <div></div>
+      );
+    }
 		return(
 			<div className="Evidences">
-				<h2>Evidências</h2>
-
-				<form onSubmit={ this.handleSubmit } >
-
-					<label htmlFor="evidencesRegistry">Queixa principal:</label>
-					<select name="evidencesRegistry" id="evidencesResgistry" onChange={ this.handleChange } required >
-						<option value="">-- Escolher --</option>
-						{
-							this.state.prepare.ev_estado.map(
-								(ev_estado) => {
-									return(
-										<option key={ ev_estado.id } value={ ev_estado.id }>{ ev_estado.label }</option>
-									)
-								}
-							)
-						}
-					</select>
-					<br/>
-
-					<label htmlFor="monitoringTime">Tempo de acompanhamento ambulatorial:</label>
-					<input
-						type="number"
-						name="monitoringTime"
-						id="monitoringTime"
-						value={ this.state.formData.amb_start_time }
-						onChange={ this.handleChange }
-						required
-					/> 
-					<br/>
-
-					<label htmlFor="firstVisit">Data da primeira consulta:</label>
-					<input
-						type="date"
-						name="firstVisit"
-						id="firstVisit"
-						value={ this.state.formData.date_consult }
-						onChange={ this.handleChange }
-						required
-					/> 
-					<br/>
-
-					<label htmlFor="etiology">Etiologia</label>
-					{ 
-						this.state.prepare.ev_etiologia.map(
-							(ev_etiologia) => {
-								return(
-									<div key={ ev_etiologia.id }>
-										<input type="checkbox" name="ev_etiologia" value={ ev_etiologia.id } onChange={ this.handleChange } />
-										<label htmlFor="">{ ev_etiologia.label }</label>
-									</div>
-								);
-							}
-						)
-					}
-					<br/>
-
-					<label htmlFor="comorbidities">Comorbidades</label>
-					{ 
-						this.state.prepare.ev_comorbidades.map(
-							(ev_comorbidades) => {
-								return(
-									<div key={ ev_comorbidades.id }>
-										<input type="checkbox" name="ev_comorbidades" value={ ev_comorbidades.id } onChange={ this.handleChange } />
-										<label htmlFor="">{ ev_comorbidades.label }</label>
-									</div>
-								);
-							}
-						)
-					}
-					<br/>
-
-					<label htmlFor="adverseEvents">Eventos adversos</label>
-					{ 
-						this.state.prepare.ev_adversos.map(
-							(ev_adversos) => {
-								return(
-									<div key={ ev_adversos.id }>
-										<input type="checkbox" name="ev_adversos" value={ ev_adversos.id } onChange={ this.handleChange } />
-										<label htmlFor="">{ ev_adversos.label }</label>
-									</div>
-								);
-							}
-						)
-					}
-					<br/>
-
-					<label htmlFor="">Óbito?</label>
-					{
-						this.state.prepare.ev_obito.map(
-							(ev_obito) => {
-								return(
-									<div key={ ev_obito.id }>
-										<input type="radio" name="ev_obito" value={ ev_obito.id } onChange={ this.handleChange }/>
-										<label htmlFor="">{ ev_obito.label }</label>
-									</div>
-								);
-							}
-						)
-					}
-					<br/>	
-
-					<input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
-					
-				</form>
+        <h2>Evidências</h2>
+        
+        <form onSubmit={ this.handleSubmit } >
+        
+          <label htmlFor="evidencesRegistry">Estado:</label>
+          <select name="evidencesRegistry" id="evidencesResgistry" onChange={ this.handleChange } required >
+            <option value="">-- Escolher --</option>
+            {
+              this.state.prepare.ev_estado.map(
+                (ev_estado) => {
+                  return(
+                    <option key={ ev_estado.id } value={ ev_estado.id }>{ ev_estado.label }</option>
+                  )
+                }
+              )
+            }
+          </select>
+          <br/>
+          
+          <label htmlFor="monitoringTime">Tempo de acompanhamento ambulatorial:</label>
+            <input
+            type="number"
+            name="monitoringTime"
+            id="monitoringTime"
+            value={ this.state.formData.amb_start_time }
+            onChange={ this.handleChange }
+            required
+            /> 
+          <br/>
+          
+          <label htmlFor="firstVisit">Data da primeira consulta:</label>
+            <input
+            type="date"
+            name="firstVisit"
+            id="firstVisit"
+            value={ this.state.formData.date_consult }
+            onChange={ this.handleChange }
+            required
+            /> 
+          <br/>
+          
+          <label htmlFor="etiology">Etiologia</label>
+          { 
+            this.state.prepare.ev_etiologia.map(
+              (ev_etiologia) => {
+                return(
+                  <div key={ ev_etiologia.id }>
+                  <input type="checkbox" name="ev_etiologia" value={ ev_etiologia.id } onChange={ this.handleChange } />
+                  <label htmlFor="">{ ev_etiologia.label }</label>
+                  </div>
+                );
+              }
+            )
+          }
+          <br/>
+          
+          <label htmlFor="comorbidities">Comorbidades</label>
+          { 
+            this.state.prepare.ev_comorbidades.map(
+              (ev_comorbidades) => {
+                return(
+                  <div key={ ev_comorbidades.id }>
+                  <input type="checkbox" name="ev_comorbidades" value={ ev_comorbidades.id } onChange={ this.handleChange } />
+                  <label htmlFor="">{ ev_comorbidades.label }</label>
+                  </div>
+                );
+              }
+            )
+          }
+          <br/>
+          
+          <label htmlFor="adverseEvents">Eventos adversos</label>
+          { 
+            this.state.prepare.ev_adversos.map(
+              (ev_adversos) => {
+                return(
+                  <div key={ ev_adversos.id }>
+                  <input type="checkbox" name="ev_adversos" value={ ev_adversos.id } onChange={ this.handleChange } />
+                  <label htmlFor="">{ ev_adversos.label }</label>
+                  </div>
+                );
+              }
+            )
+          }
+          <br/>
+          
+          <label htmlFor="">Óbito?</label>
+          {
+            this.state.prepare.ev_obito.map(
+              (ev_obito) => {
+                return(
+                  <div key={ ev_obito.id }>
+                  <input type="radio" name="ev_obito" value={ ev_obito.id } onChange={ this.handleChange }/>
+                  <label htmlFor="">{ ev_obito.label }</label>
+                  </div>
+                );
+              }
+            )
+          }
+          <br/>	
+          
+          <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
+        
+        </form>
 			</div>
 		);
 	}

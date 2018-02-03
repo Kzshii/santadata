@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './NewPatient.css';
-import Base64 from './../../lib/base64';
-import axios from 'axios';
 import Intro from './../intro/Intro';
-import Config from './../../config.json';
+import Post from './../../lib/axios';
 
 class NewPatient extends Component {
   constructor(props) {
@@ -15,15 +13,17 @@ class NewPatient extends Component {
 
     this.state = {
       formData: {
+        idRegister: this.props.userData.user_id,
         patientName: '',
-        idPatient: '',
+        cpf: '',
+        rg: '',
         mv: '',
         same:'',
         sus:'',
         birthDate: '',
         age:'',
         gender: '',
-        etiny: '',
+        ethnicity: '',
         tel1: '',
         tel2: '',
         telE: '',
@@ -76,56 +76,26 @@ class NewPatient extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
+    const user_id = this.props.userData.user_id;
+    const user_hash = this.props.userData.hash;
 
-    const formData = this.state.formData;
-
-    const data = Base64.encode(
-      {
-        idRegister: this.props.userData.user_id,
-        name: formData.patientName,
-        idPatient: formData.idPatient,
-        mv: formData.mv,
-        same: formData.same,
-        sus: formData.sus,
-        birthDate: formData.birthDate,
-        age: formData.age,
-        gender: formData.gender,
-        etiny: formData.etiny, //[Branco, Negro, Pardo, Amarelo, Indefinido]
-        tel1: formData.tel1,
-        tel2: formData.tel2,
-        telE: formData.telE,
-        cel: formData.cel,
-        cep: formData.cep,
-        street: formData.street,
-        homeNumber:formData.homeNumber,
-        complement: formData.complement,
-        neighborhood:formData.neighborhood,
-        city:formData.city,
-        state:formData.state,
-        country:formData.country,
+    Post.command = (serverResponse) => {
+      if(serverResponse.success) {
+        alert("Paciente cadastrado com sucesso!");
+        this.props.switchSection(<Intro userData={ this.props.userData } />);
+      } else {
+        alert("Não foi possível cadastrar o paciente, tente novamente.");
       }
-    );
+    };
 
-    const url = 'gen/new/patient/'+this.props.userData.user_id+'/'+this.props.userData.hash+'/';
+    Post.data = this.props.formData;
 
-    axios.defaults.baseURL = Config.rest[Config.rest.environment];
-    axios.post(url,"data="+data)
-    .then(
-      (response) => {
-        console.log("RETORNO", response.data);
-        if(response.data.success) {
-          alert("Paciente cadastrado com sucesso!");
-          this.props.switchSection(<Intro userData={ this.props.userData } />);
-        } else if(response.data.error) {
-          alert("Não foi possível cadastrar o paciente, tente novamente.");
-        }
-      }
-    )
-    .catch(
-      function(error) {
-        console.log("ERRO", error);
-      }
-    );
+    Post.urlData = [
+      user_id,
+      user_hash
+    ];
+
+    Post('newPatient');
   }
 
   ageCalc(date){
@@ -327,8 +297,8 @@ class NewPatient extends Component {
             <br/>
             <br/>
 
-            <label htmlFor="etiny" id="Up">Etnia </label>
-            <select name="etiny" id="etiny" onChange={ this.handleChange } >
+            <label htmlFor="ethnicity" id="Up">Etnia </label>
+            <select name="ethnicity" id="ethnicity" onChange={ this.handleChange } >
               <option style={{fontWeight: 'bold',}} value="">-- Escolher --</option>
               <option style={{fontWeight: 'bold',}} value="0">Branco</option>
               <option style={{fontWeight: 'bold',}} value="1">Negro</option>
@@ -448,17 +418,16 @@ class NewPatient extends Component {
                 </span>
             </div>
 
-            <label htmlFor="complement">Complemento / Bloco + Apartamento</label>
+            <label htmlFor="complement">Complemento</label>
             <div className="wrap-input100 validate-input m-b-16">
             <input
               className="input100 textInput"
               type="text"
               name="complement"
               id="complement"
-              placeholder="Ex: Perto da praça do Papa / 601"
+              placeholder="Ex: Bloco 2, ap 101"
               value={ this.state.formData.complement }
               onChange={ this.handleChange }
-              required
             /> 
             <span className="focus-input100"></span>
                 <span className="symbol-input100">

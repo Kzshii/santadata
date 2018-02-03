@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import './Anamnese.css';
-import Base64 from './../../../lib/base64';
-import axios from 'axios';
-import Config from './../../../config.json';
 
 class Anamnese extends Component {
   constructor(props){
@@ -18,24 +15,7 @@ class Anamnese extends Component {
 	}
 	
 	componentDidMount() {
-		axios.defaults.baseURL = Config.rest[Config.rest.environment];
-		axios.post(
-			"prepare/anamnese/",
-			"data="+Base64.encode({})
-		).then(
-			(response) => {
-        console.log("ANAMNESE THEN",response.data.data);
-				this.setState(
-					{
-						prepare: response.data.data,
-					}
-        );
-			}
-		).catch(
-			function(error) {
-				console.log("AXIOS ERROR:",error);
-			}
-		);
+    this.props.prepare(this, "prepAnamnese");
     
 		/* test only */
 		/* this.setState(

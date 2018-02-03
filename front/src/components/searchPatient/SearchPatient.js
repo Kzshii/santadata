@@ -4,7 +4,7 @@ import Base64 from './../../lib/base64';
 import axios from 'axios';
 import PatientList from './../../components/patientList/PatientList';
 import PatientProfile from './../patientProfile/PatientProfile';
-import Config from './../../config.json';
+import Post from './../../lib/axios';
 
 class SearchPatient extends Component {
   
@@ -25,7 +25,6 @@ class SearchPatient extends Component {
         name: '',
       }
     };
-
   }
   
   handleChange(event) {
@@ -63,6 +62,8 @@ class SearchPatient extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
+    const user_id = this.props.userData.user_id;
+    const user_hash = this.props.userData.hash;
     
     /* let searchResult = [];
     searchResult = this.searchPatient();
@@ -75,20 +76,48 @@ class SearchPatient extends Component {
       }
     } */
 
-    const url = 'gen/search/patient/'+this.props.userData.user_id+'/'+this.props.userData.hash+'/';
-    axios.defaults.baseURL = Config.rest[Config.rest.environment];
-
-    axios.post( url,"data="+Base64.encode(this.state.search) )
-    .then(
-      (response) => {
-        console.log("RETORNO: ", response.data);
+    Post.command = (serverResponse) => {
+      if(serverResponse.success) {
         this.setState({
-          show: response.data.data
+          /* show: serverResponse.data */
+          show: [{
+            idRegister: this.props.userData.user_id,
+            patientName: 'Paciente ByPass',
+            idpatient: '1',
+            cpf: '',
+            rg: '',
+            mv: '123',
+            same:'123',
+            sus:'123',
+            birthDate: '2010-01-01',
+            age:'8',
+            gender: 'M',
+            ethnicity: 0,
+            tel1: 111,
+            tel2: 222,
+            telE: 333,
+            cel: 444,
+            cep: '123456',
+            street: 'Rua X',
+            homeNumber: 10,
+            complement:'',
+            neighborhood:'B1',
+            city:'C1',
+            state:'E1',
+            country:'Brasél',
+          }]
         });
       }
-    ).catch();
-    
-    console.log(this.state);
+    };
+
+    Post.data = this.state.search;
+
+    Post.urlData = [
+      user_id,
+      user_hash
+    ];
+
+    Post('searchPatient');
   }
 
   openPatient(patientId) {

@@ -9,6 +9,7 @@ import Interventions from "./interventions/Interventions";
 import Predictors from "./predictors/Predictors";
 import PhysicalExams from "./physicalExams/PhysicalExams";
 import Medicines from "./medicines/Medicines";
+import Post from "./../../lib/axios";
 
 class NewConsult extends Component {
 
@@ -21,18 +22,31 @@ class NewConsult extends Component {
     this.saveConsult= this.saveConsult.bind(this);
 
     this.sections = [
-      <Anamnese title="Anamnese" saveData={ this.storeFormData } />,
-      <Evidences title="Evidências" saveData={ this.storeFormData } />,
-      <Interventions title="Intervenções" saveData={ this.storeFormData } />,
-      <PhysicalExams title="Exames Físicos" saveData={ this.storeFormData } />,
-      <Medicines title="Medicamentos" saveData={ this.storeFormData } />,
-      <Predictors title="Preditores" saveData={ this.storeFormData } />,
+      <Anamnese title="Anamnese" saveData={ this.storeFormData } prepare={ this.prepare } />,
+      <Evidences title="Evidências" saveData={ this.storeFormData } prepare={ this.prepare } />,
+      <Interventions title="Intervenções" saveData={ this.storeFormData } prepare={ this.prepare } />,
+      <PhysicalExams title="Exames Físicos" saveData={ this.storeFormData } prepare={ this.prepare } />,
+      <Medicines title="Medicamentos" saveData={ this.storeFormData } prepare={ this.prepare } />,
+      <Predictors title="Preditores" saveData={ this.storeFormData } prepare={ this.prepare } />,
     ];
 			
     this.state = {
       currentSection: 0,
       consultData: {},
     };
+  }
+
+  prepare(component, route) {
+    Post.command = (serverResponse) => {
+      if(serverResponse.success) {
+        component.setState({
+          prepare: serverResponse.data
+        });
+        console.log("NEW CONSULT STATE",this.state);
+      }
+    }
+
+    Post(route);
   }
 
   storeFormData(param, data) {

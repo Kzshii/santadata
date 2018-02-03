@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Medicines.css';
 import Form from './../../form/Form';
 import Select from './../../form/select/Select';
-import { Post } from './../../../lib/axios';
 
 /*
   Medicines retorna um array com os medicamentos adicionados.
@@ -46,12 +45,7 @@ class Medicines extends Component {
   }
   
   componentDidMount() {
-    
-    /* Post.command = (data) => {
-      this.setState({ prepare: data });
-    }
-
-    Post('prepMedicines'); */
+    //this.props.prepare(this, "prepMedicines");
 		
     this.setState(
       {
