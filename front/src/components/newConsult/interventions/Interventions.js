@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import './Interventions.css';
-import Base64 from '../../../lib/base64';
-import axios from 'axios';
-import Config from './../../../config.json';
 
 class Interventions extends Component {
   constructor(props){
@@ -11,27 +8,16 @@ class Interventions extends Component {
 		this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-			prepare: {},
+			prepare: null,
 			formData: {},
     };
   }
 
-  componentWillMount() {
-		axios.defaults.baseURL = Config.rest[Config.rest.environment];
-		axios.post(
-			"prepare/interventions/",
-			{}
-		).then(
-			(response) => {
-				this.setState(
-					{
-						prepare: response.data.data,
-					}
-				);
-			}
-		).catch();
-
-		this.setState(
+  componentDidMount() {
+		this.props.prepare(this, "prepInterventions");
+		
+		/* Test only */
+		/* this.setState(
 			{
 				prepare: {
           //void: {id: -1, label: "Vazio"},
@@ -51,7 +37,7 @@ class Interventions extends Component {
 					]
 				}
 			},
-		);
+		); */
 	} 
 
   handleChange(event) {
@@ -91,6 +77,11 @@ class Interventions extends Component {
 	}
 
 	render(){
+		if(!this.state.prepare) {
+			return(
+				<div></div>
+			);
+		}
 		return(
 			<div className="interventions">
 				<h2>Intervenções</h2>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Anamnese.css';
-import Post from './../../../lib/axios';
 
 class Anamnese extends Component {
   constructor(props){
@@ -16,18 +15,7 @@ class Anamnese extends Component {
 	}
 	
 	componentDidMount() {
-
-    Post.command = (serverResponse) => {
-      if(serverResponse.success) {
-        this.setState(
-          {
-            prepare: serverResponse.data
-          }
-        );
-      }
-    }
-
-    Post('prepAnamnese');
+    this.props.prepare(this, "prepAnamnese");
     
 		/* test only */
 		/* this.setState(

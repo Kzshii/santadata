@@ -30,22 +30,8 @@ class PhysicalExams extends Component {
   }
 
   componentDidMount() {
-	  /*
-		axios.defaults.baseURL = 'https://31.220.54.251:8443/';
-		axios.post(
-			"prepare/exam/physical",
-			{}
-		).then(
-			(response) => {
-				this.setState(
-					{
-						prepare: response.data.data,
-					}
-				);
-				console.log(this.state.prepare)
-			}
-		).catch();
-		*/
+    this.props.prepare(this, "prepExams");
+    
 		this.setState(
 			{
 				prepare: {
