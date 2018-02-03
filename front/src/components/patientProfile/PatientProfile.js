@@ -16,7 +16,7 @@ class PatientProfile extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const patientId = this.props.patientId;
     const user_id = this.props.userData.user_id;
     const user_hash = this.props.userData.hash;
@@ -38,7 +38,7 @@ class PatientProfile extends Component {
     Post('getPatient');
   }
 
-  handleClick(event){
+  handleClick(event) {
     event.preventDefault();
 
     console.log("Aqui",this.state.patientData);

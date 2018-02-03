@@ -93,18 +93,21 @@ class NewConsult extends Component {
   
   saveConsult(){
     //Salvar Consulta
-    const consultData = this.state.consultData;
+    Post.command = (serverResponse) => {
+      if(serverResponse.success) {
+        alert("Consulta salva com sucesso");
+        //this.props.switchSection(<PatientProfile patient={ this.props.patient } switchSection={ this.props.switchSection }/>);
+      }
+    };
 
-    console.log("paciente aqui: =)", this.props.patient);
- 
-    const data = Base64.encode({
-      id_pacient: this.props.patient.idpatient,
-      id_user: "",
-      data: consultData,
-    });
-      
-    alert("Consulta Salva");
-    //this.props.switchSection(<PatientProfile patient={ this.props.patient } switchSection={ this.props.switchSection }/>)
+    Post.data = {
+      id_patient: this.props.patient.id,
+      id_user: this.props.userData.user,
+      data: this.state.consultData
+    }
+
+    //Post('saveConsult');
+    alert("Consulta salva com sucesso!*");
   }
 
 	render() {
