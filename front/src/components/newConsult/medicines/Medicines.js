@@ -45,7 +45,7 @@ class Medicines extends Component {
   }
   
   componentDidMount() {
-    this.props.prepare(this, "prepMedicines");
+    //this.props.prepare(this, "prepMedicines");
 		
     this.setState(
       {

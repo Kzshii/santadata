@@ -127,110 +127,110 @@ class Evidences extends Component {
     }
 		return(
 			<div className="Evidences">
-      <h2>Evidências</h2>
-      
-      <form onSubmit={ this.handleSubmit } >
-      
-      <label htmlFor="evidencesRegistry">Queixa principal:</label>
-      <select name="evidencesRegistry" id="evidencesResgistry" onChange={ this.handleChange } required >
-      <option value="">-- Escolher --</option>
-      {
-        this.state.prepare.ev_estado.map(
-          (ev_estado) => {
-            return(
-              <option key={ ev_estado.id } value={ ev_estado.id }>{ ev_estado.label }</option>
+        <h2>Evidências</h2>
+        
+        <form onSubmit={ this.handleSubmit } >
+        
+          <label htmlFor="evidencesRegistry">Estado:</label>
+          <select name="evidencesRegistry" id="evidencesResgistry" onChange={ this.handleChange } required >
+            <option value="">-- Escolher --</option>
+            {
+              this.state.prepare.ev_estado.map(
+                (ev_estado) => {
+                  return(
+                    <option key={ ev_estado.id } value={ ev_estado.id }>{ ev_estado.label }</option>
+                  )
+                }
+              )
+            }
+          </select>
+          <br/>
+          
+          <label htmlFor="monitoringTime">Tempo de acompanhamento ambulatorial:</label>
+            <input
+            type="number"
+            name="monitoringTime"
+            id="monitoringTime"
+            value={ this.state.formData.amb_start_time }
+            onChange={ this.handleChange }
+            required
+            /> 
+          <br/>
+          
+          <label htmlFor="firstVisit">Data da primeira consulta:</label>
+            <input
+            type="date"
+            name="firstVisit"
+            id="firstVisit"
+            value={ this.state.formData.date_consult }
+            onChange={ this.handleChange }
+            required
+            /> 
+          <br/>
+          
+          <label htmlFor="etiology">Etiologia</label>
+          { 
+            this.state.prepare.ev_etiologia.map(
+              (ev_etiologia) => {
+                return(
+                  <div key={ ev_etiologia.id }>
+                  <input type="checkbox" name="ev_etiologia" value={ ev_etiologia.id } onChange={ this.handleChange } />
+                  <label htmlFor="">{ ev_etiologia.label }</label>
+                  </div>
+                );
+              }
             )
           }
-        )
-      }
-      </select>
-      <br/>
-      
-      <label htmlFor="monitoringTime">Tempo de acompanhamento ambulatorial:</label>
-      <input
-      type="number"
-      name="monitoringTime"
-      id="monitoringTime"
-      value={ this.state.formData.amb_start_time }
-      onChange={ this.handleChange }
-      required
-      /> 
-      <br/>
-      
-      <label htmlFor="firstVisit">Data da primeira consulta:</label>
-      <input
-      type="date"
-      name="firstVisit"
-      id="firstVisit"
-      value={ this.state.formData.date_consult }
-      onChange={ this.handleChange }
-      required
-      /> 
-      <br/>
-      
-      <label htmlFor="etiology">Etiologia</label>
-      { 
-        this.state.prepare.ev_etiologia.map(
-          (ev_etiologia) => {
-            return(
-              <div key={ ev_etiologia.id }>
-              <input type="checkbox" name="ev_etiologia" value={ ev_etiologia.id } onChange={ this.handleChange } />
-              <label htmlFor="">{ ev_etiologia.label }</label>
-              </div>
-            );
+          <br/>
+          
+          <label htmlFor="comorbidities">Comorbidades</label>
+          { 
+            this.state.prepare.ev_comorbidades.map(
+              (ev_comorbidades) => {
+                return(
+                  <div key={ ev_comorbidades.id }>
+                  <input type="checkbox" name="ev_comorbidades" value={ ev_comorbidades.id } onChange={ this.handleChange } />
+                  <label htmlFor="">{ ev_comorbidades.label }</label>
+                  </div>
+                );
+              }
+            )
           }
-        )
-      }
-      <br/>
-      
-      <label htmlFor="comorbidities">Comorbidades</label>
-      { 
-        this.state.prepare.ev_comorbidades.map(
-          (ev_comorbidades) => {
-            return(
-              <div key={ ev_comorbidades.id }>
-              <input type="checkbox" name="ev_comorbidades" value={ ev_comorbidades.id } onChange={ this.handleChange } />
-              <label htmlFor="">{ ev_comorbidades.label }</label>
-              </div>
-            );
+          <br/>
+          
+          <label htmlFor="adverseEvents">Eventos adversos</label>
+          { 
+            this.state.prepare.ev_adversos.map(
+              (ev_adversos) => {
+                return(
+                  <div key={ ev_adversos.id }>
+                  <input type="checkbox" name="ev_adversos" value={ ev_adversos.id } onChange={ this.handleChange } />
+                  <label htmlFor="">{ ev_adversos.label }</label>
+                  </div>
+                );
+              }
+            )
           }
-        )
-      }
-      <br/>
-      
-      <label htmlFor="adverseEvents">Eventos adversos</label>
-      { 
-        this.state.prepare.ev_adversos.map(
-          (ev_adversos) => {
-            return(
-              <div key={ ev_adversos.id }>
-              <input type="checkbox" name="ev_adversos" value={ ev_adversos.id } onChange={ this.handleChange } />
-              <label htmlFor="">{ ev_adversos.label }</label>
-              </div>
-            );
+          <br/>
+          
+          <label htmlFor="">Óbito?</label>
+          {
+            this.state.prepare.ev_obito.map(
+              (ev_obito) => {
+                return(
+                  <div key={ ev_obito.id }>
+                  <input type="radio" name="ev_obito" value={ ev_obito.id } onChange={ this.handleChange }/>
+                  <label htmlFor="">{ ev_obito.label }</label>
+                  </div>
+                );
+              }
+            )
           }
-        )
-      }
-      <br/>
-      
-      <label htmlFor="">Óbito?</label>
-      {
-        this.state.prepare.ev_obito.map(
-          (ev_obito) => {
-            return(
-              <div key={ ev_obito.id }>
-              <input type="radio" name="ev_obito" value={ ev_obito.id } onChange={ this.handleChange }/>
-              <label htmlFor="">{ ev_obito.label }</label>
-              </div>
-            );
-          }
-        )
-      }
-      <br/>	
-      
-      <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
-      
-      </form>
+          <br/>	
+          
+          <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
+        
+        </form>
 			</div>
 		);
 	}
