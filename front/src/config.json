@@ -8,15 +8,15 @@
       "newPatient":"gen/new/patient/",
       "searchPatient":"gen/search/patient/",
       "getPatient":"gen/get/patient/",
-      "newConsult":"gen/new/consult/",
+      "newConsult":"",
       
       "prepAnamnese":"prepare/anamnese/",
       "prepEvidences":"prepare/evidences/",
       "prepInterventions":"prepare/interventions/",
       "prepMedicines":"prepare/medicines/",
-      "prepExams":"prepare/exams",
       "prepPredictors":"prepare/predictors/",
-      "prepPrevention":"prepare/prevention/"
+      "prepPrevention":"prepare/prevention/",
+      "prepExams":""
     }
   },
   "client": {

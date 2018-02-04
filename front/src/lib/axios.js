@@ -37,7 +37,7 @@ export function Post(route, postInfo = {
 
   if(route === undefined) {
     console.log("LIB AXIOS - ROUTE MISSING!");
-    return null;
+    return(null);
   }
 
   Object.keys(postInfo).map(
@@ -59,7 +59,7 @@ export function Post(route, postInfo = {
     }
   );
 
-  let URL = Config.rest.routes[route]+urlComplement;
+  const URL = Config.rest.routes[route]+urlComplement;
 
   axios.defaults.baseURL = Config.rest[Config.rest.environment];
   axios.post(

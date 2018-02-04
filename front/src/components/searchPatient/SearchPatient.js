@@ -83,7 +83,7 @@ class SearchPatient extends Component {
           show: [{
             idRegister: this.props.userData.user_id,
             patientName: 'Paciente ByPass',
-            idpatient: '1',
+            id: '1',
             cpf: '',
             rg: '',
             mv: '123',
