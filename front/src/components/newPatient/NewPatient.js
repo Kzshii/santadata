@@ -113,7 +113,11 @@ class NewPatient extends Component {
 
       if (totalDays < 0) {
         alert("Por favor, digite uma data válida!")
-        this.state.formExhibition.stringAge = "Data inválida";
+        let formExhibition = this.state.formExhibition;
+        formExhibition.stringAge = "Data inválida";
+        this.setState({
+          formExhibition: formExhibition
+        });
       }
 
       else {

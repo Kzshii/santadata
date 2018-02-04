@@ -4,6 +4,7 @@ import Select from './select/Select';
 import Checkgroup from './checkgroup/Checkgroup';
 import Input from './input/Input';
 import Radiogroup from './radiogroup/Radiogroup';
+import Textarea from './textarea/Textarea';
 
 /*
     Props: {
@@ -76,6 +77,7 @@ class Form extends Component {
   }	
 
   render() {
+    console.log("FORM STATE",this.state);
     return(
       <div className="Form">
         {
@@ -159,11 +161,21 @@ class Form extends Component {
                       Required={ inputField.required }
                     />
                   );
-                
+                case 'textarea':
+                  return(
+                    <Textarea
+                      key={ "Textarea"+inputField.title }
+                      Label={ inputField.title }
+                      OnChange={ this.handleChange }
+                      Name={ input }
+                      Disabled={ inputField.disabled }
+                      ReadOnly={ inputField.readonly }
+                      Required={ inputField.required }
+                    />
+                  );
                 default:
                   console.log("elemento não listado");
                   return(null);
-                  break;
               }
             }
           )

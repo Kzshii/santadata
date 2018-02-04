@@ -15,197 +15,333 @@ class Anamnese extends Component {
 	}
 	
 	componentDidMount() {
-    this.props.prepare(this, "prepAnamnese");
+    // this.props.prepare(this, "prepAnamnese");
     
 		/* test only */
-		/* this.setState(
+		this.setState(
 			{
 				prepare: {
           
-					// Queixa principal
-					qp_type: // 1
-					[
-						{id: 0, label: "Dor torácica"},
-						{id: 1, label: "Dispneia"},
-						{id: 2, label: "Síncope"},
-						{id: 3, label: "Palpitações"},
-					],
+          // Queixa principal
+          qp_type: { // 1
+            type: "select",
+            title: "Queixa Principal",
+            required: "true",
+            options: [
+              {id: "", label: "Escolher"},
+              {id: 0, label: "Dor torácica"},
+              {id: 1, label: "Dispneia"},
+              {id: 2, label: "Síncope"},
+              {id: 3, label: "Palpitações"},
+            ]
+          },
           
-					// História da Doença Atual
-					hda: "", 
+          // História da Doença Atual
+          hda: {
+            type: "textarea",
+            title: "História da doença atual"
+          },
           
-					// História patológica
-					hist_pat: // 0..*
-					[
-						{id: 0,label: "Falta de aderência ao tratamento"},
-						{id: 1,label: "Maior intensidade dos sintomas"},
-						{id: 2,label: "Parada cardio-respiratória revertida"},
-						{id: 3,label: "Redução de função cognitiva"},
-						{id: 4,label: "Caquexia"},
-						{id: 5,label: "Anorexia"},
-						{id: 6,label: "Síncope"},
-						{id: 7,label: "Apnéia do sono*"},
-						{id: 8,label: "Doença pulmonar associada"},
-						{id: 9,label: "Depressão"},
-					],
+          // História patológica
+          hist_pat: { // 0..*
+            type: "checkbox",
+            title: "História patológica",
+            options: [
+              {id: 0,label: "Falta de aderência ao tratamento"},
+              {id: 1,label: "Maior intensidade dos sintomas"},
+              {id: 2,label: "Parada cardio-respiratória revertida"},
+              {id: 3,label: "Redução de função cognitiva"},
+              {id: 4,label: "Caquexia"},
+              {id: 5,label: "Anorexia"},
+              {id: 6,label: "Síncope"},
+              {id: 7,label: "Apnéia do sono*"},
+              {id: 8,label: "Doença pulmonar associada"},
+              {id: 9,label: "Depressão"},
+            ]
+          },
           
 					// Historia Fisiológica
-					hist_fis: // 1
-					[
-						{id: 0,label: "Oligúria"},
-						{id: 1,label: "Anúria"},
-						{id: 2,label: "Poliúria"},
-						{id: 3,label: "Polaciúria"},
-						{id: 4,label: "Nictúria"},
-						{id: 5,label: "Urgência"},
-						{id: 6,label: "Retenção Urinária"},
-						{id: 7,label: "Incontinência Urinária"},
-					],
+          hist_fis: { // 1
+            type: "select",
+            title: "História fisiológica",
+            required: "true",
+            options: [
+              {id: 0,label: "Oligúria"},
+              {id: 1,label: "Anúria"},
+              {id: 2,label: "Poliúria"},
+              {id: 3,label: "Polaciúria"},
+              {id: 4,label: "Nictúria"},
+              {id: 5,label: "Urgência"},
+              {id: 6,label: "Retenção Urinária"},
+              {id: 7,label: "Incontinência Urinária"},
+            ]
+          },
           
 					// Historia familiar
-					hist_fam: // 0..*
-					[
-						{id: 0,label: "Enxaqueca"},
-						{id: 1,label: "Diabetes"},
-						{id: 2,label: "Hipertensão Arterial Sistemica (HAS)"},
-						{id: 3,label: "Tuberculose"},
-						{id: 4,label: "Cancer"},
-						{id: 5,label: "Doenca Arterial Coronariana (DAC)"},
-						{id: 6,label: "Acidente Vascular Cerebral (AVC)"},
-						{id: 7,label: "Dislipidemias"},
-						{id: 8,label: "Varizes"},
-					],
+          hist_fam: { // 0..*
+            type: "checkbox",
+            title: "História familiar",
+            options: [
+              {id: 0,label: "Enxaqueca"},
+              {id: 1,label: "Diabetes"},
+              {id: 2,label: "Hipertensão Arterial Sistemica (HAS)"},
+              {id: 3,label: "Tuberculose"},
+              {id: 4,label: "Cancer"},
+              {id: 5,label: "Doenca Arterial Coronariana (DAC)"},
+              {id: 6,label: "Acidente Vascular Cerebral (AVC)"},
+              {id: 7,label: "Dislipidemias"},
+              {id: 8,label: "Varizes"},
+            ]
+          },
           
-					// História psico-social
-					san_basico: // 1
-					[
-						{id: 0,label: "Sim"},
-						{id: 1,label: "Não"},
-					],			
+          // História psico-social
+          title: {
+            type: "label",
+            value: "história psico-social"
+          },
+
+          san_basico: { // 1
+            type: "radio",
+            title: "Saneamento básico",
+            required: "true",
+            options: [
+              {id: 0,label: "Sim"},
+              {id: 1,label: "Não"},
+            ]
+          },			
           
-					socio_econ: // 1
-					[
-						{id: 0,label: "Baixa Renda"},
-						{id: 1,label: "Moderada"},
-						{id: 2,label: "Renda Alta"},
-					],
+          socio_econ: { // 1
+            type: "select",
+            title: "Estado socioeconômico",
+            options: [
+              {id: "", label: "Escolher"},
+              {id: 0,label: "Baixa Renda"},
+              {id: 1,label: "Moderada"},
+              {id: 2,label: "Renda Alta"},
+            ]
+          },
           
-					cultural: // 1
-					[
-						{id: 0,label: "Evangélica"},
-						{id: 1,label: "Católica"},
-						{id: 2,label: "Espírita"},
-						{id: 3,label: "Testemunha de Jeová"},
-						{id: 4,label: "Ateu"},
-						{id: 5,label: "Outra"},
-					],
+          cultural: { // 1
+            type: "select",
+            title: "Cultural",
+            options: [
+              {id: "", label: "Escolher"},
+              {id: 0,label: "Evangélica"},
+              {id: 1,label: "Católica"},
+              {id: 2,label: "Espírita"},
+              {id: 3,label: "Testemunha de Jeová"},
+              {id: 4,label: "Ateu"},
+              {id: 5,label: "Outra"},
+            ]
+          },
           
-					escolar: // 1
-					[
-						{id: 0,label: "Ensino Fundamental"},
-						{id: 1,label: "Ensino Médio"},
-						{id: 2,label: "Ensino Superior"},
-					],
+          escolar: { // 1
+            type: "select",
+            title: "Escolaridade",
+            options: [
+              {id: "", label: "Escolher"},
+              {id: 0,label: "Ensino Fundamental"},
+              {id: 1,label: "Ensino Médio"},
+              {id: 2,label: "Ensino Superior"},
+            ]
+          },
           
-					relacao_fam: // 1
-					[
-						{id: 0,label: "Boa"},
-						{id: 1,label: "Mediana"},
-						{id: 2,label: "Ruim"},
-					],
+          relacao_fam: { // 1
+            type: "select",
+            title: "Relação familiar",
+            required: "true",
+            options: [
+              {id: "", label: "Escolher"},
+              {id: 0,label: "Boa"},
+              {id: 1,label: "Mediana"},
+              {id: 2,label: "Ruim"},
+            ]
+          },
           
-					// Estilo de vida
-					alimentacao: // 0..*
-					[
-						{id: 0,label: "Alimentação quantitativa e qualitativamente adequada"},
-						{id: 1,label: "Consumo de calorias acima das necessidades"},
-						{id: 2,label: "Alimentação com alto teor de gordura"},
-						{id: 3,label: "Baixa ingestão de líquidos"},
-						{id: 4,label: "Reduzida ingesta de fibras"},
-						{id: 5,label: "Reduzida ingesta de verduras e fruta"},
-						{id: 6,label: "Reduzida ingesta de carboidratos	"},
-						{id: 7,label: "Reduzida ingesta de proteínas "},
-						{id: 8,label: "Reduzido consumo de gordura"},
-						{id: 9,label: "Alimentação láctea exclusiva"},
-					],
+          // Estilo de vida
+          estilo_de_vida: {
+            type: "label",
+            value: "Estilo de vida"
+          },
+
+          alimentacao: { // 0..*
+            type: "checkbox",
+            title: "Alimentação",
+            options: [
+              {id: 0,label: "Alimentação quantitativa e qualitativamente adequada"},
+              {id: 1,label: "Consumo de calorias acima das necessidades"},
+              {id: 2,label: "Alimentação com alto teor de gordura"},
+              {id: 3,label: "Baixa ingestão de líquidos"},
+              {id: 4,label: "Reduzida ingesta de fibras"},
+              {id: 5,label: "Reduzida ingesta de verduras e fruta"},
+              {id: 6,label: "Reduzida ingesta de carboidratos	"},
+              {id: 7,label: "Reduzida ingesta de proteínas "},
+              {id: 8,label: "Reduzido consumo de gordura"},
+              {id: 9,label: "Alimentação láctea exclusiva"},
+            ]
+          },
           
-					ativ_fisica: // 1
-					[
-						{id: 0,label: "Pessoas sedentárias"},
-						{id: 1,label: "Pessoas que exercem atividades físicas moderadas"},
-						{id: 2,label: "Pessoas que exercem atividades físicas intensas e constantes"},
-						{id: 3,label: "Pessoas que exercem atividades físicas ocasionais"},
-            
-					],
+          ativ_fisica: { // 1
+            type: "select",
+            title: "Atividade física",
+            required: "true",
+            options: [
+              {id: "", label: "Escolher"},
+              {id: 0,label: "Pessoas sedentárias"},
+              {id: 1,label: "Pessoas que exercem atividades físicas moderadas"},
+              {id: 2,label: "Pessoas que exercem atividades físicas intensas e constantes"},
+              {id: 3,label: "Pessoas que exercem atividades físicas ocasionais"},
+            ]
+          },
           
-					// Fumo e sua caracterizacao
-					tabagismo: // 1
-					[
-						{id: 0,label: "Sim"},
-						{id: 1,label: "Nao"},
-            
-					],
+          // Fumo e sua caracterizacao
+          fumo: {
+            type: "label",
+            value: "Fumo e sua caracterização"
+          },
+
+          tabagismo: { // 1
+            type: "radio",
+            title: "Tabagismo",
+            required: "true",
+            options: [
+              {id: 0,label: "Sim"},
+              {id: 1,label: "Nao"},
+              
+            ]
+          },
           
-					tabag_tipo: // 0..*
-					[
-						{id: 0,label: "Cigarro"},
-						{id: 1,label: "Cachimbo"},
-						{id: 2,label: "Charuto"},
-						{id: 3,label: "Cigarro de palha"},
-					],
+          tabag_tipo: { // 0..*
+            type: "checkbox",
+            title: "Tipo de fumo",
+            options: [
+              {id: 0,label: "Cigarro"},
+              {id: 1,label: "Cachimbo"},
+              {id: 2,label: "Charuto"},
+              {id: 3,label: "Cigarro de palha"},
+            ]
+          },
           
-					tabag_quant: "", // Numero cigarros por dia 
-					tabag_freq: "", // Vezes na semana, mes ou ano
-					tabag_date: "", // Data que comecou fumar
-					tabag_tempo: "", // Tempo que fuma
+          tabag_quant: { // Numero cigarros por dia
+            type: "text",
+            title: "Quanto fuma por dia"
+          },
+
+          tabag_freq: { // Vezes na semana, mes ou ano
+            type: "text",
+            title: "Frequencia de fumo (por semana, mês ou ano)"
+          },
+
+          tabag_date: { // Data que comecou fumar
+            type: "date",
+            title: "Data que começou a fumar"
+          },
+
+          tabag_tempo: { // Tempo que fuma
+            type: "text",
+            title: "Tempo que fuma",
+            required: "true"
+          },
 					
-					// Alcool e sua caracterizacao 
-					etilismo: // 1
-					[
-						{id: 0,label: "Sim"},
-						{id: 1,label: "Nao"},
-					],
+          // Alcool e sua caracterizacao
+          alcool: {
+            type: "label",
+            value: "Álcool e sua caracterização"
+          },
+
+          etilismo: { // 1
+            type: "radio",
+            title: "Etilismo",
+            required: "true",
+            options: [
+              {id: 0,label: "Sim"},
+              {id: 1,label: "Nao"},
+            ]
+          },
           
-					etil_tipo: // 0..*
-					[
-						{id: 0,label: "Cerveja"},
-						{id: 1,label: "Vinho"},
-						{id: 2,label: "Licor"},
-						{id: 3,label: "Vodka"},
-						{id: 4,label: "Uisque"},
-						{id: 5,label: "Cachaca"},
-						{id: 6,label: "Gin"},
-					],
+          etil_tipo: { // 0..*
+            type: "checkbox",
+            title: "Tipo de bebidas",
+            options: [
+              {id: 0,label: "Cerveja"},
+              {id: 1,label: "Vinho"},
+              {id: 2,label: "Licor"},
+              {id: 3,label: "Vodka"},
+              {id: 4,label: "Uisque"},
+              {id: 5,label: "Cachaca"},
+              {id: 6,label: "Gin"},
+            ]
+          },
           
-					etil_quant: "", // Litros por dia 
-					etil_freq: "", // Vezes na semana, mes ou ano
-					etil_date: "", // Data que comecou beber
-					etil_tempo: "", // Tempo que bebe
+          etil_quant: { // Litros por dia
+            type: "text",
+            title: "Quantidade que bebe por dia"
+          },
+
+          etil_freq: { // Vezes na semana, mes ou ano
+            type: "text",
+            title: "Ferquência que bebe (por semana, mes ou ano)"
+          },
+
+          etil_date: { // Data que comecou beber
+            type: "text",
+            title: "Data que começou a beber"
+          },
+
+          etil_tempo: { // Tempo que bebe
+            type: "text",
+            title: "Tempo que bebe"
+          },
           
           
-					// Uso de drogas
-					uso_drogas: // 1
-					[
-						{id: 0,label: "Sim"},
-						{id: 1,label: "Nao"},
-					],
+          // Uso de drogas
+          drogas: {
+            type: "label",
+            value: "uso de drogas"
+          },
+
+          uso_drogas: { // 1
+            type: "radio",
+            title: "Faz uso de drogas",
+            options: [
+              {id: 0,label: "Sim"},
+              {id: 1,label: "Nao"},
+            ]
+          },
           
-					drogas_tipo: // 0..*
-					[
-						{id: 0,label: "Cigarro"},
-						{id: 1,label: "Cachimbo"},
-						{id: 2,label: "Charuto"},
-						{id: 3,label: "Cigarro de palha"},
-					],
+          drogas_tipo: { // 0..*
+            type: "checkbox",
+            title: "Tipo de drogas que utiliza",
+            options: [
+              {id: 0,label: "Cigarro"},
+              {id: 1,label: "Cachimbo"},
+              {id: 2,label: "Charuto"},
+              {id: 3,label: "Cigarro de palha"},
+            ]
+          },
           
-					drogas_quant: "", // Numero por dia 
-					drogas_freq: "", // Vezes na semana, mes ou ano
-					drogas_date: "", // Data que comecou 
-					drogas_tempo: "", // Tempo desde o inicio
-          
+          drogas_quant: { // Numero por dia
+            type: "text",
+            title: "Quantidade que usa (por dia)"
+          },
+
+          drogas_freq: { // Vezes na semana, mes ou ano
+            type: "text",
+            title: "Frequência que utiliza (por semana, mês ou ano)"
+          },
+
+          drogas_date: { // Data que comecou
+            type: "text",
+            title: "Data que começou a usar"
+          },
+
+          drogas_tempo: { // Tempo desde o inicio
+            type: "text",
+            title: "Tempo que usa"
+          }
 				},
 			}
-		); */
+		);
   }
   
 	handleChange(event) {
