@@ -381,7 +381,9 @@ class Anamnese extends Component {
   
 	render(){
     if(!this.state.prepare){
-      return ( <div>LOADING</div> );
+      return (
+        <div>LOADING</div> 
+      );
     }
 		return(
 			<div className="Anamnese">
