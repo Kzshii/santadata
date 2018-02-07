@@ -6,6 +6,7 @@
 
 // Database manager
 var Dao_patient = require('../../model/dao/dao_patient.js');
+var Model_patient = require('../../model/patient.js');
 
 //Creating Class
 var Generic = require( '../generic' );
@@ -24,7 +25,9 @@ Patient.add = function(req, res){
 	}
 
 	//Getting and preparing data
-	data = [var_req.id_register,
+	data = Model_patient.mapData(var_req)
+
+	/*data = [var_req.id_register,
 	var_req.nome,
 	var_req.cpf,
 	var_req.nr_prontuario,
@@ -39,7 +42,7 @@ Patient.add = function(req, res){
 	var_req.endereco,
 	var_req.nr_same,
 	var_req.nr_sus]
-
+	*/
 	Patient.generic_dao_request(res,data, Dao_patient.new)
 }
 
