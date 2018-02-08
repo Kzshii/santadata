@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from "../../form/Form";
 import './Anamnese.css';
 
 class Anamnese extends Component {
@@ -388,8 +389,25 @@ class Anamnese extends Component {
 		return(
 			<div className="Anamnese">
         <h2>Anamnese</h2>
+
+        <Form
+          OnSubmit = { this.handleSubmit }
+          InputList = { this.state.prepare }     
+          SubmitValue ="Salvar evidências"
+          Config={{
+            Select:{ 
+              OptionValue: "id"
+            },
+            Checkgroup:{
+              OptionValue: "id"
+            },
+            Radiogroup:{
+              OptionValue: "id"
+            }
+          }}
+        />
         
-        <form onSubmit={ this.handleSubmit  } >
+{/*         <form onSubmit={ this.handleSubmit  } >
         
           <label htmlFor="qp_type">Queixa principal:</label>
           <select name="qp_type" id="qp_type" onChange={ this.handleChange }  >
@@ -789,7 +807,7 @@ class Anamnese extends Component {
           
           <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
         
-        </form>
+        </form> */}
 			</div>
 		)
 	}
