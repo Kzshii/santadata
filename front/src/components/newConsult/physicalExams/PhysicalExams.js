@@ -3,6 +3,7 @@ import './PhysicalExams.css';
 import Select from './../../form/select/Select';
 import Form from './../../form/Form';
 import Radiogroup from './../../form/radiogroup/Radiogroup';
+import StoredList from './../../storedList/StoredList';
 
 
 class PhysicalExams extends Component {
@@ -14,6 +15,7 @@ class PhysicalExams extends Component {
     this.selectExamType = this.selectExamType.bind(this);
     this.mountInputList = this.mountInputList.bind(this);
     this.storeExam = this.storeExam.bind(this);
+    this.removeExam = this.removeExam.bind(this);
     
     this.inputList = {};
     this.SelectOptions = [];
@@ -411,6 +413,8 @@ class PhysicalExams extends Component {
     this.setState({
       storedExams: store
     });
+    console.log("Aqui")
+    console.log(this.state);
   }
   
   mountInputList(){
@@ -418,6 +422,16 @@ class PhysicalExams extends Component {
     let examType = this.state.selectedExamType;
     
     this.inputList = this.state.prepare[examType][exam];
+  }
+
+  removeExam(index){
+    let list = this.state.storedExams;
+
+    list.splice(index);
+
+    this.setState({
+      storedExams: list
+    })
   }
   
 	render(){
@@ -468,6 +482,7 @@ class PhysicalExams extends Component {
             }
           }}
         />
+        <StoredList title="Exames Guardados" list={this.state.storedExams} remove={this.removeExam}/>
         
         <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
       </div>
