@@ -27,22 +27,6 @@ Patient.add = function(req, res){
 	//Getting and preparing data
 	data = Model_patient.mapData(var_req)
 
-	/*data = [var_req.id_register,
-	var_req.nome,
-	var_req.cpf,
-	var_req.nr_prontuario,
-	var_req.nr_mv,
-	var_req.data_nasc,
-	var_req.idade,
-	var_req.etnia,
-	var_req.tel1,
-	var_req.tel2,
-	var_req.tel_emerg,
-	var_req.cel,
-	var_req.endereco,
-	var_req.nr_same,
-	var_req.nr_sus]
-	*/
 	Patient.generic_dao_request(res,data, Dao_patient.new)
 }
 
