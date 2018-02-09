@@ -88,7 +88,7 @@ class NewPatient extends Component {
       }
     };
 
-    Post.data = this.props.formData;
+    Post.data = this.state.formData;
 
     Post.urlData = [
       user_id,
