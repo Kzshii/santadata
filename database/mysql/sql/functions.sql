@@ -70,15 +70,18 @@ RETURNS INT
   BEGIN
 
   SET FOREIGN_KEY_CHECKS=0;
-  INSERT INTO people (name,cpf,dtnasc,tel1,tel2,tel_emerg,cel,address) VALUES(
+  INSERT INTO people (name,cpf,rg,dtnasc,tel1,tel2,tel_emerg,cel,address,etiny,sexo) VALUES(
     nome_p,
     cpf_p,
+    rg_p,
     data_nasc_p,
     tel1_p,
     tel2_p,
     tel_emerg_p,
     cel_p,
-    endereco_p
+    endereco_p,
+    etnia_p,
+    sexo_p
   );
   
   SELECT LAST_INSERT_ID() INTO @id_people;
