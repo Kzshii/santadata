@@ -51,11 +51,13 @@ DELIMITER //
 CREATE FUNCTION new_patient(iduser_p VARCHAR(45), 
         nome_p VARCHAR(45), 
         cpf_p VARCHAR(20), 
+        rg_p VARCHAR(20), 
         nr_prontuario_p INT, 
         nr_mv_p INT, 
         data_nasc_p DATE,
         idade_p INT,
         etnia_p CHAR(1),
+        sexo_p CHAR(1),
         tel1_p VARCHAR(20),
         tel2_p VARCHAR(20),
         tel_emerg_p VARCHAR(20),
@@ -68,15 +70,18 @@ RETURNS INT
   BEGIN
 
   SET FOREIGN_KEY_CHECKS=0;
-  INSERT INTO people (name,cpf,dtnasc,tel1,tel2,tel_emerg,cel,address) VALUES(
+  INSERT INTO people (name,cpf,rg,dtnasc,tel1,tel2,tel_emerg,cel,address,etiny,sexo) VALUES(
     nome_p,
     cpf_p,
+    rg_p,
     data_nasc_p,
     tel1_p,
     tel2_p,
     tel_emerg_p,
     cel_p,
-    endereco_p
+    endereco_p,
+    etnia_p,
+    sexo_p
   );
   
   SELECT LAST_INSERT_ID() INTO @id_people;
