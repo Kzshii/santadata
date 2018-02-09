@@ -1,0 +1,16 @@
+.popup{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 200px;
+    height: 200px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center
+}
+
+.close{
+    
+    float: right;
+}

@@ -32,11 +32,10 @@ class StoredList extends Component{
                             this.props.list.map(
                                 (elemen,index)=>{
                                     return(
-                                        <tr key={index}>
-
+                                        <tr key={index}>    
                                             <td>{(elemen.name)}</td>
-                                            <td><button><span className="fas fa-pencil-alt"></span></button></td>
-                                            <td><button onClick={(index)=>{this.props.remove(index)}}><span className="fas fa-trash-alt"></span></button></td>
+                                            <td><button onClick={()=>{this.props.showPopup(this.index)}}><span className="fas fa-pencil-alt"></span></button></td>
+                                            <td><button onClick={()=>{this.props.remove(index)}}><span className="fas fa-trash-alt"></span></button></td>
                                         </tr>
                                     )
                                 }

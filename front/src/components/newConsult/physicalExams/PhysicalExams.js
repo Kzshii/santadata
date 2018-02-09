@@ -4,6 +4,7 @@ import Select from './../../form/select/Select';
 import Form from './../../form/Form';
 import Radiogroup from './../../form/radiogroup/Radiogroup';
 import StoredList from './../../storedList/StoredList';
+import Popup from './../../popup/Popup';
 
 
 class PhysicalExams extends Component {
@@ -16,12 +17,15 @@ class PhysicalExams extends Component {
     this.mountInputList = this.mountInputList.bind(this);
     this.storeExam = this.storeExam.bind(this);
     this.removeExam = this.removeExam.bind(this);
+    this.ShowPopup = this.ShowPopup.bind(this);
+    this.closePopup= this.closePopup.bind(this);
     
     this.inputList = {};
     this.SelectOptions = [];
     this.exams = [];
     
     this.state = {
+      showPopup: false,
 			prepare: null,
 			storedExams:[],
       selectedExamType: "fisico",
@@ -365,6 +369,19 @@ class PhysicalExams extends Component {
       selectedExam: exam
     });
   }
+
+
+  ShowPopup(index){
+    this.setState({
+      showPopup: true,
+    })
+  }
+
+  closePopup(){
+    this.setState({
+      showPopup: false,
+    })
+  }
   
   selectExam(event){
     this.setState({
@@ -427,6 +444,7 @@ class PhysicalExams extends Component {
   removeExam(index){
     let list = this.state.storedExams;
 
+
     list.splice(index);
 
     this.setState({
@@ -482,8 +500,8 @@ class PhysicalExams extends Component {
             }
           }}
         />
-        <StoredList title="Exames Guardados" list={this.state.storedExams} remove={this.removeExam}/>
-        
+        <StoredList title="Exames Guardados" list={this.state.storedExams} remove={this.removeExam} showPopup={this.ShowPopup}/>
+        {this.state.showPopup ? <Popup title="E ai?" close={this.closePopup}/> : null}
         <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
       </div>
     );
