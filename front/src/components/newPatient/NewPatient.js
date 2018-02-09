@@ -25,9 +25,8 @@ class NewPatient extends Component {
         gender: '',
         ethnicity: '',
         tel1: '',
-        tel2: '',
-        telE: '',
         cel: '',
+        telE: '',
         cep: '',
         street: '',
         homeNumber:'',
@@ -174,15 +173,33 @@ class NewPatient extends Component {
                 </span>
             </div>
 
-            <label htmlFor="idPatient">CPF ou Identidade</label>
+            <label htmlFor="rg">RG</label>
             <div className="wrap-input100 validate-input m-b-16">
             <input
               className="input100 textInput"
               type="number"
-              name="idPatient"
-              id="idPatient"
-              placeholder="CPF ou Identidade"
-              value={ this.state.formData.idPatient }
+              name="rg"
+              id="rg"
+              placeholder="RG"
+              value={ this.state.formData.rg }
+              onChange={ this.handleChange }
+            /> 
+            <span className="focus-input100"></span>
+                <span className="symbol-input100">
+                <span className="fas fa-address-card"></span>
+                </span>
+            </div>
+
+
+            <label htmlFor="cpf">CPF</label>
+            <div className="wrap-input100 validate-input m-b-16">
+            <input
+              className="input100 textInput"
+              type="number"
+              name="cpf"
+              id="cpf"
+              placeholder="CPF"
+              value={ this.state.formData.cpf }
               onChange={ this.handleChange }
             /> 
             <span className="focus-input100"></span>
@@ -333,7 +350,7 @@ class NewPatient extends Component {
             </div>
 
 
-            <label htmlFor="cel">Celular</label>
+            <label htmlFor="tel2">Celular</label>
             <div className="wrap-input100 validate-input m-b-16">
             <input 
               className="input100 textInput"
