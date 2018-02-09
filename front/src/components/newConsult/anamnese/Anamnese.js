@@ -21,7 +21,7 @@ class Anamnese extends Component {
 		/* test only */
 		this.setState(
 			{
-				prepare: {
+        prepare: {
           
           // Queixa principal
           qp_type: { // 1
@@ -44,41 +44,280 @@ class Anamnese extends Component {
           },
           
           // História patológica
+          
+          // Passado
           hist_pat: { // 0..*
             type: "checkbox",
             title: "História patológica",
             options: [
-              {id: 0,label: "Falta de aderência ao tratamento"},
-              {id: 1,label: "Maior intensidade dos sintomas"},
-              {id: 2,label: "Parada cardio-respiratória revertida"},
-              {id: 3,label: "Redução de função cognitiva"},
-              {id: 4,label: "Caquexia"},
-              {id: 5,label: "Anorexia"},
-              {id: 6,label: "Síncope"},
-              {id: 7,label: "Apnéia do sono*"},
-              {id: 8,label: "Doença pulmonar associada"},
-              {id: 9,label: "Depressão"},
+              {id: 0,label: "Redução de função cognitiva"},
+              {id: 1,label: "Caquexia"},//repete
+              {id: 2,label: "Anorexia"},
+              {id: 3,label: "Síncope"},
+              {id: 4,label: "Apnéia do sono*"},
+              {id: 5,label: "Doença pulmonar associada"},
+              {id: 6,label: "Depressão"},//repete
             ]
           },
           
-					// Historia Fisiológica
-          hist_fis: { // 1
-            type: "select",
-            title: "História fisiológica",
-            required: "true",
+          commom_childhood: { // 0..*
+            type: "checkbox",
+            title: "Doenças comuns na infãncia",
             options: [
-              {id: 0,label: "Oligúria"},
-              {id: 1,label: "Anúria"},
-              {id: 2,label: "Poliúria"},
-              {id: 3,label: "Polaciúria"},
-              {id: 4,label: "Nictúria"},
-              {id: 5,label: "Urgência"},
-              {id: 6,label: "Retenção Urinária"},
-              {id: 7,label: "Incontinência Urinária"},
+              {id: 0,label: "Sarampo"},
+              {id: 1,label: "Varicela"},
+              {id: 2,label: "Coqueluxe"},
+              {id: 3,label: "Caxumba"},
+              {id: 4,label: "Febre reumática"},
+              {id: 5,label: "Amgdalite"},                         
             ]
           },
           
-					// Historia familiar
+          commom_adult: { // 0..*
+            type: "checkbox",
+            title: "Doenças comuns na vida adulta",
+            options: [
+              {id: 0,label: "Pneumonia"},
+              {id: 1,label: "Hepatite"},
+              {id: 2,label: "Malária"},
+              {id: 3,label: "Pleurite"},
+              {id: 4,label: "Tuberculose"},
+              {id: 5,label: "Hipertensão arterial"},
+              {id: 6,label: "Diabetes"},
+              {id: 7,label: "Artrose"},
+              {id: 8,label: "Osteoporose"},
+              {id: 9,label: "Litíase renal"},
+              {id: 10,label: "Gota"},                                                                                               
+            ]
+          },
+          
+          commom_cardiac_associated: { // 0..*
+            type: "checkbox",
+            title: "Doenças comuns associadas com a cardiologia",
+            options: [
+              {id: 0,label: "Parada cardio-respiratória revertida"},
+              {id: 1,label: "Caquexia"},
+              {id: 2,label: "Anorexia"},
+              {id: 3,label: "Pleurite"},
+              {id: 4,label: "Síncope"},
+              {id: 5,label: "Apnéia do sono"},
+              {id: 6,label: "Doença pulmonar associada"},
+              {id: 7,label: "Depressão"},
+              {id: 8,label: "Osteoporose"},
+              {id: 9,label: "Litíase renal"},
+              {id: 10,label: "Gota"},                                                                                               
+            ]
+          },
+          
+          allergy: { // 0..*
+            type: "checkbox",
+            title: "Tem alergia?",
+            options: [
+              {id: 0,label: "Frutos do mar"},
+              {id: 1,label: "Poeira e outros pós"},
+              {id: 2,label: "Dipirona"},                        
+            ]
+          },
+          
+          another_allergy: { // 0..*
+            type: "text",
+            title: "Outras",
+          },
+          
+          surgery: { // 0..* Pensar em como fazer essas cirurgias - MED
+            type: "checkbox",
+            title: "Já fez alguma cirurgia?",
+            options: [
+              {id: 0,label: "Neurocirurgia"},
+              {id: 1,label: "Cirurgia física"},
+              {id: 2,label: "Cirurgia respiratória"},
+            ]
+          },
+          
+          surgery_description: { // 0..*
+            type: "text",
+            title: "Descrição das cirurgias",
+          },
+          
+          trauma: { // 0..*
+            type: "radio",
+            title: "Algum trauma físico?",
+            options: [
+              {id: 0,label: "Sim"},
+              {id: 1,label: "Não"},
+            ]
+          },
+          
+          blood_transfusion: { // 0..*
+            type: "number",
+            title: "Quantas transfusões de sangue",
+          },
+          
+          blood_transfusion_date: { // Verificar como irá fazer - TECH
+            type: "date",
+            title: "data",
+          },
+          
+          meds_in_use: { // Verificar os nomes dos medicamentos - MED
+            type: "checkbox",
+            title: "Medicamentos em uso",
+            options:[
+              {id: 0,label: "Depressão"},        
+              {id: 0,label: "Hipertensão"},              
+            ]
+          },
+          
+          meds_description: { // 0..*
+            type: "text",
+            title: "Descrição dos medicamentos",
+          },
+                            
+          
+          // Historia Fisiológica
+          primogênito: {
+            type: "radio",
+            title: "É primogênito?",
+            options: [
+              {id: 0,label: "Sim"},
+              {id: 1,label: "Não"},              
+            ]
+          },
+
+          brothers: {
+            type: "radio",
+            title: "Tem irmãos?",
+            options: [
+              {id: 0,label: "Sim"},
+              {id: 1,label: "Não"},              
+            ]
+          },
+          
+          amount_brothers: {
+            type: "number",
+            title: "Quantidade de irmãos",
+          },
+          
+          sexuality: {
+            type: "radio",
+            title: "Sexualidade",
+            options: [
+              {id: 0,label: "HSM"},
+              {id: 1,label: "MSH"},
+              {id: 2,label: "HSH"},
+              {id: 3,label: "MSM"},
+              {id: 4,label: "HSHM"},
+              {id: 5,label: "MSHM"},              
+            ]
+          },
+          
+          urinary_volumn: {
+            type: "select",
+            title: "Volume urinário",
+            options:
+            [
+              {id: "",label: "Normal"},  
+              {id: 0,label: "Oligúria"},
+              {id: 1,label: "Poliúria"},
+              {id: 2,label: "Anúria"},
+            ]     
+          },
+          
+          urinary_frequency: {
+            type: "checkbox",
+            title: "Frequência urinária",
+            options:
+            [
+              {id: 0,label: "Polaciúria"},
+              {id: 1,label: "Urgência"},
+              {id: 2,label: "Nictúria"},
+              {id: 3,label: "Eetenção urinária"},
+              {id: 4,label: "Incontinência urinária"},
+            ]     
+          },      
+          
+          urinary_aspect: {
+            type: "checkbox",
+            title: "Aspecto da urina",
+            options:
+            [
+              {id: 0,label: "Avermelhada"},
+              {id: 1,label: "Turva"},
+              {id: 2,label: "Aumento de espuma"},
+              {id: 3,label: "Mau Cheiro"},
+            ]     
+          },
+          
+          urinary_changes: {
+            type: "checkbox",
+            title: "Outras alterações da urina",
+            options:
+            [
+              {id: 0,label: "Dislúria"},
+              {id: 1,label: "Hesitação"},
+            ]
+          },
+          
+        	menarche: { 
+            type: "number",
+            title: "Idade da menarca",
+          },
+          
+        	menstruation_cycle: { 
+            type: "number",
+            title: "Ciclo mentrual (em dias)",
+          },
+          
+          menopause: { 
+            type: "number",
+            title: "Idade da menopausa",
+          },
+                    
+					contraceptive: {
+            type: "radio",
+            title: "Usa anticoncenpcionais?",
+            options:
+            [
+            	{id: 0, label: "Sim"},
+              {id: 1, label: "Não"},
+            ]
+          },
+          
+          ligadura_trompa: {
+            type: "radio",
+            title: "Trompas ligadas",
+            options:
+            [
+            	{id: 0, label: "Sim"},
+              {id: 1, label: "Não"},
+            ]
+          },
+          
+          data_ligadura_trompa: {
+          	type: "date",
+            title: "Data da ligadura",
+          },
+          
+          pregnancy: {
+            type: "number",
+            title: "Quantas gravidezes?",        
+          },
+          
+          child_birth: {
+            type: "number",
+            title: "Quantos partos"          
+          },
+          
+          abort:  {
+            type: "number",
+            title: "Quantos abortos"          
+          },
+          
+          dead_birth:  {
+            type: "number",
+            title: "Quantos natimortos"          
+          },
+          
+          // Historia familiar
           hist_fam: { // 0..*
             type: "checkbox",
             title: "História familiar",
@@ -95,6 +334,27 @@ class Anamnese extends Component {
             ]
           },
           
+          kind_familiar: {
+          	type: "checkbox",
+            title: "Qual familiar tem?",
+            options:
+            [
+            	{id: 0,label: "Pai"},
+              {id: 1,label: "Mãe"},
+              {id: 2,label: "Irmão(a)"},
+              {id: 3,label: "Meio irmão(a)"},
+              {id: 4,label: "Tio(a) paterno(a)"},
+              {id: 5,label: "Tio(a) materno(a)"},
+           	  {id: 6,label: "Avô(ó) paterno(a)"},
+              {id: 7,label: "Avô(ó) materno(a)"},
+            ]
+          },
+          
+          age_familiar: {
+            type: "number",
+            title: "Idade do familiar(es)"          
+          },
+          
           // História psico-social
           title: {
             type: "label",
@@ -109,7 +369,7 @@ class Anamnese extends Component {
               {id: 0,label: "Sim"},
               {id: 1,label: "Não"},
             ]
-          },			
+          },            
           
           socio_econ: { // 1
             type: "select",
@@ -122,9 +382,9 @@ class Anamnese extends Component {
             ]
           },
           
-          cultural: { // 1
+          religion: { // 1
             type: "select",
-            title: "Cultural",
+            title: "Religião",
             options: [
               {id: "", label: "Escolher"},
               {id: 0,label: "Evangélica"},
@@ -162,7 +422,7 @@ class Anamnese extends Component {
           // Estilo de vida
           estilo_de_vida: {
             type: "label",
-            value: "Estilo de vida"
+            value: "Estilo de vida",
           },
 
           alimentacao: { // 0..*
@@ -175,7 +435,7 @@ class Anamnese extends Component {
               {id: 3,label: "Baixa ingestão de líquidos"},
               {id: 4,label: "Reduzida ingesta de fibras"},
               {id: 5,label: "Reduzida ingesta de verduras e fruta"},
-              {id: 6,label: "Reduzida ingesta de carboidratos	"},
+              {id: 6,label: "Reduzida ingesta de carboidratos   "},
               {id: 7,label: "Reduzida ingesta de proteínas "},
               {id: 8,label: "Reduzido consumo de gordura"},
               {id: 9,label: "Alimentação láctea exclusiva"},
@@ -189,9 +449,9 @@ class Anamnese extends Component {
             options: [
               {id: "", label: "Escolher"},
               {id: 0,label: "Pessoas sedentárias"},
-              {id: 1,label: "Pessoas que exercem atividades físicas moderadas"},
-              {id: 2,label: "Pessoas que exercem atividades físicas intensas e constantes"},
-              {id: 3,label: "Pessoas que exercem atividades físicas ocasionais"},
+              {id: 1,label: "Atividades físicas moderadas"},
+              {id: 2,label: "Atividades físicas intensas e constantes"},
+              {id: 3,label: "Atividades físicas ocasionais"},
             ]
           },
           
@@ -223,31 +483,36 @@ class Anamnese extends Component {
             ]
           },
           
-          tabag_quant: { // Numero cigarros por dia
-            type: "text",
-            title: "Quanto fuma por dia"
-          },
-
           tabag_freq: { // Vezes na semana, mes ou ano
-            type: "text",
+            type: "number",
             title: "Frequencia de fumo (por semana, mês ou ano)"
+          },
+          
+          tabag_quant: { // Numero cigarros por dia
+            type: "number",
+            title: "Quanto fuma por dia"
           },
 
           tabag_date: { // Data que comecou fumar
             type: "date",
-            title: "Data que começou a fumar"
+            title: "Ano que começou a fumar"
           },
 
           tabag_tempo: { // Tempo que fuma
-            type: "text",
+            type: "number",
             title: "Tempo que fuma",
             required: "true"
           },
-					
+          
+          tabag_charge:{ // Numero de cigarros por ano
+            type: "number",
+            title: "Por ano são"
+          },
+                    
           // Alcool e sua caracterizacao
           alcool: {
             type: "label",
-            value: "Álcool e sua caracterização"
+            value: "Álcool e sua caracterização",
           },
 
           etilismo: { // 1
@@ -274,31 +539,35 @@ class Anamnese extends Component {
             ]
           },
           
+          etil_freq: { // Vezes na semana, mes ou ano
+            type: "number",
+            title: "Ferquência que bebe (por semana, mes ou ano)"
+          },
+          
           etil_quant: { // Litros por dia
-            type: "text",
+            type: "number",
             title: "Quantidade que bebe por dia"
           },
 
-          etil_freq: { // Vezes na semana, mes ou ano
-            type: "text",
-            title: "Ferquência que bebe (por semana, mes ou ano)"
-          },
-
           etil_date: { // Data que comecou beber
-            type: "text",
+            type: "date",
             title: "Data que começou a beber"
           },
 
           etil_tempo: { // Tempo que bebe
-            type: "text",
+            type: "number",
             title: "Tempo que bebe"
           },
           
+        	etil_charge:{ // Numero de litros por ano
+            type: "number",
+            title: "Por ano são"
+          },
           
           // Uso de drogas
           drogas: {
             type: "label",
-            value: "uso de drogas"
+            value: "uso de drogas",
           },
 
           uso_drogas: { // 1
@@ -314,33 +583,43 @@ class Anamnese extends Component {
             type: "checkbox",
             title: "Tipo de drogas que utiliza",
             options: [
-              {id: 0,label: "Cigarro"},
-              {id: 1,label: "Cachimbo"},
-              {id: 2,label: "Charuto"},
-              {id: 3,label: "Cigarro de palha"},
+              {id: 0,label: "Maconha"},
+              {id: 1,label: "Cocaina"},
+              {id: 2,label: "Crack"},
+              {id: 3,label: "Heroína"},
+              {id: 4,label: "Ecstasy"},
+              {id: 5,label: "LSD"},
+              {id: 6,label: "Oxi"},
+              {id: 7,label: "Chá de cogumelo"},
+							{id: 8,label: "Inalantes"},              
             ]
           },
           
+          drogas_freq: { // Vezes na semana, mes ou ano
+            type: "number",
+            title: "Frequência que utiliza (por semana, mês ou ano)"
+          },
+          
           drogas_quant: { // Numero por dia
-            type: "text",
+            type: "number",
             title: "Quantidade que usa (por dia)"
           },
 
-          drogas_freq: { // Vezes na semana, mes ou ano
-            type: "text",
-            title: "Frequência que utiliza (por semana, mês ou ano)"
-          },
-
           drogas_date: { // Data que comecou
-            type: "text",
+            type: "number",
             title: "Data que começou a usar"
           },
 
           drogas_tempo: { // Tempo desde o inicio
-            type: "text",
+            type: "number",
             title: "Tempo que usa"
-          }
-				},
+          },
+          
+          drogas_charge:{ // Numero de litros por ano
+            type: "number",
+            title: "Por ano são"
+          },
+        },
 			}
 		);
   }
@@ -407,407 +686,6 @@ class Anamnese extends Component {
           }}
         />
         
-{/*         <form onSubmit={ this.handleSubmit  } >
-        
-          <label htmlFor="qp_type">Queixa principal:</label>
-          <select name="qp_type" id="qp_type" onChange={ this.handleChange }  >
-            <option value="">-- Escolher --</option>
-            {
-              this.state.prepare.qp_type.map(
-                (qp_type) => {
-                  return(
-                    <option key={ qp_type.id } value={ qp_type.id }>{ qp_type.label }</option>
-                  );
-                }
-              )
-            }
-          </select>
-          <br/>
-          
-          <label htmlFor="actualDiseaseHistory">História da doença atual:</label>
-          <br/>
-          <textarea
-            className="inputText "
-            type="text"
-            name="actualDiseaseHistory"
-            id="actualDiseaseHistory"
-            value={ this.state.formData.hda }
-            onChange={ this.handleChange }
-          
-          />
-          <br/>
-          
-          <label htmlFor="hist_pat">História patológica:</label>
-          { 
-            this.state.prepare.hist_pat.map(
-              (hist_pat) => {
-                return(
-                  <div key={ hist_pat.id }>
-                  <input type="checkbox" name="hist_pat" value={ hist_pat.id } onChange={ this.handleChange } />
-                  <label htmlFor="">{ hist_pat.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <br/>
-          
-          <label htmlFor="fisiologicHistory">História fisiológica:</label>
-          <select name="hist_fis" id="fisiologicHistory" onChange={ this.handleChange }  >
-            <option value="">-- Escolher --</option>
-            {
-              this.state.prepare.hist_fis.map(
-                (hist_fis) => {
-                  return(
-                    <option key={ hist_fis.id } value={ hist_fis.id }>{ hist_fis.label }</option>
-                  );
-                }
-              )
-            }
-          </select>
-          <br/>
-          
-          <label htmlFor="hist_fam">História familiar:</label>
-          { 
-            this.state.prepare.hist_fam.map(
-              (hist_fam) => {
-                return(
-                  <div key={ hist_fam.id }>
-                  <input type="checkbox" name="hist_fam" value={ hist_fam.id } onChange={ this.handleChange } />
-                  <label htmlFor="">{ hist_fam.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <br/>
-          
-          <label htmlFor="">Possui Saneamento básico? </label>
-          {
-            this.state.prepare.san_basico.map(
-              (san_basico) => {
-                return(
-                  <div key={ san_basico.id }>
-                  <input type="radio" name="san_basico" value={ san_basico.id } onChange={ this.handleChange }/>
-                  <label htmlFor="">{ san_basico.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <br/>
-          
-          <label htmlFor="economicSituation">Situação econômica:</label>
-          <select name="economicSitiation" id="economicSituation" onChange={ this.handleChange }  >
-            <option value="">-- Escolher --</option>
-            {
-              this.state.prepare.socio_econ.map(
-                (socio_econ) => {
-                  return(
-                    <option key={ socio_econ.id } value={ socio_econ.id }>{ socio_econ.label }</option>
-                  )
-                }
-              )
-            }
-          </select>
-          <br/>
-          
-          <label htmlFor="religion">Religião:</label>
-          <select name="religion" id="religion" onChange={ this.handleChange }  >
-            <option value="">-- Escolher --</option>
-            {
-              this.state.prepare.cultural.map(
-                (cultural) => {
-                  return(
-                    <option key={ cultural.id } value={ cultural.id }>{ cultural.label }</option>
-                  )
-                }
-              )
-            }
-          </select>
-          <br/>
-          
-          <label htmlFor="educationSituation">Situação educacional:</label>
-          <select name="educationSitiation" id="educationSituation" onChange={ this.handleChange }  >
-            <option value="">-- Escolher --</option>
-            {
-              this.state.prepare.socio_econ.map(
-                (escolar) => {
-                  return(
-                    <option key={ escolar.id } value={ escolar.id }>{ escolar.label }</option>
-                  )
-                }
-              )
-            }
-          </select>
-          <br/>
-          
-          <label htmlFor="familiarRelationship">Relação familiar:</label>
-          <select name="familiarRelationship" id="familiarRelationship" onChange={ this.handleChange }  >
-          <option value="">-- Escolher --</option>
-            {
-              this.state.prepare.relacao_fam.map(
-                (relacao_fam) => {
-                  return(
-                    <option key={ relacao_fam.id } value={ relacao_fam.id }>{ relacao_fam.label }</option>
-                  )
-                }
-              )
-            }
-          </select>
-          <br/>
-          
-          <h3>Estilo de vida</h3>
-          
-          <label htmlFor="feeding">Alimentação:</label>
-          {
-            this.state.prepare.alimentacao.map(
-              (alimentacao) => {
-                return(
-                  <div key={ alimentacao.id }>
-                  <input type="checkbox" name="alimentacao" value={ alimentacao.id } onChange={ this.handleChange }/>
-                  <label htmlFor="">{ alimentacao.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <br/>
-          
-          <label htmlFor="physicalActivity">Atividades físicas:</label>
-          <select name="physicalActivity" id="physicalActivity" onChange={ this.handleChange }  >
-            <option value="">-- Escolher --</option>
-            {
-              this.state.prepare.ativ_fisica.map(
-                (ativ_fisica) => {
-                  return(
-                    <option key={ ativ_fisica.id } value={ ativ_fisica.id }>{ ativ_fisica.label }</option>
-                  )
-                }
-              )
-            }
-          </select>
-          <br/>
-          
-          <h3>Fumo</h3>
-          
-          <label htmlFor="">Faz uso?</label>
-          {
-            this.state.prepare.tabagismo.map(
-              (tabagismo) => {
-                return(
-                  <div key={ tabagismo.id }>
-                  <input type="radio" name="tabagismo" value={ tabagismo.id } onChange={ this.handleChange }/>
-                  <label htmlFor="">{ tabagismo.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <br/>
-          
-          <label htmlFor="smoke">Tipos de fumo:</label>
-          {
-            this.state.prepare.tabag_tipo.map(
-              (tabag_tipo) => {
-                return(
-                  <div key={ tabag_tipo.id }>
-                  <input type="checkbox" name="tabag_tipo" value={ tabag_tipo.id } onChange={ this.handleChange }/>
-                  <label htmlFor="">{ tabag_tipo.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <br/>
-          
-          <label htmlFor="dailyCigaretteAmount">Quantidade diária:</label>
-          <input
-            type="number"
-            name="dailyCigaretteAmount"
-            id="dailyCigaretteAmount"
-            value={ this.state.formData.tabag_quant }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <label htmlFor="smokingFrequency">Frequencia e quantidade de fumo:</label>
-          <input
-            type="text"
-            name="smokingFrequency"
-            id="smokingFrequency"
-            value={ this.state.formData.tabag_freq }
-            onChange={ this.handleChange }		
-          /> 
-          <br/>
-          
-          <label htmlFor="startSmoking">Data de início:</label>
-          <input
-            type="date"
-            name="startSmoking"
-            id="startSmoking"
-            value={ this.state.formData.tabag_date }
-            onChange={ this.handleChange }	
-          /> 
-          <br/>
-          
-          <label htmlFor="smokingTime">Tempo que fuma:</label>
-          <input
-            type="text"
-            name="smokingTime"
-            id="smokingTime"
-            value={ this.state.formData.tabag_tempo }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <h3>Alcool</h3>
-          
-          <label htmlFor="">Faz uso?</label>
-          {
-            this.state.prepare.etilismo.map(
-              (etilismo) => {
-                return(
-                  <div key={ etilismo.id }>
-                  <input type="radio" name="etilismo" value={ etilismo.id } onChange={ this.handleChange }/>
-                  <label htmlFor="">{ etilismo.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <br/>
-          
-          <label htmlFor="alcoholicBeverages">Tipos de bebidas:</label>
-          {
-            this.state.prepare.etil_tipo.map(
-              (etil_tipo) => {
-                return(
-                  <div key={ etil_tipo.id }>
-                  <input type="checkbox" name="etil_tipo" value={ etil_tipo.id } onChange={ this.handleChange }/>
-                  <label htmlFor="">{ etil_tipo.label }</label>
-                  </div>
-                );
-              }
-            )
-          }	
-          <br/>
-          
-          <label htmlFor="dailyAlcoholicBevAmount">Quantidade diária:</label>
-          <input
-            type="text"
-            name="dailyAlcoholicBevAmount"
-            id="dailyAlcoholicBevAmount"
-            value={ this.state.formData.etil_quant }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <label htmlFor="alcoholicBevFrequency">Frequencia e quantidade de bebidas alcólicas:</label>
-          <input
-            type="text"
-            name="alcoholicBevFrequency"
-            id="alcoholicBevFrequency"
-            value={ this.state.formData.etil_freq }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <label htmlFor="startDrinking">Data de início:</label>
-          <input
-            type="date"
-            name="startDrinking"
-            id="startDrinking"
-            value={ this.state.formData.etil_date }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <label htmlFor="drinkingTime">Tempo que bebe:</label>
-          <input
-            type="text"
-            name="drinkingTime"
-            id="drinkingTime"
-            value={ this.state.formData.etil_tempo }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <h3>Drogas</h3>
-          
-          <label htmlFor="">Faz uso?</label>
-          {
-            this.state.prepare.uso_drogas.map(
-              (uso_drogas) => {
-                return(
-                  <div key={ uso_drogas.id }>
-                  <input type="radio" name="uso_drogas" value={ uso_drogas.id } onChange={ this.handleChange }/>
-                  <label htmlFor="">{ uso_drogas.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <br/>
-          
-          <label htmlFor="smoke">Tipos de drogas:</label>
-          {
-            this.state.prepare.drogas_tipo.map(
-              (drogas_tipo) => {
-                return(
-                  <div key={ drogas_tipo.id }>
-                  <input type="checkbox" name="drogas_tipo" value={ drogas_tipo.id } onChange={ this.handleChange }/>
-                  <label htmlFor="">{ drogas_tipo.label }</label>
-                  </div>
-                );
-              }
-            )
-          }	
-          <br/>
-          
-          <label htmlFor="dailyDrugsAmount">Quantidade diária:</label>
-          <input
-            type="number"
-            name="dailyDrugsAmount"
-            id="dailyDrugsAmount"
-            value={ this.state.formData.drogas_quant }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <label htmlFor="drugsFrequency">Frequencia e quantidade das drogas:</label>
-          <input
-            type="text"
-            name="drugsFrequency"
-            id="drugsFrequency"
-            value={ this.state.formData.drogas_freq }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <label htmlFor="startDrugs">Data de início:</label>
-          <input
-            type="date"
-            name="startDrugs"
-            id="startDrugs"
-            value={ this.state.formData.drogas_date }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <label htmlFor="drugsTime">Tempo:</label>
-          <input
-            type="number"
-            name="drugsTime"
-            id="drugsTime"
-            value={ this.state.formData.drogas_tempo }
-            onChange={ this.handleChange }
-          /> 
-          <br/>
-          
-          <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
-        
-        </form> */}
 			</div>
 		)
 	}
