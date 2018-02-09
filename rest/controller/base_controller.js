@@ -29,6 +29,11 @@ var Controller = {
 
 	update: test,
 
+  /*
+   * Get data from url 
+   * @receives /{id}/{id_user}/{hash}/  
+   * @return url_data {hash,user_id,q_id}
+   * */
 	get_url_data: function(req){
 		var url_components = req.path.split('/');
 		var len = url_components.length -1
@@ -37,15 +42,32 @@ var Controller = {
 		this.url_data.q_id = url_components[len-3];
 	},
 
+  /*
+   * Check id hash make a sense
+   * @receives user_id {User id}
+   * @receives hash {Hash sended by client}
+   * @return true or false
+   * */
 	check_hash_id: function(user_id, hash){
 		return Autenticator.check_hash_id(user_id,hash);
 	},
 
+  /*
+   * Check if requestion is valid 
+   * @receives req
+   * @return true or false
+   * */
 	check_requisition: function(req){
 		this.get_url_data(req)
 		return this.check_hash_id(this.url_data.user_id,this.url_data.hash)
 	},
 
+  /*
+   * Create error message
+   * @receives code {Number of message}
+   * @receives message {Message to send}
+   * @return {formatted message}
+   * */
 	error_message: function(code, message){
 		return {success: 0, error:{code:code,message:message}};
 	},
