@@ -30,7 +30,8 @@ class PhysicalExams extends Component {
 			storedExams:[],
       selectedExamType: "fisico",
       selectedExam:"geral",
-			inputList: null
+      inputList: null,
+      popupExam: null
     };
   }
   
@@ -372,8 +373,16 @@ class PhysicalExams extends Component {
 
 
   ShowPopup(index){
+
+    console.log("AQUI");
+  
+
+    const exam= this.state.storedExams[index];
+
     this.setState({
       showPopup: true,
+      popupExam: exam
+    
     })
   }
 
@@ -501,7 +510,7 @@ class PhysicalExams extends Component {
           }}
         />
         <StoredList title="Exames Guardados" list={this.state.storedExams} remove={this.removeExam} showPopup={this.ShowPopup}/>
-        {this.state.showPopup ? <Popup title="E ai?" close={this.closePopup}/> : null}
+        {this.state.showPopup ? <Popup title="Editar Exame" close={this.closePopup} content={this.state.popupExam}/> : null}
         <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
       </div>
     );

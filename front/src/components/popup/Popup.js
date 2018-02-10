@@ -14,8 +14,12 @@ class Popup extends Component{
     render(){
         return(
             <div className="popup">
-                <h4>{this.props.title}</h4>
-                <button className="close" onClick={this.props.close}><span className="fas fa-times-circle"></span></button>
+                <div className="bar">
+                    <button className="close" onClick={this.props.close}><span className="fas fa-times-circle"></span></button>
+                </div>
+                <h3>{this.props.title}</h3>
+                <h4>{this.props.content.name}</h4>
+                
 
             </div>
 
