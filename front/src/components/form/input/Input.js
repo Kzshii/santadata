@@ -16,23 +16,7 @@ import './Input.css';
 */
 
 class Input extends Component {
-  render() {
-    let disabled = false;
-    let readOnly = false;
-    let required = false;
-
-    if(this.props.Disabled && (this.props.Disabled !== "false")) {
-      disabled = true;
-    }
-
-    if(this.props.ReadOnly && (this.props.ReadOnly !== "false")) {
-      readOnly = true;
-    }
-
-    if(this.props.Required && (this.props.Required !== "false")) {
-      required = true;
-    }
-        
+  render() {        
     return(
       <div className="Input">
         <label htmlFor={ this.props.Id }>{ this.props.Label }</label>
@@ -41,10 +25,10 @@ class Input extends Component {
           name={ this.props.Name }
           id={ this.props.Id }
           onChange={ this.props.OnChange }
-          disabled={ disabled }
-          readOnly={ readOnly }
-          required={ required }
-          value={ this.props.Value }
+          disabled={ this.props.Disabled && (this.props.Disabled !== "false") ? true : false }
+          readOnly={ this.props.ReadOnly && (this.props.ReadOnly !== "false") ? true : false }
+          required={ this.props.Required && (this.props.Required !== "false") ? true : false }
+          value={ this.props.Value ? this.props.Value : "" }
         />
       </div>
     );

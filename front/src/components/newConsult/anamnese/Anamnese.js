@@ -6,12 +6,12 @@ class Anamnese extends Component {
   constructor(props){
 		super(props);
 		
-		this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    
+
+    this.formData = {};
+
     this.state = {
 			prepare: null,
-			formData: {},
     };
 	}
 	
@@ -163,7 +163,7 @@ class Anamnese extends Component {
             title: "Medicamentos em uso",
             options:[
               {id: 0,label: "Depressão"},        
-              {id: 0,label: "Hipertensão"},              
+              {id: 1,label: "Hipertensão"},              
             ]
           },
           
@@ -358,7 +358,7 @@ class Anamnese extends Component {
           // História psico-social
           title: {
             type: "label",
-            value: "história psico-social"
+            value: "História psico-social"
           },
 
           san_basico: { // 1
@@ -623,43 +623,15 @@ class Anamnese extends Component {
 			}
 		);
   }
-  
-	handleChange(event) {
-		const target = event.target;
-		const name = target.name;
-		const value = target.value;
     
-		let formData = this.state.formData;
-		
-		if(target.type === 'checkbox') {
-			if(target.checked) {
-				/* insere */
-				if(formData[name] == null) {
-					formData[name] = [value];
-				} else {
-					formData[name].push(value);
-				}
-			} else {
-				/* remove */
-				let index = formData[name].indexOf(value);
-				formData[name].splice(index, 1);
-			}
-		} else {
-			formData[name] = value;
-		}
-		
-		this.setState({
-			formData: formData,
-		});
-		console.log("STATE", this.state);
-	}
-  
 	handleSubmit(event) {
-		event.preventDefault();
-		this.props.saveData("anamnese",this.state.formData);
-	}
-  
+    event.preventDefault();
+    console.log("ANAMNESE STORAGE",this.formData);
+		this.props.saveData("anamnese",this.formData);
+  }
+    
 	render(){
+    console.log("RENDERIZANDO ANAMNESE", this.state);
     if(!this.state.prepare){
       return (
         <div>LOADING</div> 
@@ -670,9 +642,12 @@ class Anamnese extends Component {
         <h2>Anamnese</h2>
 
         <Form
-          OnSubmit = { this.handleSubmit }
-          InputList = { this.state.prepare }     
-          SubmitValue ="Salvar evidências"
+          OnSubmit={null}
+          InputList={ this.state.prepare }
+          Storage={ (data) => { 
+            this.formData = {...data}
+          }}
+          SubmitValue="Salvar anamnese"
           Config={{
             Select:{ 
               OptionValue: "id"
@@ -685,7 +660,10 @@ class Anamnese extends Component {
             }
           }}
         />
-        
+
+        <form onSubmit={ this.handleSubmit }>
+          <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
+        </form>
 			</div>
 		)
 	}
