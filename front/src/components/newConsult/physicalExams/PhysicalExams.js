@@ -10,7 +10,7 @@ import Popup from './../../popup/Popup';
 class PhysicalExams extends Component {
   constructor(props){
     super(props);
-    
+
     this.mountSelectOptions = this.mountSelectOptions.bind(this);
     this.selectExam = this.selectExam.bind(this);
     this.selectExamType = this.selectExamType.bind(this);
@@ -19,11 +19,11 @@ class PhysicalExams extends Component {
     this.removeExam = this.removeExam.bind(this);
     this.ShowPopup = this.ShowPopup.bind(this);
     this.closePopup= this.closePopup.bind(this);
-    
+
     this.inputList = {};
     this.SelectOptions = [];
     this.exams = [];
-    
+
     this.state = {
       showPopup: false,
 			prepare: null,
@@ -34,35 +34,35 @@ class PhysicalExams extends Component {
       popupExam: null
     };
   }
-  
+
   componentDidMount() {
     this.props.prepare(this, "prepExams");
-    
+
 		this.setState(
 			{
 				prepare: {
           fisico: {
-            
+
             title:{
               type: 'label',
               value: "Exame Físico"
             },
-            
+
             geral:
             {
               //void: {id: -1, label: "Vazio"},
-              
+
               title:{
                 type: 'label',
                 value: "Exame Físico Geral"
               },
-              
+
               estado: {
                 type: "text",
                 title: "Estado"
               },
-              
-              //Tipos de edemas fisicos 
+
+              //Tipos de edemas fisicos
               edemas: {// 1
                 type:"select",
                 title:"Edemas",
@@ -76,7 +76,7 @@ class PhysicalExams extends Component {
                   { id: 4, label: "++++/++++" },
                 ],
               },
-              
+
               //Auscutas respiratorias
               auscultas_resp:{ // 1
                 type: "select",
@@ -91,7 +91,7 @@ class PhysicalExams extends Component {
                   { id: 4, label: "Edema Agudo do Pulmão" },
                 ],
               },
-              
+
               refl_heptojugular:{
                 type:"radio",
                 title: "Reflexo Heptojugular",
@@ -101,7 +101,7 @@ class PhysicalExams extends Component {
                   { id: 1, label: "Não" },
                 ],
               },
-              
+
               turg_jugular:{
                 type: "radio",
                 title:"Turgência Jugular",
@@ -111,7 +111,7 @@ class PhysicalExams extends Component {
                   { id: 1, label: "Não" },
                 ],
               },
-              
+
               ascite:{
                 type: "radio",
                 title: "Ascite",
@@ -121,7 +121,7 @@ class PhysicalExams extends Component {
                   { id: 1, label: "Não" },
                 ],
               },
-              
+
               perfusao:{
                 type: "radio",
                 title:"Perfusão",
@@ -130,12 +130,12 @@ class PhysicalExams extends Component {
                   {id: 1, label: "Baixa"},
                 ]
               },
-              
+
               freq_respiratoria: {
                 type: "number",
                 title: "Frequência Repiratória"
               },
-              
+
               derrame_pleural:{
                 type: "radio",
                 title: "Derrame Pleural",
@@ -144,7 +144,7 @@ class PhysicalExams extends Component {
                   {id:1, label:"Nao"},
                 ]
               },
-              
+
               peso: {
                 type:"text",
                 title: "Peso (kg)"
@@ -156,18 +156,18 @@ class PhysicalExams extends Component {
               imc:{
                 type: "text",
                 title:"IMC"
-              }  // peso/altura^2 
+              }  // peso/altura^2
             },
-            
+
             cardio:
             {
               title:{
                 type: 'label',
                 value: "Exame  Cardio"
               },
-              
-              
-              
+
+
+
               //Ritmo cardiovascular
               ritmo: {// 1
                 type: "radio",
@@ -178,10 +178,10 @@ class PhysicalExams extends Component {
                   { id: 1, label: "Irregular" },
                 ],
               },
-              
+
               //Inpecao cardiovascular
               inspecao:{ // 1
-                
+
                 type:"select",
                 title:"Inspeção",
                 options:
@@ -203,17 +203,17 @@ class PhysicalExams extends Component {
                   { id: 3, label: "B3 e B4" },
                 ],
               },
-              
-              
+
+
               auscuta: {
                 type: "text",
                 title:"Ascuta"
               }
               ,
-              
+
               //Palpacao
               palpacao: {// 1..*
-                
+
                 type:"checkbox",
                 title:"Palpação",
                 options:
@@ -224,13 +224,13 @@ class PhysicalExams extends Component {
                   { id: 3, label: "LHC 5 EIEC" },
                 ],
               },
-              
+
               fc:{
                 type:"text",
                 title:"Frequência Cardiaca",
-                
+
               },
-              
+
               pressao_arterial:{
                 type:"text",
                 title:"Pressão Arterial"
@@ -243,14 +243,14 @@ class PhysicalExams extends Component {
 							type: 'label',
 							value: "Exame Bioquímico"
 						},
-            
+
 						creatina:
 						{
 							title:{
 								type:"label",
 								value: "Creatina"
 							},
-              
+
 							basal:{
 								type:"text",
 								title:"Basal"
@@ -267,16 +267,16 @@ class PhysicalExams extends Component {
 								type:"text",
 								title:"Clearence Atual"
 							}
-              
+
 						},
-            
+
 						sangue:
 						{
 							title:{
 								type:"label",
 								value:"Exame de Sangue"
 							},
-              
+
 							hemoglobina: {
 								type: "text",
 								title:"Hemoglobina"
@@ -305,7 +305,7 @@ class PhysicalExams extends Component {
 							type: "checkbox",
 							title:"Eletrocardiograma",
 							options:
-							[ 
+							[
 								{id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
 								{id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
 								{id: 2, label: "Supra do Segmento ST"},
@@ -315,7 +315,7 @@ class PhysicalExams extends Component {
 								{id: 6, label: "Fibrilação Atrial (FA)"},
 							],
 						},
-            
+
 						//Ecocardiograma
 						primeira_FE: {
 							type: "text",
@@ -329,7 +329,7 @@ class PhysicalExams extends Component {
 							type: "text",
 							title: "Primeiro VE"
 						},
-            
+
 						ultima_FE: {
 							type: "text",
 							title:"Ultima FE"
@@ -341,8 +341,8 @@ class PhysicalExams extends Component {
 						ultima_VE_sist: {
 							type: "text",
 							title: "Ultima Ve Sist"
-						},		
-            
+						},
+
 						delta_FE: {
 							type: "text",
 							title: "delta Fe"
@@ -360,11 +360,11 @@ class PhysicalExams extends Component {
 			}
 		);
   }
-  
+
   selectExamType(event) {
     let exams = Object.keys(this.state.prepare[event.target.value]);
     let exam = exams[1];
-    
+
     this.setState({
       selectedExamType: event.target.value,
       selectedExam: exam
@@ -375,14 +375,14 @@ class PhysicalExams extends Component {
   ShowPopup(index){
 
     console.log("AQUI");
-  
+
 
     const exam= this.state.storedExams[index];
 
     this.setState({
       showPopup: true,
       popupExam: exam
-    
+
     })
   }
 
@@ -391,18 +391,18 @@ class PhysicalExams extends Component {
       showPopup: false,
     })
   }
-  
+
   selectExam(event){
     this.setState({
       selectedExam: event.target.value
     });
   }
-  
+
 	mountSelectOptions(selectType){
-    
+
     let options = Object.keys(this.state.prepare);
     let selectOptions= [];
-    
+
     for (let index = 0; index < options.length; index++) {
       selectOptions.push({
         id: index,
@@ -410,13 +410,13 @@ class PhysicalExams extends Component {
         label: this.state.prepare[options[index]].title.value
       });
     }
-    
+
     this.SelectOptions = selectOptions;
-    
+
     let exam = this.state.prepare[this.state.selectedExamType]
     options = Object.keys(exam);
     selectOptions = [];
-    
+
     for (let index = 1; index < options.length; index++) {
       selectOptions.push({
         id: index - 1,
@@ -424,29 +424,29 @@ class PhysicalExams extends Component {
         label: exam[options[index]].title.value
       });
     }
-    
-    this.exams=selectOptions;    
+
+    this.exams=selectOptions;
 	}
-  
+
   storeExam(Exam){
     let store = this.state.storedExams;
-    
+
     Exam.name = this.state.selectedExam;
     Exam.type = this.state.selectedExamType;
-    
+
     store.push(Exam);
-    
+
     this.setState({
       storedExams: store
     });
     console.log("Aqui")
     console.log(this.state);
   }
-  
+
   mountInputList(){
     let exam = this.state.selectedExam;
     let examType = this.state.selectedExamType;
-    
+
     this.inputList = this.state.prepare[examType][exam];
   }
 
@@ -460,19 +460,19 @@ class PhysicalExams extends Component {
       storedExams: list
     })
   }
-  
+
 	render(){
-    
+
 		if(!this.state.prepare){
 			return(
 				<div>Loading</div>
 			);
     }
-    
+
     this.mountSelectOptions();
     this.mountInputList();
     console.log(this.inputList);
-    
+
     return(
       <div className="InputExam">
         <h2>Exames Físicos</h2>
@@ -484,21 +484,21 @@ class PhysicalExams extends Component {
           OnChange={ this.selectExamType }
           Name= "ExamsTypes"
         />
-        
+
         <Select
           Label="Exames"
           Options={ this.exams }
           OptionValue="value"
           KeyTag="exams"
           OnChange={ this.selectExam }
-        />  
-        
+        />
+
         <Form
           OnSubmit={ this.storeExam }
-          InputList={ this.inputList } 
+          InputList={ this.inputList }
           SubmitValue="Guardar Exame"
           Config={{
-            Select:{ 
+            Select:{
               OptionValue: "id"
             },
             Checkgroup:{
@@ -514,7 +514,7 @@ class PhysicalExams extends Component {
         <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
       </div>
     );
-  } 
+  }
 }
 
 export default PhysicalExams;
