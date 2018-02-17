@@ -52,7 +52,7 @@ class Form extends Component {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    
+
     let formData = {...this.state.formData};
 
     if(!formData[name]) {
@@ -60,7 +60,7 @@ class Form extends Component {
       formData[name].readonly = "true";
       console.log("FORMDATA NOVO ATRIBUTO", formData);
     }
-    
+
     if(target.type === 'checkbox') {
       const index = target.attributes.index.value;
       if(target.checked) {
@@ -74,7 +74,7 @@ class Form extends Component {
         formData[name].options[index].checked = false;
         console.log("FORMDATA2",formData[name].options[index]);
       }
-      
+
     } else if(target.type === 'select-one') {
       formData[name].options.map((option)=>{
         if(option.selected) {
@@ -89,7 +89,7 @@ class Form extends Component {
     } */ else {
       formData[name].value = value;
     }
-    
+
     if(this.props.Storage) {
       this.props.Storage(formData);
     }
@@ -97,12 +97,14 @@ class Form extends Component {
     this.setState({
       formData: formData,
     });
-  }	
+  }
 
   handleSubmit(event) {
     event.preventDefault();
     if(this.props.OnSubmit) {
-      this.props.OnSubmit(this.state.InputList);
+      console.log("AQUI MANO")
+      console.log(this.state.formData)
+      this.props.OnSubmit(this.state.formData);
     }
   }
 
@@ -114,9 +116,9 @@ class Form extends Component {
       case 'label':
         returnSelected = <label key={ "Label"+input+this.props.KeyTag }>{ inputField.value }</label>;
         break;
-      
+
       case 'select':
-        returnSelected = 
+        returnSelected =
           <Select
             key={ "Select"+input+this.props.KeyTag }
             Label={ inputField.title }
@@ -129,9 +131,9 @@ class Form extends Component {
           />
         ;
         break;
-      
+
       case 'checkbox':
-        returnSelected = 
+        returnSelected =
           <Checkgroup
             key={ "Check"+input+this.props.KeyTag }
             Label={ inputField.title }
@@ -146,7 +148,7 @@ class Form extends Component {
 
       case 'radio':
         returnSelected =
-          <Radiogroup 
+          <Radiogroup
             key={ "Radio"+input+this.props.KeyTag }
             Label={ inputField.title }
             Options={ inputField.options }
@@ -158,12 +160,12 @@ class Form extends Component {
           />
         ;
         break;
-      
+
       case 'text':
       case 'date':
       case 'number':
         returnSelected =
-          <Input 
+          <Input
             key={ "Input"+input+this.props.KeyTag }
             Label={ inputField.title }
             OnChange={ this.handleChange }
@@ -179,23 +181,23 @@ class Form extends Component {
 
       case 'textarea':
         returnSelected =
-          <Textarea 
-            key={ "Textarea"+input+this.props.KeyTag } 
-            Label={ inputField.title } 
-            OnChange={ this.handleChange } 
-            Name={ input } 
-            Disabled={ inputField.disabled } 
-            ReadOnly={ inputField.readonly } 
+          <Textarea
+            key={ "Textarea"+input+this.props.KeyTag }
+            Label={ inputField.title }
+            OnChange={ this.handleChange }
+            Name={ input }
+            Disabled={ inputField.disabled }
+            ReadOnly={ inputField.readonly }
             Required={ inputField.required }
             Value={ inputField.value }
-          /> 
+          />
         ;
         break;
 
       case 'submit':
         returnSelected = <input key={ "Submit"+input+this.props.KeyTag } type="submit" value={ this.props.SubmitValue }/>;
         break;
-      
+
       /* case 'form':
         {
           Object.keys(inputField.InputList).map(
@@ -205,14 +207,14 @@ class Form extends Component {
           )
         }
         break; */
-      
+
       default:
         console.log("elemento não listado");
         return(null);
     }
 
     /* if(inputField.canrepeat) {
-      returnSelected = 
+      returnSelected =
         <div key={ returnSelected.key+"parent" }>
           { returnSelected }
           <span onClick={

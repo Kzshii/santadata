@@ -40,7 +40,12 @@ class PhysicalExams extends Component {
 
 		this.setState(
 			{
+
+
 				prepare: {
+
+
+
           fisico: {
 
             title:{
@@ -448,17 +453,26 @@ class PhysicalExams extends Component {
     let examType = this.state.selectedExamType;
 
     this.inputList = this.state.prepare[examType][exam];
+
+    this.inputList["submit"]={
+      type:"submit"
+    }
+
   }
 
   removeExam(index){
-    let list = this.state.storedExams;
+    let list= this.state.storedExams;
 
 
-    list.splice(index);
+    list.splice(index,1);
+    console.log("list")
 
     this.setState({
       storedExams: list
     })
+    
+    console.log("state")
+    console.log(this.state);
   }
 
 	render(){
