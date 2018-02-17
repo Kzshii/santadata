@@ -33,7 +33,7 @@ class Medicines extends Component {
     
     /* VARS */
     this.InputList = {};
-    this.SelectOptions = [];
+    this.SelectOptions = null;
     
     /* STATE */
     this.state = {
@@ -54,21 +54,21 @@ class Medicines extends Component {
               
           commom: {
             date: {
-                type: "date", // data
-                title: "Data",
-                required: "true"
+              type: "date", // data
+              title: "Data",
+              required: "true"
             },
                   
             charge: {
               type: "number", // mg
               title: "Carga",
-              unity: "mg",
+              unity: "mg"
             },
                   
             gap: {
               type: "number", // horas
               title: "Intervalo",
-              unity: "h",
+              unity: "h"
             },
                   
             // Acrescentar momento do dia 0*...
@@ -83,6 +83,10 @@ class Medicines extends Component {
                 {id: 2,label: "Tarde"},
                 {id: 3,label: "Noite"},
               ],
+            },
+
+            submit: {
+              type: "submit"
             }
           },
 
@@ -333,10 +337,12 @@ class Medicines extends Component {
   }
 
   storeMedicine(medicine) {
+    console.log("RETORNO DO FORM", medicine);
     let storedMeds = this.state.storedMeds;
     const name = this.state.selectedMedicine;
-    medicine.name = name;
-    storedMeds.push(medicine);
+    let cloneMedicine = {...medicine};
+    cloneMedicine.name = name;
+    storedMeds.push(cloneMedicine);
     this.setState({
       storedMeds: storedMeds
     });
@@ -367,7 +373,6 @@ class Medicines extends Component {
   mountInputList() {
     const med = this.state.selectedMedicine;
     const meds = this.state.prepare[med];
-    console.log("MOUNT INPUT LIST MED:", meds);
     const commom = this.state.prepare.commom;
     const medKeys = Object.keys(meds);
     const commomKeys = Object.keys(commom);
@@ -381,10 +386,8 @@ class Medicines extends Component {
       InputList[commomKeys[i]] = commom[commomKeys[i]];
     }
 
-    console.log("MEDICINES MOUNT INPUT LIST:", InputList);
-
     this.InputList = InputList;
-    console.log("MOUNT INPUT LIST - MEDICINES STATE",this.state.InputList);
+    console.log("INPUTLIST FEITA");
   }
 
   handleSubmit(data) {
@@ -393,14 +396,16 @@ class Medicines extends Component {
 
   render() {
     console.log("MEDICINES STATE:",this.state);
-    console.log("MEDICINES X:",this.x);
     if(!this.state.prepare) {
       return(
         <div>Loading</div>
       );
     }
     this.mountInputList();
-    this.mountSelectOptions();
+
+    if(!this.selectOptions) {
+      this.mountSelectOptions();
+    }
 
     return(
       <div className="Medicines">
@@ -413,7 +418,6 @@ class Medicines extends Component {
             OnChange={ this.selectMedicine }
           />
           
-          <form action="">
           <Form
             OnSubmit={ this.storeMedicine }
             InputList={ this.InputList } 
@@ -429,13 +433,15 @@ class Medicines extends Component {
                 OptionValue: "id"
               }
             }}
+            KeyTag={ this.state.selectedMedicine }
           />
-          </form>
         </div>
 
         {/* TODO: Exibir medicamentos adicionados à pool */}
 
-        <input className="Button" type="submit" value="Salvar medicamentos e continuar" onMouseUp={ this.handleSubmit }/>
+        <form onSubmit={ this.handleSubmit }>
+          <input className="Button" type="submit" value="Salvar medicamentos e continuar"/>
+        </form>
       </div>
     );
   }
