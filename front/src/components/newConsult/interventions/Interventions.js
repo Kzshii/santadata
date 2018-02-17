@@ -17,27 +17,38 @@ class Interventions extends Component {
 		this.props.prepare(this, "prepInterventions");
 		
 		/* Test only */
-		/* this.setState(
+		this.setState(
 			{
 				prepare: {
-          //void: {id: -1, label: "Vazio"},
 	
 					// Tipos de intervenções
 					angio:
-					[
-						{id: 0,label: "Cirurgia de Revascularização do Miocárdio (CRM) prévia"},
-						{id: 1,label: "Intervenção Coronária Percutanea (ICP) prévia"},
-					],
+					{
+						type: "select",
+						title: "Angio",
+						required: "true",
+						options: 
+						[
+							{id: 0,label: "Cirurgia de Revascularização do Miocárdio (CRM) prévia"},
+							{id: 1,label: "Intervenção Coronária Percutanea (ICP) prévia"},
+						]
+					},
 
 					implantes: 
-					[
-						{id: 0,label: "Marcapasso Definitivo (MPD)"},
-						{id: 1,label: "Cardiodesfibrilador Implantável (CDI)"},
-						{id: 2,label: "Tratamento por Ressincronização Cardíaca (TRC)"},
-					]
+					{
+						type: "select",
+						title: "Implantes",
+						required: "true",
+						options: 
+						[
+							{id: 0,label: "Marcapasso Definitivo (MPD)"},
+							{id: 1,label: "Cardiodesfibrilador Implantável (CDI)"},
+							{id: 2,label: "Tratamento por Ressincronização Cardíaca (TRC)"},
+						]
+					},
 				}
 			},
-		); */
+		);
 	} 
 
   handleChange(event) {

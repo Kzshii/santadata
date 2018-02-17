@@ -48,12 +48,20 @@ class Select extends Component {
           onChange={ this.props.OnChange }
           disabled={ disabled }
           required={ required }
+          value={ this.props.Value }
         >
           {
             this.props.Options.map(
-              (option) => {
+              (option, i = 0) => {
                 return(
-                  <option key={ this.props.KeyTag+option.id } value={ option[this.props.OptionValue] } >{ option.label }</option>
+                  <option 
+                    key={ this.props.KeyTag+option.id }
+                    value={ option[this.props.OptionValue] }
+                    selected={ option.selected }
+                    index={ i++ }
+                  >
+                    { option.label }
+                  </option>
                 );
               }
             )

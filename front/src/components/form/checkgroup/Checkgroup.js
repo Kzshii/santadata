@@ -42,7 +42,7 @@ class Checkgroup extends Component {
         <label>{ this.props.Label }</label>
         {
           this.props.Options.map(
-            (option) => {
+            (option, i = 0) => {
               return(
                 <div className="Checkbox" key={ this.props.KeyTag+option.id }>
                   <input
@@ -54,6 +54,8 @@ class Checkgroup extends Component {
                     disabled={ disabled }
                     readOnly={ readOnly }
                     required={ required }
+                    checked={ option.checked }
+                    index={ i++ }
                   />
                   <label htmlFor={ this.props.KeyTag+option.id }>{ option.label }</label>
                 </div>
