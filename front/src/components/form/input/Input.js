@@ -28,7 +28,7 @@ class Input extends Component {
           disabled={ this.props.Disabled && (this.props.Disabled !== "false") ? true : false }
           readOnly={ this.props.ReadOnly && (this.props.ReadOnly !== "false") ? true : false }
           required={ this.props.Required && (this.props.Required !== "false") ? true : false }
-          value={ this.props.Value ? this.props.Value : "" }
+          value={ this.props.Value }
         />
       </div>
     );
