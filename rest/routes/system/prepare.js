@@ -21,6 +21,7 @@ module.exports = function (app) {
 	Prepare.add_route("/prepare/medicines/", c_prepare.medicines, Prepare.sufix.none, Prepare.type.all)
 	Prepare.add_route("/prepare/predictors/", c_prepare.predictors, Prepare.sufix.none, Prepare.type.all)
 	Prepare.add_route("/prepare/prevention/", c_prepare.prevention, Prepare.sufix.none, Prepare.type.all)
+	Prepare.add_route("/prepare/exams/", c_prepare.exams, Prepare.sufix.none, Prepare.type.all)
 	
 	return Prepare.prepare();
 };

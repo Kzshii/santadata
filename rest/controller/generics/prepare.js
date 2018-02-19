@@ -14,6 +14,7 @@ var Prevention = require("../../model/prevention.js")
 var Interventions = require("../../model/interventions.js")
 var Medicines = require("../../model/medicines.js")
 var Evidences = require("../../model/evidences.js")
+var Exams = require("../../model/physical_exam.js")
 
 //Base class
 var Base = require( '../generic.js' );
@@ -49,6 +50,10 @@ Prepare.predictors = function(req,res){
 
 Prepare.prevention = function(req,res){
 	Prepare.response(res,Prevention.types)
+}
+
+Prepare.exams = function(req,res){
+	Prepare.response(res,Exams.types)
 }
 
 module.exports = Prepare;
