@@ -338,8 +338,8 @@ Exame_fisico.data = {
 
 	geral: {
 		estado: "",
-		edema: Exame_fisico.types.geral.edemas[0],
-		auscuta_resp: Exame_fisico.types.geral.auscultas_resp[0],
+		edema: Exame_fisico.types.void,
+		auscuta_resp: Exame_fisico.types.void,
 		refl_heptojugular: 0, // 0 or 1
 		turg_jugular: 0, //0 or 1
 		ascite: 0, //0 or 1
@@ -349,7 +349,7 @@ Exame_fisico.data = {
 	},
 
 	cardiovascular: {	
-		ritmo: Exame_fisico.types.cardiovascular.ritmo[0],
+		ritmo: Exame_fisico.types.void,
 		inspecao: Exame_fisico.types.void,	//Exame_fisico.types.cardiovascular.inspecao[0],
 		bulhas: Exame_fisico.types.void,	//Exame_fisico.types.cardiovascular.bulhas[0]
 		ausculta: "",
