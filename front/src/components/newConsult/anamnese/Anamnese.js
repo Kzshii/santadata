@@ -644,8 +644,8 @@ class Anamnese extends Component {
         <Form
           OnSubmit={null}
           InputList={ this.state.prepare }
-          Storage={ (data) => { 
-            this.formData = {...data}
+          Storage={ (data) => {
+            this.formData = JSON.parse(JSON.stringify(data));
           }}
           SubmitValue="Salvar anamnese"
           Config={{
