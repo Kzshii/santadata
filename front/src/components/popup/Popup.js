@@ -18,8 +18,8 @@ class Popup extends Component{
                     <button className="close" onClick={this.props.close}><span className="fas fa-times-circle"></span></button>
                 </div>
                 <h3>{this.props.title}</h3>
-                <h4>{this.props.content.name}</h4>
-                
+                <h4>{this.props.content}</h4>
+
 
             </div>
 

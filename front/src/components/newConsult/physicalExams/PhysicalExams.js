@@ -383,6 +383,8 @@ class PhysicalExams extends Component {
 
 
     const exam= this.state.storedExams[index];
+    console.log("ShowPopup")
+    console.log(exam);
 
     this.setState({
       showPopup: true,
@@ -444,8 +446,8 @@ class PhysicalExams extends Component {
     this.setState({
       storedExams: store
     });
-    console.log("Aqui")
-    console.log(this.state);
+    console.log("storeExam:")
+    console.log(this.state.storedExams);
   }
 
   mountInputList(){
@@ -457,26 +459,19 @@ class PhysicalExams extends Component {
     this.inputList["submit"]={
       type:"submit"
     }
-
+    console.log("mountInputList:")
+    console.log(this.inputList)
   }
 
   removeExam(index){
     let list= this.state.storedExams;
-
-
     list.splice(index,1);
-    console.log("list")
-
     this.setState({
       storedExams: list
     })
-    
-    console.log("state")
-    console.log(this.state);
   }
 
 	render(){
-
 		if(!this.state.prepare){
 			return(
 				<div>Loading</div>
@@ -524,7 +519,21 @@ class PhysicalExams extends Component {
           }}
         />
         <StoredList title="Exames Guardados" list={this.state.storedExams} remove={this.removeExam} showPopup={this.ShowPopup}/>
-        {this.state.showPopup ? <Popup title="Editar Exame" close={this.closePopup} content={this.state.popupExam}/> : null}
+
+        {this.state.showPopup ? <Popup title="Editar Exame" close={this.closePopup} content={<Form OnSubmit={this.storeExam}
+          InputList={this.state.popupExam}
+          SubmitValue="Opa"
+          Config={{
+            Select:{
+              OptionValue: "id"
+            },
+            Checkgroup:{
+              OptionValue: "id"
+            },
+            Radiogroup:{
+              OptionValue: "id"
+            }
+          }}/>}/> : null}
         <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
       </div>
     );

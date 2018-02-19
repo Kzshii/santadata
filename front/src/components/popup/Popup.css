@@ -2,8 +2,8 @@
     position: absolute;
     top: 25%;
     left: 25%;
-    width: 200px;
-    height: 200px;
+    width: auto;
+    height: auto;
     background: white;
     border: 1px solid black;
     border-radius: 5px;
@@ -11,6 +11,6 @@
 }
 
 .close{
-    
+
     float: right;
 }
