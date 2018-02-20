@@ -32,11 +32,8 @@ var Config = {
 				Mongodb.createCollection(collection);
 			})
 
-			console.log("Initializing Counters")
-			Mongodb.initialize.counters(config_db.Mongo.counters);
-
-			console.log("Finished")
-			res.send(JSON.stringify(config_db.Mongo));
+			//console.log("Finished")
+			//res.send(JSON.stringify(config_db.Mongo));
 			
 			/*Mongodb.search.one("user",{},function(result){
 				console.log(result)
@@ -45,10 +42,23 @@ var Config = {
 		}
 		catch(e){
 			console.log("Error")
+			console.log(e)
 			res.send("ERRO NO MONGO");
 		}
 	},
 
+
+	initialize_mongo:function(req,res){
+		try{
+			console.log("Initializing Counters")
+			Mongodb.initialize.counters(config_db.Mongo.counters);
+		}
+		catch(e){
+			console.log("Error")
+			console.log(e)
+			res.send("ERRO NO MONGO");
+		}
+	},
 	/*
 	* JUST FOR TEST
 	*/
