@@ -17,7 +17,7 @@ module.exports = function (app) {
 	Consult.init(app);
 
 	//Physical exam
-	Consult.add_route("/gen/new/consult/", c_consult.add, Consult.sufix.end_route, Consult.type.post)
+	Consult.add_route("/gen/new/consult/", c_consult.new, Consult.sufix.end_route, Consult.type.post)
 	//Consult.add_route("/gen/search/consult/", c_consult.search, Consult.sufix.end_route, Consult.type.post)
 	//Consult.add_route("/gen/get/consult/", c_consult.get, Consult.sufix.id_route, Consult.type.post)
 	//Consult.add_route("/gen/all/consult/", c_consult.all, Consult.sufix.end_route, Consult.type.post)
