@@ -6,7 +6,13 @@
 */
 
 var Consult = {
+	model: {
 
+	},
+	
+	mapData: function(data){
+		return data;
+	}
 }
 
 module.exports = Consult;
