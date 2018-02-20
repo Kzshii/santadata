@@ -18,7 +18,7 @@ class PhysicalExams extends Component {
     this.storeExam = this.storeExam.bind(this);
     this.removeExam = this.removeExam.bind(this);
     this.ShowPopup = this.ShowPopup.bind(this);
-    this.closePopup= this.closePopup.bind(this);
+    this.editExam= this.editExam.bind(this);
 
     this.inputList = {};
     this.SelectOptions = [];
@@ -387,20 +387,16 @@ class PhysicalExams extends Component {
       popupExam: {exam: exam,
                   index: index}
     })
-    console.log("showPopup");
+
+  }
+
+  editExam(exam){
+    console.log("ExmeEditado");
     console.log(exam);
-  }
 
-  closePopup(){
     this.setState({
-      showPopup: false,
+      showPopup: false
     })
-    console.log("exame editado")
-    console.log(this.state.storedExams)
-  }
-
-
-  editExam(index){
 
   }
 
@@ -439,6 +435,7 @@ class PhysicalExams extends Component {
 
   storeExam(Exam){
     let store = this.state.storedExams;
+
 
     Exam.name = this.state.selectedExam;
     Exam.type = this.state.selectedExamType;
@@ -521,9 +518,9 @@ class PhysicalExams extends Component {
         {this.state.showPopup ?
           <Popup
             title="Editar Exame"
-            close={this.closePopup}
+            close={()=>{this.setState({showPopup: false})}}
             content={
-              <Form OnSubmit={this.closePopup}
+              <Form OnSubmit={this.editExam}
                     InputList={this.state.popupExam.exam}
                     SubmitValue="Salvar Edição"
                     Config={
