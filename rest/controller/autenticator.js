@@ -147,61 +147,10 @@ var Autenticator = {
 		return {success: 1, data:{}}
 	},
 
-	/*
-	* DEACTIVATE THIS FUNCTION
-	*/
-	config_mongo: function(req,res){
-		try{
-			console.log("Creating MONGO database")
-			Mongodb.createDb();
-
-			console.log("Creating Collections")
-			config_db.Mongo.collections.map(function(collection){
-				Mongodb.createCollection(collection);
-			})
-
-			console.log("Created")
-			res.send(JSON.stringify({collections:config_db.Mongo.collections}));
-			
-			/*Mongodb.search.one("user",{},function(result){
-				console.log(result)
-				res.send(JSON.stringify(result));
-			});*/
-		}
-		catch(e){
-			console.log("Error")
-			res.send("ERRO NO MONGO");
-		}
-	},
-
-	/*
-	* JUST FOR TEST
-	*/
-	test_route: function(req,res){
-		var user = req.query.user;
-		try{
-			console.log("Creating MONGO database")
-			Mongodb.createDb();
-
-			console.log("Creating user Collection")
-			Mongodb.createCollection("user");
-
-			console.log("Searching user on Collection")
-			Mongodb.search.one("user",{},function(result){
-				console.log(result)
-				res.send(JSON.stringify(result));
-			});
-		}
-		catch(e){
-			console.log("Error")
-			res.send("ERRO NO MONGO");
-		}
-	},
 
 	logout_route: function(req,res){
 
 	}
-
 
 }
 

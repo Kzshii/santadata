@@ -20,7 +20,8 @@ var Config_databases = {
 		],
 		counters: [
 		"idconsult",
-		"idmedicine"
+		"idmedicine",
+		"iduser"
 		]
 	}
 }
