@@ -15,6 +15,13 @@ import './Textarea.css';
 */
 
 class Textarea extends Component {
+
+  componentWillMount() {
+    this.setState({
+      Value: this.props.Value
+    });
+  }
+
   render() {
     let disabled = false;
     let readOnly = false;
@@ -42,7 +49,7 @@ class Textarea extends Component {
           disabled={ disabled }
           readOnly={ readOnly }
           required={ required }
-          value={ this.props.Value }
+          value={ this.state.Value }
         />
       </div>
     );

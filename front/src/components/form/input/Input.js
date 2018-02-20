@@ -16,6 +16,13 @@ import './Input.css';
 */
 
 class Input extends Component {
+
+  componentWillMount() {
+    this.setState({
+      Value: this.props.Value
+    });
+  }
+
   render() {        
     return(
       <div className="Input">
@@ -28,7 +35,7 @@ class Input extends Component {
           disabled={ this.props.Disabled && (this.props.Disabled !== "false") ? true : false }
           readOnly={ this.props.ReadOnly && (this.props.ReadOnly !== "false") ? true : false }
           required={ this.props.Required && (this.props.Required !== "false") ? true : false }
-          value={ this.props.Value }
+          value={ this.state.Value }
         />
       </div>
     );
