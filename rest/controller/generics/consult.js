@@ -29,3 +29,5 @@ Consult.add = function(req, res){
 
 	Consult.generic_dao_request(res,data, Dao_generic.new)
 }
+
+module.exports = Consult;
