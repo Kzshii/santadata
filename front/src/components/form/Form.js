@@ -48,6 +48,12 @@ class Form extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({
+      formData: JSON.parse(JSON.stringify(this.props.InputList))
+    });
+  }
+
   handleChange(event) {
     const target = event.target;
     const name = target.name;
@@ -55,11 +61,7 @@ class Form extends Component {
     
     let formData = this.state.formData;
 
-    if(!formData[name]) {
-      formData[name] = JSON.parse(JSON.stringify(this.props.InputList[name]));
-      formData[name].readonly = "true";
-      console.log("FORMDATA NOVO ATRIBUTO", formData);
-    }
+    // formData[name].readonly = "true";
     
     if(target.type === 'checkbox') {
       const index = target.attributes.index.value;
