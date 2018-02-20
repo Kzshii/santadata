@@ -52,8 +52,8 @@ class Form extends Component {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-
-    let formData = {...this.state.formData};
+    
+    let formData = this.state.formData;
 
     if(!formData[name]) {
       formData[name] = JSON.parse(JSON.stringify(this.props.InputList[name]));
@@ -102,9 +102,10 @@ class Form extends Component {
   handleSubmit(event) {
     event.preventDefault();
     if(this.props.OnSubmit) {
-      console.log("AQUI MANO")
-      console.log(this.state.formData)
       this.props.OnSubmit(this.state.formData);
+      this.setState({
+        formData: {}
+      });
     }
   }
 
