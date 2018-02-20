@@ -16,39 +16,36 @@ import './Textarea.css';
 
 class Textarea extends Component {
 
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   componentWillMount() {
     this.setState({
       Value: this.props.Value
     });
   }
 
-  render() {
-    let disabled = false;
-    let readOnly = false;
-    let required = false;
+  handleChange(event) {
+    this.setState({
+      Value: event.target.value
+    });
 
-    if(this.props.Disabled && (this.props.Disabled !== "false")) {
-      disabled = true;
-    }
+    this.props.OnChange(event);
+  }
 
-    if(this.props.ReadOnly && (this.props.ReadOnly !== "false")) {
-      readOnly = true;
-    }
-
-    if(this.props.Required && (this.props.Required !== "false")) {
-      required = true;
-    }
-        
+  render() {        
     return(
       <div className="Textarea">
         <label htmlFor={ this.props.Id }>{ this.props.Label }</label>
         <textarea
           name={ this.props.Name }
           id={ this.props.Id }
-          onChange={ this.props.OnChange }
-          disabled={ disabled }
-          readOnly={ readOnly }
-          required={ required }
+          onChange={ this.handleChange }
+          disabled={ this.props.Disabled && (this.props.Disabled !== "false") ? true : false }
+          readOnly={ this.props.ReadOnly && (this.props.ReadOnly !== "false") ? true : false }
+          required={ this.props.Required && (this.props.Required !== "false") ? true : false }
           value={ this.state.Value }
         />
       </div>

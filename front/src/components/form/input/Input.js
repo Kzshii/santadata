@@ -17,10 +17,24 @@ import './Input.css';
 
 class Input extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   componentWillMount() {
     this.setState({
       Value: this.props.Value
     });
+  }
+  
+  handleChange(event) {
+    this.setState({
+      Value: event.target.value
+    });
+
+    this.props.OnChange(event);
   }
 
   render() {        
