@@ -394,10 +394,16 @@ class PhysicalExams extends Component {
     console.log("ExmeEditado");
     console.log(exam);
 
+    let storeds= this.state.storedExams;
+    storeds[this.state.popupExam.index]=exam;
+
     this.setState({
-      showPopup: false
+      showPopup: false,
+      storedExams:storeds
     })
 
+    console.log("xD")
+    console.log(this.state.storedExams)
   }
 
   selectExam(event){
