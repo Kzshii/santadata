@@ -19,7 +19,6 @@ class Input extends Component {
 
   constructor(props) {
     super(props);
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -45,7 +44,7 @@ class Input extends Component {
           type={ this.props.Type }
           name={ this.props.Name }
           id={ this.props.Id }
-          onChange={ this.props.OnChange }
+          onChange={ this.handleChange }
           disabled={ this.props.Disabled && (this.props.Disabled !== "false") ? true : false }
           readOnly={ this.props.ReadOnly && (this.props.ReadOnly !== "false") ? true : false }
           required={ this.props.Required && (this.props.Required !== "false") ? true : false }
