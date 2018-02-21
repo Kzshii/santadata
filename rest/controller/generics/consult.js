@@ -30,7 +30,7 @@ Consult.add = function(req, res){
 	Consult.generic_dao_request(res,data, Dao_consult.new)
 }
 
-Consult.search = function(req,res){
+Consult.get = function(req,res){
 	var var_req = req.body;
 	var_req = Generic.decode_data(var_req)
 
@@ -43,7 +43,7 @@ Consult.search = function(req,res){
 
 	//Getting and preparing data
 	data = {_cid:Generic.url_data.q_id}
-	
+
 	Consult.generic_dao_request(res,data, Dao_consult.get)
 }
 
