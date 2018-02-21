@@ -16,11 +16,14 @@ var Config_databases = {
 		collections: [
 		"user",
 		"medicines",
-		"consult"
+		"consult",
+		"test"
 		],
 		counters: [
+		"test",
 		"idconsult",
-		"idmedicine"
+		"idmedicine",
+		"iduser"
 		]
 	}
 }

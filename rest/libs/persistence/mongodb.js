@@ -28,7 +28,7 @@ var createCollection = function(collection){
 
 
 var initialize = {
-	counters: function(counters){
+	counters: function(counts){
 
 	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
@@ -37,10 +37,18 @@ var initialize = {
 	    
 	    console.log("Counters Collection created!");
 
-	    counters.map(function(counter){
-	    	db.counters.insert({_id:counter,sequence_value:0})
-	    })
-	    
+	    try{
+		    counts.map(function(counter){
+		    	obj = {_id:counter,sequence_value:0}
+		    	db.collection('counters').insertOne(obj, function(err, res) {
+			   		if (err) throw err;
+					console.log("Counter Inserted")
+			  	});
+		    })
+	    }catch(e){
+	    	console.log("Erro na insercao do counter")
+	    	console.log(e)
+	    }
 	    db.close();
 	  });
 	});
@@ -89,13 +97,13 @@ var insert = {
 	//Used in AutoIncrement Values
 	next: function getNextSequenceValue(sequenceName,callback){
 		MongoClient.connect(url, function(err, db) {
-		if (err) throw err;
-   		callback(db.counters.findAndModify({
-	      	query:{_id: sequenceName },
-	     	 	update: {$inc:{sequence_value:1}},
-	     	 	new:true
-	   		}));
-		});
+			if (err) throw err;
+	   		db.collection("counters").findAndModify( { _id: sequenceName }, null, { $inc: { sequence_value: 1 } }, function(err, result){
+	        	if(err) callback(err, result);
+	        	console.log(result)
+	        	callback(err, result.value.sequence_value);
+    		});
+	   	})
 	}
 }
 
@@ -211,4 +219,4 @@ var update  = {
 }
 
 
-module.exports = {createDb: createDb, createCollection: createCollection, insert: insert, search: search, update: update}
+module.exports = {createDb: createDb, createCollection: createCollection, initialize: initialize, insert: insert, search: search, update: update}

@@ -9,6 +9,7 @@ module.exports = function (app) {
 	app = require('../generics/exams')(app);
 	app = require('../generics/patient')(app);
 	app = require('../generics/user')(app);
+	app = require('../generics/consults')(app);
 
 	return app;
 };

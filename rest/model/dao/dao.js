@@ -50,6 +50,24 @@ var Dao = {
 
 	},
 */
+	
+	mongo_insert: function(collection, data, callback, param){
+		try{
+			Mongodb.insert.next(collection, function(err, id){
+				if (err) throw err;
+				data._cid = id;
+				Mongodb.insert.obj(collection,data,function(result){
+					callback(param,result)
+				});
+			});
+		}
+		catch(e){
+			result = Dao.format_error(500,"Database error")
+			console.log(result)
+			callback(param, result)
+		}
+	},
+
 	mysql_query: function(query, data, callback, param){
 		try{
 			var sql = Mysql.format(query, data);
