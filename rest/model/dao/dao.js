@@ -54,7 +54,8 @@ var Dao = {
 	mongo_insert: function(collection, data, callback, param){
 		try{
 			Mongodb.insert.next(collection, function(err, id){
-				data._idConsult = id;
+				if (err) throw err;
+				data._cid = id;
 				Mongodb.insert.obj(collection,data,function(result){
 					callback(param,result)
 				});
