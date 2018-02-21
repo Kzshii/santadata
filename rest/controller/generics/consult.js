@@ -27,7 +27,24 @@ Consult.add = function(req, res){
 	//Getting and preparing data
 	data = Model_consult.mapData(var_req)
 
-	Consult.generic_dao_request(res,data, Dao_generic.new)
+	Consult.generic_dao_request(res,data, Dao_consult.new)
+}
+
+Consult.get = function(req,res){
+	var var_req = req.body;
+	var_req = Generic.decode_data(var_req)
+
+
+	//Check authentication
+	if(!Generic.check_requisition(req)){
+		res.send(Generic.error_message(500,"Bad request"));
+		return
+	}
+
+	//Getting and preparing data
+	data = {_cid:Generic.url_data.q_id}
+
+	Consult.generic_dao_request(res,data, Dao_consult.get)
 }
 
 module.exports = Consult;
