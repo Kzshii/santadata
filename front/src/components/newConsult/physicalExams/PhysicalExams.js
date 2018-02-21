@@ -378,10 +378,10 @@ class PhysicalExams extends Component {
 
   ShowPopup(index){
     let exam= this.state.storedExams[index];
-
+    /*
     exam["submit"]={
       type:"submit"
-    }
+    }*/
     this.setState({
       showPopup: true,
       popupExam: {exam: exam,
@@ -459,6 +459,7 @@ class PhysicalExams extends Component {
 
     this.inputList = this.state.prepare[examType][exam];
 
+    
     this.inputList["submit"]={
       type:"submit"
     }
@@ -523,7 +524,7 @@ class PhysicalExams extends Component {
 
         {this.state.showPopup ?
           <Popup
-            title="Editar Exame"
+            title="Visualizar Exame"
             close={()=>{this.setState({showPopup: false})}}
             content={
               <Form OnSubmit={this.editExam}
