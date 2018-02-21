@@ -104,8 +104,8 @@ class NewConsult extends Component {
       data: this.state.consultData /* TO DO: Formatar os dados da consulta */
     }
 
-    Post('saveConsult');
-    //alert("Consulta salva com sucesso!*");
+    //Post('saveConsult');
+    alert("Consulta salva com sucesso!*");
   }
 
 	render() {
