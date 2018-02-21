@@ -21,6 +21,7 @@ module.exports = function (app) {
 	Autenticator.add_route("/auth/logout/", c_autenticator.logout_route, Autenticator.sufix.none, Autenticator.type.all)
 	
 	Autenticator.add_route("/sys/test/db/mongo/", c_config.test_route, Autenticator.sufix.none, Autenticator.type.all)
+	Autenticator.add_route("/sys/test/counter/db/mongo/", c_config.test_route, Autenticator.sufix.none, Autenticator.type.all)
 	Autenticator.add_route("/sys/config/db/mongo/", c_config.config_mongo, Autenticator.sufix.none, Autenticator.type.all)
 	Autenticator.add_route("/sys/config/init/db/mongo/", c_config.initialize_mongo, Autenticator.sufix.none, Autenticator.type.all)
 	

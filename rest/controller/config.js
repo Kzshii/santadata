@@ -81,6 +81,35 @@ var Config = {
 			console.log("Error")
 			res.send("ERRO NO MONGO");
 		}
+	},
+		/*
+	* JUST FOR TEST
+	*/
+	test_counters: function(req,res){
+		var user = req.query.user;
+		try{
+			resp = ""
+			collection = "test"
+			dt = [{usuario:"joaozinho", cidade:"Narnia"},{usuario:"mariazinha", cidade:"Paraguai"}]
+
+			dt.map(function(data){
+				Mongodb.insert.next(collection,function(id){
+					data._idConsult = id;
+					Mongodb.insert.obj(collection,data,function(result){
+						Mongodb.search.one("test",{cidade:"Paraguai"},function(result){
+						console.log(result)
+						resp += JSON.stringify(result)			
+						});
+					});
+				});
+			})
+			
+			res.send(resp);
+		}
+		catch(e){
+			console.log("Error")
+			res.send("ERRO NO MONGO");
+		}
 	}
 }
 
