@@ -95,8 +95,10 @@ var Config = {
 			dt.map(function(data){
 				Mongodb.insert.next(collection,function(id){
 					data._idConsult = id;
+					console.log("Test")
+					console.log(data)
 					Mongodb.insert.obj(collection,data,function(result){
-						Mongodb.search.one("test",{cidade:"Paraguai"},function(result){
+						Mongodb.search.one(collection,{},function(result){
 						console.log(result)
 						resp += JSON.stringify(result)			
 						});
