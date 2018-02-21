@@ -90,17 +90,16 @@ var Config = {
 		try{
 			resp = ""
 			collection = "test"
-			dt = [{usuario:"joaozinho", cidade:"Narnia"},{usuario:"mariazinha", cidade:"Paraguai"}]
+			dt = [{usuario:"joaozinho", cidade:"Narnia", ap:123},{usuario:"mariazinha", cidade:"Paraguai", ap:123}]
 
 			dt.map(function(data){
 				Mongodb.insert.next(collection,function(err, id){
 					if (err) throw err;
-					
-					data._idConsult = id;
-					console.log("Test")
-					console.log(data)
+
+					data.idConsult = id;
 					Mongodb.insert.obj(collection,data,function(result){
-						Mongodb.search.one(collection,{},function(result){
+						Mongodb.search.one(collection,{ap:123},function(result){
+						console.log("Search Result")
 						console.log(result)
 						resp += JSON.stringify(result)			
 						});
