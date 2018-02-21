@@ -28,7 +28,7 @@ var createCollection = function(collection){
 
 
 var initialize = {
-	counters: function(counters){
+	counters: function(counts){
 
 	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
@@ -37,8 +37,10 @@ var initialize = {
 	    
 	    console.log("Counters Collection created!");
 
-	    counters.map(function(counter){
-	    	db.counters.insert({_id:counter,sequence_value:0})
+	    counts.map(function(counter){
+	    	db.insert.obj('counters',{_id:counter,sequence_value:0},function(c){
+	    		console.log("Counter Inserted")
+	    	})
 	    })
 	    
 	    db.close();
