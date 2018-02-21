@@ -89,6 +89,7 @@ var Config = {
 		var user = req.query.user;
 		try{
 			resp = ""
+			resp_count = 0
 			collection = "test"
 			dt = [{usuario:"joaozinho", cidade:"Narnia", ap:123},{usuario:"mariazinha", cidade:"Paraguai", ap:123}]
 
@@ -98,16 +99,17 @@ var Config = {
 
 					data.idConsult = id;
 					Mongodb.insert.obj(collection,data,function(result){
-						Mongodb.search.one(collection,{ap:123},function(result){
+						Mongodb.search.one(collection,{cidade:data.cidade},function(result){
 						console.log("Search Result")
 						console.log(result)
-						resp += JSON.stringify(result)			
+						resp += JSON.stringify(result)
+						resp_count++
+						if(resp_count == dt.length)
+							res.send(resp);
 						});
 					});
 				});
 			})
-			
-			res.send(resp);
 		}
 		catch(e){
 			console.log("Error")
