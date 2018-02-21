@@ -37,12 +37,18 @@ var initialize = {
 	    
 	    console.log("Counters Collection created!");
 
-	    counts.map(function(counter){
-	    	db.insert.obj('counters',{_id:counter,sequence_value:0},function(c){
-	    		console.log("Counter Inserted")
-	    	})
-	    })
-	    
+	    try{
+		    counts.map(function(counter){
+		    	obj = {_id:counter,sequence_value:0}
+		    	db.collection('counters').insertOne(obj, function(err, res) {
+			   		if (err) throw err;
+					console.log("Counter Inserted")
+			  	});
+		    })
+	    }catch(e){
+	    	console.log("Erro na insercao do counter")
+	    	console.log(e)
+	    }
 	    db.close();
 	  });
 	});
