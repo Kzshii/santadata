@@ -97,13 +97,11 @@ var insert = {
 	//Used in AutoIncrement Values
 	next: function getNextSequenceValue(sequenceName,callback){
 		MongoClient.connect(url, function(err, db) {
-		if (err) throw err;
-   		callback(db.collection(collection).findAndModify({
-	      	query:{_id: sequenceName },
-	     	 	update: {$inc:{sequence_value:1}},
-	     	 	new:true
-	   		}));
-		});
+			if (err) throw err;
+	   		db.collection("counters").findAndModify( { _id: sequenceName }, null, { $inc: { seq: 1 } }, function(err, result){
+	        if(err) callback(err, result);
+	        callback(err, result.value.seq);
+    	} );
 	}
 }
 

@@ -93,7 +93,7 @@ var Config = {
 			dt = [{usuario:"joaozinho", cidade:"Narnia"},{usuario:"mariazinha", cidade:"Paraguai"}]
 
 			dt.map(function(data){
-				Mongodb.insert.next(collection,function(id){
+				Mongodb.insert.next(collection,function(err, id){
 					data._idConsult = id;
 					console.log("Test")
 					console.log(data)
