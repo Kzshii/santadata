@@ -213,4 +213,4 @@ var update  = {
 }
 
 
-module.exports = {createDb: createDb, createCollection: createCollection, insert: insert, search: search, update: update}
+module.exports = {createDb: createDb, createCollection: createCollection, initialize: initialize, insert: insert, search: search, update: update}
