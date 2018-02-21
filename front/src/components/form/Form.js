@@ -61,7 +61,11 @@ class Form extends Component {
     
     let formData = this.state.formData;
 
-    // formData[name].readonly = "true";
+    if(!formData[name]) {
+      formData[name] = JSON.parse(JSON.stringify(this.props.InputList[name]));
+      formData[name].readonly = "true";
+      console.log("FORMDATA NOVO ATRIBUTO", formData);
+    }
     
     if(target.type === 'checkbox') {
       const index = target.attributes.index.value;

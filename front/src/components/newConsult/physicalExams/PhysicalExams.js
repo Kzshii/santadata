@@ -419,6 +419,11 @@ class PhysicalExams extends Component {
     
     this.inputList = this.state.prepare[examType][exam];
   }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.saveData("exams", this.storedExams);
+  }
   
 	render(){
     
@@ -468,8 +473,9 @@ class PhysicalExams extends Component {
             }
           }}
         />
-        
-        <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
+        <form onSubmit={ this.handleSubmit} >
+          <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
+        </form>
       </div>
     );
   } 

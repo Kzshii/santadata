@@ -1,148 +1,191 @@
 import React, { Component } from 'react';
 import './Predictors.css';
+import Form from './../../form/Form';
 
 class Predictors extends Component {
 	
 	constructor(props){
 		super(props);
 		
-		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+
+		this.formData = {
+			geral: {},
+			outros: {}
+		};
 		
 		this.state = {
 			prepare: null,
-			formData: {},
 		};
   }
 	
 	componentDidMount() {
-    this.props.prepare(this, "prepPredictors");
+    //this.props.prepare(this, "prepPredictors");
 		
 		/* test only */
 		
-		/* this.setState({
+		this.setState({
 			
 			prepare: {
 				
-				geral:{
-					morte_subita:[
-						
-						{id: 0,label: "Sim"},
-						{id: 1,label: "Nao"},
-						
-					],
-					
-					ep_taq:[
-						{id: 0,label: "Sim"},
-						{id: 1,label: "Nao"},
-					],
-					
-					disf_vent:[
-						{id: 0,label: "Sim"},
-						{id: 1,label: "Nao"},
-					]
-				},
-			}
-		}); */
-	}
-	
-	handleChange(event) {
-		const target = event.target;
-		const name = target.name;
-		const value = target.value
-		
-		let formData = this.state.formData;
-		
-		if(target.type === 'checkbox') {
-			if(target.checked) {
-				/* insere */
-				if(formData[name] == null) {
-					formData[name] = [value];
-				} else {
-					formData[name].push(value);
-				}
-			} else {
-				/* remove */
-				let index = formData[name].indexOf(value);
-				formData[name].splice(index, 1);
-			}
+				geral: {
+					// Morte súbita recuperada
+					morte_subita: {
+						type: "radio",
+						title: "Morte súbita recuperada",
+						options: [
+							{id: 0,label: "Sim"},
+							{id: 1,label: "Nao"}
+						]
+					},
 			
-		} else {
-			formData[name] = value;
-		}
-		
-		this.setState({
-			formData: formData,
+					// Episódio de taquicardia ventricular sustentada
+					ep_taq: {
+						type: "radio",
+						title: "Episódio de taquicardia ventricular sustentada",
+						options: [
+							{id: 0,label: "Sim"},
+							{id: 1,label: "Nao"}
+						]
+					},
+			
+					// Disfunção ventricular com fração de ejeção ≤ 35% e o paciente se encontra sintomático.
+					disf_vent: {
+						type: "radio",
+						title: "Disfunção ventricular com fração de ejeção ≤ 35% e o paciente se encontra sintomático",
+						options:[
+							{id: 0,label: "Sim"},
+							{id: 1,label: "Nao"}
+						]
+					}
+				},	
+			
+				outros:{
+			
+					// Integração Identificação
+					int_id: {
+						type: "radio",
+						title: "Integração identificação",
+						options: [
+							{id: 0,label: "Acima de 65 anos"},
+							{id: 1,label: "Abaixo de 65 anos"}
+						]
+					},
+			
+					// Integração Evidências
+					int_ev: {
+						type: "radio",
+						title: "Integração evidências",
+						options: [
+							{id: 0,label: "Etiologia Chagásica"},
+							{id: 1,label: "Etiologia Isquemica"}
+						]
+					},
+			
+					// Integração Anamnese
+					int_anamnese:{
+						type: "checkbox",
+						title: "Integração Anamnese",
+						options: [
+							{id: 0,label: "Falta de aderência ao tratamento"},
+							{id: 1,label: "Maior intensidade dos sintomas"},
+							{id: 2,label: "Parada cardio-respiratória revertida"},
+							{id: 3,label: "Redução de função cognitiva"},
+							{id: 4,label: "Caquexia"},
+							{id: 5,label: "Anorexia"},
+							{id: 6,label: "Síncope"},
+							{id: 7,label: "Apnéia do sono*"},
+							{id: 8,label: "Doença pulmonar associada"},
+							{id: 9,label: "Depressão"}
+						]
+					},
+			
+					// Integração Exame Clínico
+					int_exame_fisico: {
+						type: "checkbox",
+						title: "Integração Exame Clínico",
+						options: [
+							{id: 0,label: "Má perfusão"},
+							{id: 0,label: "Congestão"}, // MV 
+							{id: 0,label: "Hipotensão"}, // Pressão Abaixo de 120/80mmHg
+							{id: 0,label: "Taquicardia"}, // Ritmo Acima de 100bpm
+							{id: 0,label: "Presença de B3"}
+						]
+					}
+			
+					// Integração Capacidade Física
+			
+					// Integração Estrutural e Funcional dos Exames Complementares
+			
+					// Integração Eletrofisiológica dos Exames Complementares
+			
+					// Integração Hemodinâmica dos Exames Complementares
+			
+					// Integração Exames Laboratoriais
+			
+					//
+				}
+			}
 		});
-		console.log("STATE", this.state);
-	}	
+	}
 	
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.saveData("predictors",this.state.formData);
+		this.props.saveData("predictors",this.formData);
 	}
 	
 	render() {
 		if(!this.state.prepare){
 			return(
-				<div></div>
+				<div>Loading</div>
 			);
 		}
 		return(
 			<div className="Predictors">
 			<h2>Preditores</h2>
+
+				<Form
+					InputList={ this.state.prepare.geral }
+					Storage={ (data) => {
+						this.formData.geral = JSON.parse(JSON.stringify(data));
+					}}
+          Config={{
+            Select:{ 
+              OptionValue: "id"
+            },
+            Checkgroup:{
+              OptionValue: "id"
+            },
+            Radiogroup:{
+              OptionValue: "id"
+            }
+          }}
+				/>
+				<Form
+					InputList={ this.state.prepare.outros }
+					Storage={ (data) => {
+						this.formData.outros = JSON.parse(JSON.stringify(data));
+					}}
+          Config={{
+            Select:{ 
+              OptionValue: "id"
+            },
+            Checkgroup:{
+              OptionValue: "id"
+            },
+            Radiogroup:{
+              OptionValue: "id"
+            }
+          }}
+				/>
 			
-        <form onSubmit={this.handleSubmit}> 
-        
-        
-          <label htmlFor="">Morte Subita</label>
-          {
-            this.state.prepare.geral.morte_subita.map(
-              (morte_subita) => {
-                return(
-                  <div key={ morte_subita.id }>
-                    <input type="radio" name="morte_subita" value={ morte_subita.id } onChange={ this.handleChange }/>
-                    <label htmlFor="">{ morte_subita.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <label htmlFor="">Episódios de Taquicardia</label>
-          {
-            this.state.prepare.geral.ep_taq.map(
-              (ep_taq) => {
-                return(
-                  <div key={ ep_taq.id }>
-                    <input type="radio" name="ep_taq" value={ ep_taq.id } onChange={ this.handleChange }/>
-                    <label htmlFor="">{ ep_taq.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          <label htmlFor="">Disfusão Ventricular</label>
-          {
-            this.state.prepare.geral.disf_vent.map(
-              (disf_vent) => {
-                return(
-                  <div key={ disf_vent.id }>
-                    <input type="radio" name="disf_vent" value={ disf_vent.id } onChange={ this.handleChange }/>
-                    <label htmlFor="">{ disf_vent.label }</label>
-                  </div>
-                );
-              }
-            )
-          }
-          
-          <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
-        
+        <form onSubmit={ this.handleSubmit }> 
+          <input className="Button" type="submit" value={ "Salvar "+ this.props.title }/>
         </form>
 			
 			</div>
 		);
 	}
-	
 }
 
 export default Predictors;

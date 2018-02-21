@@ -59,7 +59,7 @@ class NewConsult extends Component {
 
     this.nextSection()
 
-    console.log("CONSULTA:",this.state.consultData);
+    console.log("CONSULTA FORM GUARDADO:",this.state.consultData);
   }
 
   nextSection() {
@@ -101,11 +101,11 @@ class NewConsult extends Component {
     Post.data = {
       id_patient: this.props.patient.id,
       id_user: this.props.userData.user,
-      data: this.state.consultData
+      data: this.state.consultData /* TO DO: Formatar os dados da consulta */
     }
 
-    //Post('saveConsult');
-    alert("Consulta salva com sucesso!*");
+    Post('saveConsult');
+    //alert("Consulta salva com sucesso!*");
   }
 
 	render() {
