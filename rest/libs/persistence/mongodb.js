@@ -100,6 +100,7 @@ var insert = {
 			if (err) throw err;
 	   		db.collection("counters").findAndModify( { _id: sequenceName }, null, { $inc: { sequence_value: 1 } }, function(err, result){
 	        	if(err) callback(err, result);
+	        	console.log(result)
 	        	callback(err, result.value.sequence_value);
     		});
 	   	})
