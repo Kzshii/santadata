@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './NewConsult.css';
-//import axios from 'axios';
 import Anamnese from "./anamnese/Anamnese";
 import Evidences from "./evidences/Evidences";
 import PatientProfile from './../patientProfile/PatientProfile';
-import Base64 from '../../lib/base64';
 import Interventions from "./interventions/Interventions";
 import Predictors from "./predictors/Predictors";
 import PhysicalExams from "./physicalExams/PhysicalExams";
@@ -51,7 +49,7 @@ class NewConsult extends Component {
 
   storeFormData(param, data) {
     let consultData = this.state.consultData;
-    consultData[param] = data;
+    consultData[param] = JSON.parse(JSON.stringify(data));
 
     this.setState(
       {
@@ -111,6 +109,7 @@ class NewConsult extends Component {
   }
 
 	render() {
+    console.log("NOVA CONSULTA - ESTADO", this.state);
     return(
 			<div className="NewConsult">
 				

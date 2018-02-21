@@ -48,6 +48,7 @@ export function Post(route, postInfo = {
                 && postInfo[key] !== undefined;
       Post[key] = test ? postInfo[key] : Post[key];
       console.log("LIB AXIOS - MAPPED: ",Post[key]);
+      return(null);
     }
   );
 
@@ -56,6 +57,7 @@ export function Post(route, postInfo = {
   Post.urlData.map(
     (urlItem) => {
       urlComplement = urlComplement+urlItem+"/";
+      return(null);
     }
   );
 
@@ -68,7 +70,7 @@ export function Post(route, postInfo = {
   )
   .then(
     function(response) {
-      if(response.request.status == 200) {
+      if(response.request.status === 200) {
         console.log("LIB AXIOS - THEN OK:",response);
         Post.command(response.data);
         Post.resetDefaults();

@@ -23,18 +23,18 @@ import Select from './../../form/select/Select';
 class Medicines extends Component {
   constructor(props){
     super(props);
-    
+
     /* METHODS */
 		this.storeMedicine = this.storeMedicine.bind(this);
 		this.selectMedicine = this.selectMedicine.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.mountInputList = this.mountInputList.bind(this);
     this.mountSelectOptions = this.mountSelectOptions.bind(this);
-    
+
     /* VARS */
     this.InputList = {};
-    this.SelectOptions = [];
-    
+    this.SelectOptions = null;
+
     /* STATE */
     this.state = {
 			prepare: null,
@@ -43,46 +43,50 @@ class Medicines extends Component {
       InputList: null
     };
   }
-  
+
   componentDidMount() {
     //this.props.prepare(this, "prepMedicines");
-		
+
     this.setState(
       {
         prepare: {
           //Medicamentos ministrados no paciente
-              
+
           commom: {
             date: {
-                type: "date", // data
-                title: "Data",
-                required: "true"
+              type: "date", // data
+              title: "Data",
+              required: "true"
             },
-                  
+
             charge: {
               type: "number", // mg
               title: "Carga",
-              unity: "mg",
+              unity: "mg"
             },
-                  
+
             gap: {
               type: "number", // horas
               title: "Intervalo",
-              unity: "h",
+              unity: "h"
             },
-                  
+
             // Acrescentar momento do dia 0*...
-                  
+
             // 0...*
             hour: {
               type: "checkbox",
               title: "Horários",
               options: [
-                {id: 0,label: "Manhã"}, 
+                {id: 0,label: "Manhã"},
                 {id: 1,label: "Após o almoço"},
                 {id: 2,label: "Tarde"},
                 {id: 3,label: "Noite"},
               ],
+            },
+
+            submit: {
+              type: "submit"
             }
           },
 
@@ -91,19 +95,19 @@ class Medicines extends Component {
               type: "label",
               value: "IECA"
             },
-            
+
             type: {
               type: "select",
               title: "Tipo",
               options:[
                 {id: "",label: "Escolher"},
                 {id: 0,label: "Captopril",dose_inicial:"6,24",dose_alvo:"50",intervalo:"8"},
-                // Dose inicial = 6,24mg 
-                // Dose alvo = 50mg 
+                // Dose inicial = 6,24mg
+                // Dose alvo = 50mg
                 // Duração = 8h/8h
                 {id: 1,label: "Enalapril",dose_inicial:"2,5",dose_alvo:"10",intervalo:"12"},
-                // Dose inicial = 2,5mg 
-                // Dose alvo = 10mg 
+                // Dose inicial = 2,5mg
+                // Dose alvo = 10mg
                 // Duração 12/12h
                 {id: 2,label: "Lisinopril"},
                 {id: 3,label: "Cilazapril"},
@@ -112,13 +116,13 @@ class Medicines extends Component {
               ],
             }
           },
-    
+
           BRA: {
             title: {
               type: "label",
               value: "BRA"
             },
-              
+
             type: {
               type: "select",
               title: "Tipo",
@@ -130,25 +134,25 @@ class Medicines extends Component {
                 // Duração = 1x ao dia
                 {id: 1,label: "Valsartana",dose_inicial:"20",dose_alvo:"160",intervalo:"12"},
                 // Dose inicial = 20mg
-                // Dose alvo = 160mg 
+                // Dose alvo = 160mg
                 // Duração 12 em 12 horas
                 {id: 2,label: "Candersatan"},
               ],
             }
           },
-    
+
           beta_bloqueadores: {
             title: {
               type: "label",
               value: "Beta Bloqueadores"
             },
-              
+
             type: {
                 type: "select",
                 title: "Tipo",
                 options: [
                   {id: "",label: "Escolher"},
-                  {id: 0,label: "Carvedilol",dose_inicial:"3,125",dose_alvo:"25 a 50",intervalo:"12"}, 
+                  {id: 0,label: "Carvedilol",dose_inicial:"3,125",dose_alvo:"25 a 50",intervalo:"12"},
                   // Dose inicial = 3,125mg
                   // Dose Alvo = 25 a 50mg
                   // Duração = 12 em 12 horas
@@ -158,13 +162,13 @@ class Medicines extends Component {
                 ],
             }
           },
-            
+
           bloq_canaisca: {
             title: {
               type: "label",
               value: "Bloqueador de Canal de Cálcio"
             },
-            
+
             type: {
               type: "select",
               title: "Tipo",
@@ -175,13 +179,13 @@ class Medicines extends Component {
               ],
             }
           },
-    
+
           diureticos: {
             title: {
               type: "label",
               value: "Diuréticos"
             },
-            
+
             type: {
               type: "select",
               title: "Tipo",
@@ -195,13 +199,13 @@ class Medicines extends Component {
               ],
             }
           },
-        
+
           digitalico: {
             title: {
               type: "label",
               value: "Digitálico"
             },
-            
+
             type: {
               type: "checkbox",
               title: "Tipo",
@@ -210,13 +214,13 @@ class Medicines extends Component {
               ],
             }
           },
-    
+
           AAS: {
             title: {
               type: "label",
               value: "AAS"
             },
-            
+
             type: {
               type: "checkbox",
               title: "Tipo",
@@ -226,12 +230,12 @@ class Medicines extends Component {
             }
           },
 
-          estatina: {           
+          estatina: {
             title: {
               type:"label",
               value:"Estatina"
             },
-            
+
             type: {
               type: "select",
               title: "Tipo",
@@ -248,7 +252,7 @@ class Medicines extends Component {
               type: "label",
               value: "Hidralazina"
             },
-            
+
             type: {
               type: "checkbox",
               title: "Tipo",
@@ -263,7 +267,7 @@ class Medicines extends Component {
               type: "label",
               value: "Nitrato"
             },
-            
+
             type: {
               type: "checkbox",
               title: "Tipo",
@@ -278,7 +282,7 @@ class Medicines extends Component {
               type: "label",
               value: "Anticoagulante"
             },
-            
+
             type: {
               type: "select",
               title: "Tipo",
@@ -295,7 +299,7 @@ class Medicines extends Component {
               type: "label",
               value: "Antiarrítmico"
             },
-            
+
             type: {
               type: "checkbox",
               title: "Tipo",
@@ -304,25 +308,25 @@ class Medicines extends Component {
               ],
             }
           },
-      
+
 
           //Medicamentos prescritos para o paciente
-          //prescritos: 
+          //prescritos:
 
           sarcubitril_valsartana: {
             title: {
               type: "label",
               value: "Sarcubitril Valsartana"
             },
-            
+
             type:{
               type:"checkbox",
               title:"Tipo",
               options:
               [
                 {id: 0,label: "Entresto",dose_inicial:"49 a 51",dose_alvo:"97 a 103",intervalo:"12"},
-                // Dose inicial = 49/51mg 
-                // Dose alvo = 97 mg/103 mg 
+                // Dose inicial = 49/51mg
+                // Dose alvo = 97 mg/103 mg
                 // Duração = duas vezes ao dia
               ],
             }
@@ -333,10 +337,12 @@ class Medicines extends Component {
   }
 
   storeMedicine(medicine) {
+    console.log("RETORNO DO FORM", medicine);
     let storedMeds = this.state.storedMeds;
     const name = this.state.selectedMedicine;
-    medicine.name = name;
-    storedMeds.push(medicine);
+    let cloneMedicine = {...medicine};
+    cloneMedicine.name = name;
+    storedMeds.push(cloneMedicine);
     this.setState({
       storedMeds: storedMeds
     });
@@ -367,7 +373,6 @@ class Medicines extends Component {
   mountInputList() {
     const med = this.state.selectedMedicine;
     const meds = this.state.prepare[med];
-    console.log("MOUNT INPUT LIST MED:", meds);
     const commom = this.state.prepare.commom;
     const medKeys = Object.keys(meds);
     const commomKeys = Object.keys(commom);
@@ -381,10 +386,9 @@ class Medicines extends Component {
       InputList[commomKeys[i]] = commom[commomKeys[i]];
     }
 
-    console.log("MEDICINES MOUNT INPUT LIST:", InputList);
-
     this.InputList = InputList;
-    console.log("MOUNT INPUT LIST - MEDICINES STATE",this.state.InputList);
+    console.log("INPUTLIST FEITA");
+    console.log(this.InputList);
   }
 
   handleSubmit(data) {
@@ -393,14 +397,16 @@ class Medicines extends Component {
 
   render() {
     console.log("MEDICINES STATE:",this.state);
-    console.log("MEDICINES X:",this.x);
     if(!this.state.prepare) {
       return(
         <div>Loading</div>
       );
     }
     this.mountInputList();
-    this.mountSelectOptions();
+
+    if(!this.selectOptions) {
+      this.mountSelectOptions();
+    }
 
     return(
       <div className="Medicines">
@@ -412,14 +418,13 @@ class Medicines extends Component {
             KeyTag="SelectMedicine"
             OnChange={ this.selectMedicine }
           />
-          
-          <form action="">
+
           <Form
             OnSubmit={ this.storeMedicine }
-            InputList={ this.InputList } 
+            InputList={ this.InputList }
             SubmitValue="Guardar medicamento"
             Config={{
-              Select:{ 
+              Select:{
                 OptionValue: "id"
               },
               Checkgroup:{
@@ -429,13 +434,15 @@ class Medicines extends Component {
                 OptionValue: "id"
               }
             }}
+            KeyTag={ this.state.selectedMedicine }
           />
-          </form>
         </div>
 
         {/* TODO: Exibir medicamentos adicionados à pool */}
 
-        <input className="Button" type="submit" value="Salvar medicamentos e continuar" onMouseUp={ this.handleSubmit }/>
+        <form onSubmit={ this.handleSubmit }>
+          <input className="Button" type="submit" value="Salvar medicamentos e continuar"/>
+        </form>
       </div>
     );
   }

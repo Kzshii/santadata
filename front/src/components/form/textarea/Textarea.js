@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './Input.css';
+import './Textarea.css';
 
 /* 
     Props = {
       Label: text,
-      Type: text,
       Id: text,
       Name: text,
       Value: any,
@@ -15,7 +14,7 @@ import './Input.css';
     }
 */
 
-class Input extends Component {
+class Textarea extends Component {
 
   constructor(props) {
     super(props);
@@ -27,7 +26,7 @@ class Input extends Component {
       Value: this.props.Value
     });
   }
-  
+
   handleChange(event) {
     this.setState({
       Value: event.target.value
@@ -38,10 +37,9 @@ class Input extends Component {
 
   render() {        
     return(
-      <div className="Input">
+      <div className="Textarea">
         <label htmlFor={ this.props.Id }>{ this.props.Label }</label>
-        <input
-          type={ this.props.Type }
+        <textarea
           name={ this.props.Name }
           id={ this.props.Id }
           onChange={ this.handleChange }
@@ -55,4 +53,4 @@ class Input extends Component {
   }
 }
 
-export default Input;
+export default Textarea;
