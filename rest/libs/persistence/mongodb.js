@@ -99,9 +99,10 @@ var insert = {
 		MongoClient.connect(url, function(err, db) {
 			if (err) throw err;
 	   		db.collection("counters").findAndModify( { _id: sequenceName }, null, { $inc: { seq: 1 } }, function(err, result){
-	        if(err) callback(err, result);
-	        callback(err, result.value.seq);
-    	} );
+	        	if(err) callback(err, result);
+	        	callback(err, result.value.seq);
+    		});
+	   	})
 	}
 }
 
