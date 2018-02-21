@@ -94,6 +94,8 @@ var Config = {
 
 			dt.map(function(data){
 				Mongodb.insert.next(collection,function(err, id){
+					if (err) throw err;
+					
 					data._idConsult = id;
 					console.log("Test")
 					console.log(data)
