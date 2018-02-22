@@ -498,7 +498,6 @@ class PhysicalExams extends Component {
 
   }
 
-<<<<<<< HEAD
   removeExam(index){
     let list= this.state.storedExams;
     list.splice(index,1);
@@ -507,13 +506,11 @@ class PhysicalExams extends Component {
     })
   }
 
-=======
   handleSubmit(event) {
     event.preventDefault();
     this.props.saveData("exams", this.storedExams);
   }
   
->>>>>>> NewConsult-NewFormPattern
 	render(){
 		if(!this.state.prepare){
 			return(
@@ -561,7 +558,6 @@ class PhysicalExams extends Component {
             }
           }}
         />
-<<<<<<< HEAD
         <StoredList title="Exames Guardados" list={this.state.storedExams} remove={this.removeExam} showPopup={this.ShowPopup}/>
 
         {this.state.showPopup ?
@@ -586,12 +582,9 @@ class PhysicalExams extends Component {
                       }}/>
             }/>  : null}
 
-        <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
-=======
         <form onSubmit={ this.handleSubmit} >
           <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
         </form>
->>>>>>> NewConsult-NewFormPattern
       </div>
     );
   }
