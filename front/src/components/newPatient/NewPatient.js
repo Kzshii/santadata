@@ -100,7 +100,7 @@ class NewPatient extends Component {
   ageCalc(date){
     
     var birthDate = new Date(date);
-    var todayDate = new Date;
+    var todayDate = new Date();
     var totalDays = "";
     var days = "";
     var months = "";

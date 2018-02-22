@@ -7,17 +7,14 @@ class Evidences extends Component {
     super(props);
     
     /* METHODS */
-		this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    /* VARS 
-    this.InputList = {};
-    */
+    /* VARS */
+    this.formData = {};
 
     /* STATE */
     this.state = {
 			prepare: null,
-			formData: {},
     };
 	}
   
@@ -127,46 +124,12 @@ class Evidences extends Component {
 		);
 	}
 	
-	handleChange(event) {
-		const target = event.target;
-		const name = target.name;
-		const value = target.value;
-    
-		let formData = this.state.formData;
-		
-		if(target.type === 'checkbox') {
-			if(target.checked) {
-				/* insere */
-				if(formData[name] == null) {
-					formData[name] = [value];
-				} else {
-					formData[name].push(value);
-				}
-			} else {
-				/* remove */
-				let index = formData[name].indexOf(value);
-				formData[name].splice(index, 1);
-			}
-      
-		} else {
-			formData[name] = value;
-		}
-		
-		this.setState({
-			formData: formData,
-		});
-		console.log("STATE", this.state);
-  }
-  
-  handleSubmit(event) {
+	handleSubmit(event) {
 		event.preventDefault();
-    this.props.saveData("evidences",this.state.formData);
+    this.props.saveData("evidences",this.formData);
 	}
   
 	render(){
-    console.log("PROPS", this.props)
-    console.log("EVIDENCES STATE:", this.state);
-    console.log("MOUNT INPUT LIST - EVIDENCES STATE", this.state.prepare)
     //console.log("EVIDENCES X:",this.x);
     if(!this.state.prepare) {
       return(
@@ -179,8 +142,11 @@ class Evidences extends Component {
         <h2>Evidências</h2>
 
         <Form
-          OnSubmit = { this.handleSubmit }
-          InputList = { this.state.prepare }     
+          OnSubmit = {null}
+          InputList = { this.state.prepare }
+          Storage={ (data) => {
+            this.formData = JSON.parse(JSON.stringify(data));
+          }}
           SubmitValue ="Salvar evidências"
           Config={{
             Select:{ 
@@ -194,6 +160,9 @@ class Evidences extends Component {
             }
           }}
         />
+        <form onSubmit={ this.handleSubmit }>
+          <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
+        </form>
       </div>
 		);
 	}

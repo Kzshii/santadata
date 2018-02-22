@@ -340,12 +340,13 @@ class Medicines extends Component {
     console.log("RETORNO DO FORM", medicine);
     let storedMeds = this.state.storedMeds;
     const name = this.state.selectedMedicine;
-    let cloneMedicine = {...medicine};
+    let cloneMedicine = JSON.parse(JSON.stringify(medicine));
     cloneMedicine.name = name;
     storedMeds.push(cloneMedicine);
-    this.setState({
+    
+    /* this.setState({
       storedMeds: storedMeds
-    });
+    }); */
   }
 
   selectMedicine(event) {

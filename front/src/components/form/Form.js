@@ -48,6 +48,12 @@ class Form extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({
+      formData: JSON.parse(JSON.stringify(this.props.InputList))
+    });
+  }
+
   handleChange(event) {
     const target = event.target;
     const name = target.name;
