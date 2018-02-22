@@ -34,7 +34,7 @@ class StoredList extends Component{
                                     return(
                                         <tr key={index}>    
                                             <td>{(elemen.name)}</td>                                 
-                                            <td><button onClick={()=>{this.props.showPopup(index)}}><span className="fas fa-eye"></span></button></td>
+                                            <td><button onClick={()=>{this.props.showPopup(index)}}><span className="fas fa-pencil-alt"></span></button></td>
                                             <td><button onClick={()=>{this.props.remove(index)}}><span className="fas fa-trash-alt"></span></button></td>
                                         </tr>
                                     )

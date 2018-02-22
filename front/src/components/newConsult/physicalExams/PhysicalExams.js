@@ -28,15 +28,15 @@ class PhysicalExams extends Component {
       showPopup: false,
 			prepare: null,
 			storedExams:[],
-      selectedExamType: "fisico",
-      selectedExam:"geral",
+      selectedExamType: null,
+      selectedExam: null,
       inputList: null,
       popupExam: null
     };
   }
 
   componentDidMount() {
-    this.props.prepare(this, "prepExams");
+    //this.props.prepare(this, "prepExams");
 
 		this.setState(
 			{
@@ -304,62 +304,78 @@ class PhysicalExams extends Component {
 					{
 						title:{
 							type:"label",
-							value:"Complementar"
-						},
-						eletro:{ // 0..*
-							type: "checkbox",
-							title:"Eletrocardiograma",
-							options:
-							[
-								{id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
-								{id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
-								{id: 2, label: "Supra do Segmento ST"},
-								{id: 3, label: "Sobrecarga Atrial (SA)"},
-								{id: 4, label: "Sobrecargo de Ventrículo (SV)"},
-								{id: 5, label: "Flutter Atrial"},
-								{id: 6, label: "Fibrilação Atrial (FA)"},
-							],
-						},
+							value:"Exame Complementar"
+            },
+            
+            eletro:{ // 0..*
+              
+              title:{
+								type:"label",
+								value:"Eletrocardiograma"
+							},
+              
+              eletro: {
+                type: "checkbox",
+                title:"Detalhes",
+                options:
+                [
+                  {id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
+                  {id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
+                  {id: 2, label: "Supra do Segmento ST"},
+                  {id: 3, label: "Sobrecarga Atrial (SA)"},
+                  {id: 4, label: "Sobrecargo de Ventrículo (SV)"},
+                  {id: 5, label: "Flutter Atrial"},
+                  {id: 6, label: "Fibrilação Atrial (FA)"},
+                ],
+              },
+            },
 
-						//Ecocardiograma
-						primeira_FE: {
-							type: "text",
-							title:"Primeira FE"
-						}, // texto numérico
-						primeiro_VE_diast: {
-							type: "text",
-							title:"Primeiro VE Diast"
-						},
-						primeiro_VE_sist: {
-							type: "text",
-							title: "Primeiro VE"
-						},
+            eco:{
+              title:{
+								type:"label",
+								value:"Ecocardiograma"
+              },
+              
+              //Ecocardiograma
+              primeira_FE: {
+                type: "text",
+                title:"Primeira FE"
+              }, 
+              primeiro_VE_diast: {
+                type: "text",
+                title:"Primeiro VE Diast"
+              },
+              primeiro_VE_sist: {
+                type: "text",
+                title: "Primeiro VE"
+              },
 
-						ultima_FE: {
-							type: "text",
-							title:"Ultima FE"
-						}, // texto numérico
-						ultima_VE_diast: {
-							type: "text",
-							title: "Ultima Ve Diast"
-						},
-						ultima_VE_sist: {
-							type: "text",
-							title: "Ultima Ve Sist"
-						},
+              ultima_FE: {
+                type: "text",
+                title:"Ultima FE"
+              }, 
+              ultima_VE_diast: {
+                type: "text",
+                title: "Ultima Ve Diast"
+              },
+              ultima_VE_sist: {
+                type: "text",
+                title: "Ultima Ve Sist"
+              },
 
-						delta_FE: {
-							type: "text",
-							title: "delta Fe"
-						}, // diferença entre ultima_FE - primeira_FE
-						delta_VE: {
-							type:"text",
-							title:"delta VE"
-						}, // diferença entre ultima_VE_sist - primeira_FE_sist
-						ps_ap: {
-							type: "text",
-							title: "ps_ap",
-						}, // texto numérico
+              delta_FE: {
+                type: "text",
+                title: "delta Fe"
+              }, // diferença entre ultima_FE - primeira_FE
+              delta_VE: {
+                type:"text",
+                title:"delta VE"
+              }, // diferença entre ultima_VE_sist - primeira_FE_sist
+              ps_ap: {
+                type: "text",
+                title: "ps_ap",
+              }, 
+            }
 					}
 				},
 			}
@@ -376,22 +392,14 @@ class PhysicalExams extends Component {
     });
   }
 
-  ShowPopup(index){
-    let exam= this.state.storedExams[index];
-    /*
-    exam["submit"]={
-      type:"submit"
-    }*/
+  selectExam(event){
     this.setState({
-      showPopup: true,
-      popupExam: {exam: exam,
-                  index: index}
-    })
-
+      selectedExam: event.target.value
+    });
   }
 
   editExam(exam){
-    console.log("ExmeEditado");
+    console.log("ExameEditado");
     console.log(exam);
 
     let storeds= this.state.storedExams;
@@ -406,12 +414,6 @@ class PhysicalExams extends Component {
     console.log(this.state.storedExams)
   }
 
-  selectExam(event){
-    this.setState({
-      selectedExam: event.target.value
-    });
-  }
-
 	mountSelectOptions(selectType){
     let options = Object.keys(this.state.prepare);
     let selectOptions= [];
@@ -424,20 +426,48 @@ class PhysicalExams extends Component {
       });
     }
     this.SelectOptions = selectOptions;
-
+    
+    console.log("options:",options)
+    console.log("selectOptions:",selectOptions)
+    
     let exam = this.state.prepare[this.state.selectedExamType]
-    options = Object.keys(exam);
-    selectOptions = [];
 
-    for (let index = 1; index < options.length; index++) {
-      selectOptions.push({
-        id: index - 1,
-        value: options[index],
-        label: exam[options[index]].title.value
-      });
+    if (exam!=null){
+      options = Object.keys(exam);
+      
+      selectOptions = [];
+
+      for (let index = 1; index < options.length; index++) {
+        selectOptions.push({
+          id: index - 1,
+          value: options[index],
+          label: exam[options[index]].title.value
+        });
+      }
+      this.exams=selectOptions;
     }
-    this.exams=selectOptions;
+    
 	}
+
+  mountInputList(){
+
+    let exam = this.state.selectedExam;
+    let examType = this.state.selectedExamType;
+
+    console.log("exam:",exam)
+    console.log("examType:",examType)
+
+    if (exam!=null && examType!=null){
+
+      this.inputList = this.state.prepare[examType][exam];
+
+      
+      this.inputList["submit"]={
+        type:"submit"
+      }
+    }
+
+  }
 
   storeExam(Exam){
     let store = this.state.storedExams;
@@ -453,16 +483,19 @@ class PhysicalExams extends Component {
     });
   }
 
-  mountInputList(){
-    let exam = this.state.selectedExam;
-    let examType = this.state.selectedExamType;
-
-    this.inputList = this.state.prepare[examType][exam];
-
+  ShowPopup(index){
+    let exam= this.state.storedExams[index];
     
-    this.inputList["submit"]={
+    exam["submit"]={
       type:"submit"
     }
+    this.setState({
+      showPopup: true,
+      popupExam: {
+        exam: exam,
+        index: index}
+    })
+
   }
 
   removeExam(index){
@@ -524,7 +557,7 @@ class PhysicalExams extends Component {
 
         {this.state.showPopup ?
           <Popup
-            title="Visualizar Exame"
+            title="Editar Exame"
             close={()=>{this.setState({showPopup: false})}}
             content={
               <Form OnSubmit={this.editExam}
