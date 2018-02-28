@@ -15,6 +15,14 @@
     font-family: Lato;
 }
 
+.NewConsult label{
+    margin: 5px;
+}
+
+.NewConsult select{
+    margin-left: 0px;
+}
+
 .NewConsult .sections {
     padding-left: 50px;
     color: #fff;
@@ -36,7 +44,7 @@
     border-radius: 10px;
     border: 1px solid #1ca4fc;
     outline: none;
-    padding: 0 30px 0 65px;
+    padding: 0 10px 0 10px;
     background: #fff;
 }
 

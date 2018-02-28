@@ -133,7 +133,7 @@ button:hover {
     
 }
 
-.newPatient button, select {
+.NewPatient button, select {
   text-transform: none;
   font-weight: bolder;
   color: inherit;

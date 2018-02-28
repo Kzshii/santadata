@@ -253,24 +253,24 @@ class PhysicalExams extends Component {
 						{
 							title:{
 								type:"label",
-								value: "Creatina"
+								value: "Creatina",
 							},
 
 							basal:{
 								type:"text",
-								title:"Basal"
+                title:"Basal",
 							},
 							ultima:{
 								type:"text",
-								title:"Ultima"
+                title:"Ultima",
 							},
 							delta: {
 								type:"text",
-								title:"Delta"
+                title:"Delta",
 							},
 							clearence_atual:{
 								type:"text",
-								title:"Clearence Atual"
+                title:"Clearence Atual",
 							}
 
 						},
@@ -316,7 +316,7 @@ class PhysicalExams extends Component {
               
               eletro: {
                 type: "checkbox",
-                title:"Detalhes",
+                title:"",
                 options:
                 [
                   {id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
@@ -483,6 +483,14 @@ class PhysicalExams extends Component {
     });
   }
 
+  removeExam(index){
+    let list= this.state.storedExams;
+    list.splice(index,1);
+    this.setState({
+      storedExams: list
+    })
+  }
+
   ShowPopup(index){
     let exam= this.state.storedExams[index];
     
@@ -496,14 +504,6 @@ class PhysicalExams extends Component {
         index: index}
     })
 
-  }
-
-  removeExam(index){
-    let list= this.state.storedExams;
-    list.splice(index,1);
-    this.setState({
-      storedExams: list
-    })
   }
 
   handleSubmit(event) {
@@ -566,20 +566,20 @@ class PhysicalExams extends Component {
             close={()=>{this.setState({showPopup: false})}}
             content={
               <Form OnSubmit={this.editExam}
-                    InputList={this.state.popupExam.exam}
-                    SubmitValue="Salvar Edição"
-                    Config={
-                      {
-                        Select:{
-                          OptionValue: "id"
-                        },
-                        Checkgroup:{
-                          OptionValue: "id"
-                        },
-                        Radiogroup:{
-                          OptionValue: "id"
-                        }
-                      }}/>
+                InputList={this.state.popupExam.exam}
+                SubmitValue="Salvar Edição"
+                Config={
+                  {
+                    Select:{
+                      OptionValue: "id"
+                    },
+                    Checkgroup:{
+                      OptionValue: "id"
+                    },
+                    Radiogroup:{
+                      OptionValue: "id"
+                    }
+                  }}/>
             }/>  : null}
 
         <form onSubmit={ this.handleSubmit} >

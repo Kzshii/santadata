@@ -22,8 +22,9 @@ class StoredList extends Component{
                 <table className="table table-bordered">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Nome</th>
-                            <th>Visualizar</th>
+                            <th>Editar</th>
                             <th>Remover</th>
                         </tr>
                     </thead>
@@ -33,6 +34,7 @@ class StoredList extends Component{
                                 (elemen,index)=>{
                                     return(
                                         <tr key={index}>    
+                                            <td>{index+1}</td>
                                             <td>{(elemen.name)}</td>                                 
                                             <td><button onClick={()=>{this.props.showPopup(index)}}><span className="fas fa-pencil-alt"></span></button></td>
                                             <td><button onClick={()=>{this.props.remove(index)}}><span className="fas fa-trash-alt"></span></button></td>

@@ -142,6 +142,9 @@ class NewPatient extends Component {
 
 
   render() {
+
+    this.ageCalc(this.state.formData.birthDate)  
+    
     return(
 
     <div className="wrap">
@@ -288,8 +291,6 @@ class NewPatient extends Component {
             </span>
             </div>
 
-            { this.ageCalc(this.state.formData.birthDate)  }
-      
             <label htmlFor="age">Idade</label>
             <div className="wrap-input100 m-b-16">
             <input
@@ -308,8 +309,6 @@ class NewPatient extends Component {
                 <span className="fas fa-sort-numeric-down"></span>
                 </span>
             </div>
-           
-            {/* TODO: Acertar o estilo desses campos */}
 
             <br/>
             <label htmlFor="" id="Up">Sexo </label>
@@ -330,8 +329,6 @@ class NewPatient extends Component {
             <br/>
             <br/>
 
-            {/* Até aqui */}
-
             <label htmlFor="tel1">Telefone</label>
             <div className="wrap-input100 validate-input m-b-16">
             <input
@@ -348,7 +345,6 @@ class NewPatient extends Component {
                 <span className="fas fa-phone"></span>
                 </span>
             </div>
-
 
             <label htmlFor="tel2">Celular</label>
             <div className="wrap-input100 validate-input m-b-16">
