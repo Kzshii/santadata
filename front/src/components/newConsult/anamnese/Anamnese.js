@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Form from "../../form/Form";
 import './Anamnese.css';
+import localStorageLib from "./../../../lib/localStorageLib";
 
 class Anamnese extends Component {
   constructor(props){
 		super(props);
-		
+
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.formData = {};
@@ -14,15 +15,15 @@ class Anamnese extends Component {
 			prepare: null,
     };
 	}
-	
+
 	componentDidMount() {
     // this.props.prepare(this, "prepAnamnese");
-    
+
 		/* test only */
 		this.setState(
 			{
         prepare: {
-          
+
           // Queixa principal
           qp_type: { // 1
             type: "select",
@@ -36,15 +37,15 @@ class Anamnese extends Component {
               {id: 3, label: "Palpitações"},
             ]
           },
-          
+
           // História da Doença Atual
           hda: {
             type: "textarea",
             title: "História da doença atual"
           },
-          
+
           // História patológica
-          
+
           // Passado
           hist_pat: { // 0..*
             type: "checkbox",
@@ -59,7 +60,7 @@ class Anamnese extends Component {
               {id: 6,label: "Depressão"},//repete
             ]
           },
-          
+
           commom_childhood: { // 0..*
             type: "checkbox",
             title: "Doenças comuns na infãncia",
@@ -69,10 +70,10 @@ class Anamnese extends Component {
               {id: 2,label: "Coqueluxe"},
               {id: 3,label: "Caxumba"},
               {id: 4,label: "Febre reumática"},
-              {id: 5,label: "Amgdalite"},                         
+              {id: 5,label: "Amgdalite"},
             ]
           },
-          
+
           commom_adult: { // 0..*
             type: "checkbox",
             title: "Doenças comuns na vida adulta",
@@ -87,10 +88,10 @@ class Anamnese extends Component {
               {id: 7,label: "Artrose"},
               {id: 8,label: "Osteoporose"},
               {id: 9,label: "Litíase renal"},
-              {id: 10,label: "Gota"},                                                                                               
+              {id: 10,label: "Gota"},
             ]
           },
-          
+
           commom_cardiac_associated: { // 0..*
             type: "checkbox",
             title: "Doenças comuns associadas com a cardiologia",
@@ -105,25 +106,25 @@ class Anamnese extends Component {
               {id: 7,label: "Depressão"},
               {id: 8,label: "Osteoporose"},
               {id: 9,label: "Litíase renal"},
-              {id: 10,label: "Gota"},                                                                                               
+              {id: 10,label: "Gota"},
             ]
           },
-          
+
           allergy: { // 0..*
             type: "checkbox",
             title: "Tem alergia?",
             options: [
               {id: 0,label: "Frutos do mar"},
               {id: 1,label: "Poeira e outros pós"},
-              {id: 2,label: "Dipirona"},                        
+              {id: 2,label: "Dipirona"},
             ]
           },
-          
+
           another_allergy: { // 0..*
             type: "text",
             title: "Outras",
           },
-          
+
           surgery: { // 0..* Pensar em como fazer essas cirurgias - MED
             type: "checkbox",
             title: "Já fez alguma cirurgia?",
@@ -133,12 +134,12 @@ class Anamnese extends Component {
               {id: 2,label: "Cirurgia respiratória"},
             ]
           },
-          
+
           surgery_description: { // 0..*
             type: "text",
             title: "Descrição das cirurgias",
           },
-          
+
           trauma: { // 0..*
             type: "radio",
             title: "Algum trauma físico?",
@@ -147,39 +148,39 @@ class Anamnese extends Component {
               {id: 1,label: "Não"},
             ]
           },
-          
+
           blood_transfusion: { // 0..*
             type: "number",
             title: "Quantas transfusões de sangue",
           },
-          
+
           blood_transfusion_date: { // Verificar como irá fazer - TECH
             type: "date",
             title: "data",
           },
-          
+
           meds_in_use: { // Verificar os nomes dos medicamentos - MED
             type: "checkbox",
             title: "Medicamentos em uso",
             options:[
-              {id: 0,label: "Depressão"},        
-              {id: 1,label: "Hipertensão"},              
+              {id: 0,label: "Depressão"},
+              {id: 1,label: "Hipertensão"},
             ]
           },
-          
+
           meds_description: { // 0..*
             type: "text",
             title: "Descrição dos medicamentos",
           },
-                            
-          
+
+
           // Historia Fisiológica
           primogênito: {
             type: "radio",
             title: "É primogênito?",
             options: [
               {id: 0,label: "Sim"},
-              {id: 1,label: "Não"},              
+              {id: 1,label: "Não"},
             ]
           },
 
@@ -188,15 +189,15 @@ class Anamnese extends Component {
             title: "Tem irmãos?",
             options: [
               {id: 0,label: "Sim"},
-              {id: 1,label: "Não"},              
+              {id: 1,label: "Não"},
             ]
           },
-          
+
           amount_brothers: {
             type: "number",
             title: "Quantidade de irmãos",
           },
-          
+
           sexuality: {
             type: "radio",
             title: "Sexualidade",
@@ -206,22 +207,22 @@ class Anamnese extends Component {
               {id: 2,label: "HSH"},
               {id: 3,label: "MSM"},
               {id: 4,label: "HSHM"},
-              {id: 5,label: "MSHM"},              
+              {id: 5,label: "MSHM"},
             ]
           },
-          
+
           urinary_volumn: {
             type: "select",
             title: "Volume urinário",
             options:
             [
-              {id: "",label: "Normal"},  
+              {id: "",label: "Normal"},
               {id: 0,label: "Oligúria"},
               {id: 1,label: "Poliúria"},
               {id: 2,label: "Anúria"},
-            ]     
+            ]
           },
-          
+
           urinary_frequency: {
             type: "checkbox",
             title: "Frequência urinária",
@@ -232,9 +233,9 @@ class Anamnese extends Component {
               {id: 2,label: "Nictúria"},
               {id: 3,label: "Eetenção urinária"},
               {id: 4,label: "Incontinência urinária"},
-            ]     
-          },      
-          
+            ]
+          },
+
           urinary_aspect: {
             type: "checkbox",
             title: "Aspecto da urina",
@@ -244,9 +245,9 @@ class Anamnese extends Component {
               {id: 1,label: "Turva"},
               {id: 2,label: "Aumento de espuma"},
               {id: 3,label: "Mau Cheiro"},
-            ]     
+            ]
           },
-          
+
           urinary_changes: {
             type: "checkbox",
             title: "Outras alterações da urina",
@@ -256,22 +257,22 @@ class Anamnese extends Component {
               {id: 1,label: "Hesitação"},
             ]
           },
-          
-        	menarche: { 
+
+        	menarche: {
             type: "number",
             title: "Idade da menarca",
           },
-          
-        	menstruation_cycle: { 
+
+        	menstruation_cycle: {
             type: "number",
             title: "Ciclo mentrual (em dias)",
           },
-          
-          menopause: { 
+
+          menopause: {
             type: "number",
             title: "Idade da menopausa",
           },
-                    
+
 					contraceptive: {
             type: "radio",
             title: "Usa anticoncenpcionais?",
@@ -281,7 +282,7 @@ class Anamnese extends Component {
               {id: 1, label: "Não"},
             ]
           },
-          
+
           ligadura_trompa: {
             type: "radio",
             title: "Trompas ligadas",
@@ -291,32 +292,32 @@ class Anamnese extends Component {
               {id: 1, label: "Não"},
             ]
           },
-          
+
           data_ligadura_trompa: {
           	type: "date",
             title: "Data da ligadura",
           },
-          
+
           pregnancy: {
             type: "number",
-            title: "Quantas gravidezes?",        
+            title: "Quantas gravidezes?",
           },
-          
+
           child_birth: {
             type: "number",
-            title: "Quantos partos"          
+            title: "Quantos partos"
           },
-          
+
           abort:  {
             type: "number",
-            title: "Quantos abortos"          
+            title: "Quantos abortos"
           },
-          
+
           dead_birth:  {
             type: "number",
-            title: "Quantos natimortos"          
+            title: "Quantos natimortos"
           },
-          
+
           // Historia familiar
           hist_fam: { // 0..*
             type: "checkbox",
@@ -333,7 +334,7 @@ class Anamnese extends Component {
               {id: 8,label: "Varizes"},
             ]
           },
-          
+
           kind_familiar: {
           	type: "checkbox",
             title: "Qual familiar tem?",
@@ -349,12 +350,12 @@ class Anamnese extends Component {
               {id: 7,label: "Avô(ó) materno(a)"},
             ]
           },
-          
+
           age_familiar: {
             type: "number",
-            title: "Idade do familiar(es)"          
+            title: "Idade do familiar(es)"
           },
-          
+
           // História psico-social
           title: {
             type: "label",
@@ -369,8 +370,8 @@ class Anamnese extends Component {
               {id: 0,label: "Sim"},
               {id: 1,label: "Não"},
             ]
-          },            
-          
+          },
+
           socio_econ: { // 1
             type: "select",
             title: "Estado socioeconômico",
@@ -381,7 +382,7 @@ class Anamnese extends Component {
               {id: 2,label: "Renda Alta"},
             ]
           },
-          
+
           religion: { // 1
             type: "select",
             title: "Religião",
@@ -395,7 +396,7 @@ class Anamnese extends Component {
               {id: 5,label: "Outra"},
             ]
           },
-          
+
           escolar: { // 1
             type: "select",
             title: "Escolaridade",
@@ -406,7 +407,7 @@ class Anamnese extends Component {
               {id: 2,label: "Ensino Superior"},
             ]
           },
-          
+
           relacao_fam: { // 1
             type: "select",
             title: "Relação familiar",
@@ -418,7 +419,7 @@ class Anamnese extends Component {
               {id: 2,label: "Ruim"},
             ]
           },
-          
+
           // Estilo de vida
           estilo_de_vida: {
             type: "label",
@@ -441,7 +442,7 @@ class Anamnese extends Component {
               {id: 9,label: "Alimentação láctea exclusiva"},
             ]
           },
-          
+
           ativ_fisica: { // 1
             type: "select",
             title: "Atividade física",
@@ -454,7 +455,7 @@ class Anamnese extends Component {
               {id: 3,label: "Atividades físicas ocasionais"},
             ]
           },
-          
+
           // Fumo e sua caracterizacao
           fumo: {
             type: "label",
@@ -468,10 +469,10 @@ class Anamnese extends Component {
             options: [
               {id: 0,label: "Sim"},
               {id: 1,label: "Nao"},
-              
+
             ]
           },
-          
+
           tabag_tipo: { // 0..*
             type: "checkbox",
             title: "Tipo de fumo",
@@ -482,12 +483,12 @@ class Anamnese extends Component {
               {id: 3,label: "Cigarro de palha"},
             ]
           },
-          
+
           tabag_freq: { // Vezes na semana, mes ou ano
             type: "number",
             title: "Frequencia de fumo (por semana, mês ou ano)"
           },
-          
+
           tabag_quant: { // Numero cigarros por dia
             type: "number",
             title: "Quanto fuma por dia"
@@ -503,12 +504,12 @@ class Anamnese extends Component {
             title: "Tempo que fuma",
             required: "true"
           },
-          
+
           tabag_charge:{ // Numero de cigarros por ano
             type: "number",
             title: "Por ano são"
           },
-                    
+
           // Alcool e sua caracterizacao
           alcool: {
             type: "label",
@@ -524,7 +525,7 @@ class Anamnese extends Component {
               {id: 1,label: "Nao"},
             ]
           },
-          
+
           etil_tipo: { // 0..*
             type: "checkbox",
             title: "Tipo de bebidas",
@@ -538,12 +539,12 @@ class Anamnese extends Component {
               {id: 6,label: "Gin"},
             ]
           },
-          
+
           etil_freq: { // Vezes na semana, mes ou ano
             type: "number",
             title: "Ferquência que bebe (por semana, mes ou ano)"
           },
-          
+
           etil_quant: { // Litros por dia
             type: "number",
             title: "Quantidade que bebe por dia"
@@ -558,12 +559,12 @@ class Anamnese extends Component {
             type: "number",
             title: "Tempo que bebe"
           },
-          
+
         	etil_charge:{ // Numero de litros por ano
             type: "number",
             title: "Por ano são"
           },
-          
+
           // Uso de drogas
           drogas: {
             type: "label",
@@ -578,7 +579,7 @@ class Anamnese extends Component {
               {id: 1,label: "Nao"},
             ]
           },
-          
+
           drogas_tipo: { // 0..*
             type: "checkbox",
             title: "Tipo de drogas que utiliza",
@@ -591,15 +592,15 @@ class Anamnese extends Component {
               {id: 5,label: "LSD"},
               {id: 6,label: "Oxi"},
               {id: 7,label: "Chá de cogumelo"},
-							{id: 8,label: "Inalantes"},              
+							{id: 8,label: "Inalantes"},
             ]
           },
-          
+
           drogas_freq: { // Vezes na semana, mes ou ano
             type: "number",
             title: "Frequência que utiliza (por semana, mês ou ano)"
           },
-          
+
           drogas_quant: { // Numero por dia
             type: "number",
             title: "Quantidade que usa (por dia)"
@@ -614,7 +615,7 @@ class Anamnese extends Component {
             type: "number",
             title: "Tempo que usa"
           },
-          
+
           drogas_charge:{ // Numero de litros por ano
             type: "number",
             title: "Por ano são"
@@ -623,18 +624,19 @@ class Anamnese extends Component {
 			}
 		);
   }
-    
+
 	handleSubmit(event) {
     event.preventDefault();
+    localStorageLib.saveInJson("consult","anamnese",this.formData);
     console.log("ANAMNESE STORAGE",this.formData);
 		this.props.saveData("anamnese",this.formData);
   }
-    
+
 	render(){
     console.log("RENDERIZANDO ANAMNESE", this.state);
     if(!this.state.prepare){
       return (
-        <div>LOADING</div> 
+        <div>LOADING</div>
       );
     }
 		return(
@@ -649,7 +651,7 @@ class Anamnese extends Component {
           }}
           SubmitValue="Salvar anamnese"
           Config={{
-            Select:{ 
+            Select:{
               OptionValue: "id"
             },
             Checkgroup:{

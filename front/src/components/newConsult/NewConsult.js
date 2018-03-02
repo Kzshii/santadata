@@ -27,12 +27,16 @@ class NewConsult extends Component {
       <Medicines title="Medicamentos" saveData={ this.storeFormData } prepare={ this.prepare } />,
       <Predictors title="Preditores" saveData={ this.storeFormData } prepare={ this.prepare } />,
     ];
-			
+
     this.state = {
       currentSection: 0,
       consultData: {},
     };
   }
+
+	componentDidMount(){
+		localStorage.setItem("consult", JSON.stringify({}));
+	}
 
   prepare(component, route) {
     Post.command = (serverResponse) => {
@@ -88,7 +92,7 @@ class NewConsult extends Component {
       currentSection: section
     });
   }
-  
+
   saveConsult(){
     //Salvar Consulta
     Post.command = (serverResponse) => {
@@ -112,7 +116,7 @@ class NewConsult extends Component {
     console.log("NOVA CONSULTA - ESTADO", this.state);
     return(
 			<div className="NewConsult">
-				
+
         <div className="sections">
           {
             this.sections.map(
@@ -129,14 +133,14 @@ class NewConsult extends Component {
             Salvar Consulta
           </button>
         </div>
-        
+
         <section className="consultSection">
           { this.sections[this.state.currentSection] }
         </section>
-                
+
         <button name="prev" onClick={ this.prevSection }>Anterior</button>
         <button name="next" onClick={ this.nextSection }>Proximo</button>
-				
+
 			</div>
 		);
 	}

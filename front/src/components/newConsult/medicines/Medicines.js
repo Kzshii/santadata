@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Medicines.css';
 import Form from './../../form/Form';
 import Select from './../../form/select/Select';
+import StoredList from './../../storedList/StoredList';
 
 /*
   Medicines retorna um array com os medicamentos adicionados.
@@ -38,7 +39,7 @@ class Medicines extends Component {
     /* STATE */
     this.state = {
 			prepare: null,
-			storedMeds: [],
+  			storedMeds: [],
       selectedMedicine: "IECA",
       InputList: null
     };
@@ -343,7 +344,7 @@ class Medicines extends Component {
     let cloneMedicine = JSON.parse(JSON.stringify(medicine));
     cloneMedicine.name = name;
     storedMeds.push(cloneMedicine);
-    
+
     /* this.setState({
       storedMeds: storedMeds
     }); */
@@ -438,6 +439,7 @@ class Medicines extends Component {
             KeyTag={ this.state.selectedMedicine }
           />
         </div>
+        <StoredList title="Exames Guardados" list={this.state.storedExams} remove={this.removeExam} showPopup={this.ShowPopup}/>
 
         {/* TODO: Exibir medicamentos adicionados à pool */}
 

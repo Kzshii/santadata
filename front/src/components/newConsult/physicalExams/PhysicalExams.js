@@ -5,7 +5,7 @@ import Form from './../../form/Form';
 import Radiogroup from './../../form/radiogroup/Radiogroup';
 import StoredList from './../../storedList/StoredList';
 import Popup from './../../popup/Popup';
-
+import localStorageLib from "./../../../lib/localStorageLib";
 
 class PhysicalExams extends Component {
   constructor(props){
@@ -19,6 +19,7 @@ class PhysicalExams extends Component {
     this.removeExam = this.removeExam.bind(this);
     this.ShowPopup = this.ShowPopup.bind(this);
     this.editExam= this.editExam.bind(this);
+    this.handleSubmit= this.handleSubmit.bind(this);
 
     this.inputList = {};
     this.SelectOptions = [];
@@ -306,14 +307,14 @@ class PhysicalExams extends Component {
 							type:"label",
 							value:"Exame Complementar"
             },
-            
+
             eletro:{ // 0..*
-              
+
               title:{
 								type:"label",
 								value:"Eletrocardiograma"
 							},
-              
+
               eletro: {
                 type: "checkbox",
                 title:"",
@@ -335,12 +336,12 @@ class PhysicalExams extends Component {
 								type:"label",
 								value:"Ecocardiograma"
               },
-              
+
               //Ecocardiograma
               primeira_FE: {
                 type: "text",
                 title:"Primeira FE"
-              }, 
+              },
               primeiro_VE_diast: {
                 type: "text",
                 title:"Primeiro VE Diast"
@@ -353,7 +354,7 @@ class PhysicalExams extends Component {
               ultima_FE: {
                 type: "text",
                 title:"Ultima FE"
-              }, 
+              },
               ultima_VE_diast: {
                 type: "text",
                 title: "Ultima Ve Diast"
@@ -374,7 +375,7 @@ class PhysicalExams extends Component {
               ps_ap: {
                 type: "text",
                 title: "ps_ap",
-              }, 
+              },
             }
 					}
 				},
@@ -399,19 +400,13 @@ class PhysicalExams extends Component {
   }
 
   editExam(exam){
-    console.log("ExameEditado");
-    console.log(exam);
-
     let storeds= this.state.storedExams;
-    storeds[this.state.popupExam.index]=exam;
+    storeds[this.state.popupExam.index] = exam;
 
     this.setState({
       showPopup: false,
       storedExams:storeds
     })
-
-    console.log("xD")
-    console.log(this.state.storedExams)
   }
 
 	mountSelectOptions(selectType){
@@ -426,15 +421,15 @@ class PhysicalExams extends Component {
       });
     }
     this.SelectOptions = selectOptions;
-    
+
     console.log("options:",options)
     console.log("selectOptions:",selectOptions)
-    
+
     let exam = this.state.prepare[this.state.selectedExamType]
 
     if (exam!=null){
       options = Object.keys(exam);
-      
+
       selectOptions = [];
 
       for (let index = 1; index < options.length; index++) {
@@ -446,7 +441,7 @@ class PhysicalExams extends Component {
       }
       this.exams=selectOptions;
     }
-    
+
 	}
 
   mountInputList(){
@@ -461,7 +456,7 @@ class PhysicalExams extends Component {
 
       this.inputList = this.state.prepare[examType][exam];
 
-      
+
       this.inputList["submit"]={
         type:"submit"
       }
@@ -493,7 +488,7 @@ class PhysicalExams extends Component {
 
   ShowPopup(index){
     let exam= this.state.storedExams[index];
-    
+
     exam["submit"]={
       type:"submit"
     }
@@ -508,9 +503,10 @@ class PhysicalExams extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    localStorageLib.saveInJson("consult","exam",this.state.storedExams);
     this.props.saveData("exams", this.storedExams);
   }
-  
+
 	render(){
 		if(!this.state.prepare){
 			return(
