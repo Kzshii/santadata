@@ -111,7 +111,7 @@ class NewPatient extends Component {
       totalDays = ((todayDate.getTime() - birthDate.getTime()) / 86400000);
 
       if (totalDays < 0) {
-        alert("Por favor, digite uma data válida!")
+        //alert("Por favor, digite uma data válida!")
         let formExhibition = this.state.formExhibition;
         formExhibition.stringAge = "Data inválida";
         this.setState({
@@ -136,6 +136,7 @@ class NewPatient extends Component {
 
     else {
       this.state.formExhibition.stringAge = "Data inválida"
+      //alert("Por favor, digite uma data válida!")
     }
 
   }
