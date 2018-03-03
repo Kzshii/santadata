@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './PhysicalExams.css';
-import Select from './../../form/select/Select';
 import Form from './../../form/Form';
+import Select from './../../form/select/Select';
 import Radiogroup from './../../form/radiogroup/Radiogroup';
 import StoredList from './../../storedList/StoredList';
 import Popup from './../../popup/Popup';
@@ -11,40 +11,39 @@ class PhysicalExams extends Component {
   constructor(props){
     super(props);
 
+    /* METHODS */
     this.mountSelectOptions = this.mountSelectOptions.bind(this);
-    this.selectExam = this.selectExam.bind(this);
-    this.selectExamType = this.selectExamType.bind(this);
+    this.selectFormType = this.selectFormType.bind(this);
+    this.selectForm = this.selectForm.bind(this);
     this.mountInputList = this.mountInputList.bind(this);
-    this.storeExam = this.storeExam.bind(this);
-    this.removeExam = this.removeExam.bind(this);
+    this.storeForm = this.storeForm.bind(this);
+    this.removeForm = this.removeForm.bind(this);
     this.ShowPopup = this.ShowPopup.bind(this);
-    this.editExam= this.editExam.bind(this);
+    this.editForm= this.editForm.bind(this);
 
+    /* VARS */
     this.inputList = {};
-    this.SelectOptions = [];
-    this.exams = [];
+    this.selectOptions = [];
+    this.forms = [];
 
+    /* STATE */
     this.state = {
       showPopup: false,
 			prepare: null,
-			storedExams:[],
-      selectedExamType: null,
-      selectedExam: null,
+			storedForms:[],
+      selectedFormType: null,
+      selectedForm: null,
       inputList: null,
-      popupExam: null
+      popupForm: null
     };
   }
 
   componentDidMount() {
-    //this.props.prepare(this, "prepExams");
+    //this.props.prepare(this, "prepForms");
 
 		this.setState(
 			{
-
-
 				prepare: {
-
-
 
           fisico: {
 
@@ -382,39 +381,7 @@ class PhysicalExams extends Component {
 		);
   }
 
-  selectExamType(event) {
-    let exams = Object.keys(this.state.prepare[event.target.value]);
-    let exam = exams[1];
-
-    this.setState({
-      selectedExamType: event.target.value,
-      selectedExam: exam
-    });
-  }
-
-  selectExam(event){
-    this.setState({
-      selectedExam: event.target.value
-    });
-  }
-
-  editExam(exam){
-    console.log("ExameEditado");
-    console.log(exam);
-
-    let storeds= this.state.storedExams;
-    storeds[this.state.popupExam.index]=exam;
-
-    this.setState({
-      showPopup: false,
-      storedExams:storeds
-    })
-
-    console.log("xD")
-    console.log(this.state.storedExams)
-  }
-
-	mountSelectOptions(selectType){
+  mountSelectOptions(selectType){
     let options = Object.keys(this.state.prepare);
     let selectOptions= [];
 
@@ -427,13 +394,13 @@ class PhysicalExams extends Component {
     }
     this.SelectOptions = selectOptions;
     
-    console.log("options:",options)
     console.log("selectOptions:",selectOptions)
+    console.log("options:",options)
     
-    let exam = this.state.prepare[this.state.selectedExamType]
+    let form = this.state.prepare[this.state.selectedFormType]
 
-    if (exam!=null){
-      options = Object.keys(exam);
+    if (form!=null){
+      options = Object.keys(form);
       
       selectOptions = [];
 
@@ -441,74 +408,105 @@ class PhysicalExams extends Component {
         selectOptions.push({
           id: index - 1,
           value: options[index],
-          label: exam[options[index]].title.value
+          label: form[options[index]].title.value
         });
       }
-      this.exams=selectOptions;
+      this.forms=selectOptions;
     }
     
 	}
 
   mountInputList(){
 
-    let exam = this.state.selectedExam;
-    let examType = this.state.selectedExamType;
+    let form = this.state.selectedForm;
+    let formType = this.state.selectedFormType;
 
-    console.log("exam:",exam)
-    console.log("examType:",examType)
+    console.log("formType:",formType)
+    console.log("form:",form)
 
-    if (exam!=null && examType!=null){
+    if (form!=null && formType!=null){
 
-      this.inputList = this.state.prepare[examType][exam];
+      this.inputList = this.state.prepare[formType][form];
 
-      
       this.inputList["submit"]={
         type:"submit"
       }
     }
-
   }
 
-  storeExam(Exam){
-    let store = this.state.storedExams;
-
-
-    Exam.name = this.state.selectedExam;
-    Exam.type = this.state.selectedExamType;
-
-    store.push(Exam);
+  selectFormType(event) {
+    let forms = Object.keys(this.state.prepare[event.target.value]);
+    let form = forms[1];
 
     this.setState({
-      storedExams: store
+      selectedFormType: event.target.value,
+      selectedForm: form
     });
   }
 
-  removeExam(index){
-    let list= this.state.storedExams;
-    list.splice(index,1);
+  selectForm(event){
     this.setState({
-      storedExams: list
+      selectedForm: event.target.value
+    });
+  }
+
+  storeForm(form){
+    let store = this.state.storedForms;
+
+    form.name = this.state.selectedForm;
+    form.type = this.state.selectedFormType;
+
+    store.push(form);
+
+    this.setState({
+      storedForms: store
+    });
+  }
+
+  editForm(form){
+    console.log("Exame Editado");
+    console.log(form);
+
+    let storedForms= this.state.storedForms;
+    storedForms[this.state.popupForm.index]=form;
+
+    this.setState({
+      showPopup: false,
+      storedForms:storedForms
     })
+
+    console.log("xD")
+    console.log(this.state.storedForms)
   }
 
   ShowPopup(index){
-    let exam= this.state.storedExams[index];
+    let form= this.state.storedForms[index];
     
-    exam["submit"]={
+    console.log("form",form);
+
+    form["submit"]={
       type:"submit"
     }
     this.setState({
       showPopup: true,
-      popupExam: {
-        exam: exam,
-        index: index}
+      popupForm: {
+        form: form,
+        index: index
+      }
     })
+  }
 
+  removeForm(index){
+    let list= this.state.storedForms;
+    list.splice(index,1);
+    this.setState({
+      storedForms: list
+    })
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.saveData("exams", this.storedExams);
+    this.props.saveData("exams", this.storedForms);
   }
   
 	render(){
@@ -521,29 +519,35 @@ class PhysicalExams extends Component {
     this.mountSelectOptions();
     this.mountInputList();
 
-
     return(
       <div className="InputExam">
         <h2>Exames Físicos</h2>
+
+        {console.log("selectOptions", this.selectOptions)}
+        {console.log("selectFormType", this.selectFormType)} 
+
         <Radiogroup
           Label="Tipo de Exame"
           Options={ this.SelectOptions }
           OptionValue="value"
-          KeyTag="selectExam"
-          OnChange={ this.selectExamType }
+          KeyTag="selectForm"
+          OnChange={ this.selectFormType }
           Name= "ExamsTypes"
         />
 
+        {console.log("selectForm", this.selectForm)}
+        {console.log("forms", this.forms)}
+
         <Select
           Label="Exames"
-          Options={ this.exams }
+          Options={ this.forms }
           OptionValue="value"
           KeyTag="exams"
-          OnChange={ this.selectExam }
+          OnChange={ this.selectForm }
         />
 
         <Form
-          OnSubmit={ this.storeExam }
+          OnSubmit={ this.storeForm }
           InputList={ this.inputList }
           SubmitValue="Guardar Exame"
           Config={{
@@ -558,15 +562,18 @@ class PhysicalExams extends Component {
             }
           }}
         />
-        <StoredList title="Exames Guardados" list={this.state.storedExams} remove={this.removeExam} showPopup={this.ShowPopup}/>
+
+        <StoredList title="Exames Guardados" list={this.state.storedForms} remove={this.removeForm} showPopup={this.ShowPopup}/>
+
+        {console.log("storedForms", this.state.storedForms)}
 
         {this.state.showPopup ?
           <Popup
             title="Editar Exame"
             close={()=>{this.setState({showPopup: false})}}
             content={
-              <Form OnSubmit={this.editExam}
-                InputList={this.state.popupExam.exam}
+              <Form OnSubmit={this.editForm}
+                InputList={this.state.popupForm.form}
                 SubmitValue="Salvar Edição"
                 Config={
                   {

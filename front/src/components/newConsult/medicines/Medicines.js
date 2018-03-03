@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './Medicines.css';
 import Form from './../../form/Form';
 import Select from './../../form/select/Select';
+import Radiogroup from './../../form/radiogroup/Radiogroup';
+import StoredList from './../../storedList/StoredList';
+import Popup from './../../popup/Popup';
 
 /*
   Medicines retorna um array com os medicamentos adicionados.
@@ -25,22 +28,29 @@ class Medicines extends Component {
     super(props);
 
     /* METHODS */
-		this.storeMedicine = this.storeMedicine.bind(this);
-		this.selectMedicine = this.selectMedicine.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.mountInputList = this.mountInputList.bind(this);
     this.mountSelectOptions = this.mountSelectOptions.bind(this);
+    //this.selectFormType = this.selectFormType.bind(this);
+    this.selectForm = this.selectForm.bind(this);
+    this.mountInputList = this.mountInputList.bind(this);
+    this.storeForm = this.storeForm.bind(this);
+    this.removeForm = this.removeForm.bind(this);
+    this.ShowPopup = this.ShowPopup.bind(this);
+    this.editForm= this.editForm.bind(this);
 
     /* VARS */
-    this.InputList = {};
-    this.SelectOptions = null;
+    this.inputList = {};
+    this.selectOptions = null;
+    this.forms = [];
 
     /* STATE */
     this.state = {
+      showPopup: false,
 			prepare: null,
-			storedMeds: [],
-      selectedMedicine: "IECA",
-      InputList: null
+			storedForms:[],
+      //selectedFormType: "Escolher",
+      selectedForm: "choose",
+      inputList: null,
+      popupForm: null
     };
   }
 
@@ -51,8 +61,17 @@ class Medicines extends Component {
       {
         prepare: {
           //Medicamentos ministrados no paciente
-
+          
+          
           commom: {
+            
+            /*
+            title:{
+               type: 'label',
+               value: ""
+            },
+            */
+
             date: {
               type: "date", // data
               title: "Data",
@@ -90,15 +109,24 @@ class Medicines extends Component {
             }
           },
 
-          IECA: {
+          choose:{
+            title: {
+              type: "label",
+              value: "Escolher medicamento"
+            },
+          },
+
+          ieca: {
             title: {
               type: "label",
               value: "IECA"
             },
 
-            type: {
+            type: "IECA",
+
+            name: {
               type: "select",
-              title: "Tipo",
+              title: "Nome",
               options:[
                 {id: "",label: "Escolher"},
                 {id: 0,label: "Captopril",dose_inicial:"6,24",dose_alvo:"50",intervalo:"8"},
@@ -117,15 +145,17 @@ class Medicines extends Component {
             }
           },
 
-          BRA: {
+          bra: {
             title: {
               type: "label",
               value: "BRA"
             },
 
-            type: {
+            type: "BRA",
+
+            name: {
               type: "select",
-              title: "Tipo",
+              title: "Nome",
               options: [
                 {id: "",label: "Escolher"},
                 {id: 0,label: "Losartana",dose_inicial:"25",dose_alvo:"50 a 150",intervalo:"24"},
@@ -147,9 +177,11 @@ class Medicines extends Component {
               value: "Beta Bloqueadores"
             },
 
-            type: {
-                type: "select",
-                title: "Tipo",
+            type: "Beta Bloqueador",
+
+            name: {
+              type: "select",
+              title: "Nome",
                 options: [
                   {id: "",label: "Escolher"},
                   {id: 0,label: "Carvedilol",dose_inicial:"3,125",dose_alvo:"25 a 50",intervalo:"12"},
@@ -169,9 +201,11 @@ class Medicines extends Component {
               value: "Bloqueador de Canal de Cálcio"
             },
 
-            type: {
+            type: "Bloqueador de Canal",
+
+            name: {
               type: "select",
-              title: "Tipo",
+              title: "Nome",
               options: [
                 {id: "",label: "Escolher"},
                 {id: 0,label: "Verapamil"},
@@ -186,9 +220,11 @@ class Medicines extends Component {
               value: "Diuréticos"
             },
 
-            type: {
+            type: "Diuréticos",
+
+            name: {
               type: "select",
-              title: "Tipo",
+              title: "Nome",
               options: [
                 {id: "",label: "Escolher"},
                 {id: 0,label: "Hidroclorotiazida"},
@@ -206,9 +242,11 @@ class Medicines extends Component {
               value: "Digitálico"
             },
 
-            type: {
-              type: "checkbox",
-              title: "Tipo",
+            type: "Digitalico",
+
+            name: {
+              type: "select",
+              title: "Nome",
               options: [
                 {id: 0,label: "digoxina"},
               ],
@@ -221,9 +259,11 @@ class Medicines extends Component {
               value: "AAS"
             },
 
-            type: {
-              type: "checkbox",
-              title: "Tipo",
+            type: "AAS",
+
+            name: {
+              type: "select",
+              title: "Nome",
               options: [
                 {id: 0,label: "Uso"},
               ]
@@ -236,9 +276,11 @@ class Medicines extends Component {
               value:"Estatina"
             },
 
-            type: {
+            type: "Estatina",
+
+            name: {
               type: "select",
-              title: "Tipo",
+              title: "Nome",
               options: [
                 {id: "",label: "Escolher"},
                 {id: 0,label: "Sinvastatina"},
@@ -253,9 +295,11 @@ class Medicines extends Component {
               value: "Hidralazina"
             },
 
-            type: {
-              type: "checkbox",
-              title: "Tipo",
+            type: "Hidralazina",
+
+            name: {
+              type: "select",
+              title: "Nome",
               options: [
                 {id: 0,label: "Apresolina"},
               ],
@@ -267,10 +311,12 @@ class Medicines extends Component {
               type: "label",
               value: "Nitrato"
             },
+         
+            type: "Nitrato",
 
-            type: {
-              type: "checkbox",
-              title: "Tipo",
+            name: {
+              type: "select",
+              title: "Nome",
               options: [
                 {id: 0,label: "Dinitrato de Isossorbida"},
               ],
@@ -282,10 +328,12 @@ class Medicines extends Component {
               type: "label",
               value: "Anticoagulante"
             },
+            
+            type: "Anticoagulante",
 
-            type: {
+            name: {
               type: "select",
-              title: "Tipo",
+              title: "Nome",
               options: [
                 {id: "",label: "Escolher"},
                 {id: 0,label: "Heparina"},
@@ -299,10 +347,12 @@ class Medicines extends Component {
               type: "label",
               value: "Antiarrítmico"
             },
+            
+            type: "Antiarrítimico",
 
-            type: {
-              type: "checkbox",
-              title: "Tipo",
+            name: {
+              type: "select",
+              title: "Nome",
               options: [
                 {id: 0,label: "Amiodarona"},
               ],
@@ -318,10 +368,12 @@ class Medicines extends Component {
               type: "label",
               value: "Sarcubitril Valsartana"
             },
+            
+            type: "Sarcubitil Valsartana",
 
-            type:{
-              type:"checkbox",
-              title:"Tipo",
+            name: {
+              type: "select",
+              title: "Nome",
               options:
               [
                 {id: 0,label: "Entresto",dose_inicial:"49 a 51",dose_alvo:"97 a 103",intervalo:"12"},
@@ -336,94 +388,207 @@ class Medicines extends Component {
     );
   }
 
-  storeMedicine(medicine) {
-    console.log("RETORNO DO FORM", medicine);
-    let storedMeds = this.state.storedMeds;
-    const name = this.state.selectedMedicine;
-    let cloneMedicine = JSON.parse(JSON.stringify(medicine));
-    cloneMedicine.name = name;
-    storedMeds.push(cloneMedicine);
-    
-    /* this.setState({
-      storedMeds: storedMeds
-    }); */
-  }
-
-  selectMedicine(event) {
-    this.setState({
-      selectedMedicine: event.target.value
-    });
-  }
-
-  mountSelectOptions() {
+  mountSelectOptions(selectType){
     let options = Object.keys(this.state.prepare);
-    let selectOptions = [];
+    let selectOptions= [];
 
-    for(let i = 1; i < options.length; i++) {
-      let option = options[i];
+    for (let index = 1; index < options.length; index++) {
       selectOptions.push({
-        id: i,
-        value: option,
-        label:this.state.prepare[option].title.value
+        id: index,
+        value: options[index],
+        label: this.state.prepare[options[index]].title.value
       });
     }
 
-    this.SelectOptions = selectOptions;
+    this.selectOptions = selectOptions;
+    
+    console.log("selectOptions:",selectOptions)
+    console.log("options:",options)
+    
+    /*
+    let form = this.state.prepare[this.state.selectedFormType]
+
+    options = Object.keys(form);
+      
+    selectOptions = [];
+
+    for (let index = 1; index < options.length; index++) {
+      selectOptions.push({
+        id: index - 1,
+        value: options[index],
+        label: form[options[index]].title.value
+      });
+    
+      this.forms=selectOptions;
+    }
+    */
+	}
+
+  mountInputList(){
+
+    if (this.state.selectedForm!="choose"){
+      const form = this.state.prepare[this.state.selectedForm];
+      const formKeys = Object.keys(form);
+      const commom = this.state.prepare["commom"];
+      const commomKeys = Object.keys(commom);
+      let inputList = {};
+  
+      for(let i = 0; i < formKeys.length; i++) {
+        inputList[formKeys[i]] = form[formKeys[i]];
+      }
+  
+      for(let i = 0; i < commomKeys.length; i++) {
+        inputList[commomKeys[i]] = commom[commomKeys[i]];
+      }
+  
+      this.inputList = inputList;
+      console.log("INPUTLIST FEITA");
+      console.log(this.inputList);
+    }
+
+
+    /*
+    if (form!=null && formType!=null){
+
+      this.inputList = this.state.prepare[formType][form];
+
+      this.inputList["submit"]={
+        type:"submit"
+      }
+    }
+    */
   }
 
-  mountInputList() {
-    const med = this.state.selectedMedicine;
-    const meds = this.state.prepare[med];
-    const commom = this.state.prepare.commom;
-    const medKeys = Object.keys(meds);
-    const commomKeys = Object.keys(commom);
-    let InputList = {};
+  /*
+  selectFormType(event) {
+    let forms = Object.keys(this.state.prepare[event.target.value]);
+    let form = forms[1];
 
-    for(let i = 0; i < medKeys.length; i++) {
-      InputList[medKeys[i]] = meds[medKeys[i]];
+    this.setState({
+      selectedFormType: event.target.value,
+      selectedForm: form
+    });
+  }
+  */
+
+  selectForm(event){
+    //console.log("event", event);
+
+    this.setState({
+      selectedForm: event.target.value
+    });
+
+  }
+
+  storeForm(form){
+    let store = this.state.storedForms;
+
+    form.name = this.state.selectedForm;
+    //form.type = this.state.selectedForm;
+
+    store.push(form);
+
+    this.setState({
+      storedForms: store
+    });
+  }
+
+  editForm(form){
+    console.log("Medicamento Editado");
+    console.log(form);
+
+    let storedForms= this.state.storedForms;
+    storedForms[this.state.popupForm.index]=form;
+
+    this.setState({
+      showPopup: false,
+      storedForms:storedForms
+    })
+
+    console.log("xD")
+    console.log(this.state.storedForms)
+  }
+
+  ShowPopup(index){
+    let form= this.state.storedForms[index];
+
+    console.log("form",form);
+    
+    form["submit"]={
+      type:"submit"
     }
+    this.setState({
+      showPopup: true,
+      popupForm: {
+        form: form,
+        index: index
+      }
+    })
+  }
 
-    for(let i = 0; i < commomKeys.length; i++) {
-      InputList[commomKeys[i]] = commom[commomKeys[i]];
-    }
-
-    this.InputList = InputList;
-    console.log("INPUTLIST FEITA");
-    console.log(this.InputList);
+  removeForm(index){
+    let list= this.state.storedForms;
+    list.splice(index,1);
+    this.setState({
+      storedForms: list
+    })
   }
 
   handleSubmit(data) {
-    this.props.saveData("medicines", this.state.storedMeds);
+    this.props.saveData("medicines", this.state.storedForms);
   }
 
   render() {
-    console.log("MEDICINES STATE:",this.state);
-    if(!this.state.prepare) {
-      return(
-        <div>Loading</div>
-      );
+		if(!this.state.prepare){
+			return(
+				<div>Loading</div>
+			);
     }
+
+    this.mountSelectOptions();
     this.mountInputList();
 
-    if(!this.selectOptions) {
-      this.mountSelectOptions();
-    }
-
     return(
-      <div className="Medicines">
-        <div className="InputMedicine">
-          <Select
-            Label="Escolha o tipo de medicamento"
-            Options={ this.SelectOptions }
-            OptionValue="value"
-            KeyTag="SelectMedicine"
-            OnChange={ this.selectMedicine }
-          />
+      <div className="InputMedicine">
+        <h2>Medicamentos</h2>
 
+        {/* 
+        {console.log("selectOptions", this.selectOptions)}
+        {console.log("selectFormType", this.selectFormType)}        
+
+        <Radiogroup
+          Label="Tipo de Medicamento"
+          Options={ this.selectOptions }
+          OptionValue="value"
+          KeyTag="selectForm"
+          OnChange={ this.selectFormType }
+          Name= "MedsTypes"
+        /> 
+        */}
+        
+        {/*
+        {console.log("selectForm", this.selectForm)}
+        {console.log("forms", this.forms)}
+        
+
+        {console.log("selectedForm", this.state.selectedForm)}
+        */}
+        
+        <Select
+          Label="Medicamentos"
+          Options={ this.selectOptions }
+          OptionValue="value"
+          KeyTag="meds"
+          OnChange={ this.selectForm }
+        />
+        
+        {console.log("inputList", this.inputList)}
+
+        {this.state.selectedForm!="choose" ? 
           <Form
-            OnSubmit={ this.storeMedicine }
-            InputList={ this.InputList }
-            SubmitValue="Guardar medicamento"
+            OnSubmit={ this.storeForm }
+            InputList={ this.inputList }
+            SubmitValue="Guardar Medicamento"
             Config={{
               Select:{
                 OptionValue: "id"
@@ -435,15 +600,39 @@ class Medicines extends Component {
                 OptionValue: "id"
               }
             }}
-            KeyTag={ this.state.selectedMedicine }
-          />
-        </div>
+        /> : null}
+        
 
-        {/* TODO: Exibir medicamentos adicionados à pool */}
+        <StoredList title="Medicamentos Guardados" list={this.state.storedForms} remove={this.removeForm} showPopup={this.ShowPopup}/>
 
-        <form onSubmit={ this.handleSubmit }>
-          <input className="Button" type="submit" value="Salvar medicamentos e continuar"/>
+        {console.log("storedForms", this.state.storedForms)}
+
+        {this.state.showPopup ?
+          <Popup
+            title="Editar Medicamento"
+            close={()=>{this.setState({showPopup: false})}}
+            content={
+              <Form OnSubmit={this.editForm}
+                InputList={this.state.popupForm.form}
+                SubmitValue="Salvar Edição"
+                Config={
+                  {
+                    Select:{
+                      OptionValue: "id"
+                    },
+                    Checkgroup:{
+                      OptionValue: "id"
+                    },
+                    Radiogroup:{
+                      OptionValue: "id"
+                    }
+                  }}/>
+            }/>  : null}
+
+        <form onSubmit={ this.handleSubmit} >
+          <input className="Button" type="submit" value="Salvar Medicamentos e Continuar" onMouseUp={ this.handleSubmit }/>
         </form>
+      
       </div>
     );
   }
