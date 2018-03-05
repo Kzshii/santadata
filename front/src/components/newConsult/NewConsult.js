@@ -95,6 +95,8 @@ class NewConsult extends Component {
       if(serverResponse.success) {
         alert("Consulta salva com sucesso");
         //this.props.switchSection(<PatientProfile patient={ this.props.patient } switchSection={ this.props.switchSection }/>);
+      } else {
+        alert("Erro ao salvar consulta!");
       }
     };
 
@@ -104,8 +106,8 @@ class NewConsult extends Component {
       data: this.state.consultData /* TO DO: Formatar os dados da consulta */
     }
 
-    //Post('saveConsult');
-    alert("Consulta salva com sucesso!*");
+    Post('saveConsult');
+    //alert("Consulta salva com sucesso!*");
   }
 
 	render() {
