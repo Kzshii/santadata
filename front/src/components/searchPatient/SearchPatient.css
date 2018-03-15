@@ -1,5 +1,5 @@
 .SearchPatient{
-	background: #1ca4fc;
+	 background: #f1f4f7;
     position: absolute;
     min-height: 100vh;
     width: 100%;
@@ -41,39 +41,6 @@
 	display: inherit;
 }
 
-/*---------------------------------------------*/
-.SearchPatient .wrap-input100 {
-  position: relative;
-  width: 100%;
-  z-index: 1;
-  margin: 5% auto auto 33%;
-}
-
-/* MEDIA SEARCH BOX*/
-
-@media (min-width: 576px) {
-  .SearchPatient .wrap-input100 {
-    margin: 5% auto auto 33%;
-  }
-}
-
-@media (min-width: 768px) {
-  .SearchPatient .wrap-input100{
-    margin: 5% auto 5% 19%;
-  }
-}
-
-@media (min-width: 992px) {
-  .SearchPatient .wrap-input100 {
-    margin: 5% auto auto 33%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .SearchPatient .wrap-input100{
-    margin: 5% auto auto 33%;
-  }
-}
 
 .SearchPatient .input100 {
   font-family: Lato;
@@ -203,3 +170,15 @@ button:hover {
     cursor: pointer;
 }
 
+/* NEWEST UPDATE*/
+
+.SearchPatient .indent{
+
+  margin-top:  20px;
+  margin-left:  20px;
+
+}
+
+.SearchPatient button:active{
+  background-color: pink;
+}

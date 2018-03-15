@@ -2,17 +2,12 @@
     margin: auto;
 }
 
-.table td, .table th{
-	background-color: #fff;
-
-}
-
 .PatientList .table{
 
    /* background-color: white;
     color: black;*/
     width: 600px;
-    margin: 5% auto auto 25%;
+    margin-top: 5% ;
     position: absolute;
     padding-right: 50px;
     padding-left: 50px;
