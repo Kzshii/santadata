@@ -38,12 +38,8 @@ class Login extends Component {
       <div className="LoginPage">
         <div className="loginBox container">
 
-          <div className="loginHead">
-
-            
-          </div>
-
           <LoginForm requestLogin={ this.requestLogin } />
+
 
         </div>
       </div>
