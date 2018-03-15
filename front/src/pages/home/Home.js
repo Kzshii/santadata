@@ -58,7 +58,7 @@ class Home extends Component {
 
         
          <a className="navbar-brand" href="#">
-                <img className="logo-panel" src='https://i.imgur.com/x2KHDKm.png' alt='SantaData' title="" onClick={ this.handleClick } name="intro"/>
+                <img className="logo-panel img-responsive" src='https://i.imgur.com/x2KHDKm.png' alt='SantaData' title="" onClick={ this.handleClick } name="intro"/>
               </a> 
 
         <ul className="nav navbar-top-links navbar-right">
