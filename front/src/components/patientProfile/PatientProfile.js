@@ -47,74 +47,122 @@ class PatientProfile extends Component {
 
   render() {
     return(
-      <div className="PatientProfile float-left">
 
-        <div className="profile float-left">
+      <div className="PatientProfile">
 
-          <div className="top-bar">
-            <h3>Paciente</h3>
+        <div className="row">
+          <div className="col-lg-12">
+            <h2>Perfil do Paciente  <button type="submit" className="btn btn-primary btn-md pull-right" name="newConsult" onClick={ this.handleClick }>
+                    Nova Consulta</button></h2>
+           
+               
+                 
+            
+         
           </div>
-          
-          <div className="NewConsult top-button-bar">
-              <button className="btn btn-outline-primary float-right" name="newConsult" onClick={ this.handleClick }>
-                NovaConsulta
-              </button>
-          </div> 
-          <div className="patientData">
-            <InfoCard data={ this.state.patientData } />
+          <div className="col-md-4">
+            <div className="panel panel-primary">
+              <div className="panel-heading">Paciente</div>
+              <div className="panel-body">
+
+                 <InfoCard data={ this.state.patientData } />
+                 <br>
+                 </br>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="panel panel-primary">
+              <div className="panel-heading">Estado Atual</div>
+              <div className="panel-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="panel panel-primary">
+              <div className="panel-heading">ICFER</div>
+              <div className="panel-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
+              </div>
+            </div>
           </div>
 
-        </div>
-{/*
-        <div className="allergies float-left">
+          <div class="col-md-4">
+            <div class="panel panel-info">
+              <div class="panel-heading">Co-Morbilidades</div>
+              <div class="panel-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat. Donec vestibulum magna a dui pharetra molestie</p>
+              </div>
+            </div>
+          </div>
 
-          <div className="top-bar">
-            <h3>Alergias</h3>
-          </div> 
-
-          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-
-        </div>
-
-*/}
-        <div className="currentState float-left">
-
-          <div className="top-bar">
-            <h3>Estado Atual</h3>
-          </div> 
-
-          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-
+          <div class="col-md-4">
+            <div class="panel panel-info">
+              <div class="panel-heading">Info Panel</div>
+              <div class="panel-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus.Pellentesque ut ante in sapien blandit luctus sed ut lacus.  Fusce et dui urna.</p>
+              </div>
+            </div>
+      </div>
         </div>
 
-        <div className="ICFER float-left">
-
-          <div className="top-bar">
-            <h3>ICFER</h3>
-          </div> 
-
-          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-
+      <div className="col-md-12">
+        <div className="panel panel-default ">
+          <div className="panel-heading"> Linha do Tempo
+            <span className="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+          <div className="panel-body timeline-container">
+            <ul className="timeline">
+              <li>
+                <div className="timeline-badge primary">2018</div>
+                <div className="timeline-panel">
+                  <div className="timeline-heading">
+                    <h4 className="timeline-title">Lorem ipsum dolor sit amet</h4>
+                  </div>
+                  <div className="timeline-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="timeline-badge primary date-size">2017</div>
+                <div className="timeline-panel">
+                  <div className="timeline-heading">
+                    <h4 className="timeline-title">Lorem ipsum dolor sit amet</h4>
+                  </div>
+                  <div className="timeline-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="timeline-badge primary">2016</div>
+                <div className="timeline-panel">
+                  <div className="timeline-heading">
+                    <h4 className="timeline-title">Lorem ipsum dolor sit amet</h4>
+                  </div>
+                  <div className="timeline-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="timeline-badge primary">2015</div>
+                <div className="timeline-panel">
+                  <div className="timeline-heading">
+                    <h4 className="timeline-title">Lorem ipsum dolor sit amet</h4>
+                  </div>
+                  <div className="timeline-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-
-        <div className="comorbidities float-left">
-
-          <div className="top-bar">
-            <h3>Co-Morbilidades</h3>
-          </div> 
-
-          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      </div>
 
 
-        </div>
 
         </div>
 
