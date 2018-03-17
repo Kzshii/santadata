@@ -149,7 +149,7 @@ class SearchPatient extends Component {
 
           <span className="input-group-btn">
 
-            <button className="btn btn-default" type="submit" value="Buscar">
+            <button className="btn btn-primary" type="submit" value="Buscar">
               <span className="fas fa-search"></span>
             </button>
         

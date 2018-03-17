@@ -1,6 +1,5 @@
 .SearchPatient{
-	 background: #f1f4f7;
-    position: absolute;
+	  background: #f1f4f7;
     min-height: 100vh;
     width: 100%;
     background-size: cover;
@@ -173,7 +172,7 @@ button:hover {
 /* NEWEST UPDATE*/
 
 .SearchPatient .indent{
-
+  background-color: #f1f4f7;
   margin-top:  20px;
   margin-left:  20px;
 

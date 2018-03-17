@@ -52,7 +52,7 @@ class PatientProfile extends Component {
 
         <div className="row">
           <div className="col-lg-12">
-            <h2>Perfil do Paciente  <button type="submit" className="btn btn-primary btn-md pull-right" name="newConsult" onClick={ this.handleClick }>
+            <h2 className="col-lg-12">Perfil do Paciente  <button type="submit" className="btn btn-primary btn-md  col-lg-6" name="newConsult" onClick={ this.handleClick }>
                     Nova Consulta</button></h2>
            
                

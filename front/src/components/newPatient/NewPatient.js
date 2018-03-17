@@ -515,7 +515,7 @@ class NewPatient extends Component {
            
             </div>
 
-            <input id="Save" className="Button" type="submit" value="Salvar"/>
+            <input id="Save" className="Button btn btn-primary pull-right" type="submit" value="Salvar"/>
 
             </div>
           </form>
