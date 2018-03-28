@@ -1,6 +1,9 @@
+.NewConsult{
+   background-color: #f1f4f7!important;
+
+}
 
 .NewConsult .consultSection{
-    color: #1ca4fc;
 	width: 800px;
     margin: 5% auto 5% 0px;
     margin-left: auto;

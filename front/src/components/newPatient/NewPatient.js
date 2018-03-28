@@ -148,21 +148,31 @@ class NewPatient extends Component {
     
     return(
 
-    <div className="wrap">
+  
       <div className="NewPatient" >
 
-        <div className="NewPatientHead">
-        </div>
-
-        <h2>Novo Paciente</h2>
+    
+      <div className="row">
+      <div className="col-lg-12">
+        <div className="panel panel-default">
+          
+        
+        <div className="panel panel-default">
+          <div className="panel-heading">Novo Paciente</div>
+          <div className="panel-body">
 
           <form onSubmit={ this.handleSubmit } >
 
-            
+            <div className="col-md-6">
+
+          
+
+            <div className="form-group">
+
             <label htmlFor="patientName">Nome</label>
-            <div className="wrap-input100 validate-input m-b-16">
+            
             <input
-              className="input100 textInput"
+              className="form-control  textInput"
               type="text"
               name="patientName"
               id="patientName"
@@ -171,16 +181,14 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-                <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-user"></span>
-                </span>
+            
             </div>
 
+            <div className="form-group">
             <label htmlFor="rg">RG</label>
-            <div className="wrap-input100 validate-input m-b-16">
+            
             <input
-              className="input100 textInput"
+              className="form-control  textInput"
               type="number"
               name="rg"
               id="rg"
@@ -188,17 +196,15 @@ class NewPatient extends Component {
               value={ this.state.formData.rg }
               onChange={ this.handleChange }
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-address-card"></span>
-                </span>
+            
+        
             </div>
 
-
+            <div className="form-group">
             <label htmlFor="cpf">CPF</label>
-            <div className="wrap-input100 validate-input m-b-16">
+            
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="number"
               name="cpf"
               id="cpf"
@@ -206,17 +212,15 @@ class NewPatient extends Component {
               value={ this.state.formData.cpf }
               onChange={ this.handleChange }
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-address-card"></span>
-                </span>
+            
             </div>
 
+            <div className="form-group">
             <label htmlFor="mv">Número MV</label>
-            <div className="wrap-input100 validate-input m-b-16">
+            
 
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="number"
               name="mv"
               id="mv"
@@ -225,17 +229,14 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-sort-numeric-down"></span>
-                </span>
+           
             </div>
 
+            <div className="form-group">
             <label htmlFor="same">Número SAME</label>
-            <div className="wrap-input100 validate-input m-b-16">
 
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="number"
               name="same"
               id="same"
@@ -244,20 +245,16 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-sort-numeric-down"></span>
-                </span>
+          
             </div>
 
 
-
+            <div className="form-group">
             <label htmlFor="same">Cartão do SUS</label>
-            <div className="wrap-input100 validate-input m-b-16">
+           
 
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="number"
               name="sus"
               id="sus"
@@ -267,17 +264,14 @@ class NewPatient extends Component {
               required
             /> 
             
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-sort-numeric-down"></span>
-                </span>
+            
             </div>
           
-          
+            <div className="form-group">
             <label htmlFor="birthDate">Data de Nascimento</label>
-            <div className="wrap-input100 validate-input m-b-16">
+           
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="date"
               name="birthDate"
               id="birthDate"
@@ -286,16 +280,14 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-birthday-cake"></span>
-            </span>
+         
             </div>
 
+            <div className="form-group">
             <label htmlFor="age">Idade</label>
-            <div className="wrap-input100 m-b-16">
+           
             <input
-              className="input100 textInput"
+              className="form-control  textInput"
               type="text"
               name="age"
               id="age"
@@ -305,35 +297,58 @@ class NewPatient extends Component {
               required
               readOnly
             /> 
-            <span className="focus-input100"></span>
-            <span className="symbol-input100">
-                <span className="fas fa-sort-numeric-down"></span>
-                </span>
+            
             </div>
 
-            <br/>
+            <div className="form-group">
             <label htmlFor="" id="Up">Sexo </label>
-            <input type="radio" name="gender" id="gender" value="M" onChange={ this.handleChange } /><strong> Masculino</strong>
-            <input type="radio" name="gender" id="gender" value="F" onChange={ this.handleChange } /><strong> Feminino</strong>
-            <br/>
-            <br/>
+            <div className="radio">
+            <label>
+              <input 
+              type="radio" 
+              name="gender" 
+              id="gender" 
+              value="M" 
+              onChange={ this.handleChange } /> Masculino
+            </label>
+            </div>
+
+            <div className="radio">
+            <label>
+              <input 
+              type="radio" 
+              name="gender" 
+              d="gender" 
+              value="F" 
+              onChange={ this.handleChange } /> Feminino
+            </label>
+            </div>
+
+            </div>
+            
+
+            <div className="form-group">
 
             <label htmlFor="ethnicity" id="Up">Etnia </label>
-            <select name="ethnicity" id="ethnicity" onChange={ this.handleChange } >
-              <option style={{fontWeight: 'bold',}} value="">-- Escolher --</option>
-              <option style={{fontWeight: 'bold',}} value="0">Branco</option>
-              <option style={{fontWeight: 'bold',}} value="1">Negro</option>
-              <option style={{fontWeight: 'bold',}} value="2">Pardo</option>
-              <option style={{fontWeight: 'bold',}} value="3">Amarelo</option>
-              <option style={{fontWeight: 'bold',}} value="4">Indefinido</option>
-            </select>
-            <br/>
-            <br/>
+                <select className="form-control" name="ethnicity" id="ethnicity" onChange={ this.handleChange } >
+                  <option  value="">-- Escolher --</option>
+                  <option  value="0">Branco</option>
+                  <option  value="1">Negro</option>
+                  <option  value="2">Pardo</option>
+                  <option  value="3">Amarelo</option>
+                  <option  value="4">Indefinido</option>
+                </select>
+            </div>
+          </div>
 
+
+          <div className="col-md-6">
+
+           <div className="form-group">
             <label htmlFor="tel1">Telefone</label>
-            <div className="wrap-input100 validate-input m-b-16">
+           
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="tel"
               name="tel1"
               id="tel1"
@@ -341,16 +356,14 @@ class NewPatient extends Component {
               value={ this.state.formData.tel1 }
               onChange={ this.handleChange }
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-phone"></span>
-                </span>
             </div>
 
+
+            <div className="form-group">
             <label htmlFor="tel2">Celular</label>
-            <div className="wrap-input100 validate-input m-b-16">
+            
             <input 
-              className="input100 textInput"
+              className="form-control textInput"
               type="tel"
               name="cel"
               id="cel"
@@ -358,16 +371,14 @@ class NewPatient extends Component {
               value={ this.state.formData.cel }
               onChange={ this.handleChange }
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-mobile"></span>
-                </span>
+           
             </div>
 
+            <div className="form-group">
             <label htmlFor="telE">Contato de Emergência</label>
-            <div className="wrap-input100 validate-input m-b-16">
+        
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="tel"
               name="telE"
               id="telE"
@@ -376,16 +387,14 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-ambulance"></span>
-                </span>
+          
             </div>
 
+            <div className="form-group">
             <label htmlFor="cep">CEP</label>
-            <div className="wrap-input100 validate-input m-b-16">
+        
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="number"
               name="cep"
               id="cep"
@@ -394,16 +403,14 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-map-marker-alt"></span>
-                </span>
+            
             </div>
 
+            <div className="form-group">
             <label htmlFor="street">Rua / Alameda / Avenida</label>
-            <div className="wrap-input100 validate-input m-b-16">
+            
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="text"
               name="street"
               id="street"
@@ -412,16 +419,14 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-map-marker-alt"></span>
-                </span>
+            
             </div>
 
+            <div className="form-group">
             <label htmlFor="homeNumber">Número da residência</label>
-            <div className="wrap-input100 validate-input m-b-16">
+            
             <input
-              className="input100 textInput"
+              className="form-control  textInput"
               type="number"
               name="homeNumber"
               id="homeNumber"
@@ -430,16 +435,14 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-map-marker-alt"></span>
-                </span>
+            
             </div>
 
+            <div className="form-group">
             <label htmlFor="complement">Complemento</label>
-            <div className="wrap-input100 validate-input m-b-16">
+            
             <input
-              className="input100 textInput"
+              className="form-control  textInput"
               type="text"
               name="complement"
               id="complement"
@@ -447,16 +450,14 @@ class NewPatient extends Component {
               value={ this.state.formData.complement }
               onChange={ this.handleChange }
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-map-marker-alt"></span>
-                </span>
+            
             </div>
 
+            <div className="form-group">
             <label htmlFor="neighborhood">Bairro</label>
-            <div className="wrap-input100 validate-input m-b-16">
+           
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="text"
               name="neighborhood"
               id="neighborhood"
@@ -465,16 +466,14 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-map-marker-alt"></span>
-                </span>
+           
             </div>
 
+            <div className="form-group">
             <label htmlFor="city">Cidade</label>
-            <div className="wrap-input100 validate-input m-b-16">
+           
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="text"
               name="city"
               id="city"
@@ -483,16 +482,13 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-map-marker-alt"></span>
-                </span>
+           
             </div>
 
+            <div className="form-group">
             <label htmlFor="state">Estado</label>
-            <div className="wrap-input100 validate-input m-b-16">
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="text"
               name="state"
               id="state"
@@ -501,16 +497,13 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-map-marker-alt"></span>
-                </span>
+           
             </div>
 
+            <div className="form-group">
             <label htmlFor="country">País</label>
-            <div className="wrap-input100 validate-input m-b-16">
             <input
-              className="input100 textInput"
+              className="form-control textInput"
               type="text"
               name="country"
               id="country"
@@ -519,17 +512,21 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
             /> 
-            <span className="focus-input100"></span>
-                <span className="symbol-input100">
-                <span className="fas fa-map-marker-alt"></span>
-                </span>
+           
             </div>
 
-            <input id="Save" className="Button" type="submit" value="Salvar"/>
+            <input id="Save" className="Button btn btn-primary pull-right" type="submit" value="Salvar"/>
 
+            </div>
           </form>
       </div>
-      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  
+
     );
   }
 }

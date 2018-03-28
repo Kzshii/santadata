@@ -9,19 +9,36 @@ class Intro extends Component {
 
   render() {
     return(
-      <div id="Intro">
-        <div className="intro-text">
-          <div id="SAME-FUCKING-LINE">
-            <a>
-              <img id="doctor" src='https://plasticsurgeonforkids.com/wp-content/uploads/MAIN-HEADSHOT-Circle1.png' alt='logo' title=""/>
-            </a> 
-  
-            <div className="welcome">
-              <h1>Bem vindo,<br/> { this.props.userData.name } </h1>
-            </div>
+
+      <div className="Intro">
+
+      <div className="row">
+      <div className="col-lg-12">
+      <h1 className="page-header">Bem vindo, { this.props.userData.name }</h1>
+
+
+        <div className="col-md-6">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            Calendar
+           </div>
+          <div className="panel-body">
+            <div id="calendar"></div>
           </div>
         </div>
-      </div>
+      
+    </div>
+
+    </div>
+  </div>
+   
+    
+   
+ 
+  </div>  
+
+  
+       
     );
   }
 }

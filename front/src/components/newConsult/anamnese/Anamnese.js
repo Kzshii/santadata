@@ -649,6 +649,7 @@ class Anamnese extends Component {
           Storage={ (data) => {
             this.formData = JSON.parse(JSON.stringify(data));
           }}
+          
           SubmitValue="Salvar anamnese"
           Config={{
             Select:{

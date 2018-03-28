@@ -14,9 +14,12 @@ class PatientList extends Component {
       ));
 
       return(
+
+
         <div className="PatientList">
           {/* <h1>Tabela de Pacientes</h1> */}
 
+          
           <table className="table table-bordered">
             <thead className="thead-light">
               <tr>
@@ -40,10 +43,12 @@ class PatientList extends Component {
                   }
                 )
               }
+
             </tbody>
+
           </table>
-      
-        </div>
+       </div>
+       
       );
     }
     else{
