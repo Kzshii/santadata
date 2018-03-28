@@ -5,7 +5,7 @@ import Select from './../../form/select/Select';
 import Radiogroup from './../../form/radiogroup/Radiogroup';
 import StoredList from './../../storedList/StoredList';
 import Popup from './../../popup/Popup';
-import localStorageLib from "./../../../lib/localStorageLib";
+import LocalStorage from "./../../../lib/localStorage";
 
 class PhysicalExams extends Component {
   constructor(props){
@@ -435,7 +435,7 @@ class PhysicalExams extends Component {
         selectOptions.push({
           id: index - 1,
           value: options[index],
-          label: form[options[index]].title.value
+          label: exam[options[index]].title.value
         });
       }
       this.forms=selectOptions;
@@ -500,10 +500,10 @@ class PhysicalExams extends Component {
     this.setState({
       showPopup: false,
       storedForms:storedForms
-    })
+    });
 
-    console.log("xD")
-    console.log(this.state.storedForms)
+    console.log("xD");
+    console.log(this.state.storedForms);
   }
 
   ShowPopup(index){
@@ -511,14 +511,15 @@ class PhysicalExams extends Component {
 
     exam["submit"]={
       type:"submit"
-    }
+    };
+
     this.setState({
       showPopup: true,
       popupForm: {
-        form: form,
+        exam: exam,
         index: index
       }
-    })
+    });
   }
 
   removeForm(index){
@@ -531,7 +532,7 @@ class PhysicalExams extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    localStorageLib.saveInJson("consult","exam",this.state.storedExams);
+    LocalStorage.save("consult","exam",this.state.storedExams);
     this.props.saveData("exams", this.storedExams);
   }
 

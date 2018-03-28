@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Interventions.css';
 import Form from './../../form/Form';
-import localStorageLib from "./../../../lib/localStorageLib";
+import LocalStorage from "./../../../lib/localStorage";
 
 class Interventions extends Component {
   constructor(props){
@@ -56,7 +56,7 @@ class Interventions extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-    localStorageLib.saveInJson("consult","interventions",this.formData);
+    LocalStorage.save("consult","interventions",this.formData);
 		this.props.saveData("interventions",this.formData);
 	}
 

@@ -1,7 +1,7 @@
 
-function localStorageLib(){}
+function LocalStorage() {}
 
-localStorageLib.save_in_json= (storageKey,jsonKey,data) => {
+LocalStorage.save = (storageKey,jsonKey,data) => {
   let storage = JSON.parse(localStorage.getItem(storageKey));
   storage[jsonKey]= data;
   localStorage.setItem(storageKey, JSON.stringify(storage));
@@ -9,4 +9,4 @@ localStorageLib.save_in_json= (storageKey,jsonKey,data) => {
   console.log(localStorage);
 }
 
-export default localStorageLib;
+export default LocalStorage;
