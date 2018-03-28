@@ -78,9 +78,10 @@ class SearchPatient extends Component {
 
     Post.command = (serverResponse) => {
       if(serverResponse.success) {
+        console.log("SEARCH PATIENT SERVER RESPONSE.DATA", serverResponse.data);
         this.setState({
-          /* show: serverResponse.data */
-          show: [{
+          show: serverResponse.data
+          /* show: [{
             idRegister: this.props.userData.user_id,
             patientName: 'Paciente ByPass',
             id: '1',
@@ -105,7 +106,7 @@ class SearchPatient extends Component {
             city:'C1',
             state:'E1',
             country:'Brasél',
-          }]
+          }] */
         });
       }
     };
@@ -126,14 +127,19 @@ class SearchPatient extends Component {
   
   render() {
     return(
+
       <div className="SearchPatient">
 
-        <form onSubmit={ this.handleSubmit } >
+      <div className="indent">
+
+      <div className="input-group">
+
+        <form className="form-inline" onSubmit={ this.handleSubmit } >
           
-          <label htmlFor= "patientName"></label>
-          <div className="wrap-input100 validate-input m-b-16">
+          {/*<label htmlFor= "patientName"></label>*/}
+        
             <input 
-              className="patientName"
+              className="form-control"
               type="text"
               id="patientName" 
               name="patientName"
@@ -141,17 +147,26 @@ class SearchPatient extends Component {
               value={ this.state.search.name }
               onChange={ this.handleChange }
             /> 
-            <span className="focus-input100"></span>
-            <span className="symbol-input100"></span>
 
-            <button className="button-size" type="submit" value="Buscar">
+          <span className="input-group-btn">
+
+            <button className="btn btn-primary" type="submit" value="Buscar">
               <span className="fas fa-search"></span>
             </button>
-          </div>
+        
+           </span>
+
         </form>
+
+      </div>
+
+
         
         <PatientList className="PatientList" data={ this.state.show } itemAction={ this.openPatient } />
       </div>
+
+    </div>
+
     );
   }
 }

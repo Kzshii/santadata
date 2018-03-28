@@ -1,50 +1,50 @@
 import React, { Component } from 'react';
 import './PhysicalExams.css';
-import Select from './../../form/select/Select';
 import Form from './../../form/Form';
+import Select from './../../form/select/Select';
 import Radiogroup from './../../form/radiogroup/Radiogroup';
 import StoredList from './../../storedList/StoredList';
 import Popup from './../../popup/Popup';
-
+import localStorageLib from "./../../../lib/localStorageLib";
 
 class PhysicalExams extends Component {
   constructor(props){
     super(props);
 
+    /* METHODS */
     this.mountSelectOptions = this.mountSelectOptions.bind(this);
-    this.selectExam = this.selectExam.bind(this);
-    this.selectExamType = this.selectExamType.bind(this);
+    this.selectFormType = this.selectFormType.bind(this);
+    this.selectForm = this.selectForm.bind(this);
     this.mountInputList = this.mountInputList.bind(this);
-    this.storeExam = this.storeExam.bind(this);
-    this.removeExam = this.removeExam.bind(this);
+    this.storeForm = this.storeForm.bind(this);
+    this.removeForm = this.removeForm.bind(this);
     this.ShowPopup = this.ShowPopup.bind(this);
     this.editExam= this.editExam.bind(this);
+    this.handleSubmit= this.handleSubmit.bind(this);
 
+    /* VARS */
     this.inputList = {};
-    this.SelectOptions = [];
-    this.exams = [];
+    this.selectOptions = [];
+    this.forms = [];
 
+    /* STATE */
     this.state = {
       showPopup: false,
 			prepare: null,
-			storedExams:[],
-      selectedExamType: "fisico",
-      selectedExam:"geral",
+			storedForms:[],
+      selectedFormType: null,
+      selectedForm: null,
       inputList: null,
-      popupExam: null
+      popupForm: null
     };
   }
 
   componentDidMount() {
-    this.props.prepare(this, "prepExams");
+    //this.props.prepare(this, "prepForms");
 
 		this.setState(
 			{
-
-
 				prepare: {
-
-
 
           fisico: {
 
@@ -253,24 +253,24 @@ class PhysicalExams extends Component {
 						{
 							title:{
 								type:"label",
-								value: "Creatina"
+								value: "Creatina",
 							},
 
 							basal:{
 								type:"text",
-								title:"Basal"
+                title:"Basal",
 							},
 							ultima:{
 								type:"text",
-								title:"Ultima"
+                title:"Ultima",
 							},
 							delta: {
 								type:"text",
-								title:"Delta"
+                title:"Delta",
 							},
 							clearence_atual:{
 								type:"text",
-								title:"Clearence Atual"
+                title:"Clearence Atual",
 							}
 
 						},
@@ -304,62 +304,78 @@ class PhysicalExams extends Component {
 					{
 						title:{
 							type:"label",
-							value:"Complementar"
-						},
-						eletro:{ // 0..*
-							type: "checkbox",
-							title:"Eletrocardiograma",
-							options:
-							[
-								{id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
-								{id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
-								{id: 2, label: "Supra do Segmento ST"},
-								{id: 3, label: "Sobrecarga Atrial (SA)"},
-								{id: 4, label: "Sobrecargo de Ventrículo (SV)"},
-								{id: 5, label: "Flutter Atrial"},
-								{id: 6, label: "Fibrilação Atrial (FA)"},
-							],
-						},
+							value:"Exame Complementar"
+            },
 
-						//Ecocardiograma
-						primeira_FE: {
-							type: "text",
-							title:"Primeira FE"
-						}, // texto numérico
-						primeiro_VE_diast: {
-							type: "text",
-							title:"Primeiro VE Diast"
-						},
-						primeiro_VE_sist: {
-							type: "text",
-							title: "Primeiro VE"
-						},
+            eletro:{ // 0..*
 
-						ultima_FE: {
-							type: "text",
-							title:"Ultima FE"
-						}, // texto numérico
-						ultima_VE_diast: {
-							type: "text",
-							title: "Ultima Ve Diast"
-						},
-						ultima_VE_sist: {
-							type: "text",
-							title: "Ultima Ve Sist"
-						},
+              title:{
+								type:"label",
+								value:"Eletrocardiograma"
+							},
 
-						delta_FE: {
-							type: "text",
-							title: "delta Fe"
-						}, // diferença entre ultima_FE - primeira_FE
-						delta_VE: {
-							type:"text",
-							title:"delta VE"
-						}, // diferença entre ultima_VE_sist - primeira_FE_sist
-						ps_ap: {
-							type: "text",
-							title: "ps_ap",
-						}, // texto numérico
+              eletro: {
+                type: "checkbox",
+                title:"",
+                options:
+                [
+                  {id: 0, label: "Bloqueio de Ramo Direito (BRD)"},
+                  {id: 1, label: "Bloqueio de Ramo Esquerdo (BRE)"},
+                  {id: 2, label: "Supra do Segmento ST"},
+                  {id: 3, label: "Sobrecarga Atrial (SA)"},
+                  {id: 4, label: "Sobrecargo de Ventrículo (SV)"},
+                  {id: 5, label: "Flutter Atrial"},
+                  {id: 6, label: "Fibrilação Atrial (FA)"},
+                ],
+              },
+            },
+
+            eco:{
+              title:{
+								type:"label",
+								value:"Ecocardiograma"
+              },
+
+              //Ecocardiograma
+              primeira_FE: {
+                type: "text",
+                title:"Primeira FE"
+              },
+              primeiro_VE_diast: {
+                type: "text",
+                title:"Primeiro VE Diast"
+              },
+              primeiro_VE_sist: {
+                type: "text",
+                title: "Primeiro VE"
+              },
+
+              ultima_FE: {
+                type: "text",
+                title:"Ultima FE"
+              },
+              ultima_VE_diast: {
+                type: "text",
+                title: "Ultima Ve Diast"
+              },
+              ultima_VE_sist: {
+                type: "text",
+                title: "Ultima Ve Sist"
+              },
+
+              delta_FE: {
+                type: "text",
+                title: "delta Fe"
+              }, // diferença entre ultima_FE - primeira_FE
+              delta_VE: {
+                type:"text",
+                title:"delta VE"
+              }, // diferença entre ultima_VE_sist - primeira_FE_sist
+              ps_ap: {
+                type: "text",
+                title: "ps_ap",
+              },
+            }
 					}
 				},
 			}
@@ -376,40 +392,20 @@ class PhysicalExams extends Component {
     });
   }
 
-  ShowPopup(index){
-    let exam= this.state.storedExams[index];
-    /*
-    exam["submit"]={
-      type:"submit"
-    }*/
+  selectExam(event){
     this.setState({
-      showPopup: true,
-      popupExam: {exam: exam,
-                  index: index}
-    })
-
+      selectedExam: event.target.value
+    });
   }
 
   editExam(exam){
-    console.log("ExmeEditado");
-    console.log(exam);
-
     let storeds= this.state.storedExams;
-    storeds[this.state.popupExam.index]=exam;
+    storeds[this.state.popupExam.index] = exam;
 
     this.setState({
       showPopup: false,
       storedExams:storeds
     })
-
-    console.log("xD")
-    console.log(this.state.storedExams)
-  }
-
-  selectExam(event){
-    this.setState({
-      selectedExam: event.target.value
-    });
   }
 
 	mountSelectOptions(selectType){
@@ -425,52 +421,118 @@ class PhysicalExams extends Component {
     }
     this.SelectOptions = selectOptions;
 
-    let exam = this.state.prepare[this.state.selectedExamType]
-    options = Object.keys(exam);
-    selectOptions = [];
+    console.log("options:",options)
+    console.log("selectOptions:",selectOptions)
 
-    for (let index = 1; index < options.length; index++) {
-      selectOptions.push({
-        id: index - 1,
-        value: options[index],
-        label: exam[options[index]].title.value
-      });
+    let exam = this.state.prepare[this.state.selectedExamType]
+
+    if (exam!=null){
+      options = Object.keys(exam);
+
+      selectOptions = [];
+
+      for (let index = 1; index < options.length; index++) {
+        selectOptions.push({
+          id: index - 1,
+          value: options[index],
+          label: form[options[index]].title.value
+        });
+      }
+      this.forms=selectOptions;
     }
-    this.exams=selectOptions;
+
 	}
 
-  storeExam(Exam){
-    let store = this.state.storedExams;
+  mountInputList(){
 
+    let form = this.state.selectedForm;
+    let formType = this.state.selectedFormType;
 
-    Exam.name = this.state.selectedExam;
-    Exam.type = this.state.selectedExamType;
+    console.log("formType:",formType)
+    console.log("form:",form)
 
-    store.push(Exam);
+    if (form!=null && formType!=null){
+
+      this.inputList = this.state.prepare[formType][form];
+
+      this.inputList["submit"]={
+        type:"submit"
+      }
+    }
+  }
+
+  selectFormType(event) {
+    let forms = Object.keys(this.state.prepare[event.target.value]);
+    let form = forms[1];
 
     this.setState({
-      storedExams: store
+      selectedFormType: event.target.value,
+      selectedForm: form
     });
   }
 
-  mountInputList(){
-    let exam = this.state.selectedExam;
-    let examType = this.state.selectedExamType;
-
-    this.inputList = this.state.prepare[examType][exam];
-
-    
-    this.inputList["submit"]={
-      type:"submit"
-    }
+  selectForm(event){
+    this.setState({
+      selectedForm: event.target.value
+    });
   }
 
-  removeExam(index){
-    let list= this.state.storedExams;
+  storeForm(form){
+    let store = this.state.storedForms;
+
+    form.name = this.state.selectedForm;
+    form.type = this.state.selectedFormType;
+
+    store.push(form);
+
+    this.setState({
+      storedForms: store
+    });
+  }
+
+  editForm(form){
+    console.log("Exame Editado");
+    console.log(form);
+
+    let storedForms= this.state.storedForms;
+    storedForms[this.state.popupForm.index]=form;
+
+    this.setState({
+      showPopup: false,
+      storedForms:storedForms
+    })
+
+    console.log("xD")
+    console.log(this.state.storedForms)
+  }
+
+  ShowPopup(index){
+    let exam= this.state.storedExams[index];
+
+    exam["submit"]={
+      type:"submit"
+    }
+    this.setState({
+      showPopup: true,
+      popupForm: {
+        form: form,
+        index: index
+      }
+    })
+  }
+
+  removeForm(index){
+    let list= this.state.storedForms;
     list.splice(index,1);
     this.setState({
-      storedExams: list
+      storedForms: list
     })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    localStorageLib.saveInJson("consult","exam",this.state.storedExams);
+    this.props.saveData("exams", this.storedExams);
   }
 
 	render(){
@@ -483,29 +545,35 @@ class PhysicalExams extends Component {
     this.mountSelectOptions();
     this.mountInputList();
 
-
     return(
       <div className="InputExam">
         <h2>Exames Físicos</h2>
+
+        {console.log("selectOptions", this.selectOptions)}
+        {console.log("selectFormType", this.selectFormType)} 
+
         <Radiogroup
           Label="Tipo de Exame"
           Options={ this.SelectOptions }
           OptionValue="value"
-          KeyTag="selectExam"
-          OnChange={ this.selectExamType }
+          KeyTag="selectForm"
+          OnChange={ this.selectFormType }
           Name= "ExamsTypes"
         />
 
+        {console.log("selectForm", this.selectForm)}
+        {console.log("forms", this.forms)}
+
         <Select
           Label="Exames"
-          Options={ this.exams }
+          Options={ this.forms }
           OptionValue="value"
           KeyTag="exams"
-          OnChange={ this.selectExam }
+          OnChange={ this.selectForm }
         />
 
         <Form
-          OnSubmit={ this.storeExam }
+          OnSubmit={ this.storeForm }
           InputList={ this.inputList }
           SubmitValue="Guardar Exame"
           Config={{
@@ -520,31 +588,36 @@ class PhysicalExams extends Component {
             }
           }}
         />
-        <StoredList title="Exames Guardados" list={this.state.storedExams} remove={this.removeExam} showPopup={this.ShowPopup}/>
+
+        <StoredList title="Exames Guardados" list={this.state.storedForms} remove={this.removeForm} showPopup={this.ShowPopup}/>
+
+        {console.log("storedForms", this.state.storedForms)}
 
         {this.state.showPopup ?
           <Popup
-            title="Visualizar Exame"
+            title="Editar Exame"
             close={()=>{this.setState({showPopup: false})}}
             content={
-              <Form OnSubmit={this.editExam}
-                    InputList={this.state.popupExam.exam}
-                    SubmitValue="Salvar Edição"
-                    Config={
-                      {
-                        Select:{
-                          OptionValue: "id"
-                        },
-                        Checkgroup:{
-                          OptionValue: "id"
-                        },
-                        Radiogroup:{
-                          OptionValue: "id"
-                        }
-                      }}/>
+              <Form OnSubmit={this.editForm}
+                InputList={this.state.popupForm.form}
+                SubmitValue="Salvar Edição"
+                Config={
+                  {
+                    Select:{
+                      OptionValue: "id"
+                    },
+                    Checkgroup:{
+                      OptionValue: "id"
+                    },
+                    Radiogroup:{
+                      OptionValue: "id"
+                    }
+                  }}/>
             }/>  : null}
 
-        <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
+        <form onSubmit={ this.handleSubmit} >
+          <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
+        </form>
       </div>
     );
   }

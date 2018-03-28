@@ -1,41 +1,39 @@
 import React, { Component } from 'react';
 import Form from "../../form/Form";
 import './Evidences.css';
+import localStorageLib from "./../../../lib/localStorageLib";
 
 class Evidences extends Component {
   constructor(props) {
     super(props);
-    
+
     /* METHODS */
-		this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    /* VARS 
-    this.InputList = {};
-    */
+    /* VARS */
+    this.formData = {};
 
     /* STATE */
     this.state = {
 			prepare: null,
-			formData: {},
     };
 	}
-  
+
 	componentDidMount() {
     //this.props.prepare(this, "prepEvidences");
-    
+
     /* test only */
 		this.setState(
 			{
 				prepare: {
-          
+
 					// Registro de Evidencias
 					ev_estado: // 1
 					{
             type: "select",
             title: "Estado",
             required: "true",
-            options: 
+            options:
             [
 					  	{id: 0,label: "Primeira consulta"},
 						  {id: 1,label: "Em tratamento"},
@@ -43,21 +41,21 @@ class Evidences extends Component {
               {id: 3,label: "Reinternação"},
             ]
           },
-          
+
 					// Tempo do acompanhamento Ambulatorial
-          amb_start_time: 
+          amb_start_time:
           {
             type: "number",
             title: "Tempo do acompanhamento Ambulatorial"
           }, //
-          
+
 					// Data Primeira Consulta
-          date_consult: 
+          date_consult:
           {
             type: "date",
             title: "Data Primeira Consulta",
           },
-          
+
 					// Etiologia
 					ev_etiologia: // 0..*
 					{
@@ -75,7 +73,7 @@ class Evidences extends Component {
               {id: 7,label: "Pós Quimioterapia"},
             ]
           },
-          
+
 					// Co-morbidades
 					ev_comorbidades: // 0..*
 					{
@@ -95,7 +93,7 @@ class Evidences extends Component {
               {id: 8,label: "Tireóide (hipo ou hipertireoidismo)"},
             ]
           },
-          
+
 					// Eventos Adversos
 					ev_adversos: // 0..*
 					{
@@ -109,7 +107,7 @@ class Evidences extends Component {
               {id: 2,label: "Internação (INT)"},
             ]
           },
-          
+
 					// Obito
           ev_obito: // 1
 					{
@@ -126,47 +124,14 @@ class Evidences extends Component {
 			}
 		);
 	}
-	
-	handleChange(event) {
-		const target = event.target;
-		const name = target.name;
-		const value = target.value;
-    
-		let formData = this.state.formData;
-		
-		if(target.type === 'checkbox') {
-			if(target.checked) {
-				/* insere */
-				if(formData[name] == null) {
-					formData[name] = [value];
-				} else {
-					formData[name].push(value);
-				}
-			} else {
-				/* remove */
-				let index = formData[name].indexOf(value);
-				formData[name].splice(index, 1);
-			}
-      
-		} else {
-			formData[name] = value;
-		}
-		
-		this.setState({
-			formData: formData,
-		});
-		console.log("STATE", this.state);
-  }
-  
-  handleSubmit(event) {
+
+	handleSubmit(event) {
 		event.preventDefault();
-    this.props.saveData("evidences",this.state.formData);
+    localStorageLib.saveInJson("consult","evidences",this.formData);
+    this.props.saveData("evidences",this.formData);
 	}
-  
+
 	render(){
-    console.log("PROPS", this.props)
-    console.log("EVIDENCES STATE:", this.state);
-    console.log("MOUNT INPUT LIST - EVIDENCES STATE", this.state.prepare)
     //console.log("EVIDENCES X:",this.x);
     if(!this.state.prepare) {
       return(
@@ -179,11 +144,14 @@ class Evidences extends Component {
         <h2>Evidências</h2>
 
         <Form
-          OnSubmit = { this.handleSubmit }
-          InputList = { this.state.prepare }     
+          OnSubmit = {null}
+          InputList = { this.state.prepare }
+          Storage={ (data) => {
+            this.formData = JSON.parse(JSON.stringify(data));
+          }}
           SubmitValue ="Salvar evidências"
           Config={{
-            Select:{ 
+            Select:{
               OptionValue: "id"
             },
             Checkgroup:{
@@ -194,6 +162,9 @@ class Evidences extends Component {
             }
           }}
         />
+        <form onSubmit={ this.handleSubmit }>
+          <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
+        </form>
       </div>
 		);
 	}

@@ -48,6 +48,12 @@ class Form extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({
+      formData: JSON.parse(JSON.stringify(this.props.InputList))
+    });
+  }
+
   handleChange(event) {
     const target = event.target;
     const name = target.name;
@@ -57,7 +63,7 @@ class Form extends Component {
 
     if(!formData[name]) {
       formData[name] = JSON.parse(JSON.stringify(this.props.InputList[name]));
-      formData[name].readonly = "true";
+      //formData[name].readonly = "true";
       console.log("FORMDATA NOVO ATRIBUTO", formData);
     }
 

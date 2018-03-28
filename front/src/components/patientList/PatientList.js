@@ -14,9 +14,12 @@ class PatientList extends Component {
       ));
 
       return(
+
+
         <div className="PatientList">
           {/* <h1>Tabela de Pacientes</h1> */}
 
+          
           <table className="table table-bordered">
             <thead className="thead-light">
               <tr>
@@ -31,19 +34,21 @@ class PatientList extends Component {
                 this.props.data.map(
                   (patient) => {
                     return(
-                      <tr key={ patient.id } onClick={ () => { this.props.itemAction(patient.id) } } >
+                      <tr key={ patient.idpatient } onClick={ () => { this.props.itemAction(patient.idpatient) } } >
                                     
-                        <td>{ patient.mv }</td>
-                        <td>{ patient.patientName }</td>
+                        <td>{ patient.nr_mv }</td>
+                        <td>{ patient.name }</td>
                       </tr>
                     );
                   }
                 )
               }
+
             </tbody>
+
           </table>
-      
-        </div>
+       </div>
+       
       );
     }
     else{

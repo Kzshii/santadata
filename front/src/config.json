@@ -8,7 +8,7 @@
       "newPatient":"gen/new/patient/",
       "searchPatient":"gen/search/patient/",
       "getPatient":"gen/get/patient/",
-      "newConsult":"",
+      "newConsult":"gen/new/consult/",
       
       "prepAnamnese":"prepare/anamnese/",
       "prepEvidences":"prepare/evidences/",
