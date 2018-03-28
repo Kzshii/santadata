@@ -78,9 +78,10 @@ class SearchPatient extends Component {
 
     Post.command = (serverResponse) => {
       if(serverResponse.success) {
+        console.log("SEARCH PATIENT SERVER RESPONSE.DATA", serverResponse.data);
         this.setState({
-          /* show: serverResponse.data */
-          show: [{
+          show: serverResponse.data
+          /* show: [{
             idRegister: this.props.userData.user_id,
             patientName: 'Paciente ByPass',
             id: '1',
@@ -105,7 +106,7 @@ class SearchPatient extends Component {
             city:'C1',
             state:'E1',
             country:'Brasél',
-          }]
+          }] */
         });
       }
     };

@@ -66,7 +66,7 @@ class NewPatient extends Component {
 		} else {
 			formData[name] = value;
 		}
-		
+		console.log("NEW PATIENT - HANDLE CHANGE",this.state.formData);
 		this.setState({
 			formData: formData,
 		});

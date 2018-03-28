@@ -31,10 +31,10 @@ class PatientList extends Component {
                 this.props.data.map(
                   (patient) => {
                     return(
-                      <tr key={ patient.id } onClick={ () => { this.props.itemAction(patient.id) } } >
+                      <tr key={ patient.idpatient } onClick={ () => { this.props.itemAction(patient.idpatient) } } >
                                     
-                        <td>{ patient.mv }</td>
-                        <td>{ patient.patientName }</td>
+                        <td>{ patient.nr_mv }</td>
+                        <td>{ patient.name }</td>
                       </tr>
                     );
                   }
