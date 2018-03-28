@@ -5,7 +5,7 @@ import Select from './../../form/select/Select';
 import Radiogroup from './../../form/radiogroup/Radiogroup';
 import StoredList from './../../storedList/StoredList';
 import Popup from './../../popup/Popup';
-
+import localStorageLib from "./../../../lib/localStorageLib";
 
 class PhysicalExams extends Component {
   constructor(props){
@@ -19,7 +19,8 @@ class PhysicalExams extends Component {
     this.storeForm = this.storeForm.bind(this);
     this.removeForm = this.removeForm.bind(this);
     this.ShowPopup = this.ShowPopup.bind(this);
-    this.editForm= this.editForm.bind(this);
+    this.editExam= this.editExam.bind(this);
+    this.handleSubmit= this.handleSubmit.bind(this);
 
     /* VARS */
     this.inputList = {};
@@ -305,14 +306,14 @@ class PhysicalExams extends Component {
 							type:"label",
 							value:"Exame Complementar"
             },
-            
+
             eletro:{ // 0..*
-              
+
               title:{
 								type:"label",
 								value:"Eletrocardiograma"
 							},
-              
+
               eletro: {
                 type: "checkbox",
                 title:"",
@@ -334,12 +335,12 @@ class PhysicalExams extends Component {
 								type:"label",
 								value:"Ecocardiograma"
               },
-              
+
               //Ecocardiograma
               primeira_FE: {
                 type: "text",
                 title:"Primeira FE"
-              }, 
+              },
               primeiro_VE_diast: {
                 type: "text",
                 title:"Primeiro VE Diast"
@@ -352,7 +353,7 @@ class PhysicalExams extends Component {
               ultima_FE: {
                 type: "text",
                 title:"Ultima FE"
-              }, 
+              },
               ultima_VE_diast: {
                 type: "text",
                 title: "Ultima Ve Diast"
@@ -373,7 +374,7 @@ class PhysicalExams extends Component {
               ps_ap: {
                 type: "text",
                 title: "ps_ap",
-              }, 
+              },
             }
 					}
 				},
@@ -381,7 +382,33 @@ class PhysicalExams extends Component {
 		);
   }
 
-  mountSelectOptions(selectType){
+  selectExamType(event) {
+    let exams = Object.keys(this.state.prepare[event.target.value]);
+    let exam = exams[1];
+
+    this.setState({
+      selectedExamType: event.target.value,
+      selectedExam: exam
+    });
+  }
+
+  selectExam(event){
+    this.setState({
+      selectedExam: event.target.value
+    });
+  }
+
+  editExam(exam){
+    let storeds= this.state.storedExams;
+    storeds[this.state.popupExam.index] = exam;
+
+    this.setState({
+      showPopup: false,
+      storedExams:storeds
+    })
+  }
+
+	mountSelectOptions(selectType){
     let options = Object.keys(this.state.prepare);
     let selectOptions= [];
 
@@ -393,15 +420,15 @@ class PhysicalExams extends Component {
       });
     }
     this.SelectOptions = selectOptions;
-    
-    console.log("selectOptions:",selectOptions)
-    console.log("options:",options)
-    
-    let form = this.state.prepare[this.state.selectedFormType]
 
-    if (form!=null){
-      options = Object.keys(form);
-      
+    console.log("options:",options)
+    console.log("selectOptions:",selectOptions)
+
+    let exam = this.state.prepare[this.state.selectedExamType]
+
+    if (exam!=null){
+      options = Object.keys(exam);
+
       selectOptions = [];
 
       for (let index = 1; index < options.length; index++) {
@@ -413,7 +440,7 @@ class PhysicalExams extends Component {
       }
       this.forms=selectOptions;
     }
-    
+
 	}
 
   mountInputList(){
@@ -480,11 +507,9 @@ class PhysicalExams extends Component {
   }
 
   ShowPopup(index){
-    let form= this.state.storedForms[index];
-    
-    console.log("form",form);
+    let exam= this.state.storedExams[index];
 
-    form["submit"]={
+    exam["submit"]={
       type:"submit"
     }
     this.setState({
@@ -506,9 +531,10 @@ class PhysicalExams extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.saveData("exams", this.storedForms);
+    localStorageLib.saveInJson("consult","exam",this.state.storedExams);
+    this.props.saveData("exams", this.storedExams);
   }
-  
+
 	render(){
 		if(!this.state.prepare){
 			return(

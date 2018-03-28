@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import './Interventions.css';
 import Form from './../../form/Form';
+import localStorageLib from "./../../../lib/localStorageLib";
 
 class Interventions extends Component {
   constructor(props){
     super(props);
-        
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 
     this.formData = {};
-		
+
 		this.state = {
 			prepare: null,
 		};
@@ -17,31 +18,31 @@ class Interventions extends Component {
 
   componentDidMount() {
 		//this.props.prepare(this, "prepInterventions");
-		
+
 		/* Test only */
 		this.setState(
 			{
 				prepare: {
-	
+
 					// Tipos de intervenções
 					angio:
 					{
 						type: "select",
 						title: "Angio",
 						required: "true",
-						options: 
+						options:
 						[
 							{id: 0,label: "Cirurgia de Revascularização do Miocárdio (CRM) prévia"},
 							{id: 1,label: "Intervenção Coronária Percutanea (ICP) prévia"},
 						]
 					},
 
-					implantes: 
+					implantes:
 					{
 						type: "select",
 						title: "Implantes",
 						required: "true",
-						options: 
+						options:
 						[
 							{id: 0,label: "Marcapasso Definitivo (MPD)"},
 							{id: 1,label: "Cardiodesfibrilador Implantável (CDI)"},
@@ -55,6 +56,7 @@ class Interventions extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
+    localStorageLib.saveInJson("consult","interventions",this.formData);
 		this.props.saveData("interventions",this.formData);
 	}
 
@@ -76,7 +78,7 @@ class Interventions extends Component {
           }}
 					SubmitValue="Salvar intervenções"
           Config={{
-            Select:{ 
+            Select:{
               OptionValue: "id"
             },
             Checkgroup:{
@@ -91,7 +93,7 @@ class Interventions extends Component {
         <form onSubmit={ this.handleSubmit }>
           <input className="Button" type="submit" value={"Salvar "+ this.props.title}/>
         </form>
-					
+
 			</div>
 		)
 	}

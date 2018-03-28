@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Form from "../../form/Form";
 import './Evidences.css';
+import localStorageLib from "./../../../lib/localStorageLib";
 
 class Evidences extends Component {
   constructor(props) {
     super(props);
-    
+
     /* METHODS */
     this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -17,22 +18,22 @@ class Evidences extends Component {
 			prepare: null,
     };
 	}
-  
+
 	componentDidMount() {
     //this.props.prepare(this, "prepEvidences");
-    
+
     /* test only */
 		this.setState(
 			{
 				prepare: {
-          
+
 					// Registro de Evidencias
 					ev_estado: // 1
 					{
             type: "select",
             title: "Estado",
             required: "true",
-            options: 
+            options:
             [
 					  	{id: 0,label: "Primeira consulta"},
 						  {id: 1,label: "Em tratamento"},
@@ -40,21 +41,21 @@ class Evidences extends Component {
               {id: 3,label: "Reinternação"},
             ]
           },
-          
+
 					// Tempo do acompanhamento Ambulatorial
-          amb_start_time: 
+          amb_start_time:
           {
             type: "number",
             title: "Tempo do acompanhamento Ambulatorial"
           }, //
-          
+
 					// Data Primeira Consulta
-          date_consult: 
+          date_consult:
           {
             type: "date",
             title: "Data Primeira Consulta",
           },
-          
+
 					// Etiologia
 					ev_etiologia: // 0..*
 					{
@@ -72,7 +73,7 @@ class Evidences extends Component {
               {id: 7,label: "Pós Quimioterapia"},
             ]
           },
-          
+
 					// Co-morbidades
 					ev_comorbidades: // 0..*
 					{
@@ -92,7 +93,7 @@ class Evidences extends Component {
               {id: 8,label: "Tireóide (hipo ou hipertireoidismo)"},
             ]
           },
-          
+
 					// Eventos Adversos
 					ev_adversos: // 0..*
 					{
@@ -106,7 +107,7 @@ class Evidences extends Component {
               {id: 2,label: "Internação (INT)"},
             ]
           },
-          
+
 					// Obito
           ev_obito: // 1
 					{
@@ -123,12 +124,13 @@ class Evidences extends Component {
 			}
 		);
 	}
-	
+
 	handleSubmit(event) {
 		event.preventDefault();
+    localStorageLib.saveInJson("consult","evidences",this.formData);
     this.props.saveData("evidences",this.formData);
 	}
-  
+
 	render(){
     //console.log("EVIDENCES X:",this.x);
     if(!this.state.prepare) {
@@ -149,7 +151,7 @@ class Evidences extends Component {
           }}
           SubmitValue ="Salvar evidências"
           Config={{
-            Select:{ 
+            Select:{
               OptionValue: "id"
             },
             Checkgroup:{
