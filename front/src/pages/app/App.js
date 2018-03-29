@@ -52,20 +52,6 @@ class App extends Component{
         </Router>
       </div>
     );
-    /* switch(this.state.currentPage){
-      case "login":
-        return(
-          <Login onLogin={ this.storeUser } />
-        );
-      case "home":
-        return(
-          <Home userData={ this.state.activeUser } />
-        );
-      default:
-        return(
-          <h1> Página não encontrada </h1>
-        );
-    } */
   }
 }
 
