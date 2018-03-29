@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import './Login.css';
 import LoginForm from './../../components/loginForm/LoginForm';
 import Post from './../../lib/axios';
+import LocalStorage from './../../lib/localStorage';
 
 class Login extends Component {
 
@@ -11,15 +13,18 @@ class Login extends Component {
     this.requestLogin = this.requestLogin.bind(this);
 
     this.state = {
-      user: '',
-      hash: '',
+      userLogged: false
     };
   }
 
   requestLogin(loginData) {
     Post.command = (serverResponse) => {
       if(serverResponse.success) {
-        this.props.onLogin(serverResponse.data);
+        const userData = serverResponse.data;
+        localStorage.setItem("userData", JSON.stringify(userData));
+        this.setState({
+          userLogged: true
+        });
       } else {
         alert("Login ou senha inválidos.");
       }
@@ -37,10 +42,7 @@ class Login extends Component {
     return(
       <div className="LoginPage">
         <div className="loginBox container">
-
-          <LoginForm requestLogin={ this.requestLogin } />
-
-
+          { this.state.userLogged ? <Redirect to="/home"/> : <LoginForm requestLogin={ this.requestLogin } /> }
         </div>
       </div>
     );
