@@ -6,48 +6,14 @@ import Home from "../home/Home";
 
 class App extends Component{
 
-  constructor(props){
-    super(props);
-    
-    this.storeUser = this.storeUser.bind(this);
-
-    this.state = {
-      currentPage: 'login',
-      activeUser: {
-        /* user data */
-      },
-      userLogged: false
-    };
-  }
-
-  switchPage(target) {
-    this.setState(
-      {
-        currentPage: target,
-      }
-    );
-  }
-
-  storeUser(userData) {
-
-    this.setState(
-      {
-        activeUser: userData,
-        userLogged: true
-      }
-    );
-  }
-
   render() {
-    const userLogged = this.state.userLogged;
-
     return(
       <div id="App">
         <Router>
           <div id="routes">
-            <Route path="/login" render={ () => <Login onLogin={ this.storeUser } /> } />
-            <Route path="/home" render={ () => <Home userData={ this.state.activeUser } /> } />
-            { !userLogged ? <Redirect to="/login" /> : <Redirect to="/home" /> }
+            <Route exact path="/" render={ () => <Redirect to="/login" /> } />
+            <Route path="/login" component={Login} />
+            <Route path="/home" render={ () => <Home userData={ JSON.parse(localStorage.getItem("userData")) } /> } />
           </div>
         </Router>
       </div>
