@@ -483,6 +483,7 @@ class PhysicalExams extends Component {
     form.name = this.state.selectedForm;
     form.type = this.state.selectedFormType;
     LocalStorage.save(form,"consult","exam",form.type,form.name);
+    console.log(LocalStorage.get("consult","exam",form.type,form.name));
     store.push(form);
 
     this.setState({

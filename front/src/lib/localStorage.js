@@ -23,6 +23,26 @@ LocalStorage.save = (data,key, ...args) => {
   localStorage.setItem(key,JSON.stringify(storage));
 }
 
+LocalStorage.get = (key, ...args) => {
+  console.log("LocalStorage.get");
+  const storage = JSON.parse(localStorage.getItem(key));
+  let pointer = storage;
+  const lastArg = args[args.length - 1];
+
+  console.log("começou")
+  args.forEach(
+    (name) => {
+      if (pointer[name] !==  undefined){
+        pointer = pointer[name];
+      }else{
+        return null;
+      }
+    }
+  )
+
+  return pointer;
+}
+
 
 
 export default LocalStorage;
