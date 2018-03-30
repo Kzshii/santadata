@@ -20,6 +20,7 @@ LocalStorage.save = (data,key, ...args) => {
     }
   }
   pointer[lastArg] = data;
+  console.log(storage);
   localStorage.setItem(key,JSON.stringify(storage));
 }
 
