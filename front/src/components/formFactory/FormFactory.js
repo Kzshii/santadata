@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'react-form';
-import { Text, TextArea, Checkbox, Select, RadioGroup, Radio } from 'react-form';
+import { Form, Text, TextArea, Checkbox, Select, RadioGroup, Radio, NestedField } from 'react-form';
 import defaultStyle from './FormFactory.css';
 
 export class FieldFactory {
@@ -25,10 +24,10 @@ export class FieldFactory {
     ),
     CheckGroup: (field) => (
       <span key={JSON.stringify(field.fieldName)}>
-        <label htmlFor={field.id}>{field.fieldLabel || ""}</label>
-        {field.options.map((option) => (
-          FieldFactory.create["Checkbox"](option)
-        ))}
+        <label>{field.fieldLabel || ""}</label>
+        <NestedField field={field.fieldName}>
+          {field.options.map( (nestedField) => (FieldFactory.create["Checkbox"](nestedField)) )}
+        </NestedField>
       </span>
     ),
     Checkbox: (field) => (
@@ -64,6 +63,14 @@ export class FieldFactory {
           </span>
         ))}
       </RadioGroup>
+    ),
+    NestedField: (field) => (
+      <span key={JSON.stringify(field.fieldName)}>
+        <label>{field.fieldLabel || ""}</label>
+        <NestedField field={field.fieldName}>
+          {field.fields.map( (nestedField) => (FieldFactory.create[nestedField.fieldType](nestedField)) )}
+        </NestedField>
+      </span>
     )
   }
 }
