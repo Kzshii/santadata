@@ -37,26 +37,29 @@ class MyFormComponent extends Component {
 
 ## props
 
-|Prop name|Description|
-|submitText|the submit button text (default is "submit")|
-|formTemplate|JSON template to generate the Form; [REQUIRED]|
-|onSubmit|function to handle the submitted values|
-|styleSheet|allows the use of custom style|
+| Prop name | Description |
+| -- | -- |
+| submitText | the submit button text (default is "submit") |
+| formTemplate | JSON template to generate the Form; [REQUIRED] |
+| onSubmit | function to handle the submitted values |
+| styleSheet | allows the use of custom style |
 
 # Creating forms
 
 To create a form template, fill an Array with some fields.
 
 ## Fields
-|Field type|Description|
-|Text|An ```<input type="text">``` field|
-|TextArea|A ```<textarea>``` field|
-|CheckGroup|A group of checkboxes|
-|Checkbox|An ```<input type="checkbox">``` field|
-|Select|A ```<select>``` field|
-|RadioGroup|A group of ```<input type="radio">``` fields|
-|NestedField|A group of fields of any type|
-|Dynamic|A field or group of fields that can be replicated on demand|
+
+| Field type | Description |
+| -- | -- |
+| Text | An ```<input type="text">``` field |
+| TextArea | A ```<textarea>``` field |
+| CheckGroup | A group of checkboxes |
+| Checkbox | An ```<input type="checkbox">``` field |
+| Select | A ```<select>``` field |
+| RadioGroup | A group of ```<input type="radio">``` fields |
+| NestedField | A group of fields of any type |
+| Dynamic | A field or group of fields that can be replicated on demand |
 
 ### Text
 ### TextArea
