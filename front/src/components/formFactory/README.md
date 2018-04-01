@@ -2,7 +2,7 @@
 
 This custom library uses the react-form package to implements an easy way to create Forms based on a JSON template.
 
-# Basic usage
+## Basic usage
 
 ```
 import React, { Component } from 'react';
@@ -35,14 +35,42 @@ class MyFormComponent extends Component {
 }
 ```
 
-## Optional usage
+## props
 
-# props
+|Prop name|Description|
+|submitText|the submit button text (default is "submit")|
+|formTemplate|JSON template to generate the Form; [REQUIRED]|
+|onSubmit|function to handle the submitted values|
+|styleSheet|allows the use of custom style|
 
-* submitText: the submit button text (default is "submit");
+# Creating forms
 
-* formTemplate: JSON template to generate the Form; [REQUIRED] 
+To create a form template, fill an Array with some fields.
 
-* onSubmit: function to handle the submitted values;
+## Fields
+|Field type|Description|
+|Text|An ```<input type="text">``` field|
+|TextArea|A ```<textarea>``` field|
+|CheckGroup|A group of checkboxes|
+|Checkbox|An ```<input type="checkbox">``` field|
+|Select|A ```<select>``` field|
+|RadioGroup|A group of ```<input type="radio">``` fields|
+|NestedField|A group of fields of any type|
+|Dynamic|A field or group of fields that can be replicated on demand|
 
-* styleSheet: allows the use of custom style;
+### Text
+### TextArea
+### CheckGroup
+### Checkbox
+### Select
+### RadioGroup
+### NestedField
+### Dynamic
+
+## Field properties
+
+### Common
+fieldType
+fieldLabel
+fieldName
+id
