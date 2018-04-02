@@ -12,6 +12,10 @@ var Consult = {
 	
 	mapData: function(data){
 		return data;
+	},
+
+	timelineMapData: function(data){
+		idpatient = data.idpatient;
 	}
 }
 
