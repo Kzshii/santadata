@@ -60,6 +60,7 @@ Consult.all = function(req,res){
 
 	//Getting and preparing data
 	//data = {_cid:Generic.url_data.q_id}
+	data = {}
 
 	Consult.generic_dao_request(res,data, Dao_consult.all)
 }
