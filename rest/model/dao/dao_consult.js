@@ -47,7 +47,8 @@ Dao_consult.get = function(param, data, callback){
 	}
 	
 	Dao_consult.db.mongo.search.one("consult",data,function(result){
-		console.log("# Get Consult: " + result._cid)
+		console.log("# Get Consult: " + param)
+		console.log(result)
 		callback(param,result)
 	})
 }
@@ -60,7 +61,6 @@ Dao_consult.all = function(param, data, callback){
 
 	Dao_consult.db.mongo.search.multiple("consult",data,function(result){
 		console.log("# All Consult")
-		console.log(result)
 		callback(param,result)
 	})
 }
