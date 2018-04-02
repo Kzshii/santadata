@@ -59,8 +59,8 @@ var Paciente = {
 	},
 
 	mapData: function(data){
-		var endereco = "{pais}; {cidade}; {estado}; {rua}; {numero}; {bairro}; {cep}; {complemento}"
-		endereco = endereco.replace("{pais}",data.country)
+		var address = "{pais}; {cidade}; {estado}; {rua}; {numero}; {bairro}; {cep}; {complemento}"
+		address = address.replace("{pais}",data.country)
 					.replace("{cidade}",data.city)
 					.replace("{estado}",data.state)
 					.replace("{rua}",data.street)
@@ -75,7 +75,7 @@ var Paciente = {
 
 
 		return [data.idRegister,
-			data.name,
+			data.patientName,
 			data.cpf,
 			data.rg,
 			0,//data.nr_prontuario,
@@ -88,9 +88,9 @@ var Paciente = {
 			data.tel2,
 			data.telE,
 			data.cel,
-			endereco,
+			address,
 			data.same,
-			data.nsus]
+			data.sus]
 	}
 
 }

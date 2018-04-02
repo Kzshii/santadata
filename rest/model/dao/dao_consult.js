@@ -47,9 +47,37 @@ Dao_consult.get = function(param, data, callback){
 	}
 	
 	Dao_consult.db.mongo.search.one("consult",data,function(result){
-		console.log("# Get Consult: " + result._cid)
+		console.log("# Get Consult: " + param._cid)
+		if(result == null)
+			result = {}
 		callback(param,result)
 	})
 }
+
+Dao_consult.timeline = function(param, data, callback){
+	var par = {
+		param: param,
+		callback: callback
+	}
+
+	Dao_consult.db.mongo.search.filtered("consult",{},data,function(result){
+		console.log("# Timeline Consult" + JSON.stringify(param))
+		callback(param,result)
+	})
+}
+
+
+Dao_consult.all = function(param, data, callback){
+	var par = {
+		param: param,
+		callback: callback
+	}
+
+	Dao_consult.db.mongo.search.multiple("consult",data,function(result){
+		console.log("# All Consult")
+		callback(param,result)
+	})
+}
+
 
 module.exports = Dao_consult;
