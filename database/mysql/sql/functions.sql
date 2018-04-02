@@ -88,7 +88,7 @@ RETURNS INT
 
   INSERT INTO patient (idpeople,iduser,prontuary_number,mv_number,nr_same,nr_sus) VALUES(
     @id_people,
-    iduser,
+    iduser_p,
     nr_prontuario_p,
     nr_mv_p,
     nr_same_p,
