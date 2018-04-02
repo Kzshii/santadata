@@ -52,4 +52,17 @@ Dao_consult.get = function(param, data, callback){
 	})
 }
 
+Dao_consult.all = function(param, data, callback){
+	var par = {
+		param: param,
+		callback: callback
+	}
+	
+	Dao_consult.db.mongo.search.multiple("consult",{},function(result){
+		console.log("# Get Consult: " + result._cid)
+		callback(param,result)
+	})
+}
+
+
 module.exports = Dao_consult;
