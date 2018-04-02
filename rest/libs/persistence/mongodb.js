@@ -133,7 +133,7 @@ var search = {
 	multiple: function(collection,obj,callback){
 		MongoClient.connect(url, function(err, db) {
 		  if (err) throw err;
-		  db.collection(collection).find(obj, function(err, result) {
+		  db.collection(collection).find(obj).toArray(function(err, result) {
 		    if (err) throw err;
 		    console.log("Searching on %s [Done]",collection);
 		    db.close();
