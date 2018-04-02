@@ -47,8 +47,9 @@ Dao_consult.get = function(param, data, callback){
 	}
 	
 	Dao_consult.db.mongo.search.one("consult",data,function(result){
-		console.log("# Get Consult: " + param)
-		console.log(result)
+		console.log("# Get Consult: " + param._cid)
+		if(result == null)
+			result = {}
 		callback(param,result)
 	})
 }
