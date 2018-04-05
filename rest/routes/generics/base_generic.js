@@ -6,11 +6,13 @@
 //==> Routes
 var end_route = "{id_user}/{hash}/";
 var id_route = "{id}/";
+var prepare_route = "{ambulatory}/{session}/";
 
 var rx = require( '../../libs/regex_patterns' );
 
 end_route = end_route.replace("{id_user}",rx.base_64).replace("{hash}",rx.base_64)
 id_route = id_route.replace("{id}",rx.id) + end_route
+prepare_route = prepare_route.replace("{ambulatory}",rx.url_name).replace("{session}",rx.url_name)
 
 var Generic = {
 	app: null,
@@ -18,6 +20,7 @@ var Generic = {
 	sufix: {
 		end_route: end_route,
 		id_route: id_route,
+		prepare_route: prepare_route,
 		none:""
 	},
 

@@ -23,11 +23,28 @@ var Controller = {
 		q_id: null
 	},
 
+	url_data_prepare: {
+		ambulatory: null,
+		session: null
+	},
+
 	add: test,
 
 	search: test,
 
 	update: test,
+
+  /*
+   * Get data from prepare url 
+   * @receives /{ambulatory}/{session}/
+   * @return url_data {hash,user_id,q_id}
+   * */
+	get_prepare_data: function(req){
+		var url_components = req.path.split('/');
+		var len = url_components.length -1
+		this.url_data_prepare.session = url_components[len-1];
+		this.url_data_prepare.ambulatory = url_components[len-2];
+	},
 
   /*
    * Get data from url 
