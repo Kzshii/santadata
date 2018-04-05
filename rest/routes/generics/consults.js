@@ -21,7 +21,8 @@ module.exports = function (app) {
 	//Consult.add_route("/gen/search/consult/", c_consult.search, Consult.sufix.end_route, Consult.type.post)
 	Consult.add_route("/gen/get/consult/", c_consult.get, Consult.sufix.id_route, Consult.type.post)
 	Consult.add_route("/gen/all/consult/", c_consult.all, Consult.sufix.end_route, Consult.type.post) // DISABLE
-	Consult.add_route("/gen/timeline/consult/", c_consult.timeline, Consult.sufix.end_route, Consult.type.post)
+	Consult.add_route("/gen/patient/consult/", c_consult.patient, Consult.sufix.id_route, Consult.type.post) // DISABLE
+	Consult.add_route("/gen/timeline/consult/", c_consult.timeline, Consult.sufix.id_route, Consult.type.post)
 	//Consult.add_route("/gen/update/consult/", c_consult.update, Consult.sufix.id_route, Consult.type.post)
 	
 	//Other exam

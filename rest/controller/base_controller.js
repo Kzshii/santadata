@@ -79,6 +79,31 @@ var Controller = {
 		return this.check_hash_id(this.url_data.user_id,this.url_data.hash)
 	},
 
+
+  /*
+   * Get data and check request 
+   * @receives req
+   * @return {accept: (true or false), data}
+   * */
+ 	prepare_request: function(req,res){
+		let result = {
+			accept: true,
+			data: {}
+		}
+
+		let var_req = req.body;
+		result.data = Generic.decode_data(var_req)
+
+		//Check authentication
+		if(!Generic.check_requisition(req)){
+			res.send(Generic.error_message(500,"Bad request"));
+			result.accept = false;
+		}
+
+		return result;
+	}
+
+
   /*
    * Create error message
    * @receives code {Number of message}
