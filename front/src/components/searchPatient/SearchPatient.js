@@ -122,10 +122,13 @@ class SearchPatient extends Component {
   }
 
   openPatient(patientId) {
-    this.props.switchSection( <PatientProfile patientId={ patientId } switchSection={ this.props.switchSection } userData={ this.props.userData } /> );
+    //this.props.switchSection( <PatientProfile patientId={ patientId } switchSection={ this.props.switchSection } userData={ this.props.userData } /> );
   } 
   
   render() {
+
+    console.log(this.props)
+
     return(
 
       <div className="SearchPatient">
@@ -160,9 +163,7 @@ class SearchPatient extends Component {
 
       </div>
 
-
-        
-        <PatientList className="PatientList" data={ this.state.show } itemAction={ this.openPatient } />
+        <PatientList className="PatientList" data={ this.state.show } />
       </div>
 
     </div>

@@ -22,6 +22,7 @@ class Login extends Component {
       if(serverResponse.success) {
         const userData = serverResponse.data;
         localStorage.setItem("userData", JSON.stringify(userData));
+        localStorage.setItem("userLogged", JSON.stringify(true));
         this.setState({
           userLogged: true
         });
@@ -42,7 +43,7 @@ class Login extends Component {
     return(
       <div className="LoginPage">
         <div className="loginBox container">
-          { this.state.userLogged ? <Redirect to="/home"/> : <LoginForm requestLogin={ this.requestLogin } /> }
+          { this.state.userLogged ? <Redirect to="/inicio"/> : <LoginForm requestLogin={ this.requestLogin } /> }
         </div>
       </div>
     );

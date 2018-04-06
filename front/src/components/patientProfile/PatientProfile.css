@@ -8,6 +8,10 @@
     position: relative;
 }
 
+.newConsultButton{
+    margin-bottom: 20px;
+}
+
 .timeline > li > .timeline-badge{
 	font-size: 1em;
 }
