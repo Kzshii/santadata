@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import App from './pages/app/App';
+import ParamsExample from "./pages/routerex/ParamsExample";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>
+, document.getElementById('root'));

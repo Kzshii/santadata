@@ -8,14 +8,12 @@ class App extends Component{
 
   render() {
     return(
-      <div id="App">
-        <Router>
-          <div id="routes">
-            <Route exact path="/" render={ () => <Redirect to="/login" /> } />
-            <Route path="/login" component={Login} />
-            <Route path="/home" render={ () => <Home userData={ JSON.parse(localStorage.getItem("userData")) } /> } />
-          </div>
-        </Router>
+      <div id="routes">          
+        {/*
+        <Route path="/login" component={Login} />
+        <Route path="/home" render={ () => <Home userData={ JSON.parse(localStorage.getItem("userData")) } /> } /> */}
+        <Route exact path="/" render={ () => <Redirect to="/inicio" /> } />
+        <Home userData={ JSON.parse(localStorage.getItem("userData"))  } />
       </div>
     );
   }
