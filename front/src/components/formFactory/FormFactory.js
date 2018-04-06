@@ -13,6 +13,7 @@ class FieldFactory {
         <Text
           field={[field.fieldName,i]}
           id={field.id+(i || "")}
+          type={field.type || "text"}
         />
       </span>
     ),
