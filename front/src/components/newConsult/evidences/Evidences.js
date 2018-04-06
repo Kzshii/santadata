@@ -127,7 +127,7 @@ class Evidences extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-    LocalStorage.save("consult","evidences",this.formData);
+    LocalStorage.save(this.formData,"consult","evidences");
     this.props.saveData("evidences",this.formData);
 	}
 

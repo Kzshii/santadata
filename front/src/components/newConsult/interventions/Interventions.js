@@ -56,7 +56,7 @@ class Interventions extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-    LocalStorage.save("consult","interventions",this.formData);
+    LocalStorage.save(this.formData,"consult","interventions");
 		this.props.saveData("interventions",this.formData);
 	}
 
