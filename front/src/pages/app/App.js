@@ -7,13 +7,13 @@ import Home from "../home/Home";
 class App extends Component{
 
   render() {
+    const userLogged = JSON.parse(localStorage.getItem("userLogged"));
+
     return(
-      <div id="routes">          
-        {/*
+      <div id="routes">
+        <Route exact path="/" render={ () => userLogged ? <Redirect to="/inicio" /> : <Redirect to="/login" /> } />
         <Route path="/login" component={Login} />
-        <Route path="/home" render={ () => <Home userData={ JSON.parse(localStorage.getItem("userData")) } /> } /> */}
-        <Route exact path="/" render={ () => <Redirect to="/inicio" /> } />
-        <Home userData={ JSON.parse(localStorage.getItem("userData"))  } />
+        <Route path="/inicio" render={ () => <Home/> } />
       </div>
     );
   }

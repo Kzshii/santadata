@@ -5,7 +5,6 @@ import NewPatient from '../../components/newPatient/NewPatient';
 import SearchPatient from '../../components/searchPatient/SearchPatient';
 import PatientProfile from '../../components/patientProfile/PatientProfile';
 import { BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch } from "react-router-dom";
-import Child from "../routerex/Child"
 import NewConsult from '../../components/newConsult/NewConsult';
 import Anamnese from "../../components/newConsult/anamnese/Anamnese";
 
@@ -17,8 +16,9 @@ class Home extends Component {
   }
 
   render() {
-
-    return(        
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    return(
+      <Router>
         <div className="Home" >  
 
           <nav className="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -97,16 +97,17 @@ class Home extends Component {
           <div className="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             <section>
               <Switch>
-                <Route exact path="/inicio" render = { () => <Intro userData = { this.props.userData } />  } />
-                <Route exact path="/novo-paciente" render = { () => <NewPatient userData = { this.props.userData } /> } />
-                <Route exact path="/busca-paciente" render = { () => <SearchPatient userData = { this.props.userData } /> } />
-                <Route exact path="/paciente/:patientId" render = { ({match}) => <PatientProfile userData = { this.props.userData } match={match} /> } />
-                <Route exact path="/paciente/:patientId/nova-consulta" render = { ({match}) => <NewConsult userData = { this.props.userData } match={match} /> } />
-              </Switch>         
+                <Route exact path="/inicio" render = { () => <Intro userData = {userData } />  } />
+                <Route exact path="/novo-paciente" render = { () => <NewPatient userData = { userData } /> } />
+                <Route exact path="/busca-paciente" render = { () => <SearchPatient userData = { userData } /> } />
+                <Route exact path="/paciente/:patientId" render = { ({match}) => <PatientProfile userData = { userData } match={match} /> } />
+                <Route exact path="/paciente/:patientId/nova-consulta" render = { ({match}) => <NewConsult userData = { userData } match={match} /> } />
+              </Switch>
             </section>
           </div>
           
         </div>
+      </Router>
     );
   }
 }

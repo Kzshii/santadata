@@ -121,48 +121,47 @@ class NewConsult extends Component {
     console.log(this.props);
     console.log("NOVA CONSULTA - ESTADO", this.state);
     return(
-
       <Router>
-			<div className="NewConsult">
+        <div className="NewConsult">
 
-        <div className="sections">
-          {
-            Object.keys(this.sections).map(
-              (routeSection) => {
-                return(
-                  <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta/${routeSection}`}>
-                    <button key={ routeSection } name={ routeSection } >
-                      { this.sections[routeSection].props.title }
-                    </button>
-                  </Link>
-                );
-              }
-            )
-          }
+          <div className="sections">
+            {
+              Object.keys(this.sections).map(
+                (routeSection) => {
+                  return(
+                    <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta/${routeSection}`} key={ routeSection } >
+                      <button name={ routeSection } >
+                        { this.sections[routeSection].props.title }
+                      </button>
+                    </Link>
+                  );
+                }
+              )
+            }
 
-          <button id="SaveConsult" name="saveConsult" onClick={ this.saveConsult }>
-            Salvar Consulta
-          </button>
+            <button id="SaveConsult" name="saveConsult" onClick={ this.saveConsult }>
+              Salvar Consulta
+            </button>
+          </div>
+
+          {console.log("section:",Object.keys(this.sections)[this.state.currentSection])}
+
+          <section className="consultSection">
+            <Switch>
+              <Route exact path="/paciente/:patientId/nova-consulta" render={ () => <Redirect to="/paciente/:patientId/nova-consulta/anamnese" /> } />
+              <Route exact path="/paciente/:patientId/nova-consulta/anamnese" render = { () => { {/* this.goToSection("anamnese"); */} return(<Anamnese title="Anamnese" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
+              <Route exact path="/paciente/:patientId/nova-consulta/evidencias" render = { () => { {/* this.goToSection("evidencias"); */} return(<Evidences title="Evidências" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
+              <Route exact path="/paciente/:patientId/nova-consulta/intervencoes" render = { () => { {/* this.goToSection("intervencoes"); */} return(<Interventions title="Intervenções" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
+              <Route exact path="/paciente/:patientId/nova-consulta/exames" render = { () => { {/* this.goToSection("exames"); */} return(<PhysicalExams title="Exames Físicos" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
+              <Route exact path="/paciente/:patientId/nova-consulta/medicamentos" render = { () => { {/* this.goToSection("medicamentos"); */} return(<Medicines title="Medicamentos" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
+              <Route exact path="/paciente/:patientId/nova-consulta/preditores" render = { () => { {/* this.goToSection("preditores"); */} return(<Predictors title="Preditores" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
+            </Switch>
+          </section>
+            {/* 
+          <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta/${this.sections[this.state.currentSection].props.prev}`}><button name="prev" >Anterior</button></Link>
+          <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta/${this.sections[this.state.currentSection].props.next}`}><button name="next" >Proximo</button></Link>
+          */}
         </div>
-
-        {console.log("section:",Object.keys(this.sections)[this.state.currentSection])}
-
-        <section className="consultSection">
-          <Switch>
-            <Route exact path="/paciente/:patientId/nova-consulta" render={ () => <Redirect to="/paciente/:patientId/nova-consulta/anamnese" /> } />
-            <Route exact path="/paciente/:patientId/nova-consulta/anamnese" render = { () => { this.goToSection("anamnese"); return(<Anamnese title="Anamnese" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
-            <Route exact path="/paciente/:patientId/nova-consulta/evidencias" render = { () => { this.goToSection("evidencias"); return(<Evidences title="Evidências" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
-            <Route exact path="/paciente/:patientId/nova-consulta/intervencoes" render = { () => { this.goToSection("intervencoes"); return(<Interventions title="Intervenções" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
-            <Route exact path="/paciente/:patientId/nova-consulta/exames" render = { () => { this.goToSection("exames"); return(<PhysicalExams title="Exames Físicos" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
-            <Route exact path="/paciente/:patientId/nova-consulta/medicamentos" render = { () => { this.goToSection("medicamentos"); return(<Medicines title="Medicamentos" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
-            <Route exact path="/paciente/:patientId/nova-consulta/preditores" render = { () => { this.goToSection("preditores"); return(<Predictors title="Preditores" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
-          </Switch>
-        </section>
-          
-        <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta/${this.sections[this.state.currentSection].props.prev}`}><button name="prev" >Anterior</button></Link>
-        <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta/${this.sections[this.state.currentSection].props.next}`}><button name="next" >Proximo</button></Link>
-        
-			</div>
       </Router>
 		);
 	}
