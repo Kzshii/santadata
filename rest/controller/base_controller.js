@@ -86,12 +86,12 @@ var Controller = {
    * @return {accept: (true or false), data}
    * */
  	prepare_request: function(req,res){
-		let result = {
+		var result = {
 			accept: true,
 			data: {}
 		}
 
-		let var_req = req.body;
+		var var_req = req.body;
 		result.data = Generic.decode_data(var_req)
 
 		//Check authentication

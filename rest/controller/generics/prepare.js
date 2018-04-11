@@ -48,7 +48,7 @@ Prepare.response = (res,data)=>{
 **/
 Prepare.session = (req,res)=>{
 	Prepare.get_prepare_data(req);
-	type = Prepare.types[Prepare.url_data_prepare.ambulatory][Prepare.url_data_prepare.session]
+	var type = Prepare.types[Prepare.url_data_prepare.ambulatory][Prepare.url_data_prepare.session]
 
 	Prepare.response(res,type)
 }
@@ -58,8 +58,8 @@ Prepare.session = (req,res)=>{
 **/
 Prepare.ambulatory = (req,res)=>{
 	Prepare.get_prepare_data(req);
-	ambulatoryes = Object.getKeys(Prepare.types)
-	result = {}
+	var ambulatoryes = Object.getKeys(Prepare.types)
+	var result = {}
 	ambulatoryes.forEach(
 		(amb)=>{
 			result[amb] = Object.getKeys(Prepare.types[amb])

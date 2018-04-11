@@ -17,7 +17,7 @@ Consult.add = function(req, res){
 	var result = Generic.prepare_request(req,res);
 
 	//Getting and preparing data
-	let data = Model_consult.mapData(result.data)
+	var data = Model_consult.mapData(result.data)
 
 	Consult.generic_dao_request(res,data, Dao_consult.new)
 }
@@ -26,7 +26,7 @@ Consult.get = function(req,res){
 	var result = Generic.prepare_request(req,res);
 
 	//Getting and preparing data
-	let data = {_cid:Generic.url_data.q_id}
+	var data = {_cid:Generic.url_data.q_id}
 
 	Consult.generic_dao_request(res,data, Dao_consult.get)
 }
