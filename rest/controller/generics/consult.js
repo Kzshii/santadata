@@ -31,6 +31,9 @@ Consult.get = function(req,res){
 	Consult.generic_dao_request(res,data, Dao_consult.get)
 }
 
+/*
+* Recupera as consultas ordenadas pelo tempo de um único paciente
+*/
 Consult.timeline = function(req,res){
 	var result = Generic.prepare_request(req,res);
 
@@ -41,7 +44,23 @@ Consult.timeline = function(req,res){
 	Consult.generic_dao_request(res,data, Dao_consult.get)
 }
 
+/*
+* Recupera todos as consultas do banco
+*/
 Consult.all = function(req,res){
+	var result = Generic.prepare_request(req,res);
+
+	//Getting and preparing data
+	//data = {_cid:Generic.url_data.q_id}
+	data = {}
+
+	Consult.generic_dao_request(res,data, Dao_consult.all)
+}
+
+/*
+* Recupera a ultima consulta do paciente
+*/
+Consult.patient = function(req,res){
 	var result = Generic.prepare_request(req,res);
 
 	//Getting and preparing data
