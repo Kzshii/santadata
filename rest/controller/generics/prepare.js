@@ -48,8 +48,11 @@ Prepare.response = (res,data)=>{
 **/
 Prepare.session = (req,res)=>{
 	Prepare.get_prepare_data(req);
-	var type = Prepare.types[Prepare.url_data_prepare.ambulatory][Prepare.url_data_prepare.session]
-
+	try{
+		var type = Prepare.types[Prepare.url_data_prepare.ambulatory][Prepare.url_data_prepare.session]
+	}catch(e){
+		type = Prepare.error_message(404,"Route error")
+	}
 	Prepare.response(res,type)
 }
 

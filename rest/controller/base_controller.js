@@ -16,7 +16,7 @@ var Controller = {
 		message: "Sucess", 
 		results:{}
 	},
-	
+
 	url_data:{
 		user_id: null,
 		hash: null,
