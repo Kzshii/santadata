@@ -41,7 +41,7 @@ var Controller = {
    * */
 	get_prepare_data: function(req){
 		var url_components = req.path.split('/');
-		var len = url_components.length -1
+		var len = url_components.length -1;
 		this.url_data_prepare.session = url_components[len-1];
 		this.url_data_prepare.ambulatory = url_components[len-2];
 	},
@@ -101,7 +101,7 @@ var Controller = {
 		}
 
 		return result;
-	}
+	},
 
 
   /*
