@@ -16,6 +16,10 @@ var Consult = {
 
 	timelineMapData: function(data){
 		idpatient = data.idpatient;
+		//TODO: Organizar esses dados e enviar para o pessoal do Front
+		//Pagination - POST
+		// Numero pagina: 1
+		// Gap: 15
 	}
 }
 
