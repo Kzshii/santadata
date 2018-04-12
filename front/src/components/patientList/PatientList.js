@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './PatientList.css';
+import { BrowserRouter as Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 
 class PatientList extends Component {
 
@@ -33,12 +34,18 @@ class PatientList extends Component {
               {
                 this.props.data.map(
                   (patient) => {
-                    return(
-                      <tr key={ patient.idpatient } onClick={ () => { this.props.itemAction(patient.idpatient) } } >
-                                    
-                        <td>{ patient.nr_mv }</td>
-                        <td>{ patient.name }</td>
-                      </tr>
+                    return(                    
+                        <tr key={ patient.idpatient } >
+                          <td>
+                            <Link to={`/paciente/${patient.idpatient}`}>
+                              { patient.name }
+                            </Link>
+                          </td>
+                          <td>
+                            { patient.nr_mv }
+                          </td>
+                        </tr>
+                      
                     );
                   }
                 )

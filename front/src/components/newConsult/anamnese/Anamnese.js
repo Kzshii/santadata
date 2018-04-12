@@ -627,7 +627,7 @@ class Anamnese extends Component {
 
 	handleSubmit(event) {
     event.preventDefault();
-    LocalStorage.save("consult","anamnese",this.formData);
+    LocalStorage.save(this.formData,"consult","anamnese");
     console.log("ANAMNESE STORAGE",this.formData);
 		this.props.saveData("anamnese",this.formData);
   }
@@ -649,7 +649,7 @@ class Anamnese extends Component {
           Storage={ (data) => {
             this.formData = JSON.parse(JSON.stringify(data));
           }}
-          
+
           SubmitValue="Salvar anamnese"
           Config={{
             Select:{
