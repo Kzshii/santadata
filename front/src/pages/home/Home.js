@@ -6,17 +6,12 @@ import SearchPatient from '../../components/searchPatient/SearchPatient';
 import PatientProfile from '../../components/patientProfile/PatientProfile';
 import { BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch } from "react-router-dom";
 import NewConsult from '../../components/newConsult/NewConsult';
-import Anamnese from "../../components/newConsult/anamnese/Anamnese";
+import LocalStorage from './../../lib/localStorage';
 
 class Home extends Component {
-  
-  constructor(props) {
-    super(props);
-    
-  }
 
   render() {
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = LocalStorage.get("userData");
     return(
       <Router>
         <div className="Home" >  
