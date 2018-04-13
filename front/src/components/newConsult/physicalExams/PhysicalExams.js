@@ -421,8 +421,8 @@ class PhysicalExams extends Component {
     }
     this.SelectOptions = selectOptions;
 
-    console.log("options:",options)
-    console.log("selectOptions:",selectOptions)
+    //console.log("options:",options)
+    //console.log("selectOptions:",selectOptions)
 
     let exam = this.state.prepare[this.state.selectedExamType]
 
@@ -448,8 +448,8 @@ class PhysicalExams extends Component {
     let form = this.state.selectedForm;
     let formType = this.state.selectedFormType;
 
-    console.log("formType:",formType)
-    console.log("form:",form)
+  //  console.log("formType:",formType)
+  //  console.log("form:",form)
 
     if (form!=null && formType!=null){
 
@@ -491,8 +491,8 @@ class PhysicalExams extends Component {
   }
 
   editForm(form){
-    console.log("Exame Editado");
-    console.log(form);
+  //  console.log("Exame Editado");
+  //  console.log(form);
 
     let storedForms= this.state.storedForms;
     storedForms[this.state.popupForm.index]=form;
@@ -502,8 +502,8 @@ class PhysicalExams extends Component {
       storedForms:storedForms
     });
 
-    console.log("xD");
-    console.log(this.state.storedForms);
+  //  console.log("xD");
+  //  console.log(this.state.storedForms);
   }
 
   ShowPopup(index){
@@ -549,8 +549,8 @@ class PhysicalExams extends Component {
       <div className="InputExam">
         <h2>Exames Físicos</h2>
 
-        {console.log("selectOptions", this.selectOptions)}
-        {console.log("selectFormType", this.selectFormType)}
+        //{console.log("selectOptions", this.selectOptions)}
+        //{console.log("selectFormType", this.selectFormType)}
 
         <Radiogroup
           Label="Tipo de Exame"
@@ -561,8 +561,8 @@ class PhysicalExams extends Component {
           Name= "ExamsTypes"
         />
 
-        {console.log("selectForm", this.selectForm)}
-        {console.log("forms", this.forms)}
+        //{console.log("selectForm", this.selectForm)}
+        //{console.log("forms", this.forms)}
 
         <Select
           Label="Exames"
@@ -591,7 +591,7 @@ class PhysicalExams extends Component {
 
         <StoredList title="Exames Guardados" list={this.state.storedForms} remove={this.removeForm} showPopup={this.ShowPopup}/>
 
-        {console.log("storedForms", this.state.storedForms)}
+        //{console.log("storedForms", this.state.storedForms)}
 
         {this.state.showPopup ?
           <Popup

@@ -2,7 +2,7 @@
 function LocalStorage() {}
 
 LocalStorage.save = (data,key, ...args) => {
-  console.log("LocalStorage.Save:")
+  //console.log("LocalStorage.Save:")
   const storage = JSON.parse(localStorage.getItem(key));
   let pointer = storage;
   let keys = Object.keys(storage);
@@ -20,17 +20,17 @@ LocalStorage.save = (data,key, ...args) => {
     }
   }
   pointer[lastArg] = data;
-  console.log(storage);
+  //console.log(storage);
   localStorage.setItem(key,JSON.stringify(storage));
 }
 
 LocalStorage.get = (key, ...args) => {
-  console.log("LocalStorage.get");
+  //console.log("LocalStorage.get");
   const storage = JSON.parse(localStorage.getItem(key));
   let pointer = storage;
   const lastArg = args[args.length - 1];
 
-  console.log("começou")
+  ////console.log("começou")
   args.forEach(
     (name) => {
       if (pointer[name] !==  undefined){

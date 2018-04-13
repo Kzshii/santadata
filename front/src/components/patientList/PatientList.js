@@ -5,36 +5,31 @@ import { BrowserRouter as Router, Route, Link, NavLink, Redirect } from "react-r
 class PatientList extends Component {
 
   render() {
-   
-    if (this.props.data != null) {
-      
-      console.log("Log da lista",this.props.data.map(
-        function(patient){
-          return patient.name;
-        }
-      ));
 
+    if (this.props.data != null) {
+
+  
       return(
 
 
         <div className="PatientList">
           {/* <h1>Tabela de Pacientes</h1> */}
 
-          
+
           <table className="table table-bordered">
             <thead className="thead-light">
               <tr>
 
                 <th scope="col">Prontuário</th>
                 <th scope="col">Paciente</th>
-                
+
               </tr>
             </thead>
             <tbody>
               {
                 this.props.data.map(
                   (patient) => {
-                    return(                    
+                    return(
                         <tr key={ patient.idpatient } >
                           <td>
                             <Link to={`/paciente/${patient.idpatient}`}>
@@ -45,7 +40,7 @@ class PatientList extends Component {
                             { patient.nr_mv }
                           </td>
                         </tr>
-                      
+
                     );
                   }
                 )
@@ -55,7 +50,7 @@ class PatientList extends Component {
 
           </table>
        </div>
-       
+
       );
     }
     else{

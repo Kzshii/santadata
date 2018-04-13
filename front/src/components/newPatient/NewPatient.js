@@ -47,9 +47,9 @@ class NewPatient extends Component {
 		const target = event.target;
 		const name = target.name;
 		const value = target.value;
-    
+
 		let formData = this.state.formData;
-		
+
 		if(target.type === 'checkbox') {
 			if(target.checked) {
 				/* insere */
@@ -66,13 +66,13 @@ class NewPatient extends Component {
 		} else {
 			formData[name] = value;
 		}
-		console.log("NEW PATIENT - HANDLE CHANGE",this.state.formData);
+		////console.log("NEW PATIENT - HANDLE CHANGE",this.state.formData);
 		this.setState({
 			formData: formData,
 		});
-		console.log("STATE", this.state);
+		//console.log("STATE", this.state);
 	}
-  
+
   handleSubmit(event) {
     event.preventDefault();
     const user_id = this.props.userData.user_id;
@@ -98,7 +98,7 @@ class NewPatient extends Component {
   }
 
   ageCalc(date){
-    
+
     var birthDate = new Date(date);
     var todayDate = new Date();
     var totalDays = "";
@@ -126,11 +126,11 @@ class NewPatient extends Component {
         months = Math.floor((totalDays % 365) / 30);
 
         days = Math.floor(((totalDays % 365) % 30)) ;
-        
+
         this.state.formData.age = years;
 
         this.state.formExhibition.stringAge = years + " Anos, " + months + " Meses e " + days + " Dias."
-        
+
       }
     }
 
@@ -144,19 +144,19 @@ class NewPatient extends Component {
 
   render() {
 
-    this.ageCalc(this.state.formData.birthDate)  
-    
+    this.ageCalc(this.state.formData.birthDate)
+
     return(
 
-  
+
       <div className="NewPatient" >
 
-    
+
       <div className="row">
       <div className="col-lg-12">
         <div className="panel panel-default">
-          
-        
+
+
         <div className="panel panel-default">
           <div className="panel-heading">Novo Paciente</div>
           <div className="panel-body">
@@ -165,12 +165,12 @@ class NewPatient extends Component {
 
             <div className="col-md-6">
 
-          
+
 
             <div className="form-group">
 
             <label htmlFor="patientName">Nome</label>
-            
+
             <input
               className="form-control  textInput"
               type="text"
@@ -180,13 +180,13 @@ class NewPatient extends Component {
               value={ this.state.formData.patientName }
               onChange={ this.handleChange }
               required
-            /> 
-            
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="rg">RG</label>
-            
+
             <input
               className="form-control  textInput"
               type="number"
@@ -195,14 +195,14 @@ class NewPatient extends Component {
               placeholder="RG"
               value={ this.state.formData.rg }
               onChange={ this.handleChange }
-            /> 
-            
-        
+            />
+
+
             </div>
 
             <div className="form-group">
             <label htmlFor="cpf">CPF</label>
-            
+
             <input
               className="form-control textInput"
               type="number"
@@ -211,13 +211,13 @@ class NewPatient extends Component {
               placeholder="CPF"
               value={ this.state.formData.cpf }
               onChange={ this.handleChange }
-            /> 
-            
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="mv">Número MV</label>
-            
+
 
             <input
               className="form-control textInput"
@@ -228,8 +228,8 @@ class NewPatient extends Component {
               value={ this.state.formData.mv }
               onChange={ this.handleChange }
               required
-            /> 
-           
+            />
+
             </div>
 
             <div className="form-group">
@@ -244,14 +244,14 @@ class NewPatient extends Component {
               value={ this.state.formData.same }
               onChange={ this.handleChange }
               required
-            /> 
-          
+            />
+
             </div>
 
 
             <div className="form-group">
             <label htmlFor="same">Cartão do SUS</label>
-           
+
 
             <input
               className="form-control textInput"
@@ -262,14 +262,14 @@ class NewPatient extends Component {
               value={ this.state.formData.sus}
               onChange={ this.handleChange }
               required
-            /> 
-            
-            
+            />
+
+
             </div>
-          
+
             <div className="form-group">
             <label htmlFor="birthDate">Data de Nascimento</label>
-           
+
             <input
               className="form-control textInput"
               type="date"
@@ -279,13 +279,13 @@ class NewPatient extends Component {
               value={ this.state.formData.birthDate }
               onChange={ this.handleChange }
               required
-            /> 
-         
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="age">Idade</label>
-           
+
             <input
               className="form-control  textInput"
               type="text"
@@ -296,36 +296,36 @@ class NewPatient extends Component {
               onChange={ this.handleChange }
               required
               readOnly
-            /> 
-            
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="" id="Up">Sexo </label>
             <div className="radio">
             <label>
-              <input 
-              type="radio" 
-              name="gender" 
-              id="gender" 
-              value="M" 
+              <input
+              type="radio"
+              name="gender"
+              id="gender"
+              value="M"
               onChange={ this.handleChange } /> Masculino
             </label>
             </div>
 
             <div className="radio">
             <label>
-              <input 
-              type="radio" 
-              name="gender" 
-              d="gender" 
-              value="F" 
+              <input
+              type="radio"
+              name="gender"
+              d="gender"
+              value="F"
               onChange={ this.handleChange } /> Feminino
             </label>
             </div>
 
             </div>
-            
+
 
             <div className="form-group">
 
@@ -346,7 +346,7 @@ class NewPatient extends Component {
 
            <div className="form-group">
             <label htmlFor="tel1">Telefone</label>
-           
+
             <input
               className="form-control textInput"
               type="tel"
@@ -355,14 +355,14 @@ class NewPatient extends Component {
               placeholder="Telefone"
               value={ this.state.formData.tel1 }
               onChange={ this.handleChange }
-            /> 
+            />
             </div>
 
 
             <div className="form-group">
             <label htmlFor="tel2">Celular</label>
-            
-            <input 
+
+            <input
               className="form-control textInput"
               type="tel"
               name="cel"
@@ -370,13 +370,13 @@ class NewPatient extends Component {
               placeholder="Celular"
               value={ this.state.formData.cel }
               onChange={ this.handleChange }
-            /> 
-           
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="telE">Contato de Emergência</label>
-        
+
             <input
               className="form-control textInput"
               type="tel"
@@ -386,13 +386,13 @@ class NewPatient extends Component {
               value={ this.state.formData.telE }
               onChange={ this.handleChange }
               required
-            /> 
-          
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="cep">CEP</label>
-        
+
             <input
               className="form-control textInput"
               type="number"
@@ -402,13 +402,13 @@ class NewPatient extends Component {
               value={ this.state.formData.cep }
               onChange={ this.handleChange }
               required
-            /> 
-            
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="street">Rua / Alameda / Avenida</label>
-            
+
             <input
               className="form-control textInput"
               type="text"
@@ -418,13 +418,13 @@ class NewPatient extends Component {
               value={ this.state.formData.street }
               onChange={ this.handleChange }
               required
-            /> 
-            
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="homeNumber">Número da residência</label>
-            
+
             <input
               className="form-control  textInput"
               type="number"
@@ -434,13 +434,13 @@ class NewPatient extends Component {
               value={ this.state.formData.homeNumber }
               onChange={ this.handleChange }
               required
-            /> 
-            
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="complement">Complemento</label>
-            
+
             <input
               className="form-control  textInput"
               type="text"
@@ -449,13 +449,13 @@ class NewPatient extends Component {
               placeholder="Ex: Bloco 2, ap 101"
               value={ this.state.formData.complement }
               onChange={ this.handleChange }
-            /> 
-            
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="neighborhood">Bairro</label>
-           
+
             <input
               className="form-control textInput"
               type="text"
@@ -465,13 +465,13 @@ class NewPatient extends Component {
               value={ this.state.formData.neighborhood }
               onChange={ this.handleChange }
               required
-            /> 
-           
+            />
+
             </div>
 
             <div className="form-group">
             <label htmlFor="city">Cidade</label>
-           
+
             <input
               className="form-control textInput"
               type="text"
@@ -481,8 +481,8 @@ class NewPatient extends Component {
               value={ this.state.formData.city }
               onChange={ this.handleChange }
               required
-            /> 
-           
+            />
+
             </div>
 
             <div className="form-group">
@@ -496,8 +496,8 @@ class NewPatient extends Component {
               value={ this.state.formData.state }
               onChange={ this.handleChange }
               required
-            /> 
-           
+            />
+
             </div>
 
             <div className="form-group">
@@ -511,8 +511,8 @@ class NewPatient extends Component {
               value={ this.state.formData.country }
               onChange={ this.handleChange }
               required
-            /> 
-           
+            />
+
             </div>
 
             <input id="Save" className="Button btn btn-primary pull-right" type="submit" value="Salvar"/>
@@ -525,7 +525,7 @@ class NewPatient extends Component {
   </div>
   </div>
   </div>
-  
+
 
     );
   }
@@ -533,7 +533,7 @@ class NewPatient extends Component {
 
 export default NewPatient;
 
-/* 
+/*
   nome: "",
 	nr_prontuario: 0,
 	nr_mv: 0,
@@ -545,6 +545,6 @@ export default NewPatient;
 	tel2: "",
 	tel_emerg: "",
   cel: "",
-  
+
 	endereco: "",
 */

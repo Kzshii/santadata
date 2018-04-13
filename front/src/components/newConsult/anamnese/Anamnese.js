@@ -628,12 +628,10 @@ class Anamnese extends Component {
 	handleSubmit(event) {
     event.preventDefault();
     LocalStorage.save(this.formData,"consult","anamnese");
-    console.log("ANAMNESE STORAGE",this.formData);
 		this.props.saveData("anamnese",this.formData);
   }
 
 	render(){
-    console.log("RENDERIZANDO ANAMNESE", this.state);
     if(!this.state.prepare){
       return (
         <div>LOADING</div>

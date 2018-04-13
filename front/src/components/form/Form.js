@@ -58,27 +58,22 @@ class Form extends Component {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    
+
     let formData = this.state.formData;
 
     if(!formData[name]) {
       formData[name] = JSON.parse(JSON.stringify(this.props.InputList[name]));
       //formData[name].readonly = "true";
-      console.log("FORMDATA NOVO ATRIBUTO", formData);
     }
 
     if(target.type === 'checkbox') {
       const index = target.attributes.index.value;
       if(target.checked) {
         /* insere */
-        console.log("FORMDATA1",formData[name].options[index]);
         formData[name].options[index].checked = true;
-        console.log("FORMDATA2",formData[name].options[index]);
       } else {
         /* remove */
-        console.log("FORMDATA1",formData[name].options[index]);
         formData[name].options[index].checked = false;
-        console.log("FORMDATA2",formData[name].options[index]);
       }
 
     } else if(target.type === 'select-one') {
@@ -216,7 +211,7 @@ class Form extends Component {
         break; */
 
       default:
-        console.log("elemento não listado");
+
         return(null);
     }
 
@@ -249,8 +244,6 @@ class Form extends Component {
   }
 
   render() {
-    console.log("FORM STATE", this.state);
-    console.log("FORM PROPS", this.props);
     return(
       <div className="Form">
         <form onSubmit={ this.handleSubmit }>

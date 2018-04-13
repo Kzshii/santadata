@@ -10,7 +10,7 @@ class LoginForm extends Component {
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    
+
     this.state = {
       user: 'joaopandolfi', /* test only */
       pass: '123',          /* test only */
@@ -24,7 +24,7 @@ class LoginForm extends Component {
         user: event.target.value,
       }
     );
-    console.log(this.state);
+  
   }
 
   handleChangePassword(event) {
@@ -73,7 +73,7 @@ class LoginForm extends Component {
               <span className="lnr lnr-lock"></span>
             </span>
           </div>
-         
+
           <div className="contact100-form-checkbox m-l-4">
             <input className="checkbox check input-checkbox100" id="rememberUserCheck" type="checkbox" name="remember-me"/>
             <label className="remember check label-checkbox100 fa-check:before" htmlFor="rememberUserCheck" >
@@ -85,7 +85,7 @@ class LoginForm extends Component {
 
           <div className="text-center w-full p-t-50">
             <a id="Signup" className="txt1 hov1" href="#">
-              Novo Cadastro           
+              Novo Cadastro
             </a>
           </div>
 

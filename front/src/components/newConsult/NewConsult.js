@@ -47,7 +47,7 @@ class NewConsult extends Component {
         component.setState({
           prepare: serverResponse.data
         });
-        console.log("NEW CONSULT STATE",this.state);
+      //  console.log("NEW CONSULT STATE",this.state);
       }
     }
 
@@ -66,7 +66,7 @@ class NewConsult extends Component {
 
     this.nextSection()
 
-    console.log("CONSULTA FORM GUARDADO:",this.state.consultData);
+    //console.log("CONSULTA FORM GUARDADO:",this.state.consultData);
   }
 
   nextSection() {
@@ -118,8 +118,8 @@ class NewConsult extends Component {
   }
 
 	render() {
-    console.log(this.props);
-    console.log("NOVA CONSULTA - ESTADO", this.state);
+    //console.log(this.props);
+    //console.log("NOVA CONSULTA - ESTADO", this.state);
     return(
       <Router>
         <div className="NewConsult">
@@ -144,7 +144,7 @@ class NewConsult extends Component {
             </button>
           </div>
 
-          {console.log("section:",Object.keys(this.sections)[this.state.currentSection])}
+          //{console.log("section:",Object.keys(this.sections)[this.state.currentSection])}
 
           <section className="consultSection">
             <Switch>
@@ -157,7 +157,7 @@ class NewConsult extends Component {
               <Route exact path="/paciente/:patientId/nova-consulta/preditores" render = { () => { {/* this.goToSection("preditores"); */} return(<Predictors title="Preditores" saveData={ this.storeFormData } prepare={ this.prepare } />);} } />
             </Switch>
           </section>
-            {/* 
+            {/*
           <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta/${this.sections[this.state.currentSection].props.prev}`}><button name="prev" >Anterior</button></Link>
           <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta/${this.sections[this.state.currentSection].props.next}`}><button name="next" >Proximo</button></Link>
           */}

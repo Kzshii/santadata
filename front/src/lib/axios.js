@@ -6,7 +6,7 @@ Post.defaults = {
   urlData: [],
   data: {},
   command: (data) => {
-    console.log("POST - DEFAULT COMMAND",data);
+    //console.log("POST - DEFAULT COMMAND",data);
     return(data);
   },
   error: (error) => {
@@ -20,12 +20,12 @@ Post.command = Post.defaults.command;
 Post.error = Post.defaults.error;
 
 Post.resetDefaults = () => {
-  console.log("LIB AXIOS - RESETING DEFAULTS");
+  //console.log("LIB AXIOS - RESETING DEFAULTS");
   Post.data = Post.defaults.data;
   Post.urlData = Post.defaults.urlData;
   Post.command = Post.defaults.command;
   Post.error = Post.defaults.error;
-  console.log("LIB AXIOS - DEFAULTS RESETED");
+  //console.log("LIB AXIOS - DEFAULTS RESETED");
 };
 
 export function Post(route, postInfo = {
@@ -36,18 +36,18 @@ export function Post(route, postInfo = {
   }) {
 
   if(route === undefined) {
-    console.log("LIB AXIOS - ROUTE MISSING!");
+    //console.log("LIB AXIOS - ROUTE MISSING!");
     return(null);
   }
 
   Object.keys(postInfo).map(
     (key) => {
-      console.log("LIB AXIOS - MAPPING",key);
+    //  console.log("LIB AXIOS - MAPPING",key);
       const test = Post[key] === Post.defaults[key]
                 && postInfo[key] !== Post.defaults[key]
                 && postInfo[key] !== undefined;
       Post[key] = test ? postInfo[key] : Post[key];
-      console.log("LIB AXIOS - MAPPED: ",Post[key]);
+      //console.log("LIB AXIOS - MAPPED: ",Post[key]);
       return(null);
     }
   );
@@ -71,18 +71,18 @@ export function Post(route, postInfo = {
   .then(
     function(response) {
       if(response.request.status === 200) {
-        console.log("LIB AXIOS - THEN OK:",response);
+        //console.log("LIB AXIOS - THEN OK:",response);
         Post.command(response.data);
         Post.resetDefaults();
       } else {
-        console.log("LIB AXIOS - THEN FAIL:",response);
+        //console.log("LIB AXIOS - THEN FAIL:",response);
         return(null);
       }
     }
   )
   .catch(
     function(error) {
-      console.log("LIB AXIOS - CATCH:",error);
+      //console.log("LIB AXIOS - CATCH:",error);
       Post.error(error);
       Post.resetDefaults();
     }

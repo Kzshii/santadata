@@ -403,8 +403,6 @@ class Medicines extends Component {
 
     this.selectOptions = selectOptions;
 
-    console.log("selectOptions:",selectOptions)
-    console.log("options:",options)
 
     /*
     let form = this.state.prepare[this.state.selectedFormType]
@@ -443,8 +441,6 @@ class Medicines extends Component {
       }
 
       this.inputList = inputList;
-      console.log("INPUTLIST FEITA");
-      console.log(this.inputList);
     }
 
 
@@ -495,8 +491,7 @@ class Medicines extends Component {
   }
 
   editForm(form){
-    console.log("Medicamento Editado");
-    console.log(form);
+
 
     let storedForms= this.state.storedForms;
     storedForms[this.state.popupForm.index]=form;
@@ -506,14 +501,10 @@ class Medicines extends Component {
       storedForms:storedForms
     })
 
-    console.log("xD")
-    console.log(this.state.storedForms)
   }
 
   ShowPopup(index){
     let form= this.state.storedForms[index];
-
-    console.log("form",form);
 
     form["submit"]={
       type:"submit"
@@ -583,7 +574,6 @@ class Medicines extends Component {
           OnChange={ this.selectForm }
         />
 
-        {console.log("inputList", this.inputList)}
 
         {this.state.selectedForm!="choose" ?
           <Form
@@ -605,8 +595,6 @@ class Medicines extends Component {
 
 
         <StoredList title="Medicamentos Guardados" list={this.state.storedForms} remove={this.removeForm} showPopup={this.ShowPopup}/>
-
-        {console.log("storedForms", this.state.storedForms)}
 
         {this.state.showPopup ?
           <Popup
