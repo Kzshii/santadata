@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
-import Intro from '../../components/intro/Intro';
-import NewPatient from '../../components/newPatient/NewPatient';
-import SearchPatient from '../../components/searchPatient/SearchPatient';
-import PatientProfile from '../../components/patientProfile/PatientProfile';
 import { BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch } from "react-router-dom";
-import NewConsult from '../../components/newConsult/NewConsult';
 import LocalStorage from './../../lib/localStorage';
 
 class Home extends Component {
@@ -13,7 +8,6 @@ class Home extends Component {
   render() {
     const userData = LocalStorage.get("userData");
     return(
-      <Router>
         <div className="Home" >  
 
           <nav className="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -90,19 +84,14 @@ class Home extends Component {
           </div>
     
           <div className="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-            <section>
+            <section className="homeSection">
               <Switch>
-                <Route exact path="/inicio" render = { () => <Intro userData = {userData } />  } />
-                <Route exact path="/novo-paciente" render = { () => <NewPatient userData = { userData } /> } />
-                <Route exact path="/busca-paciente" render = { () => <SearchPatient userData = { userData } /> } />
-                <Route exact path="/paciente/:patientId" render = { ({match}) => <PatientProfile userData = { userData } match={match} /> } />
-                <Route exact path="/paciente/:patientId/nova-consulta" render = { ({match}) => <NewConsult userData = { userData } match={match} /> } />
+                {this.props.child}
               </Switch>
             </section>
           </div>
           
         </div>
-      </Router>
     );
   }
 }

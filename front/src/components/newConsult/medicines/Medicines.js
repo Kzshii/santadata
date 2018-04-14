@@ -631,7 +631,7 @@ class Medicines extends Component {
             }/>  : null}
 
         <form onSubmit={ this.handleSubmit} >
-          <input className="Button" type="submit" value="Salvar Medicamentos e Continuar" onMouseUp={ this.handleSubmit }/>
+          <input className="Button" type="submit" value={"Salvar "+ this.props.title +" e Continuar"} onMouseUp={ this.handleSubmit }/>
         </form>
 
       </div>
