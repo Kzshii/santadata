@@ -487,6 +487,9 @@ class Medicines extends Component {
     form.name = this.state.selectedForm;
     //form.type = this.state.selectedForm;
     LocalStorage.save(form,"consult","medicines",form.name);
+    LocalStorage.save(2,"abacaxi","cereja");
+    LocalStorage.save(3,"abobora");
+    LocalStorage.get("abacaxi","cereja","atum");
     store.push(form);
 
     this.setState({
