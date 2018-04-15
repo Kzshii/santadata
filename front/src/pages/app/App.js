@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
-import LocalStorage from "../../lib/localStorage";
+import LocalStorage from "../../lib/localStorage/localStorage";
 import Login from "../login/Login";
 import Home from "../home/Home";
 
