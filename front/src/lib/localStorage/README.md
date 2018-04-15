@@ -4,18 +4,18 @@ This custom library uses the react-form package to implements an easy way to cre
 
 # Functions
 
-##LocalStorage.save = (data,key, ...args [optional])
+## LocalStorage.save = (data,key, ...args [optional])
 
-###Description
+### Description
 
 This function is responsible for saving data in the localstorage
 
-##Parameters
+## Parameters
 
-###data
+### data
     data that will be saved
 
-###key
+### key
     localstorage key where the data will be saved
 
 ### ...args
@@ -23,7 +23,7 @@ This function is responsible for saving data in the localstorage
 
 ## Basic usage
 
-###function call
+### function call
 ```
 LocalStorage.save("texto","consult","medicines","analgesico");
 ```
@@ -38,15 +38,15 @@ LocalStorage Result
 }
 ```
 
-##LocalStorage.get = (key, ...args [optional])
+## LocalStorage.get = (key, ...args [optional])
 
-###Description
+### Description
 
 this function is responsible for picking up LocalStorage data
 
-##Parameters
+## Parameters
 
-###key
+### key
   place where data is stored
 
 ### ...args
@@ -54,7 +54,7 @@ this function is responsible for picking up LocalStorage data
 
 ## Basic usage
 
-###function call
+### function call
 ```
 variavel = LocalStorage.get("consult","medicines","analgesico");
 //"texto";
