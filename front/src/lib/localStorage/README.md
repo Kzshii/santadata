@@ -2,7 +2,7 @@
 
 This custom library uses the react-form package to implements an easy way to create Forms based on a JSON template.
 
-# Functions:
+# Functions
 
 ##LocalStorage.save = (data,key, ...args [optional])
 
@@ -12,13 +12,13 @@ This function is responsible for saving data in the localstorage
 
 ##Parameters
 
-###data:
+###data
     data that will be saved
 
-###key:
+###key
     localstorage key where the data will be saved
 
-### ...args:
+### ...args
     If the location you want to access is a JSON, you can add multiple keys, forming a path
 
 ## Basic usage
@@ -26,6 +26,7 @@ This function is responsible for saving data in the localstorage
 ###function call
 ```
 LocalStorage.save("texto","consult","medicines","analgesico");
+```
 ```
 LocalStorage Result
 {
@@ -35,7 +36,7 @@ LocalStorage Result
     }
   }
 }
-
+```
 
 ##LocalStorage.get = (key, ...args [optional])
 
@@ -45,10 +46,10 @@ this function is responsible for picking up LocalStorage data
 
 ##Parameters
 
-###key:
+###key
   place where data is stored
 
-### ...args:
+### ...args
     If the location you want to access is a JSON, you can add multiple keys, forming a path
 
 ## Basic usage
@@ -59,7 +60,7 @@ variavel = LocalStorage.get("consult","medicines","analgesico");
 //"texto";
 ```
 LocalStorage
-
+```
 {
   consult: {
     medicines:{
@@ -67,3 +68,4 @@ LocalStorage
     }
   }
 }
+```
