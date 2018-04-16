@@ -48,19 +48,23 @@ class Home extends Component {
             <ul className="nav menu">
   
               <li className="menu-active">
-                <Link to="/inicio"><em className="lnr lnr-home fas fa-home">&nbsp;</em> Home</Link>
+                <Link to="/inicio"><em className="lnr lnr-home fas fa-home">&nbsp;</em> Home </Link>
               </li>
               
               <li>
-                <Link to="/inicio"><em className="far fa-calendar">&nbsp;</em> Consultas</Link>
+                <Link to="/inicio"><em className="far fa-calendar">&nbsp;</em> Consultas </Link>
               </li>
               
               <li className="menu-active">
-                <Link to="/novo-paciente" ><em className="fas fa-plus">&nbsp;</em> Novo paciente</Link>
+                <Link to="/novo-paciente" ><em className="fas fa-plus">&nbsp;</em> Novo paciente </Link>
               </li>
 
               <li className="menu-active">
-                <Link to="/busca-paciente"><em className="fas fa-search">&nbsp;</em> Buscar paciente</Link>
+                <Link to="/busca-paciente"><em className="fas fa-search">&nbsp;</em> Buscar paciente </Link>
+              </li>
+
+              <li className="menu-active">
+                <Link to="/pesquisa"><em className="fas fa-search">&nbsp;</em> Pesquisa </Link>
               </li>
 
               <li className="parent "><a data-toggle="collapse" href="#sub-item-1">
