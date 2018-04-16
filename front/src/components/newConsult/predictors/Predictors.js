@@ -180,7 +180,7 @@ class Predictors extends Component {
 				/>
 
         <form onSubmit={ this.handleSubmit }>
-          <input className="Button" type="submit" value={ "Salvar "+ this.props.title }/>
+          <input className="Button" type="submit" value={"Salvar "+ this.props.title +" e Continuar"}/>
         </form>
 
 			</div>

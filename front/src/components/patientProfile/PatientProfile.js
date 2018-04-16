@@ -55,7 +55,7 @@ class PatientProfile extends Component {
         <div className="row">
           <div className="col-lg-12">
             <h2 className="col-lg-12">Perfil do Paciente</h2>
-            <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta`}>
+            <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta/anamnese`}>
               <button type="submit" className="btn btn-primary btn-md col-lg-4 newConsultButton" name="newConsult">Nova Consulta</button>
             </Link>
           </div>
