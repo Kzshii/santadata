@@ -3,31 +3,31 @@ import './Predictors.css';
 import Form from './../../form/Form';
 
 class Predictors extends Component {
-	
+
 	constructor(props){
 		super(props);
-		
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 
 		this.formData = {
 			geral: {},
 			outros: {}
 		};
-		
+
 		this.state = {
 			prepare: null,
 		};
   }
-	
+
 	componentDidMount() {
     //this.props.prepare(this, "prepPredictors");
-		
+
 		/* test only */
-		
+
 		this.setState({
-			
+
 			prepare: {
-				
+
 				geral: {
 					// Morte súbita recuperada
 					morte_subita: {
@@ -38,7 +38,7 @@ class Predictors extends Component {
 							{id: 1,label: "Nao"}
 						]
 					},
-			
+
 					// Episódio de taquicardia ventricular sustentada
 					ep_taq: {
 						type: "radio",
@@ -48,7 +48,7 @@ class Predictors extends Component {
 							{id: 1,label: "Nao"}
 						]
 					},
-			
+
 					// Disfunção ventricular com fração de ejeção ≤ 35% e o paciente se encontra sintomático.
 					disf_vent: {
 						type: "radio",
@@ -58,10 +58,10 @@ class Predictors extends Component {
 							{id: 1,label: "Nao"}
 						]
 					}
-				},	
-			
+				},
+
 				outros:{
-			
+
 					// Integração Identificação
 					int_id: {
 						type: "radio",
@@ -71,7 +71,7 @@ class Predictors extends Component {
 							{id: 1,label: "Abaixo de 65 anos"}
 						]
 					},
-			
+
 					// Integração Evidências
 					int_ev: {
 						type: "radio",
@@ -81,7 +81,7 @@ class Predictors extends Component {
 							{id: 1,label: "Etiologia Isquemica"}
 						]
 					},
-			
+
 					// Integração Anamnese
 					int_anamnese:{
 						type: "checkbox",
@@ -99,41 +99,41 @@ class Predictors extends Component {
 							{id: 9,label: "Depressão"}
 						]
 					},
-			
+
 					// Integração Exame Clínico
 					int_exame_fisico: {
 						type: "checkbox",
 						title: "Integração Exame Clínico",
 						options: [
 							{id: 0,label: "Má perfusão"},
-							{id: 0,label: "Congestão"}, // MV 
+							{id: 0,label: "Congestão"}, // MV
 							{id: 0,label: "Hipotensão"}, // Pressão Abaixo de 120/80mmHg
 							{id: 0,label: "Taquicardia"}, // Ritmo Acima de 100bpm
 							{id: 0,label: "Presença de B3"}
 						]
 					}
-			
+
 					// Integração Capacidade Física
-			
+
 					// Integração Estrutural e Funcional dos Exames Complementares
-			
+
 					// Integração Eletrofisiológica dos Exames Complementares
-			
+
 					// Integração Hemodinâmica dos Exames Complementares
-			
+
 					// Integração Exames Laboratoriais
-			
+
 					//
 				}
 			}
 		});
 	}
-	
+
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.saveData("predictors",this.formData);
+		this.props.saveData(this.formData,"consult","predictors");
 	}
-	
+
 	render() {
 		if(!this.state.prepare){
 			return(
@@ -150,7 +150,7 @@ class Predictors extends Component {
 						this.formData.geral = JSON.parse(JSON.stringify(data));
 					}}
           Config={{
-            Select:{ 
+            Select:{
               OptionValue: "id"
             },
             Checkgroup:{
@@ -167,7 +167,7 @@ class Predictors extends Component {
 						this.formData.outros = JSON.parse(JSON.stringify(data));
 					}}
           Config={{
-            Select:{ 
+            Select:{
               OptionValue: "id"
             },
             Checkgroup:{
@@ -178,11 +178,11 @@ class Predictors extends Component {
             }
           }}
 				/>
-			
-        <form onSubmit={ this.handleSubmit }> 
+
+        <form onSubmit={ this.handleSubmit }>
           <input className="Button" type="submit" value={ "Salvar "+ this.props.title }/>
         </form>
-			
+
 			</div>
 		);
 	}

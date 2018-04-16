@@ -5,6 +5,7 @@ import Select from './../../form/select/Select';
 import Radiogroup from './../../form/radiogroup/Radiogroup';
 import StoredList from './../../storedList/StoredList';
 import Popup from './../../popup/Popup';
+import LocalStorage from "./../../../lib/localStorage";
 
 /*
   Medicines retorna um array com os medicamentos adicionados.
@@ -61,10 +62,10 @@ class Medicines extends Component {
       {
         prepare: {
           //Medicamentos ministrados no paciente
-          
-          
+
+
           commom: {
-            
+
             /*
             title:{
                type: 'label',
@@ -311,7 +312,7 @@ class Medicines extends Component {
               type: "label",
               value: "Nitrato"
             },
-         
+
             type: "Nitrato",
 
             name: {
@@ -328,7 +329,7 @@ class Medicines extends Component {
               type: "label",
               value: "Anticoagulante"
             },
-            
+
             type: "Anticoagulante",
 
             name: {
@@ -347,7 +348,7 @@ class Medicines extends Component {
               type: "label",
               value: "Antiarrítmico"
             },
-            
+
             type: "Antiarrítimico",
 
             name: {
@@ -368,7 +369,7 @@ class Medicines extends Component {
               type: "label",
               value: "Sarcubitril Valsartana"
             },
-            
+
             type: "Sarcubitil Valsartana",
 
             name: {
@@ -401,15 +402,15 @@ class Medicines extends Component {
     }
 
     this.selectOptions = selectOptions;
-    
+
     console.log("selectOptions:",selectOptions)
     console.log("options:",options)
-    
+
     /*
     let form = this.state.prepare[this.state.selectedFormType]
 
     options = Object.keys(form);
-      
+
     selectOptions = [];
 
     for (let index = 1; index < options.length; index++) {
@@ -418,7 +419,7 @@ class Medicines extends Component {
         value: options[index],
         label: form[options[index]].title.value
       });
-    
+
       this.forms=selectOptions;
     }
     */
@@ -432,15 +433,15 @@ class Medicines extends Component {
       const commom = this.state.prepare["commom"];
       const commomKeys = Object.keys(commom);
       let inputList = {};
-  
+
       for(let i = 0; i < formKeys.length; i++) {
         inputList[formKeys[i]] = form[formKeys[i]];
       }
-  
+
       for(let i = 0; i < commomKeys.length; i++) {
         inputList[commomKeys[i]] = commom[commomKeys[i]];
       }
-  
+
       this.inputList = inputList;
       console.log("INPUTLIST FEITA");
       console.log(this.inputList);
@@ -485,7 +486,7 @@ class Medicines extends Component {
 
     form.name = this.state.selectedForm;
     //form.type = this.state.selectedForm;
-
+    LocalStorage.save(form,"consult","medicines",form.name);
     store.push(form);
 
     this.setState({
@@ -513,7 +514,7 @@ class Medicines extends Component {
     let form= this.state.storedForms[index];
 
     console.log("form",form);
-    
+
     form["submit"]={
       type:"submit"
     }
@@ -552,9 +553,9 @@ class Medicines extends Component {
       <div className="InputMedicine">
         <h2>Medicamentos</h2>
 
-        {/* 
+        {/*
         {console.log("selectOptions", this.selectOptions)}
-        {console.log("selectFormType", this.selectFormType)}        
+        {console.log("selectFormType", this.selectFormType)}
 
         <Radiogroup
           Label="Tipo de Medicamento"
@@ -563,17 +564,17 @@ class Medicines extends Component {
           KeyTag="selectForm"
           OnChange={ this.selectFormType }
           Name= "MedsTypes"
-        /> 
+        />
         */}
-        
+
         {/*
         {console.log("selectForm", this.selectForm)}
         {console.log("forms", this.forms)}
-        
+
 
         {console.log("selectedForm", this.state.selectedForm)}
         */}
-        
+
         <Select
           Label="Medicamentos"
           Options={ this.selectOptions }
@@ -581,10 +582,10 @@ class Medicines extends Component {
           KeyTag="meds"
           OnChange={ this.selectForm }
         />
-        
+
         {console.log("inputList", this.inputList)}
 
-        {this.state.selectedForm!="choose" ? 
+        {this.state.selectedForm!="choose" ?
           <Form
             OnSubmit={ this.storeForm }
             InputList={ this.inputList }
@@ -601,7 +602,7 @@ class Medicines extends Component {
               }
             }}
         /> : null}
-        
+
 
         <StoredList title="Medicamentos Guardados" list={this.state.storedForms} remove={this.removeForm} showPopup={this.ShowPopup}/>
 
@@ -632,7 +633,7 @@ class Medicines extends Component {
         <form onSubmit={ this.handleSubmit} >
           <input className="Button" type="submit" value="Salvar Medicamentos e Continuar" onMouseUp={ this.handleSubmit }/>
         </form>
-      
+
       </div>
     );
   }

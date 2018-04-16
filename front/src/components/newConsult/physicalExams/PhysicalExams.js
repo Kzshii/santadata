@@ -482,7 +482,7 @@ class PhysicalExams extends Component {
 
     form.name = this.state.selectedForm;
     form.type = this.state.selectedFormType;
-
+    LocalStorage.save(form,"consult","exam",form.type,form.name);
     store.push(form);
 
     this.setState({
@@ -532,7 +532,6 @@ class PhysicalExams extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    LocalStorage.save("consult","exam",this.state.storedExams);
     this.props.saveData("exams", this.storedExams);
   }
 
@@ -551,7 +550,7 @@ class PhysicalExams extends Component {
         <h2>Exames Físicos</h2>
 
         {console.log("selectOptions", this.selectOptions)}
-        {console.log("selectFormType", this.selectFormType)} 
+        {console.log("selectFormType", this.selectFormType)}
 
         <Radiogroup
           Label="Tipo de Exame"

@@ -4,12 +4,13 @@ import InfoCard from './../infoCard/InfoCard';
 import Button from './../button/Button';
 import NewConsult from './../newConsult/NewConsult';
 import Post from './../../lib/axios';
+import { BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch } from "react-router-dom";
 
 class PatientProfile extends Component {
 
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    //this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       patientData: null,
@@ -17,7 +18,7 @@ class PatientProfile extends Component {
   }
 
   componentDidMount() {
-    const patientId = this.props.patientId;
+    const patientId = this.props.match.params.patientId;
     const user_id = this.props.userData.user_id;
     const user_hash = this.props.userData.hash;
 
@@ -37,28 +38,26 @@ class PatientProfile extends Component {
 
     Post('getPatient');
   }
-
+/* 
   handleClick(event) {
     event.preventDefault();
 
     console.log("Aqui",this.state.patientData);
     this.props.switchSection(<NewConsult patient={ this.state.patientData } switchSection={ this.props.switchSection } userData={ this.props.userData } />);
   }
-
+   */
   render() {
-    return(
 
+    return(
+      
       <div className="PatientProfile">
 
         <div className="row">
           <div className="col-lg-12">
-            <h2 className="col-lg-12">Perfil do Paciente  <button type="submit" className="btn btn-primary btn-md  col-lg-6" name="newConsult" onClick={ this.handleClick }>
-                    Nova Consulta</button></h2>
-           
-               
-                 
-            
-         
+            <h2 className="col-lg-12">Perfil do Paciente</h2>
+            <Link to={`/paciente/${this.props.match.params.patientId}/nova-consulta`}>
+              <button type="submit" className="btn btn-primary btn-md col-lg-4 newConsultButton" name="newConsult">Nova Consulta</button>
+            </Link>
           </div>
           <div className="col-md-4">
             <div className="panel panel-primary">
@@ -88,19 +87,19 @@ class PatientProfile extends Component {
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="panel panel-info">
-              <div class="panel-heading">Co-Morbilidades</div>
-              <div class="panel-body">
+          <div className="col-md-4">
+            <div className="panel panel-info">
+              <div className="panel-heading">Co-Morbilidades</div>
+              <div className="panel-body">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat. Donec vestibulum magna a dui pharetra molestie</p>
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="panel panel-info">
-              <div class="panel-heading">Info Panel</div>
-              <div class="panel-body">
+          <div className="col-md-4">
+            <div className="panel panel-info">
+              <div className="panel-heading">Info Panel</div>
+              <div className="panel-body">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus.Pellentesque ut ante in sapien blandit luctus sed ut lacus.  Fusce et dui urna.</p>
               </div>
             </div>
@@ -110,7 +109,7 @@ class PatientProfile extends Component {
       <div className="col-md-12">
         <div className="panel panel-default ">
           <div className="panel-heading"> Linha do Tempo
-            <span className="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+            <span className="pull-right clickable panel-toggle panel-button-tab-left"><em className="fa fa-toggle-up"></em></span></div>
           <div className="panel-body timeline-container">
             <ul className="timeline">
               <li>
@@ -162,10 +161,7 @@ class PatientProfile extends Component {
         </div>
       </div>
 
-
-
-        </div>
-
+    </div>
         
     );
   }
