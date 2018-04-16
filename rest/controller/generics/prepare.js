@@ -20,40 +20,56 @@ var Exams = require("../../model/physical_exam.js")
 var Base = require( '../generic.js' );
 var Prepare = Object.create(Base);
 
+//TODO: Refatorar para ficar generico e buscar do Mongo
+Prepare.types = {
+	cardio:{
+		anamnese: Anamnese.types,
+		evidences: Evidences.types,
+		interventions: Interventions.types,
+		medicines: Medicines.types,
+		predictors: Predictors.type,
+		prevention: Prevention.types,
+		exams: Exams.types
+	}
+}
+
+
 /*
-* Funcoes de preparacao de formularios
+* Funções genéricas
 */
 
-Prepare.response = function (res,data){
+Prepare.response = (res,data)=>{
 	res.send(JSON.stringify(Prepare.format_response(data)));
 }
 
-Prepare.anamnese = function(req,res){
-	Prepare.response(res,Anamnese.types)
+/*
+* Get Session data
+* @Get /{ambulatory}/{session}/
+**/
+Prepare.session = (req,res)=>{
+	Prepare.get_prepare_data(req);
+	try{
+		var type = Prepare.types[Prepare.url_data_prepare.ambulatory][Prepare.url_data_prepare.session]
+	}catch(e){
+		type = Prepare.error_message(404,"Route error")
+	}
+	Prepare.response(res,type)
 }
 
-Prepare.evidences = function(req,res){
-	Prepare.response(res,Evidences.types)
-}
+/*
+* Get Ambulatory data
+**/
+Prepare.ambulatory = (req,res)=>{
+	Prepare.get_prepare_data(req);
+	var ambulatoryes = Object.getKeys(Prepare.types)
+	var result = {}
+	ambulatoryes.forEach(
+		(amb)=>{
+			result[amb] = Object.getKeys(Prepare.types[amb])
+		}
+	)
 
-Prepare.interventions = function(req,res){
-	Prepare.response(res,Interventions.types)
-}
-
-Prepare.medicines = function(req,res){
-	Prepare.response(res,Medicines.types)
-}
-
-Prepare.predictors = function(req,res){
-	Prepare.response(res,Predictors.types)
-}
-
-Prepare.prevention = function(req,res){
-	Prepare.response(res,Prevention.types)
-}
-
-Prepare.exams = function(req,res){
-	Prepare.response(res,Exams.types)
+	Prepare.response(res,result)
 }
 
 module.exports = Prepare;

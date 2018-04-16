@@ -14,8 +14,15 @@ var Consult = {
 		return data;
 	},
 
-	timelineMapData: function(data){
-		idpatient = data.idpatient;
+	timelineMapData: function(vars){
+		return {
+			idpatient: vars.data.idpatient,
+			//TODO: Organizar esses dados e enviar para o pessoal do Front
+			//Pagination - POST
+			// Numero pagina: 1
+			// Gap: 15
+			pagination: vars.data.pagination
+		}
 	}
 }
 

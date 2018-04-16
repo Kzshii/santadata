@@ -14,67 +14,54 @@ var Generic = require( '../generic' );
 var Consult = Object.create(Generic);
 
 Consult.add = function(req, res){
-	var var_req = req.body;
-	var_req = Generic.decode_data(var_req)
-
-
-	//Check authentication
-	if(!Generic.check_requisition(req)){
-		res.send(Generic.error_message(500,"Bad request"));
-		return
-	}
+	var result = Generic.prepare_request(req,res);
 
 	//Getting and preparing data
-	data = Model_consult.mapData(var_req)
+	var data = Model_consult.mapData(result.data)
 
 	Consult.generic_dao_request(res,data, Dao_consult.new)
 }
 
 Consult.get = function(req,res){
-	var var_req = req.body;
-	var_req = Generic.decode_data(var_req)
-
-
-	//Check authentication
-	if(!Generic.check_requisition(req)){
-		res.send(Generic.error_message(500,"Bad request"));
-		return
-	}
+	var result = Generic.prepare_request(req,res);
 
 	//Getting and preparing data
-	data = {_cid:Generic.url_data.q_id}
+	var data = {_cid:Generic.url_data.q_id}
 
 	Consult.generic_dao_request(res,data, Dao_consult.get)
 }
 
+/*
+* Recupera as consultas ordenadas pelo tempo de um único paciente
+*/
 Consult.timeline = function(req,res){
-	var var_req = req.body;
-	var_req = Generic.decode_data(var_req)
-
-
-	//Check authentication
-	if(!Generic.check_requisition(req)){
-		res.send(Generic.error_message(500,"Bad request"));
-		return
-	}
+	var result = Generic.prepare_request(req,res);
 
 	//Getting and preparing data
 	//ID do paciente
-	data = Model_consult.timelineMapData(var_req)
+	data = Model_consult.timelineMapData(result.data)
 
 	Consult.generic_dao_request(res,data, Dao_consult.get)
 }
 
+/*
+* Recupera todos as consultas do banco
+*/
 Consult.all = function(req,res){
-	var var_req = req.body;
-	var_req = Generic.decode_data(var_req)
+	var result = Generic.prepare_request(req,res);
 
+	//Getting and preparing data
+	//data = {_cid:Generic.url_data.q_id}
+	data = {}
 
-	//Check authentication
-	if(!Generic.check_requisition(req)){
-		res.send(Generic.error_message(500,"Bad request"));
-		return
-	}
+	Consult.generic_dao_request(res,data, Dao_consult.all)
+}
+
+/*
+* Recupera a ultima consulta do paciente
+*/
+Consult.patient = function(req,res){
+	var result = Generic.prepare_request(req,res);
 
 	//Getting and preparing data
 	//data = {_cid:Generic.url_data.q_id}

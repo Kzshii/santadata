@@ -66,7 +66,6 @@ Dao_consult.timeline = function(param, data, callback){
 	})
 }
 
-
 Dao_consult.all = function(param, data, callback){
 	var par = {
 		param: param,
@@ -79,5 +78,16 @@ Dao_consult.all = function(param, data, callback){
 	})
 }
 
+Dao_consult.patient = function(param, data, callback){
+	var par = {
+		param: param,
+		callback: callback
+	}
+
+	Dao_consult.db.mongo.search.filtered("consult",{},data,function(result){
+		console.log("# Last Patient Consult" + JSON.stringify(param))
+		callback(param,result)
+	})
+}
 
 module.exports = Dao_consult;
