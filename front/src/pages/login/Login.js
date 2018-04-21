@@ -3,13 +3,13 @@ import { Redirect } from 'react-router-dom';
 import './Login.css';
 import LoginForm from './../../components/loginForm/LoginForm';
 import Post from './../../lib/axios';
-import LocalStorage from './../../lib/localStorage';
+import LocalStorage from './../../lib/localStorage/localStorage';
 
 class Login extends Component {
 
   constructor(props){
     super(props);
-    
+
     this.requestLogin = this.requestLogin.bind(this);
 
     this.state = {

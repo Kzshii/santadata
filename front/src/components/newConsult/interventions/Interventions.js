@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './Interventions.css';
 import Form from './../../form/Form';
-import LocalStorage from "./../../../lib/localStorage";
-
+import LocalStorage from "./../../../lib/localStorage/localStorage";
 class Interventions extends Component {
   constructor(props){
     super(props);
