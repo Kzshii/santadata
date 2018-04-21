@@ -6,7 +6,7 @@ import SearchPatient from '../../components/searchPatient/SearchPatient';
 import PatientProfile from '../../components/patientProfile/PatientProfile';
 import { BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch } from "react-router-dom";
 import NewConsult from '../../components/newConsult/NewConsult';
-import LocalStorage from './../../lib/localStorage';
+import LocalStorage from './../../lib/localStorage/localStorage';
 
 class Home extends Component {
 
@@ -14,7 +14,7 @@ class Home extends Component {
     const userData = LocalStorage.get("userData");
     return(
       <Router>
-        <div className="Home" >  
+        <div className="Home" >
 
           <nav className="navbar navbar-custom navbar-fixed-top" role="navigation">
             <div className="container-fluid">
@@ -24,14 +24,14 @@ class Home extends Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span></button>
 
-                
+
                 <a className="navbar-brand" href="">
                   <img className="logo-panel img-responsive" src='https://i.imgur.com/x2KHDKm.png' alt='SantaData' title="" onClick={ this.handleClick } name="intro"/>
-                </a> 
+                </a>
 
               </div>
             </div>
-          </nav>     
+          </nav>
 
           <div id="sidebar-collapse" className="col-sm-3 col-lg-2 sidebar">
             <div className="profile-sidebar">
@@ -50,17 +50,17 @@ class Home extends Component {
                 <input type="text" className="form-control" placeholder="Pesquisar"/>
               </div>
             </form>
-            
+
             <ul className="nav menu">
-  
+
               <li className="menu-active">
                 <Link to="/inicio"><em className="lnr lnr-home fas fa-home">&nbsp;</em> Home</Link>
               </li>
-              
+
               <li>
                 <Link to="/inicio"><em className="far fa-calendar">&nbsp;</em> Consultas</Link>
               </li>
-              
+
               <li className="menu-active">
                 <Link to="/novo-paciente" ><em className="fas fa-plus">&nbsp;</em> Novo paciente</Link>
               </li>
@@ -86,9 +86,9 @@ class Home extends Component {
               </li>
               <li><a href="login"><em className="fa fa-power-off">&nbsp;</em> Logout</a></li>
             </ul>
-          
+
           </div>
-    
+
           <div className="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
             <section>
               <Switch>
@@ -100,7 +100,7 @@ class Home extends Component {
               </Switch>
             </section>
           </div>
-          
+
         </div>
       </Router>
     );

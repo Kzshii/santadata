@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Form from "../../form/Form";
 import './Evidences.css';
-import LocalStorage from "./../../../lib/localStorage";
-
+import LocalStorage from "./../../../lib/localStorage/localStorage";
 class Evidences extends Component {
   constructor(props) {
     super(props);
