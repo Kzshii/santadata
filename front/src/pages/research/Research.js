@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Research.css';
-import LocalStorage from '../../lib/localStorage';
+import LocalStorage from '../../lib/localStorage/localStorage';
 
 
 class Research extends Component {
