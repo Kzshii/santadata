@@ -5,7 +5,7 @@ import Select from './../../form/select/Select';
 import Radiogroup from './../../form/radiogroup/Radiogroup';
 import StoredList from './../../storedList/StoredList';
 import Popup from './../../popup/Popup';
-import LocalStorage from "./../../../lib/localStorage";
+import LocalStorage from "./../../../lib/localStorage/localStorage";
 
 class PhysicalExams extends Component {
   constructor(props){
