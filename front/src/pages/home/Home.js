@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import { BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch } from "react-router-dom";
-import LocalStorage from './../../lib/localStorage';
+import LocalStorage from '../../lib/localStorage/localStorage';
 
 class Home extends Component {
 
