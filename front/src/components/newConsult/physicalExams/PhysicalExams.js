@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 import './PhysicalExams.css';
 import Form from './../../form/Form';
 import Select from './../../form/select/Select';
@@ -6,6 +6,7 @@ import Radiogroup from './../../form/radiogroup/Radiogroup';
 import StoredList from './../../storedList/StoredList';
 import Popup from './../../popup/Popup';
 import LocalStorage from "./../../../lib/localStorage/localStorage";
+import ConsultSection from "./../consultSection/ConsultSection";
 
 class PhysicalExams extends Component {
   constructor(props){
@@ -618,6 +619,10 @@ class PhysicalExams extends Component {
         <form onSubmit={ this.handleSubmit} >
           <input className="Button" type="submit" value="Salvar Exames e Continuar" onMouseUp={ this.handleSubmit }/>
         </form>
+
+
+        <ConsultSection/>
+
       </div>
     );
   }
