@@ -8,7 +8,6 @@ import Intro from '../../components/intro/Intro';
 import NewPatient from '../../components/newPatient/NewPatient';
 import SearchPatient from '../../components/searchPatient/SearchPatient';
 import PatientProfile from '../../components/patientProfile/PatientProfile';
-import Research from '../research/Research';
 import NewConsult from '../../components/newConsult/NewConsult';
 import Anamnese from "../../components/newConsult/anamnese/Anamnese";
 import Evidences from "../../components/newConsult/evidences/Evidences";
@@ -16,6 +15,8 @@ import Interventions from "../../components/newConsult/interventions/Interventio
 import Predictors from "../../components/newConsult/predictors/Predictors";
 import PhysicalExams from "../../components/newConsult/physicalExams/PhysicalExams";
 import Medicines from "../../components/newConsult/medicines/Medicines";
+import ResearchPage from '../researchPage/ResearchPage';
+import ResearchResult from '../researchResult/ResearchResult';
 
 class App extends Component{
 
@@ -32,7 +33,8 @@ class App extends Component{
 						<Route exact path="/inicio" render={ () => <Home child={ <Intro userData = { userData } /> } /> } />
 						<Route exact path="/novo-paciente" render={ () => <Home child={ <NewPatient userData = { userData } /> } /> } />
 						<Route exact path="/busca-paciente" render={ () => <Home child={ <SearchPatient userData = { userData } /> } /> } />
-						<Route exact path="/pesquisa" render={ () => <Home child={ <Research userData = { userData } /> } /> } />
+						<Route exact path="/pesquisa" render={ () => <Home child={ <ResearchPage userData = { userData } /> } /> } />
+						<Route exact path="/resultado-pesquisa" render={ () => <Home child={ <ResearchResult userData = { userData } /> } /> } />
 						<Route exact path="/paciente/:patientId" render={ ({match}) => <Home child={ <PatientProfile userData = { userData } match={match} /> } /> } />
 						<Route exact path="/paciente/:patientId/nova-consulta" render={ () => <Redirect to="/paciente/:patientId/nova-consulta/anamnese" /> } />
 						<Route exact path="/paciente/:patientId/nova-consulta/anamnese" render={ ({match}) => <Home child={ <NewConsult userData = { userData } match={match} child={<Anamnese title="Anamnese" saveData={ this.storeFormData } prepare={ this.prepare } />} prev="/paciente/:patientId/nova-consulta/preditores" next="/paciente/:patientId/nova-consulta/evidencias" /> } /> } />
