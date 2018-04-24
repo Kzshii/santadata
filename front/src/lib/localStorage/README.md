@@ -1,10 +1,10 @@
 # About this lib
 
-This custom library uses the react-form package to implements an easy way to create Forms based on a JSON template.
+Library for localStorage Handling
 
 # Functions
 
-## LocalStorage.save = (data,key, ...args [optional])
+## LocalStorage.save (data,key, ...args [optional])
 
 ### Description
 
@@ -38,7 +38,7 @@ LocalStorage Result
 }
 ```
 
-## LocalStorage.get = (key, ...args [optional])
+## LocalStorage.get(key, ...args [optional])
 
 ### Description
 
