@@ -10,9 +10,17 @@ var https = require('https');
 var http = require('http');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
+var helmet = require('helmet');
+var morgan = require('morgan');
 const config = require("./constants/config.js");
 
 var app = express();
+
+// SECURITY
+app.use(helmet());
+
+// LOGS
+app.use(morgan("common"));
 
 //==== CORS
 app.use(function(req, res, next) {
@@ -20,6 +28,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+var env = process.env.NODE_ENV;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
