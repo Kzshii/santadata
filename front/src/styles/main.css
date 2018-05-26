@@ -12,9 +12,12 @@
 @import 'components/Checkgroup.css';
 @import 'components/Complementary.css';
 @import 'components/Creatina.css';
+@import 'components/Form.css';
 @import 'components/Evidences.css';
 @import 'components/General.css';
 @import 'components/Input.css';
+@import 'components/Intro.css';
+@import 'components/infoCard.css';
 @import 'components/Interventions.css';
 @import 'components/LoginForm.css';
 @import 'components/Medicines.css';
@@ -26,4 +29,5 @@
 @import 'components/Predictors.css';
 @import 'components/Radiogroup.css';
 @import 'components/Sangue.css';
+@import 'components/Select.css';
 @import 'components/SearchPatient.css';
