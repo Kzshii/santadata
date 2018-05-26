@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Form.css';
 import Select from './select/Select';
 import Checkgroup from './checkgroup/Checkgroup';
 import Input from './input/Input';

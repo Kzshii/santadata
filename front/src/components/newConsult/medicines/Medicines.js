@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Form from './../../form/Form';
-import Select from './../../form/select/Select';
+import Form from '../../form/Form';
+import Select from '../../form/select/Select';
 
 /*
   Medicines retorna um array com os medicamentos adicionados.

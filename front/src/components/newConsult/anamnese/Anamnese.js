@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Base64 from './../../../lib/base64';
+import Base64 from '../../../lib/base64';
 import axios from 'axios';
 
 class Anamnese extends Component {

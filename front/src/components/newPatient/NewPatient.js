@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Base64 from './../../lib/base64';
+import Base64 from '../../lib/base64';
 import axios from 'axios';
-import Intro from './../intro/Intro';
+import Intro from '../intro/Intro';
 
 class NewPatient extends Component {
   constructor(props) {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import InfoCard from './../infoCard/InfoCard';
-import Base64 from './../../lib/base64';
+import InfoCard from '../infoCard/InfoCard';
+import Base64 from '../../lib/base64';
 import axios from 'axios';
-import Button from './../button/Button';
-import NewConsult from './../newConsult/NewConsult';
+import Button from '../button/Button';
+import NewConsult from '../newConsult/NewConsult';
 
 class PatientProfile extends Component {
 

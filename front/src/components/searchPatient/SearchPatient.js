@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Base64 from './../../lib/base64';
+import Base64 from '../../lib/base64';
 import axios from 'axios';
-import PatientList from './../../components/patientList/PatientList';
-import PatientProfile from './../patientProfile/PatientProfile';
+import PatientList from '../../components/patientList/PatientList';
+import PatientProfile from '../patientProfile/PatientProfile';
 
 class SearchPatient extends Component {
   

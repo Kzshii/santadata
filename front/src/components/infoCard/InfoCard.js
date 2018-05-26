@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './infoCard.css';
 import Button from './../button/Button';
 import imgDefault from './../../pages/img/user.png';
 
