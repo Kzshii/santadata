@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Home.css';
 import NewPatient from './../../components/newPatient/NewPatient';
 import SearchPatient from './../../components/searchPatient/SearchPatient';
 import Intro from './../../components/intro/Intro';

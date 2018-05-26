@@ -1,0 +1,29 @@
+/* pages */
+@import 'pages/App.css';
+@import 'pages/Home.css';
+@import 'pages/index.css';
+@import 'pages/Login.css';
+
+/* components */
+@import 'components/Anamnese.css';
+@import 'components/Bioquimic.css';
+@import 'components/Button.css';
+@import 'components/Cardio.css';
+@import 'components/Checkgroup.css';
+@import 'components/Complementary.css';
+@import 'components/Creatina.css';
+@import 'components/Evidences.css';
+@import 'components/General.css';
+@import 'components/Input.css';
+@import 'components/Interventions.css';
+@import 'components/LoginForm.css';
+@import 'components/Medicines.css';
+@import 'components/NewConsult.css';
+@import 'components/NewPatient.css';
+@import 'components/PatientList.css';
+@import 'components/PatientProfile.css';
+@import 'components/PhysicalExams.css';
+@import 'components/Predictors.css';
+@import 'components/Radiogroup.css';
+@import 'components/Sangue.css';
+@import 'components/SearchPatient.css';

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './SearchPatient.css';
 import Base64 from './../../lib/base64';
 import axios from 'axios';
 import PatientList from './../../components/patientList/PatientList';

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './NewConsult.css';
 //import axios from 'axios';
 import Anamnese from "./anamnese/Anamnese";
 import Evidences from "./evidences/Evidences";

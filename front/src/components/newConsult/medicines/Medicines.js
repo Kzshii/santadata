@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Medicines.css';
 import Form from './../../form/Form';
 import Select from './../../form/select/Select';
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Bioquimic.css';
 import Base64 from '../../../../lib/base64';
 import axios from 'axios';
 import Creatina from "./creatina/Creatina";

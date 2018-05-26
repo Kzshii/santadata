@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './PhysicalExams.css';
 import Select from './../../form/select/Select';
 import Form from './../../form/Form';
 import Radiogroup from './../../form/radiogroup/Radiogroup';

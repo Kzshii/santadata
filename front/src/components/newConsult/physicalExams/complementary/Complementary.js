@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Complementary.css';
 import Base64 from '../../../../lib/base64';
 import axios from 'axios';
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './PatientProfile.css';
 import InfoCard from './../infoCard/InfoCard';
 import Base64 from './../../lib/base64';
 import axios from 'axios';
